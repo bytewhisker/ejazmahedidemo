@@ -60,8 +60,8 @@ export default function Header({ currentFilter, setFilter, onGoHome, isHeroPage 
 
         {/* Desktop Layout */}
         <div className="nav-grid desktop-nav-layout">
+          {/* Left: Filter Tabs */}
           <div className="nav-filters">
-            <span className="nav-label">Archive</span>
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -73,6 +73,7 @@ export default function Header({ currentFilter, setFilter, onGoHome, isHeroPage 
             ))}
           </div>
 
+          {/* Center: Logo */}
           <div 
             className="site-title" 
             style={{ 
@@ -83,18 +84,19 @@ export default function Header({ currentFilter, setFilter, onGoHome, isHeroPage 
             }}
           >
             <a href="#" onClick={(e) => { e.preventDefault(); setFilter('all'); onGoHome(); }} className="site-title-link">Ejaz Mehedi</a>
-            <div className="site-subtitle">Cinematographer & Director</div>
+            <div className="site-subtitle">Director of Photography</div>
           </div>
 
-          <div className="nav-info" style={{ display: 'flex', gap: '20px', justifyContent: 'flex-end', alignItems: 'center' }}>
-            <div>
-              <span className="nav-label" style={{ display: 'block', marginBottom: '2px' }}>Info</span>
-              <a href="#/about" className="info-toggle-btn" style={{ textDecoration: 'none' }}>About</a>
-            </div>
-            <div>
-              <span className="nav-label" style={{ display: 'block', marginBottom: '2px' }}>Connect</span>
-              <a href="#/contact" className="info-toggle-btn" style={{ textDecoration: 'none' }}>Contact</a>
-            </div>
+          {/* Right: Links */}
+          <div className="nav-info">
+            <a href="#/about" className="nav-link-item">
+              <span className="nav-link-label">About</span>
+              <span className="nav-link-line"></span>
+            </a>
+            <a href="#/contact" className="nav-link-item">
+              <span className="nav-link-label">Contact</span>
+              <span className="nav-link-line"></span>
+            </a>
           </div>
         </div>
       </div>
