@@ -1,10 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Play, Pause, Volume2, VolumeX, Maximize2, Monitor, RefreshCw, Eye, EyeOff } from 'lucide-react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
+import { Play, Pause, Volume2, VolumeX, Maximize2, Monitor, Eye, EyeOff } from 'lucide-react';
 
 export default function CustomPlayer({ videoSrc, vimeoId, youtubeId, projectSpecs }) {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
-  
+  const hideTimerRef = useRef(null);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -13,12 +14,12 @@ export default function CustomPlayer({ videoSrc, vimeoId, youtubeId, projectSpec
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isCinemaMode, setIsCinemaMode] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
+  const [showControls, setShowControls] = useState(true);
   const [hoverTimelineWidth, setHoverTimelineWidth] = useState(0);
 
   const fps = parseFloat(projectSpecs?.fps) || 24.00;
 
   useEffect(() => {
-    // Reset player state when source changes
     setIsPlaying(false);
     setCurrentTime(0);
     if (videoRef.current) {
@@ -26,14 +27,30 @@ export default function CustomPlayer({ videoSrc, vimeoId, youtubeId, projectSpec
     }
   }, [videoSrc]);
 
-  // Format time to director timecode (HH:MM:SS:FF)
+  const showControlsTemporarily = useCallback(() => {
+    setShowControls(true);
+    if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+    hideTimerRef.current = setTimeout(() => {
+      if (isPlaying) setShowControls(false);
+    }, 2500);
+  }, [isPlaying]);
+
+  useEffect(() => {
+    if (isPlaying) {
+      hideTimerRef.current = setTimeout(() => setShowControls(false), 2500);
+    } else {
+      setShowControls(true);
+      if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+    }
+    return () => { if (hideTimerRef.current) clearTimeout(hideTimerRef.current); };
+  }, [isPlaying]);
+
   const formatTimecode = (secs) => {
     if (isNaN(secs)) return "00:00:00:00";
     const hours = Math.floor(secs / 3600);
     const minutes = Math.floor((secs % 3600) / 60);
     const seconds = Math.floor(secs % 60);
     const frames = Math.floor((secs % 1) * fps);
-
     return [
       hours.toString().padStart(2, '0'),
       minutes.toString().padStart(2, '0'),
@@ -47,7 +64,7 @@ export default function CustomPlayer({ videoSrc, vimeoId, youtubeId, projectSpec
     if (isPlaying) {
       videoRef.current.pause();
     } else {
-      videoRef.current.play().catch(err => console.log("Playback error:", err));
+      videoRef.current.play().catch(() => {});
     }
     setIsPlaying(!isPlaying);
   };
@@ -76,9 +93,7 @@ export default function CustomPlayer({ videoSrc, vimeoId, youtubeId, projectSpec
     setHoverTimelineWidth(pos * 100);
   };
 
-  const handleTimelineLeave = () => {
-    setHoverTimelineWidth(0);
-  };
+  const handleTimelineLeave = () => setHoverTimelineWidth(0);
 
   const handleVolumeChange = (e) => {
     const val = parseFloat(e.target.value);
@@ -101,18 +116,12 @@ export default function CustomPlayer({ videoSrc, vimeoId, youtubeId, projectSpec
     }
   };
 
-  const toggleCinemaMode = () => {
-    setIsCinemaMode(!isCinemaMode);
-  };
+  const toggleCinemaMode = () => setIsCinemaMode(!isCinemaMode);
 
   const toggleFullscreen = () => {
     if (!containerRef.current) return;
     if (!document.fullscreenElement) {
-      containerRef.current.requestFullscreen().then(() => {
-        setIsFullscreen(true);
-      }).catch(err => {
-        console.error("Fullscreen error:", err);
-      });
+      containerRef.current.requestFullscreen().then(() => setIsFullscreen(true)).catch(() => {});
     } else {
       document.exitFullscreen();
       setIsFullscreen(false);
@@ -120,24 +129,49 @@ export default function CustomPlayer({ videoSrc, vimeoId, youtubeId, projectSpec
   };
 
   useEffect(() => {
-    const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-    };
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-    };
+    const handler = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener('fullscreenchange', handler);
+    return () => document.removeEventListener('fullscreenchange', handler);
   }, []);
+
+  const overlayStyle = {
+    pointerEvents: 'none',
+    transition: 'opacity 0.4s ease',
+    opacity: showControls ? 1 : 0
+  };
+
+  const ViewfinderOverlay = () => (
+    <div className="viewfinder-overlay" style={overlayStyle}>
+      <div className="viewfinder-top">
+        <div className="viewfinder-rec">
+          <span className="rec-dot"></span>
+          <span>REC</span>
+        </div>
+        <div>{projectSpecs?.resolution || "4K UHD"}</div>
+        <div>{youtubeId ? 'YOUTUBE' : 'TC LIVE'}</div>
+      </div>
+      <div className="viewfinder-middle">
+        <div className="viewfinder-crosshair"></div>
+      </div>
+      <div className="viewfinder-bottom">
+        <div>ASPECT: {projectSpecs?.aspectRatio || "2.39:1"}</div>
+        <div>LENS: {projectSpecs?.gear || "ZEISS CP.3"}</div>
+        <div>{projectSpecs?.fps || "24.00 fps"}</div>
+      </div>
+    </div>
+  );
 
   if (youtubeId) {
     return (
-      <div 
+      <div
         ref={containerRef}
         className={`video-player-container ${isCinemaMode ? 'cinema-mode' : ''}`}
         style={{ maxWidth: isCinemaMode ? '100%' : '1120px', margin: '0 auto 40px', aspectRatio: '16/9', position: 'relative' }}
+        onMouseMove={showControlsTemporarily}
+        onMouseLeave={() => { if (isPlaying) setShowControls(false); }}
       >
         <iframe
-          src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1`}
+          src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0`}
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
           allowFullScreen
@@ -145,38 +179,48 @@ export default function CustomPlayer({ videoSrc, vimeoId, youtubeId, projectSpec
           title="Project Video"
         />
 
-        {showOverlay && (
-          <div className="viewfinder-overlay" style={{ pointerEvents: 'none' }}>
-            <div className="viewfinder-top">
-              <div className="viewfinder-rec">
-                <span className="rec-dot"></span>
-                <span>REC</span>
-              </div>
-              <div>{projectSpecs?.resolution || "4K UHD"}</div>
-              <div>TC LIVE</div>
+        {showOverlay && <ViewfinderOverlay />}
+
+        <div className="video-controls" style={{ transition: 'opacity 0.4s ease', opacity: showControls ? 1 : 0 }}>
+          <div className="controls-row">
+            <div className="controls-left">
+              <button className="control-btn" onClick={() => {
+                const iframe = containerRef.current?.querySelector('iframe');
+                if (iframe) {
+                  iframe.contentWindow.postMessage(JSON.stringify({
+                    event: 'command',
+                    func: isPlaying ? 'pauseVideo' : 'playVideo',
+                    args: ''
+                  }), '*');
+                  setIsPlaying(!isPlaying);
+                }
+              }}>
+                {isPlaying ? <Pause size={18} /> : <Play size={18} />}
+              </button>
             </div>
-            
-            <div className="viewfinder-middle">
-              <div className="viewfinder-crosshair"></div>
-            </div>
-            
-            <div className="viewfinder-bottom">
-              <div>ASPECT: {projectSpecs?.aspectRatio || "2.39:1"}</div>
-              <div>LENS: {projectSpecs?.gear || "ZEISS CP.3"}</div>
-              <div>{projectSpecs?.fps || "24.00 fps"}</div>
+            <div className="controls-right">
+              <button className="control-btn" onClick={() => setShowOverlay(!showOverlay)}>
+                {showOverlay ? <Eye size={18} /> : <EyeOff size={18} />}
+              </button>
+              <button className="control-btn" onClick={toggleCinemaMode}>
+                <Monitor size={18} style={{ color: isCinemaMode ? 'var(--text-primary)' : 'var(--text-secondary)' }} />
+              </button>
+              <button className="control-btn" onClick={toggleFullscreen}>
+                <Maximize2 size={18} />
+              </button>
             </div>
           </div>
-        )}
+        </div>
       </div>
     );
   }
 
   const isVimeo = vimeoId || (
-    videoSrc && 
+    videoSrc &&
     (videoSrc.includes('vimeo.com') || videoSrc.includes('player.vimeo.com')) &&
     !videoSrc.includes('.mp4')
   );
-  
+
   if (isVimeo) {
     let embedUrl = videoSrc;
     if (vimeoId) {
@@ -188,10 +232,12 @@ export default function CustomPlayer({ videoSrc, vimeoId, youtubeId, projectSpec
     }
 
     return (
-      <div 
+      <div
         ref={containerRef}
         className={`video-player-container ${isCinemaMode ? 'cinema-mode' : ''}`}
         style={{ maxWidth: isCinemaMode ? '100%' : '1120px', margin: '0 auto 40px', aspectRatio: '16/9', position: 'relative' }}
+        onMouseMove={showControlsTemporarily}
+        onMouseLeave={() => { if (isPlaying) setShowControls(false); }}
       >
         <iframe
           src={embedUrl}
@@ -202,37 +248,18 @@ export default function CustomPlayer({ videoSrc, vimeoId, youtubeId, projectSpec
           title="Project Video"
         />
 
-        {showOverlay && (
-          <div className="viewfinder-overlay" style={{ pointerEvents: 'none' }}>
-            <div className="viewfinder-top">
-              <div className="viewfinder-rec">
-                <span className="rec-dot"></span>
-                <span>REC</span>
-              </div>
-              <div>{projectSpecs?.resolution || "4K UHD"}</div>
-              <div>TC LIVE</div>
-            </div>
-            
-            <div className="viewfinder-middle">
-              <div className="viewfinder-crosshair"></div>
-            </div>
-            
-            <div className="viewfinder-bottom">
-              <div>ASPECT: {projectSpecs?.aspectRatio || "2.39:1"}</div>
-              <div>LENS: {projectSpecs?.gear || "ZEISS CP.3"}</div>
-              <div>{projectSpecs?.fps || "24.00 fps"}</div>
-            </div>
-          </div>
-        )}
+        {showOverlay && <ViewfinderOverlay />}
       </div>
     );
   }
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className={`video-player-container ${isCinemaMode ? 'cinema-mode' : ''}`}
-      style={{ maxWidth: isCinemaMode ? '100%' : '1120px', margin: '0 auto 40px' }}
+      style={{ maxWidth: isCinemaMode ? '100%' : '1120px', margin: '0 auto 40px', position: 'relative' }}
+      onMouseMove={showControlsTemporarily}
+      onMouseLeave={() => { if (isPlaying) setShowControls(false); }}
     >
       <video
         ref={videoRef}
@@ -248,100 +275,41 @@ export default function CustomPlayer({ videoSrc, vimeoId, youtubeId, projectSpec
         muted={isMuted}
       />
 
-      {/* Viewfinder Spec Overlay (DP specific) */}
-      {showOverlay && (
-        <div className="viewfinder-overlay">
-          <div className="viewfinder-top">
-            <div className="viewfinder-rec">
-              <span className="rec-dot"></span>
-              <span>REC</span>
-            </div>
-            <div>{projectSpecs?.resolution || "4K UHD"}</div>
-            <div>TC {formatTimecode(currentTime)}</div>
-          </div>
-          
-          <div className="viewfinder-middle">
-            <div className="viewfinder-crosshair"></div>
-          </div>
-          
-          <div className="viewfinder-bottom">
-            <div>ASPECT: {projectSpecs?.aspectRatio || "2.39:1"}</div>
-            <div>LENS: {projectSpecs?.gear || "ZEISS CP.3"}</div>
-            <div>{projectSpecs?.fps || "24.00 fps"}</div>
-          </div>
-        </div>
-      )}
+      {showOverlay && <ViewfinderOverlay />}
 
-      {/* Custom Controls Bar */}
-      <div className="video-controls">
-        {/* Timeline Scrubber */}
-        <div 
-          className="timeline-container"
-          onClick={handleTimelineClick}
-          onMouseMove={handleTimelineHover}
-          onMouseLeave={handleTimelineLeave}
-        >
-          <div 
-            className="timeline-hover-bar"
-            style={{ width: `${hoverTimelineWidth}%` }}
-          />
-          <div 
-            className="timeline-progress"
-            style={{ width: `${duration ? (currentTime / duration) * 100 : 0}%` }}
-          >
+      <div className="video-controls" style={{ transition: 'opacity 0.4s ease', opacity: showControls ? 1 : 0 }}>
+        <div className="timeline-container" onClick={handleTimelineClick} onMouseMove={handleTimelineHover} onMouseLeave={handleTimelineLeave}>
+          <div className="timeline-hover-bar" style={{ width: `${hoverTimelineWidth}%` }} />
+          <div className="timeline-progress" style={{ width: `${duration ? (currentTime / duration) * 100 : 0}%` }}>
             <div className="timeline-handle" />
           </div>
         </div>
 
-        {/* Action Controls Row */}
         <div className="controls-row">
           <div className="controls-left">
-            <button className="control-btn" onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"}>
+            <button className="control-btn" onClick={togglePlay}>
               {isPlaying ? <Pause size={18} /> : <Play size={18} />}
             </button>
-
             <div className="volume-container">
-              <button className="control-btn" onClick={toggleMute} aria-label={isMuted ? "Unmute" : "Mute"}>
+              <button className="control-btn" onClick={toggleMute}>
                 {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
               </button>
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.05"
-                value={isMuted ? 0 : volume}
-                onChange={handleVolumeChange}
-                className="volume-slider"
-              />
+              <input type="range" min="0" max="1" step="0.05" value={isMuted ? 0 : volume} onChange={handleVolumeChange} className="volume-slider" />
             </div>
-
             <div className="timecode-display">
               <span>{formatTimecode(currentTime)}</span>
               <span style={{ color: 'var(--text-muted)', margin: '0 8px' }}>/</span>
               <span style={{ color: 'var(--text-secondary)' }}>{formatTimecode(duration)}</span>
             </div>
           </div>
-
           <div className="controls-right">
-            <button 
-              className="control-btn" 
-              onClick={() => setShowOverlay(!showOverlay)} 
-              title={showOverlay ? "Hide Viewfinder Overlay" : "Show Viewfinder Overlay"}
-            >
+            <button className="control-btn" onClick={() => setShowOverlay(!showOverlay)}>
               {showOverlay ? <Eye size={18} /> : <EyeOff size={18} />}
             </button>
-            <button 
-              className="control-btn" 
-              onClick={toggleCinemaMode} 
-              title="Cinema Mode"
-            >
+            <button className="control-btn" onClick={toggleCinemaMode}>
               <Monitor size={18} style={{ color: isCinemaMode ? 'var(--text-primary)' : 'var(--text-secondary)' }} />
             </button>
-            <button 
-              className="control-btn" 
-              onClick={toggleFullscreen} 
-              title="Fullscreen"
-            >
+            <button className="control-btn" onClick={toggleFullscreen}>
               <Maximize2 size={18} />
             </button>
           </div>
