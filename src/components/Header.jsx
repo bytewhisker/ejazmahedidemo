@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Header({ currentFilter, setFilter, onGoHome, isHeroPage }) {
+export default function Header({ currentFilter, setFilter, onGoHome, onGoAbout, onGoContact, isHeroPage }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -13,18 +13,14 @@ export default function Header({ currentFilter, setFilter, onGoHome, isHeroPage 
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 200);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 200);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const showTitle = !isHeroPage || isScrolled;
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const handleMobileNav = (action) => {
     action();
@@ -38,7 +34,7 @@ export default function Header({ currentFilter, setFilter, onGoHome, isHeroPage 
         {/* Mobile Hamburger Layout */}
         <div className="mobile-header-layout" style={{ display: 'none', justifyContent: 'space-between', alignItems: 'center' }}>
           <div className="site-title" style={{ opacity: showTitle ? 1 : 0, transition: 'opacity 0.3s ease' }}>
-            <a href="#" onClick={(e) => { e.preventDefault(); handleMobileNav(() => { setFilter('all'); onGoHome(); }); }} className="site-title-link" style={{ fontSize: '1.2rem' }}>Ejaz Mehedi</a>
+            <a href="/" onClick={(e) => { e.preventDefault(); handleMobileNav(() => { setFilter('all'); onGoHome(); }); }} className="site-title-link" style={{ fontSize: '1.2rem' }}>Ejaz Mehedi</a>
           </div>
           <button onClick={toggleMobileMenu} style={{ background: 'none', border: 'none', color: 'var(--text-primary)', zIndex: 999 }}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -60,7 +56,6 @@ export default function Header({ currentFilter, setFilter, onGoHome, isHeroPage 
 
         {/* Desktop Layout */}
         <div className="nav-grid desktop-nav-layout">
-          {/* Left: Filter Tabs */}
           <div className="nav-filters">
             {categories.map((cat) => (
               <button
@@ -73,7 +68,6 @@ export default function Header({ currentFilter, setFilter, onGoHome, isHeroPage 
             ))}
           </div>
 
-          {/* Center: Logo */}
           <div 
             className="site-title" 
             style={{ 
@@ -83,17 +77,16 @@ export default function Header({ currentFilter, setFilter, onGoHome, isHeroPage 
               pointerEvents: showTitle ? 'auto' : 'none'
             }}
           >
-            <a href="#" onClick={(e) => { e.preventDefault(); setFilter('all'); onGoHome(); }} className="site-title-link">Ejaz Mehedi</a>
+            <a href="/" onClick={(e) => { e.preventDefault(); setFilter('all'); onGoHome(); }} className="site-title-link">Ejaz Mehedi</a>
             <div className="site-subtitle">Director of Photography</div>
           </div>
 
-          {/* Right: Links */}
           <div className="nav-info">
-            <a href="#/about" className="nav-link-item">
+            <a href="/about" onClick={(e) => { e.preventDefault(); onGoAbout(); }} className="nav-link-item">
               <span className="nav-link-label">About</span>
               <span className="nav-link-line"></span>
             </a>
-            <a href="#/contact" className="nav-link-item">
+            <a href="/contact" onClick={(e) => { e.preventDefault(); onGoContact(); }} className="nav-link-item">
               <span className="nav-link-label">Contact</span>
               <span className="nav-link-line"></span>
             </a>
@@ -137,8 +130,8 @@ export default function Header({ currentFilter, setFilter, onGoHome, isHeroPage 
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', textAlign: 'center', marginTop: '30px' }}>
               <span className="nav-label" style={{ color: 'var(--accent)', marginBottom: '10px' }}>Studio</span>
-              <a href="#/about" onClick={() => handleMobileNav(() => {})} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.5rem', fontFamily: 'var(--font-serif)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>About</a>
-              <a href="#/contact" onClick={() => handleMobileNav(() => {})} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.5rem', fontFamily: 'var(--font-serif)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Contact</a>
+              <a href="/about" onClick={(e) => { e.preventDefault(); handleMobileNav(() => onGoAbout()); }} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.5rem', fontFamily: 'var(--font-serif)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>About</a>
+              <a href="/contact" onClick={(e) => { e.preventDefault(); handleMobileNav(() => onGoContact()); }} style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.5rem', fontFamily: 'var(--font-serif)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Contact</a>
             </div>
           </motion.div>
         )}

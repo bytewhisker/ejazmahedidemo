@@ -10,62 +10,54 @@ import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import { projects } from './data/projects';
 
+function getRouteFromPath(pathname) {
+  if (pathname.startsWith('/project/')) {
+    const slug = pathname.replace('/project/', '');
+    const project = projects.find((p) => p.slug === slug);
+    if (project) return { route: 'project', project };
+  } else if (pathname === '/about') {
+    return { route: 'about', project: null };
+  } else if (pathname === '/contact') {
+    return { route: 'contact', project: null };
+  }
+  return { route: 'home', project: null };
+}
+
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentFilter, setFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentRoute, setCurrentRoute] = useState('home');
 
-  // Timed Loading Screen (2.8 seconds)
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2800);
+    const timer = setTimeout(() => setIsLoading(false), 2800);
     return () => clearTimeout(timer);
   }, []);
 
-  // Hash-based routing to support browser history, back/forward buttons, and deep linking
   useEffect(() => {
-    const handleHashChange = () => {
+    const handleRouteChange = () => {
       window.scrollTo({ top: 0, behavior: 'instant' });
-      const hash = window.location.hash;
-      if (hash.startsWith('#/project/')) {
-        const slug = hash.replace('#/project/', '');
-        const project = projects.find((p) => p.slug === slug);
-        if (project) {
-          setSelectedProject(project);
-          setCurrentRoute('project');
-          return;
-        }
-      } else if (hash === '#/about') {
-        setCurrentRoute('about');
-        setSelectedProject(null);
-        return;
-      } else if (hash === '#/contact') {
-        setCurrentRoute('contact');
-        setSelectedProject(null);
-        return;
-      }
-      setCurrentRoute('home');
-      setSelectedProject(null);
+      const { route, project } = getRouteFromPath(window.location.pathname);
+      setCurrentRoute(route);
+      setSelectedProject(project);
     };
 
-    // Run once on load
-    handleHashChange();
+    handleRouteChange();
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handleRouteChange);
+    return () => window.removeEventListener('popstate', handleRouteChange);
   }, []);
 
-  const selectProjectBySlug = (slug) => {
-    window.location.hash = `#/project/${slug}`;
+  const navigate = (path) => {
+    window.history.pushState({}, '', path);
+    window.dispatchEvent(new PopStateEvent('popstate'));
   };
 
-  const goHome = () => {
-    window.location.hash = '#/';
-  };
+  const selectProjectBySlug = (slug) => navigate(`/project/${slug}`);
+  const goHome = () => navigate('/');
+  const goAbout = () => navigate('/about');
+  const goContact = () => navigate('/contact');
 
-  // Filter projects list
   const filteredProjects = currentFilter === 'all'
     ? projects
     : projects.filter((p) => p.category === currentFilter);
@@ -74,18 +66,13 @@ export default function App() {
     <>
       <CustomCursor />
 
-      {/* 1. Loading Screen */}
       <AnimatePresence>
         {isLoading && (
           <motion.div 
             className="loader-wrapper"
-            exit={{ 
-              opacity: 0,
-              transition: { duration: 0.8, ease: 'easeInOut' }
-            }}
+            exit={{ opacity: 0, transition: { duration: 0.8, ease: 'easeInOut' } }}
           >
             <div className="loader-content">
-              {/* Target loading gif */}
               <img 
                 src="https://ligthelm.work/static/img/loading.gif" 
                 alt="Loading..." 
@@ -96,7 +83,6 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* 2. Main Content */}
       {!isLoading && (
         <motion.div 
           style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}
@@ -104,18 +90,17 @@ export default function App() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          {/* Header (Sticky navigation, filters, info trigger) */}
           <Header 
             currentFilter={currentFilter}
             setFilter={setFilter}
             onGoHome={goHome}
+            onGoAbout={goAbout}
+            onGoContact={goContact}
             isHeroPage={currentRoute === 'home' && currentFilter === 'all'}
           />
 
-          {/* Full-width Cinematic Hero Video Reel */}
           {currentRoute === 'home' && currentFilter === 'all' && <HeroSection />}
 
-          {/* Main Portfolio section */}
           <main id="archive" style={{ flexGrow: 1 }}>
             <div className="container">
               <AnimatePresence mode="wait">
@@ -144,14 +129,12 @@ export default function App() {
                       projects={filteredProjects} 
                       onSelectProject={selectProjectBySlug}
                     />
-
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
           </main>
 
-          {/* Footer details */}
           <Footer />
         </motion.div>
       )}
