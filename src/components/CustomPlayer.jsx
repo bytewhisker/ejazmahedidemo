@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, Maximize2, Monitor, RefreshCw, Eye, EyeOff } from 'lucide-react';
 
-export default function CustomPlayer({ videoSrc, vimeoId, projectSpecs }) {
+export default function CustomPlayer({ videoSrc, vimeoId, youtubeId, projectSpecs }) {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
   
@@ -128,6 +128,48 @@ export default function CustomPlayer({ videoSrc, vimeoId, projectSpecs }) {
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
     };
   }, []);
+
+  if (youtubeId) {
+    return (
+      <div 
+        ref={containerRef}
+        className={`video-player-container ${isCinemaMode ? 'cinema-mode' : ''}`}
+        style={{ maxWidth: isCinemaMode ? '100%' : '1120px', margin: '0 auto 40px', aspectRatio: '16/9', position: 'relative' }}
+      >
+        <iframe
+          src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1`}
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowFullScreen
+          style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
+          title="Project Video"
+        />
+
+        {showOverlay && (
+          <div className="viewfinder-overlay" style={{ pointerEvents: 'none' }}>
+            <div className="viewfinder-top">
+              <div className="viewfinder-rec">
+                <span className="rec-dot"></span>
+                <span>REC</span>
+              </div>
+              <div>{projectSpecs?.resolution || "4K UHD"}</div>
+              <div>TC LIVE</div>
+            </div>
+            
+            <div className="viewfinder-middle">
+              <div className="viewfinder-crosshair"></div>
+            </div>
+            
+            <div className="viewfinder-bottom">
+              <div>ASPECT: {projectSpecs?.aspectRatio || "2.39:1"}</div>
+              <div>LENS: {projectSpecs?.gear || "ZEISS CP.3"}</div>
+              <div>{projectSpecs?.fps || "24.00 fps"}</div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   const isVimeo = vimeoId || (
     videoSrc && 

@@ -47,6 +47,7 @@ export default function ProjectDetail({ project, onBack }) {
         <CustomPlayer 
           videoSrc={project.videoUrl}
           vimeoId={project.vimeoId}
+          youtubeId={project.youtubeId}
           projectSpecs={{
             resolution: project.resolution,
             aspectRatio: project.aspectRatio,
@@ -104,26 +105,6 @@ export default function ProjectDetail({ project, onBack }) {
             </div>
           </div>
         </div>
-
-        {/* YouTube Video */}
-        {project.youtubeId && (
-          <div className="project-youtube-section" style={{ marginTop: '80px', borderTop: '1px solid var(--border-color)', paddingTop: '60px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '30px' }}>
-              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', fontWeight: 300, textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>
-                Watch
-              </h2>
-            </div>
-            <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', border: '1px solid var(--border-color)' }}>
-              <iframe
-                src={`https://www.youtube.com/embed/${project.youtubeId}`}
-                title={`${project.title} - YouTube`}
-                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        )}
 
         {/* Production Stills / Film Frames Grid */}
         {project.stills && project.stills.length > 0 && (
