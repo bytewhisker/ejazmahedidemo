@@ -45,7 +45,8 @@ export default function ProjectDetail({ project, onBack }) {
 
         {/* Custom Video Suite */}
         <CustomPlayer 
-          videoSrc={project.videoUrl} 
+          videoSrc={project.videoUrl}
+          vimeoId={project.vimeoId}
           projectSpecs={{
             resolution: project.resolution,
             aspectRatio: project.aspectRatio,

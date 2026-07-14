@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, Maximize2, Monitor, RefreshCw, Eye, EyeOff } from 'lucide-react';
 
-export default function CustomPlayer({ videoSrc, projectSpecs }) {
+export default function CustomPlayer({ videoSrc, vimeoId, projectSpecs }) {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
   
@@ -129,16 +129,20 @@ export default function CustomPlayer({ videoSrc, projectSpecs }) {
     };
   }, []);
 
-  const isVimeo = videoSrc && 
+  const isVimeo = vimeoId || (
+    videoSrc && 
     (videoSrc.includes('vimeo.com') || videoSrc.includes('player.vimeo.com')) &&
-    !videoSrc.includes('.mp4');
+    !videoSrc.includes('.mp4')
+  );
   
   if (isVimeo) {
     let embedUrl = videoSrc;
-    if (!videoSrc.includes('player.vimeo.com')) {
+    if (vimeoId) {
+      embedUrl = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&color=d4af37`;
+    } else if (!videoSrc.includes('player.vimeo.com')) {
       const match = videoSrc.match(/vimeo\.com\/(\d+)/);
-      const videoId = match ? match[1] : '';
-      embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1&color=d4af37`;
+      const id = match ? match[1] : '';
+      embedUrl = `https://player.vimeo.com/video/${id}?autoplay=1&color=d4af37`;
     }
 
     return (
