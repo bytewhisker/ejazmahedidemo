@@ -1,38 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function HeroSection() {
-  const [playVideo, setPlayVideo] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setPlayVideo(true), 5000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div className="hero-section" style={{ position: 'relative', width: '100%', height: '75vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid var(--border-color)' }}>
       {/* Background Vimeo Video Reel */}
       <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}>
-        {playVideo && (
-          <iframe
-            src="https://player.vimeo.com/video/782070615?background=1&autoplay=1&loop=1&muted=1&autopause=0&quality=1080p&byline=0&title=0&portrait=0"
-            frameBorder="0"
-            allow="autoplay; fullscreen"
-            style={{ 
-              width: '100vw', 
-              height: '56.25vw',
-              minHeight: '100vh', 
-              minWidth: '177.77vh',
-              position: 'absolute', 
-              top: '50%', 
-              left: '50%', 
-              transform: 'translate(-50%, -50%)', 
-              opacity: 0.35,
-              filter: 'contrast(1.15) brightness(0.85)'
-            }}
-            title="Ejaz Mehedi Cinematography Reel"
-          />
-        )}
+        <iframe
+          src="https://player.vimeo.com/video/782070615?background=1&autoplay=1&loop=1&muted=1&autopause=0&quality=1080p&byline=0&title=0&portrait=0#t=5"
+          frameBorder="0"
+          allow="autoplay; fullscreen"
+          style={{ 
+            width: '100vw', 
+            height: '56.25vw',
+            minHeight: '100vh', 
+            minWidth: '177.77vh',
+            position: 'absolute', 
+            top: '50%', 
+            left: '50%', 
+            transform: 'translate(-50%, -50%)', 
+            opacity: 0.35,
+            filter: 'contrast(1.15) brightness(0.85)'
+          }}
+          title="Ejaz Mehedi Cinematography Reel"
+        />
       </div>
 
       {/* Vignette & Color Fade Overlay */}
