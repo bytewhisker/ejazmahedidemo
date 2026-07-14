@@ -12,6 +12,7 @@ export const projects = [
     vimeoId: "784920253",
     videoUrl: "https://player.vimeo.com/external/434045526.sd.mp4?s=c27d23d8c76afbe21d4c2b42b932c0282490b4d4&profile_id=165&oauth2_token_id=57447761",
     thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop",
+    youtubeId: "3djjf5_IWC0",
     slug: "moshari",
     resolution: "4K DCI",
     aspectRatio: "2.39:1",
