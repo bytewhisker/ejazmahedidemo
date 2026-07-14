@@ -7,6 +7,7 @@ import ProjectDetail from './components/ProjectDetail';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
 import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
 import { projects } from './data/projects';
 
 export default function App() {
@@ -70,6 +71,8 @@ export default function App() {
 
   return (
     <>
+      <CustomCursor />
+
       {/* 1. Loading Screen */}
       <AnimatePresence>
         {isLoading && (
