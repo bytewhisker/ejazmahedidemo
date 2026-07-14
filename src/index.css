@@ -1010,20 +1010,6 @@ body {
 .footer-mail-link:hover {
   color: var(--accent) !important;
 }
-}
-
-/* Custom Stills Hover effects */
-.still-card:hover .still-img {
-  transform: scale(1.05);
-}
-
-.still-card:hover .still-overlay {
-  opacity: 1 !important;
-}
-
-.footer-mail-link:hover {
-  color: var(--accent) !important;
-}
 
 /* Brand Ribbon */
 .brand-ribbon-section {
