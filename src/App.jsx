@@ -27,6 +27,7 @@ export default function App() {
   // Hash-based routing to support browser history, back/forward buttons, and deep linking
   useEffect(() => {
     const handleHashChange = () => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
       const hash = window.location.hash;
       if (hash.startsWith('#/project/')) {
         const slug = hash.replace('#/project/', '');
