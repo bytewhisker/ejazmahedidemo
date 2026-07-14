@@ -9,19 +9,19 @@ export const projects = [
     year: "2022",
     notes: "Multi-award-winning, Oscar-qualifying horror short about two sisters surviving inside a mosquito net during a post-apocalyptic vampiric outbreak. Executive produced by Jordan Peele (Monkeypaw Productions) and Riz Ahmed (Left Handed Films). Shot on RED Epic + Zeiss CP.3 primes.",
     gear: "RED Epic + Zeiss CP.3 Primes",
-    vimeoId: "784920253",
-    videoUrl: "https://player.vimeo.com/external/434045526.sd.mp4?s=c27d23d8c76afbe21d4c2b42b932c0282490b4d4&profile_id=165&oauth2_token_id=57447761",
-    thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop",
+    vimeoId: "",
     youtubeId: "3djjf5_IWC0",
+    videoUrl: "",
+    thumbnail: "https://i.vimeocdn.com/video/1572747070-5b385aefb9f5d381365f83cc21b4ba5cdb6295a1934f15a85f6a5ffcfb7cbfec-d_960?region=us",
     slug: "moshari",
     resolution: "4K DCI",
     aspectRatio: "2.39:1",
     fps: "24.00 fps",
     stills: [
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1505635552518-3448ff116af3?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop"
+      "https://i.vimeocdn.com/video/1572747070-5b385aefb9f5d381365f83cc21b4ba5cdb6295a1934f15a85f6a5ffcfb7cbfec-d_960?region=us",
+      "https://i.vimeocdn.com/video/1572586573-73f1a96dd3b1b8c902d5360f62f5c5a623c0e549ea16018b106a6b94e7f2626e-d_960?region=us",
+      "https://i.vimeocdn.com/video/1575331186-6d48c975987fec5f66408bfbc482b7c6fc34db305dc8b7fd7b51a9c11e929a27-d_960?region=us",
+      "https://i.vimeocdn.com/video/1574867047-3aa6bb27d5b5f9e0263b910f3640921d19117f14a555a68a948d9c7030170cae-d_960?region=us"
     ]
   },
   {
@@ -31,21 +31,21 @@ export const projects = [
     category: "narrative",
     director: "Nuhash Humayun",
     role: "Director of Photography",
-    year: "2023",
-    notes: "Bite-Size Halloween Season 3, Ep. 9. First Bangladeshi production commissioned by a major US streaming platform (Hulu, 20th Digital Studio). Shot on ARRI Alexa Mini.",
+    year: "2022",
+    notes: "Bite-Size Halloween Season 3, Ep. 9. First Bangladeshi production commissioned by a major US streaming platform (Hulu, 20th Century Studios). Shot on ARRI Alexa Mini.",
     gear: "ARRI Alexa Mini + Zeiss Supreme Primes",
-    vimeoId: "812345678",
-    videoUrl: "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c054a4d8d85e7ec62f1ff18d451b6a37&profile_id=164&oauth2_token_id=57447761",
-    thumbnail: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop",
+    vimeoId: "783339687",
+    videoUrl: "https://player.vimeo.com/video/783339687?h=73de267242",
+    thumbnail: "https://i.vimeocdn.com/video/1572747070-5b385aefb9f5d381365f83cc21b4ba5cdb6295a1934f15a85f6a5ffcfb7cbfec-d_960?region=us",
     slug: "foreigners-only",
     resolution: "3.2K ProRes",
     aspectRatio: "1.85:1",
     fps: "23.976 fps",
     stills: [
-      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1504701954957-2390f80649b6?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=1200&auto=format&fit=crop"
+      "https://i.vimeocdn.com/video/1572747070-5b385aefb9f5d381365f83cc21b4ba5cdb6295a1934f15a85f6a5ffcfb7cbfec-d_960?region=us",
+      "https://i.vimeocdn.com/video/1575331186-6d48c975987fec5f66408bfbc482b7c6fc34db305dc8b7fd7b51a9c11e929a27-d_960?region=us",
+      "https://i.vimeocdn.com/video/1574867047-3aa6bb27d5b5f9e0263b910f3640921d19117f14a555a68a948d9c7030170cae-d_960?region=us",
+      "https://i.vimeocdn.com/video/1572586573-73f1a96dd3b1b8c902d5360f62f5c5a623c0e549ea16018b106a6b94e7f2626e-d_960?region=us"
     ]
   },
   {
@@ -58,18 +58,18 @@ export const projects = [
     year: "2022",
     notes: "Handheld, natural-light treatment shot around Dhaka, capturing raw energy and urban intimacy.",
     gear: "RED Epic + Black Promist Filters",
-    vimeoId: "723456789",
-    videoUrl: "https://player.vimeo.com/external/482701198.sd.mp4?s=6c2ef6cf89d4791550c057634f18b3d68ee7f077&profile_id=165&oauth2_token_id=57447761",
-    thumbnail: "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=1200&auto=format&fit=crop",
+    vimeoId: "",
+    videoUrl: "",
+    thumbnail: "https://i.vimeocdn.com/video/1572586573-73f1a96dd3b1b8c902d5360f62f5c5a623c0e549ea16018b106a6b94e7f2626e-d_960?region=us",
     slug: "indalo-hobeki",
     resolution: "4K UHD",
     aspectRatio: "16:9",
     fps: "25.00 fps",
     stills: [
-      "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200&auto=format&fit=crop"
+      "https://i.vimeocdn.com/video/1572586573-73f1a96dd3b1b8c902d5360f62f5c5a623c0e549ea16018b106a6b94e7f2626e-d_960?region=us",
+      "https://i.vimeocdn.com/video/1575331186-6d48c975987fec5f66408bfbc482b7c6fc34db305dc8b7fd7b51a9c11e929a27-d_960?region=us",
+      "https://i.vimeocdn.com/video/1574867047-3aa6bb27d5b5f9e0263b910f3640921d19117f14a555a68a948d9c7030170cae-d_960?region=us",
+      "https://i.vimeocdn.com/video/1572747070-5b385aefb9f5d381365f83cc21b4ba5cdb6295a1934f15a85f6a5ffcfb7cbfec-d_960?region=us"
     ]
   },
   {
@@ -80,20 +80,20 @@ export const projects = [
     director: "Ejaz Mehedi",
     role: "Cinematographer",
     year: "2024",
-    notes: "A stunning twilight driving spot highlighting sleek curves, reflections, and high-speed motion.",
+    notes: "A stunning twilight driving spot highlighting sleek curves, reflections, and high-speed motion. Shot in Oman for Changan automobiles.",
     gear: "ARRI Alexa Mini LF + Anamorphic Lenses",
-    vimeoId: "912345678",
-    videoUrl: "https://player.vimeo.com/external/517616954.sd.mp4?s=d7e5d8ecfa5e8a71933ecfa82d7df7c674f1c1f5&profile_id=165&oauth2_token_id=57447761",
-    thumbnail: "https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1200&auto=format&fit=crop",
+    vimeoId: "1032612336",
+    videoUrl: "https://player.vimeo.com/video/1032612336?h=009ef1deb8",
+    thumbnail: "https://i.vimeocdn.com/video/1953572133-89f92fc5185238bea0dbd8572e5d7843d214a3e8a6d741480e82f0dfc09ef638-d_960?region=us",
     slug: "changan-magic-hour",
     resolution: "4.5K Open Gate",
     aspectRatio: "2.39:1",
     fps: "24.00 fps",
     stills: [
-      "https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop"
+      "https://i.vimeocdn.com/video/1953572133-89f92fc5185238bea0dbd8572e5d7843d214a3e8a6d741480e82f0dfc09ef638-d_960?region=us",
+      "https://i.vimeocdn.com/video/1934316630-80e9b3beef546d9797a4a9047f1c50daac7c7aabbff77d8cec805f0e149f3fa6-d_960?region=us",
+      "https://i.vimeocdn.com/video/1934479362-85b8438abf2633bee2cea5540661fa8241b64ee3b53290067187868b05cd6c1d-d_960?region=us",
+      "https://i.vimeocdn.com/video/1575331186-6d48c975987fec5f66408bfbc482b7c6fc34db305dc8b7fd7b51a9c11e929a27-d_960?region=us"
     ]
   },
   {
@@ -101,23 +101,23 @@ export const projects = [
     title: "Al Mouj Golf Links — 'Luxury of Nature'",
     type: "Commercial",
     category: "commercial",
-    director: "Oman Tourism",
+    director: "Anwar Al Asmi",
     role: "Cinematographer",
     year: "2024",
-    notes: "Shot in Muscat, Oman, capturing the sweeping green landscapes meeting the blue waters of the Gulf of Oman.",
+    notes: "Shot in Muscat, Oman, capturing the sweeping green landscapes meeting the blue waters of the Gulf of Oman. Production by Dusk Films for Al Mouj Muscat.",
     gear: "RED Epic + Zeiss CP.3 Primes",
-    vimeoId: "934567890",
-    videoUrl: "https://player.vimeo.com/external/403848148.sd.mp4?s=9fd2035eb582236d6540c4974ad0eb15b94f6f4d&profile_id=165&oauth2_token_id=57447761",
-    thumbnail: "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=1200&auto=format&fit=crop",
+    vimeoId: "1016231627",
+    videoUrl: "https://player.vimeo.com/video/1016231627?h=21f9caec88",
+    thumbnail: "https://i.vimeocdn.com/video/1934316630-80e9b3beef546d9797a4a9047f1c50daac7c7aabbff77d8cec805f0e149f3fa6-d_960?region=us",
     slug: "al-mouj-golf",
     resolution: "4K UHD",
     aspectRatio: "16:9",
     fps: "29.97 fps",
     stills: [
-      "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=1200&auto=format&fit=crop"
+      "https://i.vimeocdn.com/video/1934316630-80e9b3beef546d9797a4a9047f1c50daac7c7aabbff77d8cec805f0e149f3fa6-d_960?region=us",
+      "https://i.vimeocdn.com/video/1844788637-e64f513d1ece8fa1cbefc43008c050441705c6f4b9f3ed5302ce4ce9058d9aa9-d_960?region=us",
+      "https://i.vimeocdn.com/video/1934479362-85b8438abf2633bee2cea5540661fa8241b64ee3b53290067187868b05cd6c1d-d_960?region=us",
+      "https://i.vimeocdn.com/video/1953572133-89f92fc5185238bea0dbd8572e5d7843d214a3e8a6d741480e82f0dfc09ef638-d_960?region=us"
     ]
   },
   {
@@ -128,20 +128,20 @@ export const projects = [
     director: "OQGN",
     role: "Cinematographer",
     year: "2024",
-    notes: "An industrial/branded commercial highlighting energy transitions and infrastructure.",
+    notes: "An industrial/branded commercial highlighting energy transitions and infrastructure. Agency: Ohi/Leo, Production: Gravity Productions.",
     gear: "ARRI Alexa Mini + Zeiss CP.3 Primes",
-    vimeoId: "945678901",
-    videoUrl: "https://player.vimeo.com/external/434045526.sd.mp4?s=c27d23d8c76afbe21d4c2b42b932c0282490b4d4&profile_id=165&oauth2_token_id=57447761",
-    thumbnail: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200&auto=format&fit=crop",
+    vimeoId: "1016406358",
+    videoUrl: "https://player.vimeo.com/video/1016406358?h=ea8699f4f0",
+    thumbnail: "https://i.vimeocdn.com/video/1934479362-85b8438abf2633bee2cea5540661fa8241b64ee3b53290067187868b05cd6c1d-d_960?region=us",
     slug: "oqgn-unseen-forces",
     resolution: "3.2K",
     aspectRatio: "2.39:1",
     fps: "24.00 fps",
     stills: [
-      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop"
+      "https://i.vimeocdn.com/video/1934479362-85b8438abf2633bee2cea5540661fa8241b64ee3b53290067187868b05cd6c1d-d_960?region=us",
+      "https://i.vimeocdn.com/video/1934316630-80e9b3beef546d9797a4a9047f1c50daac7c7aabbff77d8cec805f0e149f3fa6-d_960?region=us",
+      "https://i.vimeocdn.com/video/1953572133-89f92fc5185238bea0dbd8572e5d7843d214a3e8a6d741480e82f0dfc09ef638-d_960?region=us",
+      "https://i.vimeocdn.com/video/1575331186-6d48c975987fec5f66408bfbc482b7c6fc34db305dc8b7fd7b51a9c11e929a27-d_960?region=us"
     ]
   },
   {
@@ -149,23 +149,23 @@ export const projects = [
     title: "Yiti — 'Living in Harmony'",
     type: "Commercial",
     category: "commercial",
-    director: "Yiti Real Estate",
-    role: "Cinematographer",
+    director: "Ejaz Mehedi & Anwar Al Asmi",
+    role: "Director of Photography",
     year: "2022",
-    notes: "Oman lifestyle and real-estate piece, showing clean architectural lines, sun-flared spaces, and natural light.",
+    notes: "Launch commercial for Yiti - The Sustainable City. Client: Diamond Developers x Omran Group. Oman lifestyle piece showing clean architectural lines, sun-flared spaces, and natural light.",
     gear: "RED Epic + Zeiss CP.3 Primes + LowCon filters",
-    vimeoId: "756789012",
-    videoUrl: "https://player.vimeo.com/external/517616954.sd.mp4?s=d7e5d8ecfa5e8a71933ecfa82d7df7c674f1c1f5&profile_id=165&oauth2_token_id=57447761",
-    thumbnail: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop",
+    vimeoId: "783019291",
+    videoUrl: "https://player.vimeo.com/video/783019291?h=ba2e0aac59",
+    thumbnail: "https://i.vimeocdn.com/video/1574867047-3aa6bb27d5b5f9e0263b910f3640921d19117f14a555a68a948d9c7030170cae-d_960?region=us",
     slug: "yiti-living-harmony",
     resolution: "4K UHD",
     aspectRatio: "1.85:1",
     fps: "23.98 fps",
     stills: [
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop"
+      "https://i.vimeocdn.com/video/1574867047-3aa6bb27d5b5f9e0263b910f3640921d19117f14a555a68a948d9c7030170cae-d_960?region=us",
+      "https://i.vimeocdn.com/video/1844788637-e64f513d1ece8fa1cbefc43008c050441705c6f4b9f3ed5302ce4ce9058d9aa9-d_960?region=us",
+      "https://i.vimeocdn.com/video/1934316630-80e9b3beef546d9797a4a9047f1c50daac7c7aabbff77d8cec805f0e149f3fa6-d_960?region=us",
+      "https://i.vimeocdn.com/video/1934479362-85b8438abf2633bee2cea5540661fa8241b64ee3b53290067187868b05cd6c1d-d_960?region=us"
     ]
   },
   {
@@ -178,18 +178,18 @@ export const projects = [
     year: "2021",
     notes: "A fast-paced, neon-drenched advertising spot highlighting high performance and young gamers.",
     gear: "RED Epic + Anamorphic Lenses",
-    vimeoId: "657890123",
-    videoUrl: "https://player.vimeo.com/external/482701198.sd.mp4?s=6c2ef6cf89d4791550c057634f18b3d68ee7f077&profile_id=165&oauth2_token_id=57447761",
-    thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+    vimeoId: "",
+    videoUrl: "",
+    thumbnail: "https://i.vimeocdn.com/video/1575331186-6d48c975987fec5f66408bfbc482b7c6fc34db305dc8b7fd7b51a9c11e929a27-d_960?region=us",
     slug: "bank-muscat-gamer",
     resolution: "4K DCI",
     aspectRatio: "2.39:1",
     fps: "23.976 fps",
     stills: [
-      "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1200&auto=format&fit=crop"
+      "https://i.vimeocdn.com/video/1575331186-6d48c975987fec5f66408bfbc482b7c6fc34db305dc8b7fd7b51a9c11e929a27-d_960?region=us",
+      "https://i.vimeocdn.com/video/1572747070-5b385aefb9f5d381365f83cc21b4ba5cdb6295a1934f15a85f6a5ffcfb7cbfec-d_960?region=us",
+      "https://i.vimeocdn.com/video/1572586573-73f1a96dd3b1b8c902d5360f62f5c5a623c0e549ea16018b106a6b94e7f2626e-d_960?region=us",
+      "https://i.vimeocdn.com/video/1574867047-3aa6bb27d5b5f9e0263b910f3640921d19117f14a555a68a948d9c7030170cae-d_960?region=us"
     ]
   },
   {
@@ -197,23 +197,23 @@ export const projects = [
     title: "Yamaha — 'Speed Girl'",
     type: "Commercial",
     category: "commercial",
-    director: "Yamaha Motors",
+    director: "Reehan Rahman",
     role: "Cinematographer",
     year: "2022",
-    notes: "High-octane commercial capturing speed, urban environments, and empowering imagery.",
+    notes: "High-octane commercial for Yamaha Bangladesh capturing speed, urban environments, and empowering imagery. Agency: GREY, Production: Deafrip Entertainment.",
     gear: "ARRI Alexa Mini + Zeiss CP.3 Primes",
-    vimeoId: "767890123",
-    videoUrl: "https://player.vimeo.com/external/517616954.sd.mp4?s=d7e5d8ecfa5e8a71933ecfa82d7df7c674f1c1f5&profile_id=165&oauth2_token_id=57447761",
-    thumbnail: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1200&auto=format&fit=crop",
+    vimeoId: "784200840",
+    videoUrl: "https://player.vimeo.com/video/784200840?h=13d541f9e0",
+    thumbnail: "https://i.vimeocdn.com/video/1575331186-6d48c975987fec5f66408bfbc482b7c6fc34db305dc8b7fd7b51a9c11e929a27-d_960?region=us",
     slug: "yamaha-speed-girl",
     resolution: "3.2K ProRes",
     aspectRatio: "16:9",
     fps: "25.00 fps",
     stills: [
-      "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1473186578172-c141e6798cf4?q=80&w=1200&auto=format&fit=crop"
+      "https://i.vimeocdn.com/video/1575331186-6d48c975987fec5f66408bfbc482b7c6fc34db305dc8b7fd7b51a9c11e929a27-d_960?region=us",
+      "https://i.vimeocdn.com/video/1572747070-5b385aefb9f5d381365f83cc21b4ba5cdb6295a1934f15a85f6a5ffcfb7cbfec-d_960?region=us",
+      "https://i.vimeocdn.com/video/1572586573-73f1a96dd3b1b8c902d5360f62f5c5a623c0e549ea16018b106a6b94e7f2626e-d_960?region=us",
+      "https://i.vimeocdn.com/video/1574867047-3aa6bb27d5b5f9e0263b910f3640921d19117f14a555a68a948d9c7030170cae-d_960?region=us"
     ]
   },
   {
@@ -221,23 +221,23 @@ export const projects = [
     title: "Attic — 'Echoes in Your Attic'",
     type: "Music Video",
     category: "music-video",
-    director: "Attic",
-    role: "Cinematographer",
+    director: "Tahmim Habib Dipro",
+    role: "Director of Photography",
     year: "2022",
-    notes: "Moody and dark aesthetic shot in a smoky, neon-lit attic space matching the melancholic rock tune.",
+    notes: "Moody and dark aesthetic shot in a smoky, neon-lit attic space matching the melancholic rock tune. Production: GLITCH Studios.",
     gear: "RED Epic + Black Promist Filters + Available Light",
-    vimeoId: "778901234",
-    videoUrl: "https://player.vimeo.com/external/482701198.sd.mp4?s=6c2ef6cf89d4791550c057634f18b3d68ee7f077&profile_id=165&oauth2_token_id=57447761",
-    thumbnail: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200&auto=format&fit=crop",
+    vimeoId: "783260527",
+    videoUrl: "https://player.vimeo.com/video/783260527?h=6a9d72f531",
+    thumbnail: "https://i.vimeocdn.com/video/1572586573-73f1a96dd3b1b8c902d5360f62f5c5a623c0e549ea16018b106a6b94e7f2626e-d_960?region=us",
     slug: "attic-echoes",
     resolution: "4K UHD",
     aspectRatio: "2.39:1",
     fps: "24.00 fps",
     stills: [
-      "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200&auto=format&fit=crop"
+      "https://i.vimeocdn.com/video/1572586573-73f1a96dd3b1b8c902d5360f62f5c5a623c0e549ea16018b106a6b94e7f2626e-d_960?region=us",
+      "https://i.vimeocdn.com/video/1575331186-6d48c975987fec5f66408bfbc482b7c6fc34db305dc8b7fd7b51a9c11e929a27-d_960?region=us",
+      "https://i.vimeocdn.com/video/1574867047-3aa6bb27d5b5f9e0263b910f3640921d19117f14a555a68a948d9c7030170cae-d_960?region=us",
+      "https://i.vimeocdn.com/video/1572747070-5b385aefb9f5d381365f83cc21b4ba5cdb6295a1934f15a85f6a5ffcfb7cbfec-d_960?region=us"
     ]
   },
   {
@@ -245,23 +245,47 @@ export const projects = [
     title: "Azura — The Azura Within",
     type: "Brand Film",
     category: "commercial",
-    director: "Ejaz Mehedi",
+    director: "Anwar Al Asmi",
     role: "Director of Photography",
-    year: "2024",
-    notes: "A poetic brand film exploring serenity, water, and identity. Capturing natural light and water reflections on ARRI Alexa Mini.",
+    year: "2025",
+    notes: "A poetic brand film exploring serenity, water, and identity. Client: Al Mouj Muscat, Agency: DUSK. Capturing natural light and water reflections on ARRI Alexa Mini.",
     gear: "ARRI Alexa Mini + Zeiss Supreme Primes",
     vimeoId: "1099692179",
-    videoUrl: "https://vimeo.com/1099692179",
-    thumbnail: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
+    videoUrl: "https://player.vimeo.com/video/1099692179?h=36b2fc20d2",
+    thumbnail: "https://i.vimeocdn.com/video/2035055142-7b600ba9ccaed15af72b00aad3fd9536a83a9d729c45f0979510b68b48384aa2-d_960?region=us",
     slug: "azura-within",
     resolution: "3.2K ProRes",
     aspectRatio: "2.39:1",
     fps: "24.00 fps",
     stills: [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1473116763269-25541579ffb7?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=1200&auto=format&fit=crop"
+      "https://i.vimeocdn.com/video/2035055142-7b600ba9ccaed15af72b00aad3fd9536a83a9d729c45f0979510b68b48384aa2-d_960?region=us",
+      "https://i.vimeocdn.com/video/1953572133-89f92fc5185238bea0dbd8572e5d7843d214a3e8a6d741480e82f0dfc09ef638-d_960?region=us",
+      "https://i.vimeocdn.com/video/1934316630-80e9b3beef546d9797a4a9047f1c50daac7c7aabbff77d8cec805f0e149f3fa6-d_960?region=us",
+      "https://i.vimeocdn.com/video/1844788637-e64f513d1ece8fa1cbefc43008c050441705c6f4b9f3ed5302ce4ce9058d9aa9-d_960?region=us"
+    ]
+  },
+  {
+    id: "12",
+    title: "Al Mouj — Golf 10th Anniversary",
+    type: "Commercial",
+    category: "commercial",
+    director: "Anwar Al Asmi",
+    role: "Director of Photography",
+    year: "2023",
+    notes: "Anniversary commercial for Al Mouj Golf. Client: Al Mouj / Al-Mouj Golf, Production: RealityCG. Celebrating a decade of luxury golfing in Oman.",
+    gear: "ARRI Alexa Mini + Zeiss Supreme Primes",
+    vimeoId: "817245793",
+    videoUrl: "https://player.vimeo.com/video/817245793?h=859c9f2b17",
+    thumbnail: "https://i.vimeocdn.com/video/1844788637-e64f513d1ece8fa1cbefc43008c050441705c6f4b9f3ed5302ce4ce9058d9aa9-d_960?region=us",
+    slug: "al-mouj-golf-10th",
+    resolution: "4K UHD",
+    aspectRatio: "16:9",
+    fps: "24.00 fps",
+    stills: [
+      "https://i.vimeocdn.com/video/1844788637-e64f513d1ece8fa1cbefc43008c050441705c6f4b9f3ed5302ce4ce9058d9aa9-d_960?region=us",
+      "https://i.vimeocdn.com/video/1934316630-80e9b3beef546d9797a4a9047f1c50daac7c7aabbff77d8cec805f0e149f3fa6-d_960?region=us",
+      "https://i.vimeocdn.com/video/1953572133-89f92fc5185238bea0dbd8572e5d7843d214a3e8a6d741480e82f0dfc09ef638-d_960?region=us",
+      "https://i.vimeocdn.com/video/2035055142-7b600ba9ccaed15af72b00aad3fd9536a83a9d729c45f0979510b68b48384aa2-d_960?region=us"
     ]
   }
 ];
