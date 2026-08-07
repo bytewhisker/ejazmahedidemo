@@ -7,7 +7,6 @@ const names = [
   { id: 'ar', text: "إعزاز مهدي", fontClass: "tracking-[0.06em] font-normal font-sans" }
 ];
 
-// Helper to safely segment characters/graphemes for all languages without breaking complex script ligatures
 function getGraphemes(text) {
   if (typeof Intl !== 'undefined' && Intl.Segmenter) {
     const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
@@ -20,7 +19,7 @@ const containerVariants = {
   initial: {},
   animate: {
     transition: {
-      staggerChildren: 0.055, // Slight delay for each character coming up
+      staggerChildren: 0.055,
     },
   },
   exit: {
@@ -31,7 +30,7 @@ const containerVariants = {
   },
 };
 
-const charVariants = {
+const itemVariants = {
   initial: {
     opacity: 0,
     y: 20,
@@ -69,7 +68,11 @@ export const SmoothHeaderName = ({ onClick }) => {
   }, []);
 
   const current = names[index];
-  const graphemes = getGraphemes(current.text);
+
+  // Arabic cursive script must be animated word-by-word to preserve right-to-left letter connection
+  const items = current.id === 'ar' 
+    ? current.text.split(' ') 
+    : getGraphemes(current.text);
 
   return (
     <button
@@ -84,15 +87,15 @@ export const SmoothHeaderName = ({ onClick }) => {
           initial="initial"
           animate="animate"
           exit="exit"
-          className={`flex items-center justify-center text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white uppercase group-hover:text-neutral-300 transition-colors ${current.fontClass}`}
+          className={`flex items-center justify-center space-x-2 text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white uppercase group-hover:text-neutral-300 transition-colors ${current.fontClass}`}
         >
-          {graphemes.map((char, charIdx) => (
+          {items.map((item, itemIdx) => (
             <motion.span
-              key={`${index}-${charIdx}`}
-              variants={charVariants}
+              key={`${index}-${itemIdx}`}
+              variants={itemVariants}
               className="inline-block"
             >
-              {char === ' ' ? '\u00A0' : char}
+              {item === ' ' ? '\u00A0' : item}
             </motion.span>
           ))}
         </motion.div>
