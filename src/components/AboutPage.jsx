@@ -43,16 +43,18 @@ export const AboutPage = () => {
       {/* TOP SECTION: BIOGRAPHY */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start border-b border-neutral-900 pb-16 md:pb-20">
         
-        {/* Photo Frame */}
+        {/* Photo Frame Container */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          className="lg:col-span-5 flex flex-col md:flex-row gap-4 md:gap-6 items-start"
+          className="lg:col-span-5 space-y-3"
         >
-          <span className="text-xs font-mono-custom tracking-[0.3em] uppercase text-neutral-500 transform lg:-rotate-90 origin-top-left shrink-0 font-bold">
-            BIOGRAPHY
-          </span>
+          {/* Unclipped Horizontal Monospace Header */}
+          <div className="flex items-center gap-2 text-xs font-mono-custom tracking-[0.25em] uppercase text-neutral-400 font-bold">
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            <span>BIOGRAPHY // DIRECTOR & DOP</span>
+          </div>
 
           <div className="w-full aspect-square overflow-hidden bg-neutral-950 border border-neutral-900 relative">
             <img
@@ -68,7 +70,7 @@ export const AboutPage = () => {
           initial="initial"
           animate="animate"
           transition={{ staggerChildren: 0.18 }}
-          className="lg:col-span-7 space-y-6 text-sm sm:text-base md:text-lg leading-relaxed text-neutral-300 font-light pt-1"
+          className="lg:col-span-7 space-y-6 text-sm sm:text-base md:text-lg leading-relaxed text-neutral-300 font-light pt-6 lg:pt-8"
         >
           
           <motion.p variants={paragraphVariant}>

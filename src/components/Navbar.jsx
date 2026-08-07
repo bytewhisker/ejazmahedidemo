@@ -17,12 +17,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
     <header className="sticky top-0 z-50 glass-header px-4 sm:px-8 py-4 md:py-6 transition-all duration-300">
       <div className="max-w-[1800px] mx-auto flex items-center justify-between md:grid md:grid-cols-12 md:items-start gap-4">
         
-        {/* DESKTOP LEFT: ARCHIVE + Stacked Categories */}
-        <div className="hidden md:block md:col-span-3 space-y-2">
-          <span className="block text-[11px] font-mono-custom tracking-[0.25em] text-white uppercase font-bold">
-            ARCHIVE
-          </span>
-
+        {/* DESKTOP LEFT: Stacked Categories */}
+        <div className="hidden md:block md:col-span-3">
           <nav className="flex flex-col space-y-1 text-xs font-mono-custom tracking-[0.18em] uppercase">
             <button
               onClick={() => handleNavClick('projects', 'all')}
@@ -115,10 +111,6 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
             className="md:hidden overflow-hidden bg-black/95 border-b border-neutral-900 px-4 py-6 space-y-6 select-none"
           >
             <div className="space-y-3">
-              <span className="block text-xs font-mono-custom tracking-[0.25em] text-neutral-500 uppercase font-bold">
-                ARCHIVE
-              </span>
-
               <nav className="flex flex-col space-y-3 text-sm font-mono-custom tracking-widest uppercase">
                 <button
                   onClick={() => handleNavClick('projects', 'all')}
