@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const names = [
-  { id: 'en', text: "EZAZ MAHEDI", fontClass: "tracking-[0.08em] font-light font-serif" },
-  { id: 'bn', text: "এজাজ মেহেদী", fontClass: "tracking-[0.04em] font-normal font-sans" },
-  { id: 'ar', text: "إعزاز مهدي", fontClass: "tracking-[0.06em] font-normal font-sans" }
+  { id: 'en', text: "EZAZ MAHEDI", fontClass: "tracking-normal font-light font-serif" },
+  { id: 'bn', text: "এজাজ মেহেদী", fontClass: "tracking-normal font-normal font-sans" },
+  { id: 'ar', text: "إعزاز مهدي", fontClass: "tracking-normal font-normal font-sans" }
 ];
 
 function getGraphemes(text) {
@@ -87,7 +87,7 @@ export const SmoothHeaderName = ({ onClick }) => {
           initial="initial"
           animate="animate"
           exit="exit"
-          className={`flex items-center justify-center space-x-2 text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-ink uppercase group-hover:text-ink-soft transition-colors ${current.fontClass}`}
+          className={`text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-ink uppercase group-hover:text-ink-soft transition-colors whitespace-nowrap ${current.fontClass}`}
         >
           {items.map((item, itemIdx) => (
             <motion.span
@@ -95,7 +95,9 @@ export const SmoothHeaderName = ({ onClick }) => {
               variants={itemVariants}
               className="inline-block"
             >
-              {item === ' ' ? '\u00A0' : item}
+              {current.id === 'ar'
+                ? itemIdx === items.length - 1 ? item : item + '\u00A0'
+                : item === ' ' ? '\u00A0' : item}
             </motion.span>
           ))}
         </motion.div>
