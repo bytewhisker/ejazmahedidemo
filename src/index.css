@@ -1,23 +1,57 @@
 @import "tailwindcss";
 
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-heavy: var(--line-heavy);
+}
+
 @layer base {
-  :root {
-    --bg-dark: #040404;
-    --text-primary: #f5f5f7;
-    --text-muted: #888888;
-    --accent: #ffffff;
-    --border-subtle: rgba(255, 255, 255, 0.1);
+  :root,
+  [data-theme="dark"] {
+    --canvas: #040404;
+    --surface: #0e0e0e;
+    --surface-2: #161616;
+    --ink: #f5f5f7;
+    --ink-soft: #d4d4d6;
+    --muted: #888888;
+    --line: rgba(255, 255, 255, 0.12);
+    --line-strong: rgba(255, 255, 255, 0.28);
+    --line-heavy: #262626;
+    --header-bg: rgba(4, 4, 4, 0.95);
+    color-scheme: dark;
+  }
+
+  [data-theme="light"] {
+    --canvas: #f5f5f3;
+    --surface: #ffffff;
+    --surface-2: #ececea;
+    --ink: #0a0a0a;
+    --ink-soft: #3f3f46;
+    --muted: #71717a;
+    --line: rgba(0, 0, 0, 0.14);
+    --line-strong: rgba(0, 0, 0, 0.3);
+    --line-heavy: #d4d4d8;
+    --header-bg: rgba(245, 245, 243, 0.92);
+    color-scheme: light;
   }
 
   body {
-    background-color: var(--bg-dark);
-    color: var(--text-primary);
+    background-color: var(--canvas);
+    color: var(--ink);
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   /* Monospace Utility */
@@ -31,20 +65,20 @@
     height: 4px;
   }
   ::-webkit-scrollbar-track {
-    background: #040404;
+    background: var(--canvas);
   }
   ::-webkit-scrollbar-thumb {
-    background: #333333;
+    background: var(--muted);
     border-radius: 2px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #555555;
+    background: var(--ink-soft);
   }
 }
 
 /* Glass Header - Clean Borderless Design */
 .glass-header {
-  background: rgba(4, 4, 4, 0.95);
+  background: var(--header-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: none;

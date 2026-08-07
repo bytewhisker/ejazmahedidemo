@@ -31,10 +31,10 @@ export const StillsGallery = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-black text-white pt-4 pb-24 px-4 sm:px-8 max-w-[1800px] mx-auto space-y-12 select-none"
+      className="min-h-screen bg-canvas text-ink pt-4 pb-24 px-4 sm:px-8 max-w-[1800px] mx-auto space-y-12 select-none"
     >
       {/* Minimal Header */}
-      <div className="flex items-center justify-between border-b border-neutral-900 pb-4 text-xs font-mono-custom tracking-[0.25em] uppercase text-neutral-400">
+      <div className="flex items-center justify-between border-b border-line pb-4 text-xs font-mono-custom tracking-[0.25em] uppercase text-muted">
         <span>PHOTOGRAPHY / STILLS ARCHIVE</span>
         <span>{stillsData.length} FRAMES</span>
       </div>
@@ -57,7 +57,7 @@ export const StillsGallery = () => {
               className="group cursor-pointer space-y-2"
             >
               {/* Photo Frame Container — Pure Rectangular Minimalist */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-neutral-950 border border-neutral-900 group-hover:border-neutral-700 transition-colors">
+              <div className="relative aspect-[4/3] overflow-hidden bg-surface border border-line group-hover:border-line-strong transition-colors">
                 <img
                   src={still.url}
                   alt={still.title}
@@ -76,10 +76,10 @@ export const StillsGallery = () => {
               {/* Minimal Monospace Title & Location */}
               <div className="flex items-center justify-between text-xs font-mono-custom tracking-widest uppercase">
                 <div className="flex items-center gap-2 truncate">
-                  <span className="font-bold text-neutral-500">{formattedIndex}</span>
-                  <span className="text-white group-hover:text-neutral-300 transition-colors truncate">{still.title}</span>
+                  <span className="font-bold text-muted">{formattedIndex}</span>
+                  <span className="text-ink group-hover:text-ink-soft transition-colors truncate">{still.title}</span>
                 </div>
-                <span className="text-[10px] text-neutral-500 shrink-0">{still.location}</span>
+                <span className="text-[10px] text-muted shrink-0">{still.location}</span>
               </div>
             </motion.div>
           );

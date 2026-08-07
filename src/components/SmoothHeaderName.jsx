@@ -87,7 +87,7 @@ export const SmoothHeaderName = ({ onClick }) => {
           initial="initial"
           animate="animate"
           exit="exit"
-          className={`flex items-center justify-center space-x-2 text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white uppercase group-hover:text-neutral-300 transition-colors ${current.fontClass}`}
+          className={`flex items-center justify-center space-x-2 text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-ink uppercase group-hover:text-ink-soft transition-colors ${current.fontClass}`}
         >
           {items.map((item, itemIdx) => (
             <motion.span

@@ -25,22 +25,22 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -15 }}
       transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
-      className="min-h-screen bg-black text-white pt-2 pb-24 px-4 sm:px-6 lg:px-8 font-sans select-none"
+      className="min-h-screen bg-canvas text-ink pt-2 pb-24 px-4 sm:px-6 lg:px-8 font-sans select-none"
     >
       <div className="max-w-6xl mx-auto space-y-6 md:space-y-8">
         
         {/* Simple Title Header */}
         <div className="space-y-1 pt-2">
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-light font-serif tracking-wide text-white">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-light font-serif tracking-wide text-ink">
             {project.title}
           </h1>
-          <p className="text-[11px] sm:text-xs font-mono-custom text-neutral-400 uppercase tracking-widest">
+          <p className="text-[11px] sm:text-xs font-mono-custom text-muted uppercase tracking-widest">
             {project.client}
           </p>
         </div>
 
         {/* Video Player */}
-        <div className="w-full bg-neutral-950 overflow-hidden border border-neutral-900">
+        <div className="w-full bg-surface overflow-hidden border border-line">
           <CustomPlayer
             poster={project.poster}
             videoUrl={activeVideo.videoUrl}
@@ -53,11 +53,11 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
         <div className="pt-4 md:pt-6 space-y-6 md:space-y-8">
           
           {/* Scrollable Tab Navigation Bar on Mobile */}
-          <div className="flex items-center justify-start gap-6 md:gap-8 border-b border-neutral-900 pb-4 text-xs font-mono-custom tracking-[0.2em] uppercase font-bold overflow-x-auto no-scrollbar whitespace-nowrap">
+          <div className="flex items-center justify-start gap-6 md:gap-8 border-b border-line pb-4 text-xs font-mono-custom tracking-[0.2em] uppercase font-bold overflow-x-auto no-scrollbar whitespace-nowrap">
             <button
               onClick={() => setUnderVideoTab('screengrabs')}
               className={`flex items-center gap-2 transition-colors py-1 shrink-0 ${
-                underVideoTab === 'screengrabs' ? 'text-white underline underline-offset-8 font-bold' : 'text-neutral-500 hover:text-neutral-300'
+                underVideoTab === 'screengrabs' ? 'text-ink underline underline-offset-8 font-bold' : 'text-muted hover:text-ink-soft'
               }`}
             >
               <ImageIcon className="w-4 h-4" />
@@ -67,7 +67,7 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
             <button
               onClick={() => setUnderVideoTab('crew')}
               className={`flex items-center gap-2 transition-colors py-1 shrink-0 ${
-                underVideoTab === 'crew' ? 'text-white underline underline-offset-8 font-bold' : 'text-neutral-500 hover:text-neutral-300'
+                underVideoTab === 'crew' ? 'text-ink underline underline-offset-8 font-bold' : 'text-muted hover:text-ink-soft'
               }`}
             >
               <Users className="w-4 h-4" />
@@ -77,7 +77,7 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
             <button
               onClick={() => setUnderVideoTab('story')}
               className={`flex items-center gap-2 transition-colors py-1 shrink-0 ${
-                underVideoTab === 'story' ? 'text-white underline underline-offset-8 font-bold' : 'text-neutral-500 hover:text-neutral-300'
+                underVideoTab === 'story' ? 'text-ink underline underline-offset-8 font-bold' : 'text-muted hover:text-ink-soft'
               }`}
             >
               <BookOpen className="w-4 h-4" />
@@ -97,7 +97,7 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
                 <div
                   key={idx}
                   onClick={() => setLightboxImage(imgUrl)}
-                  className="group relative aspect-video overflow-hidden bg-neutral-950 cursor-pointer border border-neutral-900 hover:border-neutral-700 transition-all duration-300"
+                  className="group relative aspect-video overflow-hidden bg-surface cursor-pointer border border-line hover:border-line-strong transition-all duration-300"
                 >
                   <img
                     src={imgUrl}
@@ -122,11 +122,11 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-2"
             >
               {Object.entries(project.crew).map(([key, val]) => (
-                <div key={key} className="border-l border-neutral-800 pl-4 space-y-1">
-                  <span className="block text-[10px] font-mono-custom tracking-widest text-neutral-500 uppercase">
+                <div key={key} className="border-l border-line-heavy pl-4 space-y-1">
+                  <span className="block text-[10px] font-mono-custom tracking-widest text-muted uppercase">
                     {key}
                   </span>
-                  <span className="block text-xs font-mono-custom text-neutral-200">
+                  <span className="block text-xs font-mono-custom text-ink-soft">
                     {val}
                   </span>
                 </div>
@@ -142,38 +142,38 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
               transition={{ duration: 0.4 }}
               className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 pt-2"
             >
-              <div className="space-y-2 border-l border-neutral-800 pl-4">
-                <h3 className="text-xs font-mono-custom tracking-widest uppercase text-neutral-400 font-bold">
+              <div className="space-y-2 border-l border-line-heavy pl-4">
+                <h3 className="text-xs font-mono-custom tracking-widest uppercase text-muted font-bold">
                   01 / Background & Narrative Concept
                 </h3>
-                <p className="text-xs leading-relaxed text-neutral-300 font-light">
+                <p className="text-xs leading-relaxed text-ink-soft font-light">
                   {project.story.background}
                 </p>
               </div>
 
-              <div className="space-y-2 border-l border-neutral-800 pl-4">
-                <h3 className="text-xs font-mono-custom tracking-widest uppercase text-neutral-400 font-bold">
+              <div className="space-y-2 border-l border-line-heavy pl-4">
+                <h3 className="text-xs font-mono-custom tracking-widest uppercase text-muted font-bold">
                   02 / Creative & Technical Process
                 </h3>
-                <p className="text-xs leading-relaxed text-neutral-300 font-light">
+                <p className="text-xs leading-relaxed text-ink-soft font-light">
                   {project.story.creativeProcess}
                 </p>
               </div>
 
-              <div className="space-y-2 border-l border-neutral-800 pl-4">
-                <h3 className="text-xs font-mono-custom tracking-widest uppercase text-neutral-400 font-bold">
+              <div className="space-y-2 border-l border-line-heavy pl-4">
+                <h3 className="text-xs font-mono-custom tracking-widest uppercase text-muted font-bold">
                   03 / Production Challenges
                 </h3>
-                <p className="text-xs leading-relaxed text-neutral-300 font-light">
+                <p className="text-xs leading-relaxed text-ink-soft font-light">
                   {project.story.challenges}
                 </p>
               </div>
 
-              <div className="space-y-2 border-l border-neutral-800 pl-4">
-                <h3 className="text-xs font-mono-custom tracking-widest uppercase text-neutral-400 font-bold">
+              <div className="space-y-2 border-l border-line-heavy pl-4">
+                <h3 className="text-xs font-mono-custom tracking-widest uppercase text-muted font-bold">
                   04 / On-Set Insights
                 </h3>
-                <p className="text-xs leading-relaxed text-neutral-300 font-light">
+                <p className="text-xs leading-relaxed text-ink-soft font-light">
                   {project.story.productionStory}
                 </p>
               </div>
@@ -183,10 +183,10 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
         </div>
 
         {/* Prev / Next Project Navigation Bar */}
-        <div className="flex flex-col sm:flex-row gap-4 items-center justify-between pt-8 md:pt-12 border-t border-neutral-900 text-xs font-mono-custom uppercase tracking-widest">
+        <div className="flex flex-col sm:flex-row gap-4 items-center justify-between pt-8 md:pt-12 border-t border-line text-xs font-mono-custom uppercase tracking-widest">
           <button
             onClick={() => onSelectProject(prevProject)}
-            className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors truncate max-w-full"
+            className="flex items-center gap-2 text-muted hover:text-ink transition-colors truncate max-w-full"
           >
             <ChevronLeft className="w-4 h-4 shrink-0" />
             <span className="truncate">PREV: {prevProject.title}</span>
@@ -194,7 +194,7 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
 
           <button
             onClick={() => onSelectProject(nextProject)}
-            className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors truncate max-w-full"
+            className="flex items-center gap-2 text-muted hover:text-ink transition-colors truncate max-w-full"
           >
             <span className="truncate">NEXT: {nextProject.title}</span>
             <ChevronRight className="w-4 h-4 shrink-0" />

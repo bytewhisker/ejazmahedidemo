@@ -27,16 +27,16 @@ export const ProjectCard = ({ project, indexNumber, onClick }) => {
       className="group cursor-pointer space-y-2 select-none"
     >
       {/* Monospace 01 PROJECT TITLE */}
-      <div className="flex items-center justify-between text-xs font-mono-custom tracking-widest uppercase text-white font-medium">
+      <div className="flex items-center justify-between text-xs font-mono-custom tracking-widest uppercase text-ink font-medium">
         <div className="flex items-center gap-2 truncate">
-          <span className="font-bold text-neutral-400">{formattedIndex}</span>
-          <span className="truncate group-hover:text-neutral-200 transition-colors">{project.title}</span>
+          <span className="font-bold text-muted">{formattedIndex}</span>
+          <span className="truncate group-hover:text-ink-soft transition-colors">{project.title}</span>
         </div>
-        <span className="text-[10px] text-neutral-500 font-normal shrink-0">{project.category}</span>
+        <span className="text-[10px] text-muted font-normal shrink-0">{project.category}</span>
       </div>
 
       {/* 3 Still Frames Container — Each Still has its own individual hover preview */}
-      <div className="relative bg-black p-1 border border-neutral-900 group-hover:border-neutral-700 transition-colors">
+      <div className="relative bg-canvas p-1 border border-line group-hover:border-line-strong transition-colors">
         <div className="grid grid-cols-3 gap-1">
           {stills.map((stillUrl, idx) => {
             const isThisStillHovered = hoveredStillIndex === idx;
@@ -47,8 +47,8 @@ export const ProjectCard = ({ project, indexNumber, onClick }) => {
                 onMouseLeave={() => setHoveredStillIndex(null)}
                 onTouchStart={() => setHoveredStillIndex(idx)}
                 onTouchEnd={() => setHoveredStillIndex(null)}
-                className={`relative aspect-[16/10] overflow-hidden bg-neutral-950 transition-all duration-300 ${
-                  isThisStillHovered ? 'brightness-110 contrast-105 border border-white' : 'brightness-90 opacity-90'
+                className={`relative aspect-[16/10] overflow-hidden bg-surface transition-all duration-300 ${
+                  isThisStillHovered ? 'brightness-110 contrast-105 border border-ink' : 'brightness-90 opacity-90'
                 }`}
               >
                 <img

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { CinematicLoadingScreen } from './components/CinematicLoadingScreen';
 import { Navbar } from './components/Navbar';
 import { ProjectCard } from './components/ProjectCard';
@@ -43,7 +44,7 @@ function MainContent() {
   const viewKey = selectedProject ? `project-${selectedProject.id}` : `${activeTab}-${activeFilter}`;
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col font-sans selection:bg-white selection:text-black relative">
+    <div className="min-h-screen bg-canvas text-ink flex flex-col font-sans selection:bg-ink selection:text-canvas relative">
       
       {/* Film Grain Subtle Overlay */}
       <div className="film-grain" />
@@ -157,7 +158,9 @@ function MainContent() {
 export default function App() {
   return (
     <LanguageProvider>
-      <MainContent />
+      <ThemeProvider>
+        <MainContent />
+      </ThemeProvider>
     </LanguageProvider>
   );
 }

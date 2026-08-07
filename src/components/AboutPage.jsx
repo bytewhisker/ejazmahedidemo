@@ -37,11 +37,11 @@ export const AboutPage = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -16 }}
       transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-      className="min-h-screen bg-black text-white pt-4 md:pt-6 pb-24 px-4 sm:px-8 max-w-[1700px] mx-auto space-y-16 md:space-y-24 font-sans select-none"
+      className="min-h-screen bg-canvas text-ink pt-4 md:pt-6 pb-24 px-4 sm:px-8 max-w-[1700px] mx-auto space-y-16 md:space-y-24 font-sans select-none"
     >
       
       {/* TOP SECTION: BIOGRAPHY */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start border-b border-neutral-900 pb-16 md:pb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start border-b border-line pb-16 md:pb-20">
         
         {/* Photo Frame Container */}
         <motion.div
@@ -51,12 +51,12 @@ export const AboutPage = () => {
           className="lg:col-span-5 space-y-3"
         >
           {/* Unclipped Horizontal Monospace Header */}
-          <div className="flex items-center gap-2 text-xs font-mono-custom tracking-[0.25em] uppercase text-neutral-400 font-bold">
-            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+          <div className="flex items-center gap-2 text-xs font-mono-custom tracking-[0.25em] uppercase text-muted font-bold">
+            <span className="w-2 h-2 rounded-full bg-ink animate-pulse" />
             <span>BIOGRAPHY // DIRECTOR & DOP</span>
           </div>
 
-          <div className="w-full aspect-square overflow-hidden bg-neutral-950 border border-neutral-900 relative">
+          <div className="w-full aspect-square overflow-hidden bg-surface border border-line relative">
             <img
               src={bioImages[activeImageKey] || bioImages.default}
               alt="Ezaz Mahedi Portrait"
@@ -70,7 +70,7 @@ export const AboutPage = () => {
           initial="initial"
           animate="animate"
           transition={{ staggerChildren: 0.18 }}
-          className="lg:col-span-7 space-y-6 text-sm sm:text-base md:text-lg leading-relaxed text-neutral-300 font-light pt-6 lg:pt-8"
+          className="lg:col-span-7 space-y-6 text-sm sm:text-base md:text-lg leading-relaxed text-ink-soft font-light pt-6 lg:pt-8"
         >
           
           <motion.p variants={paragraphVariant}>
@@ -83,7 +83,7 @@ export const AboutPage = () => {
               onMouseEnter={() => setActiveImageKey('kodak')}
               onMouseLeave={() => setActiveImageKey('default')}
               onTouchStart={() => setActiveImageKey('kodak')}
-              className="px-2 py-0.5 mx-1 bg-white text-black font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-neutral-300 transition-colors inline-block"
+              className="px-2 py-0.5 mx-1 bg-ink text-canvas font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-ink-soft transition-colors inline-block"
             >
               [ KODAK 35MM ]
             </span>
@@ -92,7 +92,7 @@ export const AboutPage = () => {
               onMouseEnter={() => setActiveImageKey('cannes')}
               onMouseLeave={() => setActiveImageKey('default')}
               onTouchStart={() => setActiveImageKey('cannes')}
-              className="px-2 py-0.5 mx-1 bg-white text-black font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-neutral-300 transition-colors inline-block"
+              className="px-2 py-0.5 mx-1 bg-ink text-canvas font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-ink-soft transition-colors inline-block"
             >
               [ GOLD CANNES LION ]
             </span>
@@ -105,7 +105,7 @@ export const AboutPage = () => {
               onMouseEnter={() => setActiveImageKey('nyc')}
               onMouseLeave={() => setActiveImageKey('default')}
               onTouchStart={() => setActiveImageKey('nyc')}
-              className="px-2 py-0.5 mx-1 bg-white text-black font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-neutral-300 transition-colors inline-block"
+              className="px-2 py-0.5 mx-1 bg-ink text-canvas font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-ink-soft transition-colors inline-block"
             >
               [ GLOBAL CAMPAIGNS ]
             </span>
@@ -122,9 +122,9 @@ export const AboutPage = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="space-y-6 md:space-y-8 border-b border-neutral-900 pb-16 md:pb-20"
+        className="space-y-6 md:space-y-8 border-b border-line pb-16 md:pb-20"
       >
-        <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-neutral-400">
+        <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-muted">
           PRESS & INTERVIEWS
         </h2>
 
@@ -132,16 +132,16 @@ export const AboutPage = () => {
           {pressData.map((item) => (
             <div
               key={item.id}
-              className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 border-b border-neutral-900/60 pb-6 group"
+              className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 border-b border-line/60 pb-6 group"
             >
               <div className="space-y-1">
-                <span className="text-xs font-mono-custom text-neutral-500 uppercase tracking-widest block">
+                <span className="text-xs font-mono-custom text-muted uppercase tracking-widest block">
                   {item.publisher} — {item.date}
                 </span>
-                <h3 className="text-base sm:text-lg md:text-xl font-serif text-white font-light group-hover:text-neutral-300 transition-colors">
+                <h3 className="text-base sm:text-lg md:text-xl font-serif text-ink font-light group-hover:text-ink-soft transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-xs text-neutral-400 font-light max-w-2xl">
+                <p className="text-xs text-muted font-light max-w-2xl">
                   {item.description}
                 </p>
               </div>
@@ -151,7 +151,7 @@ export const AboutPage = () => {
                   href={item.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-xs font-mono-custom text-neutral-400 hover:text-white uppercase tracking-widest shrink-0 flex items-center gap-1"
+                  className="text-xs font-mono-custom text-muted hover:text-ink uppercase tracking-widest shrink-0 flex items-center gap-1"
                 >
                   <span>READ ARTICLE</span>
                   <ExternalLink className="w-3 h-3" />
@@ -168,22 +168,22 @@ export const AboutPage = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="space-y-6 md:space-y-8 border-b border-neutral-900 pb-16 md:pb-20"
+        className="space-y-6 md:space-y-8 border-b border-line pb-16 md:pb-20"
       >
-        <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-neutral-400">
+        <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-muted">
           AWARDS & HONORS
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
           {awardsData.map((award) => (
             <div key={award.id} className="space-y-2">
-              <span className="text-xs font-mono-custom text-neutral-500 uppercase tracking-widest block">
+              <span className="text-xs font-mono-custom text-muted uppercase tracking-widest block">
                 {award.date} — {award.organization}
               </span>
-              <h3 className="text-sm sm:text-base font-serif text-white font-light">
+              <h3 className="text-sm sm:text-base font-serif text-ink font-light">
                 {award.title}
               </h3>
-              <p className="text-xs text-neutral-400 font-light leading-relaxed">
+              <p className="text-xs text-muted font-light leading-relaxed">
                 {award.description}
               </p>
             </div>
@@ -197,15 +197,15 @@ export const AboutPage = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="space-y-6 md:space-y-8 border-b border-neutral-900 pb-16 md:pb-20"
+        className="space-y-6 md:space-y-8 border-b border-line pb-16 md:pb-20"
       >
-        <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-neutral-400">
+        <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-muted">
           SELECTED CLIENTS
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 text-xs font-mono-custom text-neutral-300">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 text-xs font-mono-custom text-ink-soft">
           {clientsData.map((client, idx) => (
-            <div key={idx} className="border-l border-neutral-800 pl-3 py-1">
+            <div key={idx} className="border-l border-line-heavy pl-3 py-1">
               {client}
             </div>
           ))}
@@ -220,33 +220,33 @@ export const AboutPage = () => {
         transition={{ duration: 0.6 }}
         className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 pt-4"
       >
-        <div className="lg:col-span-5 space-y-6">
-          <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-neutral-400">
+<div className="lg:col-span-5 space-y-6">
+          <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-muted">
             CONTACT INFORMATION
           </h2>
-          <p className="text-xs text-neutral-400 font-light leading-relaxed">
+          <p className="text-xs text-muted font-light leading-relaxed">
             For commercial directing, narrative features, or worldwide cinematography inquiries:
           </p>
 
           <div className="space-y-3 text-xs font-mono-custom">
-            <div className="flex items-center gap-3 text-white">
-              <Mail className="w-4 h-4 text-neutral-500 shrink-0" />
+            <div className="flex items-center gap-3 text-ink">
+              <Mail className="w-4 h-4 text-muted shrink-0" />
               <span className="truncate">contact@ezazmahedi.com</span>
             </div>
-            <div className="flex items-center gap-3 text-neutral-400">
-              <Globe className="w-4 h-4 text-neutral-500 shrink-0" />
+            <div className="flex items-center gap-3 text-muted">
+              <Globe className="w-4 h-4 text-muted shrink-0" />
               <span>Global Representation: Iconoclast / Blur Films</span>
             </div>
           </div>
         </div>
 
         {/* Minimal Contact Form */}
-        <div className="lg:col-span-7 bg-neutral-950 p-6 sm:p-8 border border-neutral-900">
+        <div className="lg:col-span-7 bg-surface p-6 sm:p-8 border border-line">
           {formSubmitted ? (
             <div className="flex flex-col items-center justify-center text-center p-6 space-y-2">
-              <CheckCircle2 className="w-8 h-8 text-white" />
-              <h3 className="text-xs font-mono-custom text-white uppercase">INQUIRY SENT</h3>
-              <p className="text-xs font-mono-custom text-neutral-400">
+              <CheckCircle2 className="w-8 h-8 text-ink" />
+              <h3 className="text-xs font-mono-custom text-ink uppercase">INQUIRY SENT</h3>
+              <p className="text-xs font-mono-custom text-muted">
                 Thank you. Representation will respond shortly.
               </p>
             </div>
@@ -254,38 +254,38 @@ export const AboutPage = () => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-mono-custom text-neutral-400 uppercase mb-1">NAME</label>
+                  <label className="block text-[10px] font-mono-custom text-muted uppercase mb-1">NAME</label>
                   <input
                     type="text"
                     required
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 bg-black border border-neutral-800 text-white text-xs font-mono-custom focus:outline-none focus:border-white"
+                    className="w-full px-4 py-3 bg-canvas border border-line-heavy text-ink text-xs font-mono-custom focus:outline-none focus:border-ink"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-mono-custom text-neutral-400 uppercase mb-1">EMAIL</label>
+                  <label className="block text-[10px] font-mono-custom text-muted uppercase mb-1">EMAIL</label>
                   <input
                     type="email"
                     required
                     placeholder="your@email.com"
-                    className="w-full px-4 py-3 bg-black border border-neutral-800 text-white text-xs font-mono-custom focus:outline-none focus:border-white"
+                    className="w-full px-4 py-3 bg-canvas border border-line-heavy text-ink text-xs font-mono-custom focus:outline-none focus:border-ink"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono-custom text-neutral-400 uppercase mb-1">MESSAGE</label>
+                <label className="block text-[10px] font-mono-custom text-muted uppercase mb-1">MESSAGE</label>
                 <textarea
                   rows="4"
                   required
                   placeholder="Production details & timeline..."
-                  className="w-full px-4 py-3 bg-black border border-neutral-800 text-white text-xs font-mono-custom focus:outline-none focus:border-white resize-none"
+                  className="w-full px-4 py-3 bg-canvas border border-line-heavy text-ink text-xs font-mono-custom focus:outline-none focus:border-ink resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-4 bg-white text-black font-mono-custom font-bold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2"
+                className="w-full py-4 bg-ink text-canvas font-mono-custom font-bold text-xs uppercase tracking-widest hover:bg-ink-soft transition-colors flex items-center justify-center gap-2"
               >
                 <span>SEND INQUIRY</span>
                 <Send className="w-3.5 h-3.5" />
