@@ -78,7 +78,7 @@ function MainContent() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex-1 flex flex-col"
         >
           {/* Single Clean Navigation Bar */}
@@ -109,7 +109,7 @@ function MainContent() {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <StillsGallery />
                 </motion.div>
@@ -119,18 +119,18 @@ function MainContent() {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <AboutPage />
                 </motion.div>
               ) : (
-                /* Ligthelm Clean Project Grid */
+                /* Ligthelm Clean Project Grid with Slow Luxurious Reveal */
                 <motion.div
                   key={viewKey}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4 }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                   className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-12 pb-16"
                 >
                   {filteredProjects.map((project, idx) => (
@@ -147,12 +147,7 @@ function MainContent() {
           </main>
 
           {/* Minimal Footer */}
-          <Footer
-            onNavigate={(tab) => {
-              setSelectedProject(null);
-              setActiveTab(tab);
-            }}
-          />
+          <Footer />
         </motion.div>
       )}
     </div>

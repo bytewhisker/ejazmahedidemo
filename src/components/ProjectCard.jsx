@@ -16,9 +16,13 @@ export const ProjectCard = ({ project, indexNumber, onClick }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: (indexNumber - 1) * 0.08, ease: [0.25, 1, 0.5, 1] }}
+      initial={{ opacity: 0, y: 36, filter: "blur(6px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{
+        duration: 0.9,
+        delay: Math.min((indexNumber - 1) * 0.1, 0.8), // Staggered slow cinematic reveal
+        ease: [0.16, 1, 0.3, 1]
+      }}
       onClick={() => onClick(project)}
       className="group cursor-pointer space-y-2 select-none"
     >
