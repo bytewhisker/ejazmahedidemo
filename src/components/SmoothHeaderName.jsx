@@ -3,15 +3,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const names = [
   { id: 'en', text: "EZAZ MAHEDI", fontClass: "tracking-[0.08em] font-light font-serif" },
-  { id: 'bn', text: "এজাজ মেহেদী", fontClass: "tracking-[0.02em] font-normal font-sans" },
-  { id: 'ar', text: "إعزاز مهدي", fontClass: "tracking-[0.04em] font-normal font-sans" }
+  { id: 'bn', text: "এজাজ মেহেদী", fontClass: "tracking-[0.04em] font-normal font-sans" },
+  { id: 'ar', text: "إعزاز مهدي", fontClass: "tracking-[0.06em] font-normal font-sans" }
 ];
+
+// Helper to safely segment characters/graphemes for all languages without breaking complex script ligatures
+function getGraphemes(text) {
+  if (typeof Intl !== 'undefined' && Intl.Segmenter) {
+    const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
+    return Array.from(segmenter.segment(text), (s) => s.segment);
+  }
+  return text.split('');
+}
 
 const containerVariants = {
   initial: {},
   animate: {
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.055, // Slight delay for each character coming up
     },
   },
   exit: {
@@ -22,7 +31,7 @@ const containerVariants = {
   },
 };
 
-const unitVariants = {
+const charVariants = {
   initial: {
     opacity: 0,
     y: 20,
@@ -54,15 +63,13 @@ export const SmoothHeaderName = ({ onClick }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % names.length);
-    }, 3400);
+    }, 3600);
 
     return () => clearInterval(timer);
   }, []);
 
   const current = names[index];
-  
-  // Split into words so spaces & letter spacing are 100% natural
-  const words = current.text.split(' ');
+  const graphemes = getGraphemes(current.text);
 
   return (
     <button
@@ -77,15 +84,15 @@ export const SmoothHeaderName = ({ onClick }) => {
           initial="initial"
           animate="animate"
           exit="exit"
-          className={`flex items-center justify-center space-x-3 sm:space-x-5 text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white uppercase group-hover:text-neutral-300 transition-colors ${current.fontClass}`}
+          className={`flex items-center justify-center text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white uppercase group-hover:text-neutral-300 transition-colors ${current.fontClass}`}
         >
-          {words.map((word, wordIdx) => (
+          {graphemes.map((char, charIdx) => (
             <motion.span
-              key={`${index}-${wordIdx}`}
-              variants={unitVariants}
+              key={`${index}-${charIdx}`}
+              variants={charVariants}
               className="inline-block"
             >
-              {word}
+              {char === ' ' ? '\u00A0' : char}
             </motion.span>
           ))}
         </motion.div>
