@@ -28,12 +28,12 @@ export const ProjectListView = ({ projects, onSelectProject }) => {
       <div className="flex flex-col space-y-1 py-2">
         {projects.map((project) => {
           const isHovered = hoveredProject?.id === project.id;
-          const directorName = project.crew?.director || project.client || 'EZAZ MAHEDI';
+          const directorName = project.crew?.director || project.client || 'EJAZ MEHEDI';
 
           return (
             <div
               key={project.id}
-              className="py-3.5 border-b border-line/30 flex items-center"
+              className="py-3.5 flex items-center"
             >
               {/* Only Film Title and Director Name — Hover limited strictly to text area */}
               <div

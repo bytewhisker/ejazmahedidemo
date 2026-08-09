@@ -69,7 +69,7 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
         </motion.div>
 
         {/* HORIZONTAL NAVBAR ROW — DIRECTLY UNDERNEATH GIANT WORDMARK */}
-        <div className="hidden md:flex w-full items-center justify-between border-t border-line/60 pt-2.5 pb-1 text-xs font-mono-custom tracking-[0.22em] uppercase font-bold">
+        <div className="hidden md:flex w-full items-center justify-between pt-2.5 pb-1 text-xs font-mono-custom tracking-[0.22em] uppercase font-bold">
 
           <nav className="flex items-center gap-8 lg:gap-12">
             <GlitchNavItem
