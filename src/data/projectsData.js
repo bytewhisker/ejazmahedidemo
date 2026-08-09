@@ -774,6 +774,6 @@ export const pressData = [
 ];
 
 export const clientsData = [
-  "Porsche AG", "Nike Global", "Samsung", "Netflix", "Sony Music", "ARTE France", 
+  "Porsche AG", "Nike Global", "Samsung", "Netflix", "Sony Music", "ARTE France",
   "Sundance Channel", "Ogilvy & Mather", "Wieden+Kennedy", "Unilever", "Red Bull Media", "Chanel"
 ];

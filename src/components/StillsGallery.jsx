@@ -57,7 +57,7 @@ export const StillsGallery = () => {
               className="group cursor-pointer space-y-2"
             >
               {/* Photo Frame Container — Pure Rectangular Minimalist */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-surface border border-line group-hover:border-line-strong transition-colors">
+              <div className="relative aspect-[4/3] overflow-hidden bg-surface transition-colors">
                 <img
                   src={still.url}
                   alt={still.title}

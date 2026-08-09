@@ -2,9 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const names = [
-  { id: 'en', text: "EZAZ MAHEDI", fontClass: "tracking-normal font-light font-serif" },
-  { id: 'bn', text: "এজাজ মেহেদী", fontClass: "tracking-normal font-normal font-sans" },
-  { id: 'ar', text: "إعزاز مهدي", fontClass: "tracking-normal font-normal font-sans" }
+  { 
+    id: 'en', 
+    text: "EJAZ MAHEDI", 
+    fontClass: "font-display-heavy tracking-tighter font-black text-[clamp(2.2rem,8.6vw,13.5rem)] leading-none" 
+  },
+  { 
+    id: 'bn', 
+    text: "এজাজ মেহেদী", 
+    fontClass: "font-sans tracking-normal font-black text-[clamp(2.0rem,7.2vw,10.5rem)] leading-none" 
+  },
+  { 
+    id: 'ar', 
+    text: "إعزاز مهدي", 
+    fontClass: "font-sans tracking-normal font-black text-[clamp(2.0rem,7.2vw,10.5rem)] leading-none" 
+  }
 ];
 
 function getGraphemes(text) {
@@ -18,41 +30,26 @@ function getGraphemes(text) {
 const containerVariants = {
   initial: {},
   animate: {
-    transition: {
-      staggerChildren: 0.055,
-    },
+    transition: { staggerChildren: 0.045 }
   },
   exit: {
-    transition: {
-      staggerChildren: 0.03,
-      staggerDirection: 1,
-    },
-  },
+    transition: { staggerChildren: 0.025, staggerDirection: 1 }
+  }
 };
 
 const itemVariants = {
-  initial: {
-    opacity: 0,
-    y: 20,
-    filter: "blur(4px)"
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
+  initial: { opacity: 0, y: 20, filter: "blur(6px)" },
+  animate: { 
+    opacity: 1, 
+    y: 0, 
     filter: "blur(0px)",
-    transition: {
-      duration: 0.45,
-      ease: [0.25, 1, 0.5, 1]
-    }
+    transition: { duration: 0.45, ease: [0.25, 1, 0.5, 1] }
   },
-  exit: {
-    opacity: 0,
-    y: -20,
-    filter: "blur(4px)",
-    transition: {
-      duration: 0.35,
-      ease: [0.25, 1, 0.5, 1]
-    }
+  exit: { 
+    opacity: 0, 
+    y: -20, 
+    filter: "blur(6px)",
+    transition: { duration: 0.35, ease: [0.25, 1, 0.5, 1] }
   }
 };
 
@@ -62,14 +59,11 @@ export const SmoothHeaderName = ({ onClick }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % names.length);
-    }, 3600);
-
+    }, 4200);
     return () => clearInterval(timer);
   }, []);
 
   const current = names[index];
-
-  // Arabic cursive script must be animated word-by-word to preserve right-to-left letter connection
   const items = current.id === 'ar' 
     ? current.text.split(' ') 
     : getGraphemes(current.text);
@@ -77,8 +71,8 @@ export const SmoothHeaderName = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="relative flex items-center justify-center focus:outline-none cursor-pointer py-1 md:py-2 select-none group min-h-[3rem] sm:min-h-[4rem]"
-      aria-label="Ezaz Mahedi Home"
+      className="relative flex items-center justify-center h-[5.2rem] sm:h-[7.2rem] md:h-[9.5rem] lg:h-[11.8rem] focus:outline-none cursor-pointer select-none group w-full overflow-hidden"
+      aria-label="Ejaz Mahedi Home"
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -87,13 +81,13 @@ export const SmoothHeaderName = ({ onClick }) => {
           initial="initial"
           animate="animate"
           exit="exit"
-          className={`text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-ink uppercase group-hover:text-ink-soft transition-colors whitespace-nowrap ${current.fontClass}`}
+          className={`text-ink uppercase group-hover:text-ink-soft transition-colors whitespace-nowrap w-full text-center flex items-center justify-center h-full ${current.fontClass}`}
         >
           {items.map((item, itemIdx) => (
             <motion.span
               key={`${index}-${itemIdx}`}
               variants={itemVariants}
-              className="inline-block"
+              className="inline-block transform-gpu"
             >
               {current.id === 'ar'
                 ? itemIdx === items.length - 1 ? item : item + '\u00A0'

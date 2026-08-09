@@ -4,6 +4,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { CinematicLoadingScreen } from './components/CinematicLoadingScreen';
 import { Navbar } from './components/Navbar';
 import { ProjectCard } from './components/ProjectCard';
+import { ProjectListView } from './components/ProjectListView';
 import { ProjectDetailPage } from './components/ProjectDetailPage';
 import { StillsGallery } from './components/StillsGallery';
 import { AboutPage } from './components/AboutPage';
@@ -16,6 +17,7 @@ function MainContent() {
   const [isVideoLoading, setIsVideoLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('projects'); // 'projects', 'stills', 'about'
   const [activeFilter, setActiveFilter] = useState('all'); // 'all', 'films', 'commercial'
+  const [viewMode, setViewMode] = useState('grid'); // 'grid', 'list'
   const [selectedProject, setSelectedProject] = useState(null);
 
   // Filter projects list
@@ -41,7 +43,7 @@ function MainContent() {
     setSelectedProject(null);
   };
 
-  const viewKey = selectedProject ? `project-${selectedProject.id}` : `${activeTab}-${activeFilter}`;
+  const viewKey = selectedProject ? `project-${selectedProject.id}` : `${activeTab}-${activeFilter}-${viewMode}`;
 
   return (
     <div className="min-h-screen bg-canvas text-ink flex flex-col font-sans selection:bg-ink selection:text-canvas relative">
@@ -93,8 +95,8 @@ function MainContent() {
             setActiveFilter={setActiveFilter}
           />
 
-          {/* Main Content Area */}
-          <main className="flex-1 max-w-[1800px] w-full mx-auto px-4 sm:px-8 py-8">
+          {/* Main Content Area — Full Width Layout */}
+          <main className="flex-1 w-full mx-auto px-4 sm:px-8 md:px-12 py-4 md:py-6 select-none">
             <AnimatePresence mode="wait">
               {selectedProject ? (
                 <ProjectDetailPage
@@ -125,23 +127,61 @@ function MainContent() {
                   <AboutPage />
                 </motion.div>
               ) : (
-                /* Ligthelm Clean Project Grid with Slow Luxurious Reveal */
+                /* Projects Section with GRID / LIST View Mode Toggle */
                 <motion.div
                   key={viewKey}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className="grid grid-cols-1 gap-y-14 pb-16"
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className="space-y-6 pb-12 sm:pb-16"
                 >
-                  {filteredProjects.map((project, idx) => (
-                    <ProjectCard
-                      key={project.id}
-                      project={project}
-                      indexNumber={idx + 1}
-                      onClick={handleSelectProject}
+                  {/* Gallery Subheader Bar: GRID / LIST Toggle */}
+                  <div className="flex items-center justify-end border-b border-line pb-3 text-xs font-mono-custom tracking-[0.2em] uppercase text-muted">
+                    {/* GRID / LIST Toggle Buttons */}
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setViewMode('grid')}
+                        className={`transition-colors font-bold ${
+                          viewMode === 'grid'
+                            ? 'text-ink underline underline-offset-4'
+                            : 'text-muted hover:text-ink'
+                        }`}
+                      >
+                        GRID
+                      </button>
+                      <span>/</span>
+                      <button
+                        onClick={() => setViewMode('list')}
+                        className={`transition-colors font-bold ${
+                          viewMode === 'list'
+                            ? 'text-ink underline underline-offset-4'
+                            : 'text-muted hover:text-ink'
+                        }`}
+                      >
+                        LIST
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Render Grid or List view */}
+                  {viewMode === 'grid' ? (
+                    <div className="grid grid-cols-1 gap-y-4 sm:gap-y-6 md:gap-y-7">
+                      {filteredProjects.map((project, idx) => (
+                        <ProjectCard
+                          key={project.id}
+                          project={project}
+                          indexNumber={idx + 1}
+                          onClick={handleSelectProject}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <ProjectListView
+                      projects={filteredProjects}
+                      onSelectProject={handleSelectProject}
                     />
-                  ))}
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>

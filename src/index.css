@@ -59,6 +59,17 @@
     font-family: 'Space Mono', monospace;
   }
 
+  /* High-Contrast Editorial Serif Utility (Detroit Paris Style) */
+  .font-editorial {
+    font-family: 'Playfair Display', 'Bodoni Moda', 'Cinzel', Georgia, serif;
+  }
+
+  /* Heavy Extended Display Grotesk Utility (Chris Macari / Druk Wide Style) */
+  .font-display-heavy {
+    font-family: 'Syne', 'Unbounded', 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-weight: 800;
+  }
+
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 4px;
