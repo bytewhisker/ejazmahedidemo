@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const nameVariants = [
-  { text: "EZAZ MAHEDI", fontClass: "tracking-[0.2em] font-normal" },
+  { text: "EJAZ MEHEDI", fontClass: "tracking-[0.2em] font-normal" },
   { text: "এজাজ মেহেদী", fontClass: "tracking-[0.1em] font-medium" },
   { text: "إعزاز مهدي", fontClass: "tracking-[0.15em] font-medium" }
 ];
@@ -24,7 +24,7 @@ export const AnimatedHeaderName = ({ onClick }) => {
     <button
       onClick={onClick}
       className="relative h-10 md:h-12 overflow-hidden flex items-center justify-center focus:outline-none group cursor-pointer px-4"
-      aria-label="Ejaz Mahedi Home"
+      aria-label="Ejaz Mehedi Home"
     >
       <AnimatePresence mode="wait">
         <motion.span

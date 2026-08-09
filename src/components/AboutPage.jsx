@@ -13,9 +13,9 @@ const bioImages = {
 
 const bioTextData = {
   en: {
-    p1: "Ezaz Mahedi is a self-taught cinematographer and commercial director whose international work—a childhood spent in Dhaka, London, and Tokyo—figures strongly in his distinctive, visceral yet meditative imagery. His textural and poetic visual language explores new ways of visual storytelling with a human story at its core.",
+    p1: "Ejaz Mehedi is a self-taught cinematographer and commercial director whose international work—a childhood spent in Dhaka, London, and Tokyo—figures strongly in his distinctive, visceral yet meditative imagery. His textural and poetic visual language explores new ways of visual storytelling with a human story at its core.",
     p2: "His work has garnered recognition across the world, notably receiving the 2026 KODAK Award for Commercial & Music Video Director of the Year [ KODAK 35MM ], inclusions at Academy Qualifying Film Festivals for short film MOEDER, inclusions in the Saatchi & Saatchi New Directors Showcase, two Golds at the YDAs, a Gold Cannes Lion [ GOLD CANNES LION ], and a growing list of industry recognitions including British Arrows and D&AD.",
-    p3: "His commercial body of work includes films for Apple, Porsche, Nike, Red Bull, Mercedes-Benz, Ford, and HP, alongside music videos for global artists [ GLOBAL CAMPAIGNS ]. Ezaz currently works worldwide while developing his debut narrative feature film."
+    p3: "His commercial body of work includes films for Apple, Porsche, Nike, Red Bull, Mercedes-Benz, Ford, and HP, alongside music videos for global artists [ GLOBAL CAMPAIGNS ]. Ejaz currently works worldwide while developing his debut narrative feature film."
   },
   bn: {
     p1: "এজাজ মেহেদী একজন স্বশিক্ষিত চিত্রগ্রাহক এবং বাণিজ্যিক চলচ্চিত্র পরিচালক। ঢাকা, লন্ডন ও টোকিওতে কেটেছে তাঁর শৈশব—যা প্রতিফলিত হয় তাঁর সিগনেচার, তীব্র অথচ নান্দনিক ভিজ্যুয়াল শৈলীতে। তাঁর চিত্রায়ণে স্থান পায় মানুষের জীবনের মূল গল্পের গভীর আবেদন।",
@@ -39,8 +39,8 @@ const paragraphVariant = {
   }
 };
 
-// SVG Dynamic Curved Path Typography Engine (Detroit Paris Style) — Full Text: EJAZ MAHEDI
-const CurvedPathTypography = ({ text = "EJAZ MAHEDI" }) => {
+// SVG Dynamic Curved Path Typography Engine (Detroit Paris Style) — Full Text: EJAZ MEHEDI
+const CurvedPathTypography = ({ text = "EJAZ MEHEDI" }) => {
   const containerRef = useRef(null);
   const pathRef = useRef(null);
   const animFrameId = useRef(null);
@@ -174,7 +174,7 @@ export const AboutPage = () => {
           <div className="w-full aspect-square overflow-hidden bg-surface border border-line relative">
             <img
               src={bioImages[activeImageKey] || bioImages.default}
-              alt="Ezaz Mahedi Portrait"
+              alt="Ejaz Mehedi Portrait"
               className="w-full h-full object-cover transition-all duration-700 filter brightness-95 contrast-105"
             />
           </div>
@@ -189,33 +189,36 @@ export const AboutPage = () => {
               BIOGRAPHY ARCHIVE
             </span>
 
-            {/* Tiny Language Selector [ EN | BN | AR ] */}
-            <div className="flex items-center gap-2 text-xs font-mono-custom uppercase tracking-wider">
+            {/* Character Script Language Selector [ A | অ | ع ] */}
+            <div className="flex items-center gap-1.5 text-xs font-mono-custom uppercase tracking-wider">
               <button
                 onClick={() => setBioLang('en')}
-                className={`px-2 py-0.5 transition-colors font-bold ${
-                  bioLang === 'en' ? 'bg-ink text-canvas font-black' : 'text-muted hover:text-ink'
+                title="English"
+                className={`px-2 py-1 transition-all rounded-sm font-bold text-xs ${
+                  bioLang === 'en' ? 'bg-ink text-canvas font-black scale-105' : 'text-muted hover:text-ink hover:bg-surface'
                 }`}
               >
-                EN
+                A
               </button>
-              <span className="text-muted/40">/</span>
+              <span className="text-muted/40 text-[10px]">/</span>
               <button
                 onClick={() => setBioLang('bn')}
-                className={`px-2 py-0.5 transition-colors font-bold ${
-                  bioLang === 'bn' ? 'bg-ink text-canvas font-black' : 'text-muted hover:text-ink'
+                title="বাংলা"
+                className={`px-2 py-1 transition-all rounded-sm font-bold text-xs font-sans ${
+                  bioLang === 'bn' ? 'bg-ink text-canvas font-black scale-105' : 'text-muted hover:text-ink hover:bg-surface'
                 }`}
               >
-                বাংলা
+                অ
               </button>
-              <span className="text-muted/40">/</span>
+              <span className="text-muted/40 text-[10px]">/</span>
               <button
                 onClick={() => setBioLang('ar')}
-                className={`px-2 py-0.5 transition-colors font-bold ${
-                  bioLang === 'ar' ? 'bg-ink text-canvas font-black' : 'text-muted hover:text-ink'
+                title="العربية"
+                className={`px-2 py-1 transition-all rounded-sm font-bold text-xs font-sans ${
+                  bioLang === 'ar' ? 'bg-ink text-canvas font-black scale-105' : 'text-muted hover:text-ink hover:bg-surface'
                 }`}
               >
-                العربية
+                ع
               </button>
             </div>
           </div>
@@ -287,15 +290,15 @@ export const AboutPage = () => {
               <div className="space-y-1">
                 <span className="text-[10px] font-mono-custom text-muted uppercase tracking-widest block">DIRECT EMAIL INQUIRIES</span>
                 <a
-                  href="mailto:contact@ezazmahedi.com"
+                  href="mailto:contact@ejazmehedi.com"
                   className="text-base sm:text-lg font-mono-custom text-ink font-bold hover:underline transition-all"
                 >
-                  contact@ezazmahedi.com
+                  contact@ejazmehedi.com
                 </a>
               </div>
 
               <button
-                onClick={() => copyToClipboard('contact@ezazmahedi.com')}
+                onClick={() => copyToClipboard('contact@ejazmehedi.com')}
                 className="flex items-center gap-2 text-xs font-mono-custom tracking-widest uppercase py-2 px-4 bg-ink text-canvas hover:bg-ink-soft transition-colors font-bold shrink-0"
               >
                 {copiedEmail ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
@@ -454,7 +457,7 @@ export const AboutPage = () => {
         </div>
       </motion.div>
 
-      {/* BOTTOM SECTION: SVG CURVED BASELINE PATH TYPOGRAPHY — FULL NAME: EJAZ MAHEDI */}
+      {/* BOTTOM SECTION: SVG CURVED BASELINE PATH TYPOGRAPHY — FULL NAME: EJAZ MEHEDI */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -462,7 +465,7 @@ export const AboutPage = () => {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="w-full"
       >
-        <CurvedPathTypography text="EJAZ MAHEDI" />
+        <CurvedPathTypography text="EJAZ MEHEDI" />
       </motion.div>
 
     </motion.div>

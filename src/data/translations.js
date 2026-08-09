@@ -1,6 +1,6 @@
 export const translations = {
   en: {
-    brandName: "EZAZ MAHEDI",
+    brandName: "EJAZ MEHEDI",
     brandTitle: "CINEMATOGRAPHER & DIRECTOR",
     nav: {
       allProjects: "All Projects",
@@ -59,11 +59,11 @@ export const translations = {
       pressTitle: "Press & Interviews",
       clientsTitle: "Selected Clients",
       contactTitle: "Get In Touch",
-      name: "Ezaz Mahedi",
+      name: "Ejaz Mehedi",
       role: "Director of Photography & Film Director",
-      bioText: "Ezaz Mahedi is an award-winning cinematographer and commercial director based internationally. With over 12 years of experience crafting visually stunning narrative feature films, high-concept commercials, and music videos, his work is characterized by poetic lighting, tactile textures, and emotional resonance.",
-      careerText: "Working seamlessly with digital format systems (ARRI Alexa 35, RED V-Raptor, Sony Venice) as well as 35mm analogue film stock, Ezaz collaborates with visionary filmmakers and global brands to translate compelling stories into unforgettable visual experiences.",
-      email: "contact@ezazmahedi.com",
+      bioText: "Ejaz Mehedi is an award-winning cinematographer and commercial director based internationally. With over 12 years of experience crafting visually stunning narrative feature films, high-concept commercials, and music videos, his work is characterized by poetic lighting, tactile textures, and emotional resonance.",
+      careerText: "Working seamlessly with digital format systems (ARRI Alexa 35, RED V-Raptor, Sony Venice) as well as 35mm analogue film stock, Ejaz collaborates with visionary filmmakers and global brands to translate compelling stories into unforgettable visual experiences.",
+      email: "contact@ejazmehedi.com",
       representation: "Global Representation: Iconoclast / Blur Films",
       location: "Based in Dhaka & London — Available Worldwide"
     },
@@ -137,7 +137,7 @@ export const translations = {
       role: "সিনেম্যাটোগ্রাফার ও চলচ্চিত্র নির্মাতা",
       bioText: "এজাজ মেহেদী একজন আন্তর্জাতিকভাবে খ্যাতিমান আন্তর্জাতিক ডিরেক্টর অফ ফটোগ্রাফি এবং বিজ্ঞাপন নির্মাতা। এক দশকেরও বেশি সময় ধরে তিনি আলো ও আবহের মাধ্যমে চিত্রনাট্যের অনন্য অনুভূতি পর্দায় ফুটিয়ে তুলছেন।",
       careerText: "অ্যারি অ্যালেক্সা, রেড ও ৩৫ মিমি ফিল্মে অভিজ্ঞ এজাজ বিশ্বজুড়ে স্বাধীন চলচ্চিত্র ও গ্লোবাল ব্র্যান্ডের সাথে কাজ করে যাচ্ছেন।",
-      email: "contact@ezazmahedi.com",
+      email: "contact@ejazmehedi.com",
       representation: "আন্তর্জাতিক প্রতিনিধি: আইকনিক গ্লোবাল মিডিয়া",
       location: "ঢাকা ও লন্ডন — কাজ করেন বিশ্বজুড়ে"
     },
@@ -211,7 +211,7 @@ export const translations = {
       role: "مدير تصوير سينمائي ومخرج أفلام",
       bioText: "إعزاز مهدي هو مدير تصوير سينمائي ومخرج إعلانات حائز على جوائز عالمية. يمتلك خبرة تتجاوز 12 عاماً في إخراج الصورة السينمائية للأفلام والإعلانات التجارية.",
       careerText: "يعمل بإتقان على كاميرات ARRI و RED وفيلم 35 ملم، ويتعاون مع كبرى الشركات والعلامات التجارية العالمية.",
-      email: "contact@ezazmahedi.com",
+      email: "contact@ejazmehedi.com",
       representation: "التمثيل العالمي: أيكونك ميديا",
       location: "دكا ولندن — متاح لجميع دول العالم"
     },

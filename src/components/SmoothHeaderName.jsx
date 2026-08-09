@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const names = [
   { 
     id: 'en', 
-    text: "EJAZ MAHEDI", 
+    text: "EJAZ MEHEDI", 
     fontClass: "font-display-heavy tracking-tighter font-black text-[clamp(2.2rem,8.6vw,13.5rem)] leading-none" 
   },
   { 
@@ -72,7 +72,7 @@ export const SmoothHeaderName = ({ onClick }) => {
     <button
       onClick={onClick}
       className="relative flex items-center justify-center h-[5.2rem] sm:h-[7.2rem] md:h-[9.5rem] lg:h-[11.8rem] focus:outline-none cursor-pointer select-none group w-full overflow-hidden"
-      aria-label="Ejaz Mahedi Home"
+      aria-label="Ejaz Mehedi Home"
     >
       <AnimatePresence mode="wait">
         <motion.div

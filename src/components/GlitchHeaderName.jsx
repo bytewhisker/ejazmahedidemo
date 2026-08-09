@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const names = [
-  "EZAZ MAHEDI",
+  "EJAZ MEHEDI",
   "এজাজ মেহেদী",
   "إعزاز مهدي"
 ];
@@ -58,7 +58,7 @@ export const GlitchHeaderName = ({ onClick }) => {
     <button
       onClick={onClick}
       className="relative flex items-center justify-center focus:outline-none cursor-pointer px-4 py-1 group select-none"
-      aria-label="Ezaz Mahedi Home"
+      aria-label="Ejaz Mehedi Home"
     >
       <span
         className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif text-white uppercase tracking-[0.2em] transition-all duration-200 ${

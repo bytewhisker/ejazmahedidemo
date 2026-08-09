@@ -30,7 +30,7 @@ export const projectsData = [
     crew: {
       director: "Tanvir Hossain",
       producer: "Nadia Rahman & Karim El-Sayed",
-      dop: "Ezaz Mahedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "Aura Film Works",
       editor: "Julian Vance",
       colorist: "Stefan Sonnenfeld (Company 3)",
@@ -73,9 +73,9 @@ export const projectsData = [
       "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Ezaz Mahedi",
+      director: "Ejaz Mehedi",
       producer: "Christian Vance",
-      dop: "Ezaz Mahedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "Stuttgart Media Labs",
       editor: "Alexander Berg",
       colorist: "Damien Van Der Cruyssen",
@@ -119,8 +119,8 @@ export const projectsData = [
     ],
     crew: {
       director: "Lucia Moreau",
-      producer: "Ezaz Mahedi",
-      dop: "Ezaz Mahedi",
+      producer: "Ejaz Mehedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "Arte France",
       editor: "Claire Denis",
       colorist: "Tom Poole",
@@ -162,9 +162,9 @@ export const projectsData = [
       "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Ezaz Mahedi",
+      director: "Ejaz Mehedi",
       producer: "Marcus Lindner",
-      dop: "Ezaz Mahedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "Antoni Berlin",
       editor: "Julian Vance",
       colorist: "Stefan Sonnenfeld",
@@ -205,9 +205,9 @@ export const projectsData = [
       "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Ezaz Mahedi",
+      director: "Ejaz Mehedi",
       producer: "Sarah Jenkins",
-      dop: "Ezaz Mahedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "NatGeo Films",
       editor: "Chris King",
       client: "National Geographic Society"
@@ -247,9 +247,9 @@ export const projectsData = [
       "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Ezaz Mahedi",
+      director: "Ejaz Mehedi",
       producer: "Media Arts Lab",
-      dop: "Ezaz Mahedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "TBWA\\Media Arts Lab",
       editor: "Elliot Graham",
       colorist: "Tom Poole",
@@ -291,8 +291,8 @@ export const projectsData = [
     ],
     crew: {
       director: "Arthur Pendelton",
-      producer: "Ezaz Mahedi",
-      dop: "Ezaz Mahedi",
+      producer: "Ejaz Mehedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "BFI Shorts",
       editor: "Joe Walker",
       client: "BFI / Film4"
@@ -332,9 +332,9 @@ export const projectsData = [
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Ezaz Mahedi",
+      director: "Ejaz Mehedi",
       producer: "David Stern",
-      dop: "Ezaz Mahedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "Red Bull Media",
       client: "Red Bull Wingsuit Team"
     },
@@ -374,8 +374,8 @@ export const projectsData = [
     ],
     crew: {
       director: "Tanvir Hossain",
-      producer: "Ezaz Mahedi",
-      dop: "Ezaz Mahedi",
+      producer: "Ejaz Mehedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "Aura Film Works",
       client: "Sundance Channel"
     },
@@ -414,9 +414,9 @@ export const projectsData = [
       "https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Ezaz Mahedi",
+      director: "Ejaz Mehedi",
       producer: "Samantha Reed",
-      dop: "Ezaz Mahedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "Giant Spoon",
       client: "HP Global"
     },
@@ -456,8 +456,8 @@ export const projectsData = [
     ],
     crew: {
       director: "Farhana Ahmed",
-      producer: "Ezaz Mahedi",
-      dop: "Ezaz Mahedi",
+      producer: "Ejaz Mehedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "Nomad Pictures",
       editor: "Sarah Jenkins",
       colorist: "Tom Poole",
@@ -498,9 +498,9 @@ export const projectsData = [
       "https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Ezaz Mahedi",
+      director: "Ejaz Mehedi",
       producer: "Samantha Reed",
-      dop: "Ezaz Mahedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "Wieden+Kennedy Portland",
       client: "Nike Global"
     },
@@ -540,8 +540,8 @@ export const projectsData = [
     ],
     crew: {
       director: "Kenji Takahashi",
-      producer: "Ezaz Mahedi",
-      dop: "Ezaz Mahedi",
+      producer: "Ejaz Mehedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "Nippon Cinema Labs",
       client: "Sony Pictures"
     },
@@ -580,9 +580,9 @@ export const projectsData = [
       "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Ezaz Mahedi",
+      director: "Ejaz Mehedi",
       producer: "David Stern",
-      dop: "Ezaz Mahedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "Red Bull Media House",
       client: "Red Bull"
     },
@@ -622,8 +622,8 @@ export const projectsData = [
     ],
     crew: {
       director: "Arthur Pendelton",
-      producer: "Ezaz Mahedi",
-      dop: "Ezaz Mahedi",
+      producer: "Ejaz Mehedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "BFI Shorts",
       client: "BBC"
     },
@@ -662,9 +662,9 @@ export const projectsData = [
       "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Ezaz Mahedi",
+      director: "Ejaz Mehedi",
       producer: "Camille Laurent",
-      dop: "Ezaz Mahedi",
+      dop: "Ejaz Mehedi",
       productionCompany: "Vogue Paris Studios",
       client: "Chanel Haute Couture"
     },
@@ -758,7 +758,7 @@ export const pressData = [
     title: "British Cinematographer Magazine: Painting With Monsoon Light",
     date: "November 2025",
     publisher: "British Cinematographer",
-    description: "An in-depth feature interview with Ezaz Mahedi discussing push processing 35mm stock and custom water housings.",
+    description: "An in-depth feature interview with Ejaz Mehedi discussing push processing 35mm stock and custom water housings.",
     thumbnail: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=600&auto=format&fit=crop",
     link: "https://example.com/press/british-cinematographer"
   },
@@ -767,7 +767,7 @@ export const pressData = [
     title: "American Cinematographer Podcast: Capturing High-Speed Porsche Curves",
     date: "August 2024",
     publisher: "ASC Press",
-    description: "Ezaz breaks down high-speed tracking vehicle mounts, optical filter choices, and HDR color grading workflows.",
+    description: "Ejaz breaks down high-speed tracking vehicle mounts, optical filter choices, and HDR color grading workflows.",
     thumbnail: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=600&auto=format&fit=crop",
     link: "https://example.com/press/asc-podcast"
   }
