@@ -137,7 +137,7 @@ function MainContent() {
                   className="space-y-6 pb-12 sm:pb-16"
                 >
                   {/* Gallery Subheader Bar: GRID / LIST Toggle */}
-                  <div className="flex items-center justify-end border-b border-line pb-3 text-xs font-mono-custom tracking-[0.2em] uppercase text-muted">
+                  <div className="flex items-center justify-end text-xs font-mono-custom tracking-[0.2em] uppercase text-muted">
                     {/* GRID / LIST Toggle Buttons */}
                     <div className="flex items-center gap-2">
                       <button
