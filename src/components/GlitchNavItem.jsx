@@ -24,11 +24,11 @@ export const GlitchNavItem = ({
   const [isHovered, setIsHovered] = useState(false);
 
   const glitchIntervalRef = useRef(null);
-  const cycleTimeoutRef = useRef(null);
-  const currentLangRef = useRef('en');
+  const phaseTimeoutRef = useRef(null);
+  const hoveredRef = useRef(false);
   const currentTextRef = useRef(enText);
 
-  // Sync currentTextRef with state
+  // Sync button text with state
   const updateText = (newText) => {
     currentTextRef.current = newText;
     setDisplayText(newText);
@@ -36,11 +36,11 @@ export const GlitchNavItem = ({
 
   const stopAllTimers = () => {
     if (glitchIntervalRef.current) clearInterval(glitchIntervalRef.current);
-    if (cycleTimeoutRef.current) clearTimeout(cycleTimeoutRef.current);
+    if (phaseTimeoutRef.current) clearTimeout(phaseTimeoutRef.current);
   };
 
   const triggerGlitch = (targetText, onComplete) => {
-    stopAllTimers();
+    if (glitchIntervalRef.current) clearInterval(glitchIntervalRef.current);
     setIsGlitching(true);
 
     const startText = currentTextRef.current;
@@ -83,34 +83,31 @@ export const GlitchNavItem = ({
     }, 28);
   };
 
-  // Start sequence: EN -> BN (glitch) -> wait 2.5s -> AR (glitch) -> wait 2.5s -> BN (glitch)...
-  const cycleArabicPhase = () => {
-    currentLangRef.current = 'ar';
-    triggerGlitch(arText, () => {
-      cycleTimeoutRef.current = setTimeout(() => {
-        cycleBanglaPhase();
-      }, 2500);
-    });
-  };
-
-  const cycleBanglaPhase = () => {
-    currentLangRef.current = 'bn';
+  // One language cycle per hover: EN -> BN -> wait -> AR -> wait -> back to EN.
+  // The cycle always ends back on English, it never re-triggers itself.
+  const runLanguageCycle = () => {
     triggerGlitch(bnText, () => {
-      cycleTimeoutRef.current = setTimeout(() => {
-        cycleArabicPhase();
+      phaseTimeoutRef.current = setTimeout(() => {
+        triggerGlitch(arText, () => {
+          phaseTimeoutRef.current = setTimeout(() => {
+            triggerGlitch(enText);
+          }, 2500);
+        });
       }, 2500);
     });
   };
 
   const handleMouseEnter = () => {
+    if (hoveredRef.current) return;
+    hoveredRef.current = true;
     setIsHovered(true);
-    cycleBanglaPhase();
+    runLanguageCycle();
   };
 
   const handleMouseLeave = () => {
+    hoveredRef.current = false;
     setIsHovered(false);
     stopAllTimers();
-    currentLangRef.current = 'en';
     triggerGlitch(enText, () => {
       updateText(enText);
     });
@@ -131,8 +128,11 @@ export const GlitchNavItem = ({
         className ? className : (isActive ? 'text-ink font-bold tracking-[0.22em]' : isHovered ? 'text-ink' : 'text-muted hover:text-ink')
       }`}
     >
-      <span className={`inline-block transition-opacity duration-150 ${isGlitching ? 'opacity-90 font-mono text-amber-400 dark:text-amber-300' : ''}`}>
-        {displayText}
+      <span className={`relative inline-block transition-opacity duration-150 ${isGlitching ? 'opacity-90 font-mono text-amber-400 dark:text-amber-300' : ''}`}>
+        <span aria-hidden="true" className="invisible whitespace-nowrap">{enText}</span>
+        <span aria-hidden="true" className="invisible absolute inset-0 flex items-center justify-center whitespace-nowrap">{bnText}</span>
+        <span aria-hidden="true" className="invisible absolute inset-0 flex items-center justify-center whitespace-nowrap">{arText}</span>
+        <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap">{displayText}</span>
       </span>
     </button>
   );
