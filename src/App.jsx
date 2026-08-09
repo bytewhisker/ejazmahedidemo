@@ -144,7 +144,7 @@ function MainContent() {
                         onClick={() => setViewMode('grid')}
                         className={`transition-colors font-bold ${
                           viewMode === 'grid'
-                            ? 'text-ink underline underline-offset-4'
+                            ? 'text-ink'
                             : 'text-muted hover:text-ink'
                         }`}
                       >
@@ -155,7 +155,7 @@ function MainContent() {
                         onClick={() => setViewMode('list')}
                         className={`transition-colors font-bold ${
                           viewMode === 'list'
-                            ? 'text-ink underline underline-offset-4'
+                            ? 'text-ink'
                             : 'text-muted hover:text-ink'
                         }`}
                       >
