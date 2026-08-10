@@ -1,7 +1,27 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { awardsData, pressData, clientsData } from '../data/projectsData';
-import { ExternalLink, Mail, Globe, Copy, Check, Phone, Video, Film } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+const PERSONAL_EMAIL = 'contact@ejazmehedi.com';
+const INSTAGRAM_URL = 'https://instagram.com/ezaz.mehedi';
+const LINKEDIN_URL = 'https://linkedin.com/in/ezaz-mehedi';
+
+const InstagramIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
+const LinkedinIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
 
 const bioImages = {
   default: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop",
@@ -39,111 +59,9 @@ const paragraphVariant = {
   }
 };
 
-// SVG Dynamic Curved Path Typography Engine (Detroit Paris Style) — Full Text: EJAZ MEHEDI
-const CurvedPathTypography = ({ text = "EJAZ MEHEDI" }) => {
-  const containerRef = useRef(null);
-  const pathRef = useRef(null);
-  const animFrameId = useRef(null);
-
-  // SVG Coordinate Space Dimensions
-  const viewBoxWidth = 1400;
-  const viewBoxHeight = 320;
-  const neutralY = 175; // Neutral flat baseline height
-
-  const targetMouseRef = useRef({ x: viewBoxWidth / 2, y: neutralY });
-  const currentControl = useRef({ x: viewBoxWidth / 2, y: neutralY });
-
-  useEffect(() => {
-    const loop = () => {
-      // Lerp control point coordinates for smooth inertia
-      currentControl.current.x += (targetMouseRef.current.x - currentControl.current.x) * 0.1;
-      currentControl.current.y += (targetMouseRef.current.y - currentControl.current.y) * 0.1;
-
-      if (pathRef.current) {
-        const cx = currentControl.current.x.toFixed(1);
-        const cy = currentControl.current.y.toFixed(1);
-
-        // Dynamic Quadratic Bézier Curve Path starting at (50,175), bending through (cx,cy), ending at (1350,175)
-        const d = `M 50,${neutralY} Q ${cx},${cy} 1350,${neutralY}`;
-        pathRef.current.setAttribute('d', d);
-      }
-
-      animFrameId.current = requestAnimationFrame(loop);
-    };
-
-    animFrameId.current = requestAnimationFrame(loop);
-
-    return () => {
-      if (animFrameId.current) cancelAnimationFrame(animFrameId.current);
-    };
-  }, []);
-
-  const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
-    if ('ontouchstart' in window && window.innerWidth < 768) return;
-
-    const rect = containerRef.current.getBoundingClientRect();
-    const relX = ((e.clientX - rect.left) / rect.width) * viewBoxWidth;
-    const relY = ((e.clientY - rect.top) / rect.height) * viewBoxHeight;
-
-    // Constrain curve deformation range for refined editorial elasticity
-    const clampedY = Math.max(70, Math.min(290, relY));
-
-    targetMouseRef.current = { x: relX, y: clampedY };
-  };
-
-  const handleMouseLeave = () => {
-    targetMouseRef.current = { x: viewBoxWidth / 2, y: neutralY };
-  };
-
-  return (
-    <div
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="relative w-full py-12 sm:py-16 select-none flex justify-center items-center cursor-pointer border-t border-line mt-12 overflow-visible"
-    >
-      <svg
-        viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
-        className="w-full h-auto overflow-visible max-w-[1700px] mx-auto"
-      >
-        <defs>
-          <path
-            id="dynamicEjazCurve"
-            ref={pathRef}
-            d={`M 50,${neutralY} Q 700,${neutralY} 1350,${neutralY}`}
-            fill="none"
-          />
-        </defs>
-
-        {/* Text mapped continuously along the deforming curved baseline path (detroit.paris style font) */}
-        <text
-          fill="currentColor"
-          className="text-ink font-editorial text-[5.2rem] sm:text-[6.2rem] md:text-[7.2rem] lg:text-[7.8rem] font-bold uppercase tracking-[0.04em] transition-colors hover:text-white"
-        >
-          <textPath
-            href="#dynamicEjazCurve"
-            startOffset="50%"
-            textAnchor="middle"
-          >
-            {text}
-          </textPath>
-        </text>
-      </svg>
-    </div>
-  );
-};
-
 export const AboutPage = () => {
   const [activeImageKey, setActiveImageKey] = useState('default');
   const [bioLang, setBioLang] = useState('en'); // 'en', 'bn', 'ar'
-  const [copiedEmail, setCopiedEmail] = useState(false);
-
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2200);
-  };
 
   const currentBio = bioTextData[bioLang];
 
@@ -279,79 +197,66 @@ export const AboutPage = () => {
           {/* DIRECT CONTACT AREA */}
           <div className="pt-6 border-t border-line/60 space-y-6">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono-custom tracking-[0.25em] uppercase text-muted font-bold">
-                DIRECT CONTACT & REPRESENTATION
+              <span className="text-[10px] font-sans tracking-[0.25em] uppercase text-muted font-semibold">
+                DIRECT CONTACT
               </span>
-              <span className="text-[10px] font-mono-custom text-muted uppercase">WORLDWIDE AVAILABILITY</span>
+              <span className="text-[9px] font-sans text-muted uppercase tracking-[0.2em]">WORLDWIDE AVAILABILITY</span>
             </div>
 
-            {/* Direct Email Card with 1-Click Copy */}
-            <div className="bg-surface p-4 border border-line flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div className="space-y-1">
-                <span className="text-[10px] font-mono-custom text-muted uppercase tracking-widest block">DIRECT EMAIL INQUIRIES</span>
+            {/* Personal Email Card — Electric Accent + 1-Click Copy */}
+            <div className="bg-surface border border-line p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="space-y-1.5">
+                <span className="text-[9px] font-sans text-muted uppercase tracking-[0.25em] block">PERSONAL EMAIL</span>
                 <a
-                  href="mailto:contact@ejazmehedi.com"
-                  className="text-base sm:text-lg font-mono-custom text-ink font-bold hover:underline transition-all"
+                  href={`mailto:${PERSONAL_EMAIL}`}
+                  className="text-lg sm:text-xl font-sans text-accent font-bold tracking-tight hover:brightness-110 transition-all"
                 >
-                  contact@ejazmehedi.com
+                  {PERSONAL_EMAIL}
                 </a>
               </div>
 
               <button
-                onClick={() => copyToClipboard('contact@ejazmehedi.com')}
-                className="flex items-center gap-2 text-xs font-mono-custom tracking-widest uppercase py-2 px-4 bg-ink text-canvas hover:bg-ink-soft transition-colors font-bold shrink-0"
+                onClick={() => copyToClipboard(PERSONAL_EMAIL)}
+                className={`flex items-center justify-center gap-2 text-[10px] font-bold uppercase tracking-widest py-3 px-5 text-black bg-accent transition-all shrink-0 ${
+                  copiedEmail
+                    ? 'opacity-90'
+                    : 'hover:shadow-[0_0_22px_var(--accent-glow)] active:scale-95'
+                }`}
               >
                 {copiedEmail ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>{copiedEmail ? 'COPIED!' : 'COPY EMAIL'}</span>
               </button>
             </div>
 
-            {/* Representation & Studio Details Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono-custom">
-              {/* Commercial Rep */}
-              <div className="p-4 border border-line/50 space-y-1.5 bg-surface/50">
-                <span className="text-[10px] text-muted uppercase tracking-widest block font-bold">COMMERCIAL REPRESENTATION</span>
-                <div className="text-ink font-bold">Aura Film Works (London / Tokyo)</div>
-                <a href="mailto:representation@aurafilms.co" className="text-muted hover:text-ink underline block truncate">
-                  representation@aurafilms.co
-                </a>
-              </div>
-
-              {/* Narrative Rep */}
-              <div className="p-4 border border-line/50 space-y-1.5 bg-surface/50">
-                <span className="text-[10px] text-muted uppercase tracking-widest block font-bold">NARRATIVE & FEATURE AGENCY</span>
-                <div className="text-ink font-bold">WME Agency (Los Angeles)</div>
-                <a href="mailto:cinematography@wmeagency.com" className="text-muted hover:text-ink underline block truncate">
-                  cinematography@wmeagency.com
-                </a>
-              </div>
-            </div>
-
-            {/* Social & Studio Phone Links */}
-            <div className="flex flex-wrap items-center gap-6 pt-2 text-xs font-mono-custom tracking-widest uppercase text-muted">
+            {/* Social Media — Brand Logo Tiles */}
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-1">
               <a
-                href="https://instagram.com"
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1.5 hover:text-ink transition-colors"
+                className="group flex items-center gap-3 text-muted hover:text-accent transition-colors"
               >
-                <Video className="w-3.5 h-3.5" />
-                <span>INSTAGRAM</span>
+                <span className="w-9 h-9 border border-line flex items-center justify-center group-hover:border-accent group-hover:bg-accent-soft transition-all">
+                  <InstagramIcon className="w-4 h-4" />
+                </span>
+                <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.2em]">Instagram</span>
               </a>
 
               <a
-                href="https://vimeo.com"
+                href={LINKEDIN_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1.5 hover:text-ink transition-colors"
+                className="group flex items-center gap-3 text-muted hover:text-accent transition-colors"
               >
-                <Film className="w-3.5 h-3.5" />
-                <span>VIMEO</span>
+                <span className="w-9 h-9 border border-line flex items-center justify-center group-hover:border-accent group-hover:bg-accent-soft transition-all">
+                  <LinkedinIcon className="w-4 h-4" />
+                </span>
+                <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.2em]">LinkedIn</span>
               </a>
 
-              <div className="flex items-center gap-1.5 text-muted/80">
-                <Phone className="w-3.5 h-3.5" />
-                <span>LONDON: +44 20 7946 0912</span>
+              <div className="flex items-center gap-2.5 text-muted">
+                <Phone className="w-3.5 h-3.5" strokeWidth={1.5} />
+                <span className="text-[11px] font-sans uppercase tracking-[0.2em]">London +44 20 7946 0912</span>
               </div>
             </div>
 
@@ -455,17 +360,6 @@ export const AboutPage = () => {
             </div>
           ))}
         </div>
-      </motion.div>
-
-      {/* BOTTOM SECTION: SVG CURVED BASELINE PATH TYPOGRAPHY — FULL NAME: EJAZ MEHEDI */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full"
-      >
-        <CurvedPathTypography text="EJAZ MEHEDI" />
       </motion.div>
 
     </motion.div>

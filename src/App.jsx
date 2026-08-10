@@ -187,8 +187,8 @@ function MainContent() {
             </AnimatePresence>
           </main>
 
-          {/* Minimal Footer */}
-          <Footer />
+          {/* Giant Signature Footer — Information page only */}
+          {activeTab === 'about' && !selectedProject && <Footer />}
         </motion.div>
       )}
     </div>

@@ -1,0 +1,33 @@
+Here are the translations of the names you shared from the menu:
+
+ALL PROJECTS
+
+বাংলা (Bangla): সব প্রকল্প
+
+English: All Projects
+
+العربية (Arabic): جميع المشاريع
+
+FILMS
+
+বাংলা (Bangla): চলচ্চিত্র
+
+English: Films
+
+العربية (Arabic): أفلام
+
+COMMERCIALS
+
+বাংলা (Bangla): বিজ্ঞাপন
+
+English: Commercials
+
+العربية (Arabic): إعلانات
+
+STILLS
+
+বাংলা (Bangla): স্থিরচিত্র
+
+English: Stills
+
+العربية (Arabic): صور ثابتة

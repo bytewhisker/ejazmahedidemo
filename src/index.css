@@ -1,6 +1,49 @@
 @import "tailwindcss";
 
+/* Neue Montreal (Pangram Pangram) — self-hosted; drop the trial .woff2 files into public/fonts/ to activate.
+   Until then the stack falls back to Inter, the closest free neo-grotesque. */
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
+  --font-mega: "Bodoni Moda", "Times New Roman", serif;
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
@@ -10,6 +53,8 @@
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
   --color-line-heavy: var(--line-heavy);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
 }
 
 @layer base {
@@ -24,6 +69,9 @@
     --line: rgba(255, 255, 255, 0.12);
     --line-strong: rgba(255, 255, 255, 0.28);
     --line-heavy: #262626;
+    --accent: #b5ff32;
+    --accent-soft: rgba(181, 255, 50, 0.12);
+    --accent-glow: rgba(181, 255, 50, 0.35);
     --header-bg: rgba(4, 4, 4, 0.95);
     color-scheme: dark;
   }
@@ -38,6 +86,9 @@
     --line: rgba(0, 0, 0, 0.14);
     --line-strong: rgba(0, 0, 0, 0.3);
     --line-heavy: #d4d4d8;
+    --accent: #3f9d06;
+    --accent-soft: rgba(63, 157, 6, 0.12);
+    --accent-glow: rgba(63, 157, 6, 0.3);
     --header-bg: rgba(245, 245, 243, 0.92);
     color-scheme: light;
   }
@@ -45,7 +96,7 @@
   body {
     background-color: var(--canvas);
     color: var(--ink);
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-family: 'Neue Montreal', Inter, Arial, Helvetica, system-ui, sans-serif;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
@@ -54,19 +105,15 @@
     transition: background-color 0.4s ease, color 0.4s ease;
   }
 
-  /* Monospace Utility */
-  .font-mono-custom {
-    font-family: 'Space Mono', monospace;
-  }
-
-  /* High-Contrast Editorial Serif Utility (Detroit Paris Style) */
-  .font-editorial {
-    font-family: 'Playfair Display', 'Bodoni Moda', 'Cinzel', Georgia, serif;
-  }
-
-  /* Heavy Extended Display Grotesk Utility (Chris Macari / Druk Wide Style) */
+  /* Single Minimalist Sans-Serif System — Neue Montreal with Inter fallback */
+  .font-mono-custom,
+  .font-editorial,
   .font-display-heavy {
-    font-family: 'Syne', 'Unbounded', 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'Neue Montreal', Inter, Arial, Helvetica, system-ui, sans-serif;
+  }
+
+  /* Heavy Extended Display Grotesk Utility (kept for weight, same family) */
+  .font-display-heavy {
     font-weight: 800;
   }
 
