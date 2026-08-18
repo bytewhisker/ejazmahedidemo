@@ -71,11 +71,21 @@ export const AboutPage = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -16 }}
       transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-      className="min-h-screen bg-canvas text-ink pt-4 md:pt-6 pb-12 px-4 sm:px-8 max-w-[1700px] mx-auto space-y-16 md:space-y-24 font-sans select-none"
+      className="min-h-screen text-black pt-2 md:pt-4 pb-12 px-4 sm:px-8 max-w-[1700px] mx-auto space-y-12 md:space-y-16 font-sans select-none"
     >
       
+      {/* OVERSIZED HERO SECTION TITLE — MIKA ABERRA STYLE */}
+      <div className="pt-2 md:pt-4 pb-8 md:pb-12 border-b border-black/20 space-y-3">
+        <h1 className="text-[14vw] sm:text-[12vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase text-black font-sans select-none">
+          INFORMATION
+        </h1>
+        <p className="text-xs sm:text-sm font-mono-custom tracking-[0.22em] uppercase text-black/80 font-bold pl-1">
+          the biography & direct contact archive of <span className="font-editorial italic lowercase font-normal">ejaz mehedi</span>
+        </p>
+      </div>
+
       {/* TOP SECTION: BIOGRAPHY + DIRECT CONTACT */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start border-b border-line pb-16 md:pb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start border-b border-black/20 pb-16 md:pb-20">
         
         {/* Left Side: Photo Frame Container */}
         <motion.div
@@ -84,12 +94,12 @@ export const AboutPage = () => {
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
           className="lg:col-span-5 space-y-3"
         >
-          <div className="flex items-center gap-2 text-xs font-mono-custom tracking-[0.25em] uppercase text-muted font-bold">
-            <span className="w-2 h-2 rounded-full bg-ink animate-pulse" />
+          <div className="flex items-center gap-2 text-xs font-mono-custom tracking-[0.25em] uppercase text-black/80 font-bold">
+            <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
             <span>BIOGRAPHY // DIRECTOR & DOP</span>
           </div>
 
-          <div className="w-full aspect-square overflow-hidden bg-surface border border-line relative">
+          <div className="w-full aspect-square overflow-hidden bg-black/10 border border-black/30 relative">
             <img
               src={bioImages[activeImageKey] || bioImages.default}
               alt="Ejaz Mehedi Portrait"
@@ -102,8 +112,8 @@ export const AboutPage = () => {
         <div className="lg:col-span-7 space-y-8 pt-2">
           
           {/* Biography Header with Tiny Language Selector */}
-          <div className="flex items-center justify-between border-b border-line/40 pb-3">
-            <span className="text-xs font-mono-custom tracking-[0.25em] uppercase text-muted font-bold">
+          <div className="flex items-center justify-between border-b border-black/20 pb-3">
+            <span className="text-xs font-mono-custom tracking-[0.25em] uppercase text-black/80 font-bold">
               BIOGRAPHY ARCHIVE
             </span>
 
@@ -112,28 +122,28 @@ export const AboutPage = () => {
               <button
                 onClick={() => setBioLang('en')}
                 title="English"
-                className={`px-2 py-1 transition-all rounded-sm font-bold text-xs ${
-                  bioLang === 'en' ? 'bg-ink text-canvas font-black scale-105' : 'text-muted hover:text-ink hover:bg-surface'
+                className={`px-2.5 py-1 transition-all rounded-sm font-bold text-xs ${
+                  bioLang === 'en' ? 'bg-black text-[#b5ff32] font-black scale-105' : 'text-black/70 hover:text-black hover:bg-black/10'
                 }`}
               >
                 A
               </button>
-              <span className="text-muted/40 text-[10px]">/</span>
+              <span className="text-black/30 text-[10px]">/</span>
               <button
                 onClick={() => setBioLang('bn')}
                 title="বাংলা"
-                className={`px-2 py-1 transition-all rounded-sm font-bold text-xs font-sans ${
-                  bioLang === 'bn' ? 'bg-ink text-canvas font-black scale-105' : 'text-muted hover:text-ink hover:bg-surface'
+                className={`px-2.5 py-1 transition-all rounded-sm font-bold text-xs font-sans ${
+                  bioLang === 'bn' ? 'bg-black text-[#b5ff32] font-black scale-105' : 'text-black/70 hover:text-black hover:bg-black/10'
                 }`}
               >
                 অ
               </button>
-              <span className="text-muted/40 text-[10px]">/</span>
+              <span className="text-black/30 text-[10px]">/</span>
               <button
                 onClick={() => setBioLang('ar')}
                 title="العربية"
-                className={`px-2 py-1 transition-all rounded-sm font-bold text-xs font-sans ${
-                  bioLang === 'ar' ? 'bg-ink text-canvas font-black scale-105' : 'text-muted hover:text-ink hover:bg-surface'
+                className={`px-2.5 py-1 transition-all rounded-sm font-bold text-xs font-sans ${
+                  bioLang === 'ar' ? 'bg-black text-[#b5ff32] font-black scale-105' : 'text-black/70 hover:text-black hover:bg-black/10'
                 }`}
               >
                 ع
@@ -149,7 +159,7 @@ export const AboutPage = () => {
               animate="animate"
               exit={{ opacity: 0, y: -10 }}
               transition={{ staggerChildren: 0.12 }}
-              className={`space-y-5 text-sm sm:text-base leading-relaxed text-ink-soft font-light ${
+              className={`space-y-5 text-sm sm:text-base leading-relaxed text-black font-medium ${
                 bioLang === 'ar' ? 'text-right dir-rtl font-sans' : ''
               }`}
             >
@@ -163,7 +173,7 @@ export const AboutPage = () => {
                   onMouseEnter={() => setActiveImageKey('kodak')}
                   onMouseLeave={() => setActiveImageKey('default')}
                   onTouchStart={() => setActiveImageKey('kodak')}
-                  className="px-2 py-0.5 mx-1 bg-ink text-canvas font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-ink-soft transition-colors inline-block"
+                  className="px-2 py-0.5 mx-1 bg-black text-[#b5ff32] font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-black/80 transition-colors inline-block"
                 >
                   [ KODAK 35MM ]
                 </span>
@@ -172,7 +182,7 @@ export const AboutPage = () => {
                   onMouseEnter={() => setActiveImageKey('cannes')}
                   onMouseLeave={() => setActiveImageKey('default')}
                   onTouchStart={() => setActiveImageKey('cannes')}
-                  className="px-2 py-0.5 mx-1 bg-ink text-canvas font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-ink-soft transition-colors inline-block"
+                  className="px-2 py-0.5 mx-1 bg-black text-[#b5ff32] font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-black/80 transition-colors inline-block"
                 >
                   [ GOLD CANNES LION ]
                 </span>
@@ -185,7 +195,7 @@ export const AboutPage = () => {
                   onMouseEnter={() => setActiveImageKey('nyc')}
                   onMouseLeave={() => setActiveImageKey('default')}
                   onTouchStart={() => setActiveImageKey('nyc')}
-                  className="px-2 py-0.5 mx-1 bg-ink text-canvas font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-ink-soft transition-colors inline-block"
+                  className="px-2 py-0.5 mx-1 bg-black text-[#b5ff32] font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-black/80 transition-colors inline-block"
                 >
                   [ GLOBAL CAMPAIGNS ]
                 </span>
@@ -195,19 +205,19 @@ export const AboutPage = () => {
           </AnimatePresence>
 
           {/* DIRECT CONTACT AREA */}
-          <div className="pt-6 border-t border-line/60 space-y-6">
-            <span className="text-[10px] font-sans tracking-[0.25em] uppercase text-muted font-semibold">
+          <div className="pt-6 border-t border-black/20 space-y-6">
+            <span className="text-[10px] font-sans tracking-[0.25em] uppercase text-black/80 font-bold">
               DIRECT CONTACT
             </span>
 
-            {/* Personal Email — Electric Green Accent */}
-            <div className="bg-surface border border-line p-4 sm:p-5">
-              <span className="text-[9px] font-sans text-muted uppercase tracking-[0.25em] block">
+            {/* Personal Email Card */}
+            <div className="bg-black text-[#b5ff32] border border-black p-5 sm:p-6 rounded-sm shadow-xl">
+              <span className="text-[9px] font-sans text-[#b5ff32]/70 uppercase tracking-[0.25em] block font-bold">
                 PERSONAL EMAIL
               </span>
               <a
                 href={`mailto:${PERSONAL_EMAIL}`}
-                className="text-lg sm:text-xl font-sans text-accent font-bold tracking-tight hover:brightness-110 transition-all"
+                className="text-lg sm:text-xl md:text-2xl font-mono-custom text-[#b5ff32] font-bold tracking-tight hover:underline transition-all"
               >
                 {PERSONAL_EMAIL}
               </a>
@@ -220,9 +230,9 @@ export const AboutPage = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="group flex items-center text-accent transition-colors"
+                className="group flex items-center text-black transition-colors"
               >
-                <span className="w-9 h-9 border border-accent/40 flex items-center justify-center group-hover:bg-accent-soft group-hover:border-accent transition-all">
+                <span className="w-10 h-10 border border-black flex items-center justify-center group-hover:bg-black group-hover:text-[#b5ff32] transition-all">
                   <InstagramIcon className="w-4 h-4" />
                 </span>
               </a>
@@ -232,9 +242,9 @@ export const AboutPage = () => {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
-                className="group flex items-center text-accent transition-colors"
+                className="group flex items-center text-black transition-colors"
               >
-                <span className="w-9 h-9 border border-accent/40 flex items-center justify-center group-hover:bg-accent-soft group-hover:border-accent transition-all">
+                <span className="w-10 h-10 border border-black flex items-center justify-center group-hover:bg-black group-hover:text-[#b5ff32] transition-all">
                   <LinkedinIcon className="w-4 h-4" />
                 </span>
               </a>
@@ -252,9 +262,9 @@ export const AboutPage = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="space-y-6 md:space-y-8 border-b border-line pb-16 md:pb-20"
+        className="space-y-6 md:space-y-8 border-b border-black/20 pb-16 md:pb-20"
       >
-        <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-muted">
+        <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-black/80">
           PRESS & INTERVIEWS
         </h2>
 
@@ -262,16 +272,16 @@ export const AboutPage = () => {
           {pressData.map((item) => (
             <div
               key={item.id}
-              className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 border-b border-line/60 pb-6 group"
+              className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 border-b border-black/20 pb-6 group"
             >
               <div className="space-y-1">
-                <span className="text-xs font-mono-custom text-muted uppercase tracking-widest block">
+                <span className="text-xs font-mono-custom text-black/70 uppercase tracking-widest block font-bold">
                   {item.publisher} — {item.date}
                 </span>
-                <h3 className="text-base sm:text-lg md:text-xl font-serif text-ink font-light group-hover:text-ink-soft transition-colors">
+                <h3 className="text-base sm:text-lg md:text-xl font-sans text-black font-bold group-hover:opacity-70 transition-opacity">
                   {item.title}
                 </h3>
-                <p className="text-xs text-muted font-light max-w-2xl">
+                <p className="text-xs text-black/80 font-medium max-w-2xl">
                   {item.description}
                 </p>
               </div>
@@ -281,7 +291,7 @@ export const AboutPage = () => {
                   href={item.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-xs font-mono-custom text-muted hover:text-ink uppercase tracking-widest shrink-0 flex items-center gap-1"
+                  className="text-xs font-mono-custom text-black font-bold hover:underline uppercase tracking-widest shrink-0 flex items-center gap-1"
                 >
                   <span>READ ARTICLE</span>
                   <ExternalLink className="w-3 h-3" />
@@ -298,22 +308,22 @@ export const AboutPage = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="space-y-6 md:space-y-8 border-b border-line pb-16 md:pb-20"
+        className="space-y-6 md:space-y-8 border-b border-black/20 pb-16 md:pb-20"
       >
-        <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-muted">
+        <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-black/80">
           AWARDS & HONORS
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
           {awardsData.map((award) => (
             <div key={award.id} className="space-y-2">
-              <span className="text-xs font-mono-custom text-muted uppercase tracking-widest block">
+              <span className="text-xs font-mono-custom text-black/70 uppercase tracking-widest block font-bold">
                 {award.date} — {award.organization}
               </span>
-              <h3 className="text-sm sm:text-base font-serif text-ink font-light">
+              <h3 className="text-sm sm:text-base font-sans text-black font-bold">
                 {award.title}
               </h3>
-              <p className="text-xs text-muted font-light leading-relaxed">
+              <p className="text-xs text-black/80 font-medium leading-relaxed">
                 {award.description}
               </p>
             </div>
@@ -329,13 +339,13 @@ export const AboutPage = () => {
         transition={{ duration: 0.6 }}
         className="space-y-6 md:space-y-8 pb-12"
       >
-        <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-muted">
+        <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-black/80">
           SELECTED CLIENTS
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 text-xs font-mono-custom text-ink-soft">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 text-xs font-mono-custom text-black font-bold">
           {clientsData.map((client, idx) => (
-            <div key={idx} className="border-l border-line-heavy pl-3 py-1">
+            <div key={idx} className="border-l border-black/40 pl-3 py-1">
               {client}
             </div>
           ))}

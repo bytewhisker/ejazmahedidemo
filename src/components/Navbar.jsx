@@ -30,8 +30,14 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const isLime = activeTab === 'about';
+
   return (
-    <header className="sticky top-0 z-50 glass-header px-4 sm:px-8 md:px-12 pt-1 md:pt-2 pb-2 border-b border-line transition-all duration-300 select-none">
+    <header className={`sticky top-0 z-50 px-4 sm:px-8 md:px-12 pt-1 md:pt-2 pb-2 transition-all duration-500 select-none ${
+      isLime
+        ? 'bg-[#b5ff32]/95 backdrop-blur-md border-b border-black/20 text-black'
+        : 'glass-header border-b border-line'
+    }`}>
       <div className="w-full mx-auto flex flex-col items-center gap-1.5">
 
         {/* TOP HERO HEADER TITLE BANNER — GIANT OVERSIZED WORDMARK */}
@@ -46,6 +52,7 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
           className="w-full flex items-center justify-between md:justify-center relative overflow-visible py-1"
         >
           <SmoothHeaderName
+            isLime={isLime}
             onClick={() => handleNavClick('projects', 'all')}
           />
 
@@ -53,14 +60,14 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
           <div className="md:hidden flex items-center gap-3 absolute right-0 top-1/2 -translate-y-1/2">
             <button
               onClick={toggleTheme}
-              className="p-1.5 text-muted hover:text-ink transition-colors"
+              className={`p-1.5 transition-colors ${isLime ? 'text-black/70 hover:text-black' : 'text-muted hover:text-ink'}`}
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-1.5 text-ink focus:outline-none"
+              className={`p-1.5 focus:outline-none ${isLime ? 'text-black' : 'text-ink'}`}
               aria-label="Toggle Menu"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -78,10 +85,11 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               arText="جميع المشاريع"
               onClick={() => handleNavClick('projects', 'all')}
               isActive={activeTab === 'projects' && activeFilter === 'all'}
-              className={`transition-colors ${activeTab === 'projects' && activeFilter === 'all'
-                  ? 'text-accent underline underline-offset-4'
-                  : 'text-accent hover:text-accent'
-                }`}
+              className={`transition-colors ${
+                activeTab === 'projects' && activeFilter === 'all'
+                  ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
+                  : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
+              }`}
             />
 
             <GlitchNavItem
@@ -90,10 +98,11 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               arText="أفلام"
               onClick={() => handleNavClick('projects', 'films')}
               isActive={activeTab === 'projects' && activeFilter === 'films'}
-              className={`transition-colors ${activeTab === 'projects' && activeFilter === 'films'
-                  ? 'text-accent underline underline-offset-4'
-                  : 'text-accent hover:text-accent'
-                }`}
+              className={`transition-colors ${
+                activeTab === 'projects' && activeFilter === 'films'
+                  ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
+                  : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
+              }`}
             />
 
             <GlitchNavItem
@@ -102,10 +111,11 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               arText="إعلانات"
               onClick={() => handleNavClick('projects', 'commercial')}
               isActive={activeTab === 'projects' && activeFilter === 'commercial'}
-              className={`transition-colors ${activeTab === 'projects' && activeFilter === 'commercial'
-                  ? 'text-accent underline underline-offset-4'
-                  : 'text-accent hover:text-accent'
-                }`}
+              className={`transition-colors ${
+                activeTab === 'projects' && activeFilter === 'commercial'
+                  ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
+                  : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
+              }`}
             />
 
             <GlitchNavItem
@@ -114,10 +124,11 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               arText="صور ثابتة"
               onClick={() => handleNavClick('stills', 'all')}
               isActive={activeTab === 'stills'}
-              className={`transition-colors ${activeTab === 'stills'
-                  ? 'text-accent underline underline-offset-4'
-                  : 'text-accent hover:text-accent'
-                }`}
+              className={`transition-colors ${
+                activeTab === 'stills'
+                  ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
+                  : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
+              }`}
             />
           </nav>
 
@@ -128,15 +139,18 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               arText="معلومات"
               onClick={() => handleNavClick('about', 'all')}
               isActive={activeTab === 'about'}
-              className={`transition-colors ${activeTab === 'about'
-                  ? 'text-accent underline underline-offset-4'
-                  : 'text-accent hover:text-accent'
-                }`}
+              className={`transition-colors ${
+                activeTab === 'about'
+                  ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
+                  : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
+              }`}
             />
 
             <button
               onClick={toggleTheme}
-              className="flex items-center gap-2 text-muted hover:text-ink transition-colors font-bold"
+              className={`flex items-center gap-2 transition-colors font-bold ${
+                isLime ? 'text-black/70 hover:text-black' : 'text-muted hover:text-ink'
+              }`}
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
@@ -155,7 +169,9 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden overflow-hidden bg-canvas/95 border-t border-line mt-2 px-4 py-4 space-y-4 select-none"
+            className={`md:hidden overflow-hidden border-t mt-2 px-4 py-4 space-y-4 select-none ${
+              isLime ? 'bg-[#b5ff32] border-black/20 text-black' : 'bg-canvas/95 border-line'
+            }`}
           >
             <nav className="flex flex-col items-start space-y-3 text-xs font-mono-custom tracking-[0.2em] uppercase font-bold">
               <GlitchNavItem

@@ -5,17 +5,17 @@ const names = [
   { 
     id: 'en', 
     text: "EJAZ MEHEDI", 
-    fontClass: "font-mega tracking-tighter font-black text-[clamp(2.2rem,8.6vw,13.5rem)] leading-none" 
+    fontClass: "font-mega tracking-tighter font-black text-[clamp(1.75rem,8vw,13.5rem)] leading-none" 
   },
   { 
     id: 'bn', 
     text: "এজাজ মেহেদী", 
-    fontClass: "font-sans tracking-normal font-black text-[clamp(2.0rem,7.2vw,10.5rem)] leading-none" 
+    fontClass: "font-sans tracking-normal font-black text-[clamp(1.6rem,7vw,10.5rem)] leading-none" 
   },
   { 
     id: 'ar', 
     text: "إعزاز مهدي", 
-    fontClass: "font-sans tracking-normal font-black text-[clamp(2.0rem,7.2vw,10.5rem)] leading-none" 
+    fontClass: "font-sans tracking-normal font-black text-[clamp(1.6rem,7vw,10.5rem)] leading-none" 
   }
 ];
 
@@ -53,7 +53,7 @@ const itemVariants = {
   }
 };
 
-export const SmoothHeaderName = ({ onClick }) => {
+export const SmoothHeaderName = ({ onClick, isLime = false }) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -71,7 +71,7 @@ export const SmoothHeaderName = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="relative flex items-center justify-center h-[5.2rem] sm:h-[7.2rem] md:h-[9.5rem] lg:h-[11.8rem] focus:outline-none cursor-pointer select-none group w-full overflow-visible -mx-4 sm:-mx-8 md:-mx-12"
+      className="relative flex items-center justify-center h-[3.8rem] sm:h-[6.2rem] md:h-[9.5rem] lg:h-[11.8rem] focus:outline-none cursor-pointer select-none group w-full overflow-visible"
       aria-label="Ejaz Mehedi Home"
     >
       <AnimatePresence mode="wait">
@@ -81,7 +81,9 @@ export const SmoothHeaderName = ({ onClick }) => {
           initial="initial"
           animate="animate"
           exit="exit"
-          className={`text-ink uppercase group-hover:text-ink-soft transition-colors whitespace-nowrap w-full text-center flex items-center justify-center h-full ${current.fontClass}`}
+          className={`uppercase transition-colors whitespace-nowrap w-full text-center flex items-center justify-center h-full ${
+            isLime ? 'text-black group-hover:text-black/80' : 'text-ink group-hover:text-ink-soft'
+          } ${current.fontClass}`}
         >
           {items.map((item, itemIdx) => (
             <motion.span

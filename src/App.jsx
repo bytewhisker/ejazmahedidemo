@@ -47,7 +47,11 @@ function MainContent() {
   const viewKey = selectedProject ? `project-${selectedProject.id}` : `${activeTab}-${activeFilter}-${viewMode}`;
 
   return (
-    <div className="min-h-screen bg-canvas text-ink flex flex-col font-sans selection:bg-ink selection:text-canvas relative">
+    <div className={`min-h-screen flex flex-col font-sans relative transition-colors duration-700 ease-in-out ${
+      activeTab === 'about' && !selectedProject
+        ? 'bg-[#b5ff32] text-black selection:bg-black selection:text-[#b5ff32]'
+        : 'bg-canvas text-ink selection:bg-ink selection:text-canvas'
+    }`}>
       
       {/* Custom Trailing Mouse Cursor */}
       <CustomCursor />

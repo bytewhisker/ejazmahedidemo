@@ -120,20 +120,21 @@ export const StillsGallery = () => {
       className="w-full min-h-[calc(100vh-140px)] flex flex-col justify-between select-none py-2 md:py-4"
     >
       {/* EVGENIA ARBUGAEVA CLEAN CAROUSEL LAYOUT */}
-      <div className="flex-1 flex flex-col lg:flex-row items-stretch gap-6 lg:gap-12 w-full">
+      <div className="flex-1 flex flex-col lg:flex-row items-stretch gap-4 lg:gap-12 w-full">
 
         {/* LEFT SIDEBAR: CLEAN COLLECTION LIST (NO NUMBERS) */}
-        <aside className="w-full lg:w-72 shrink-0 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-line/60 pb-6 lg:pb-0 lg:pr-8">
-          <div className="space-y-6">
-            <div className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-muted border-b border-line/40 pb-2">
-              PHOTOGRAPHY
+        <aside className="w-full lg:w-72 shrink-0 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-line/60 pb-3 lg:pb-0 lg:pr-8">
+          <div className="space-y-4 lg:space-y-6">
+            <div className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-muted border-b border-line/40 pb-2 flex items-center justify-between">
+              <span>PHOTOGRAPHY ARCHIVE</span>
+              <span className="text-[10px] text-muted/60 lg:hidden">SWIPE FOR STILLS →</span>
             </div>
 
-            <nav className="space-y-4">
+            <nav className="flex lg:flex-col overflow-x-auto whitespace-nowrap gap-4 lg:gap-0 lg:space-y-4 scrollbar-none pb-1 lg:pb-0">
               {collections.map((col) => {
                 const isActive = col.id === activeCollectionId;
                 return (
-                  <div key={col.id} className="space-y-2">
+                  <div key={col.id} className="shrink-0 space-y-2">
                     <button
                       onClick={() => {
                         setActiveCollectionId(col.id);
@@ -143,8 +144,8 @@ export const StillsGallery = () => {
                           targetScrollLeft.current = 0;
                         }
                       }}
-                      className={`text-left text-xs font-mono-custom tracking-[0.18em] uppercase transition-colors block w-full font-bold cursor-pointer ${
-                        isActive ? 'text-ink' : 'text-muted hover:text-ink'
+                      className={`text-left text-xs font-mono-custom tracking-[0.18em] uppercase transition-colors block font-bold cursor-pointer ${
+                        isActive ? 'text-ink underline lg:no-underline' : 'text-muted hover:text-ink'
                       }`}
                     >
                       {col.title}
@@ -156,7 +157,7 @@ export const StillsGallery = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         transition={{ duration: 0.3 }}
-                        className="pl-4 space-y-1.5 border-l border-line/40 my-2"
+                        className="hidden lg:block pl-4 space-y-1.5 border-l border-line/40 my-2"
                       >
                         {col.series.map((item) => (
                           <li key={item.id}>
@@ -202,7 +203,7 @@ export const StillsGallery = () => {
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseLeave}
-            className="flex-1 flex items-center gap-6 md:gap-8 overflow-x-auto scrollbar-none py-2 select-none cursor-grab active:cursor-grabbing"
+            className="flex-1 flex items-center gap-4 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-none py-2 select-none cursor-grab active:cursor-grabbing"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {activeCollection.series.map((item, idx) => (
@@ -213,13 +214,11 @@ export const StillsGallery = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
                 onClick={() => setLightboxIndex(idx)}
-                className="shrink-0 group relative flex flex-col space-y-3"
+                className="shrink-0 group relative flex flex-col space-y-3 w-[78vw] sm:w-[50vw] md:w-auto"
               >
                 <div
                   data-cursor="stills"
-                  data-cursor-text="ZOOM"
-                  data-cursor-subtext={item.location}
-                  className={`relative h-[60vh] md:h-[68vh] max-h-[760px] ${item.aspect} bg-surface overflow-hidden border border-line/40 transition-colors group-hover:border-ink-soft`}
+                  className={`relative h-[48vh] sm:h-[58vh] md:h-[68vh] max-h-[760px] ${item.aspect} bg-surface overflow-hidden border border-line/40 transition-colors group-hover:border-ink-soft`}
                 >
                   <img
                     src={item.url}
