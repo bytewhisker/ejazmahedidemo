@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Pause, Volume2, VolumeX, Maximize } from 'lucide-react';
 
-export const CustomPlayer = ({ poster, videoUrl, title }) => {
+export const CustomPlayer = ({ poster, videoUrl, embedUrl, vimeoId, title }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -12,8 +12,31 @@ export const CustomPlayer = ({ poster, videoUrl, title }) => {
     setIsLoading(true);
     setIsPlaying(false);
     setProgress(0);
-  }, [videoUrl]);
+  }, [videoUrl, embedUrl, vimeoId]);
 
+  // Determine effective Vimeo embed URL
+  const effectiveVimeoUrl = vimeoId 
+    ? `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0&badge=0&autopause=0`
+    : embedUrl && (embedUrl.includes('vimeo.com') || embedUrl.includes('youtube.com'))
+      ? embedUrl
+      : null;
+
+  // Iframe Embed Player (Vimeo / YouTube) — Full Width Responsive 16:9 Cinema Container
+  if (effectiveVimeoUrl) {
+    return (
+      <div className="relative w-full aspect-video bg-black overflow-hidden select-none rounded-sm shadow-2xl">
+        <iframe
+          src={effectiveVimeoUrl}
+          title={title || "Video Player"}
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full border-0 bg-black"
+        />
+      </div>
+    );
+  }
+
+  // HTML5 Video Player
   const handlePlayToggle = () => {
     if (!videoRef.current) return;
     if (isPlaying) {
@@ -60,7 +83,7 @@ export const CustomPlayer = ({ poster, videoUrl, title }) => {
   };
 
   return (
-    <div className="relative w-full aspect-video bg-black overflow-hidden group select-none">
+    <div className="relative w-full aspect-video bg-black overflow-hidden group select-none rounded-sm shadow-2xl">
       
       {/* Video Poster Cover Image */}
       {!isPlaying && (
@@ -83,17 +106,17 @@ export const CustomPlayer = ({ poster, videoUrl, title }) => {
         onEnded={() => setIsPlaying(false)}
         onClick={handlePlayToggle}
         playsInline
-        className="w-full h-full object-contain z-0 cursor-pointer"
+        className="w-full h-full object-cover z-0 cursor-pointer"
       />
 
       {/* Center Play Button if paused */}
       {!isPlaying && (
         <button
           onClick={handlePlayToggle}
-          className="absolute inset-0 z-30 flex items-center justify-center bg-black/30 hover:bg-black/10 transition-colors group/play"
+          className="absolute inset-0 z-30 flex items-center justify-center bg-black/40 hover:bg-black/20 transition-colors group/play"
         >
-          <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shadow-2xl pl-0.5 transform group-hover/play:scale-110 transition-transform">
-            <Play className="w-7 h-7 fill-current text-black" />
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white text-black flex items-center justify-center shadow-2xl pl-1 transform group-hover/play:scale-110 transition-transform">
+            <Play className="w-7 h-7 sm:w-8 sm:h-8 fill-current text-black" />
           </div>
         </button>
       )}

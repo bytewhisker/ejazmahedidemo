@@ -256,6 +256,7 @@ export const StillsGallery = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightboxIndex(null)}
+            onContextMenu={(e) => e.preventDefault()}
             className="fixed inset-0 z-[9999] bg-black/95 flex flex-col justify-between p-4 sm:p-8"
           >
             <div className="w-full flex items-center justify-between text-xs font-mono-custom tracking-widest uppercase text-muted z-10">
@@ -270,11 +271,22 @@ export const StillsGallery = () => {
               </button>
             </div>
 
-            <div className="relative flex-1 flex items-center justify-center my-4">
+            <div 
+              className="relative flex-1 flex items-center justify-center my-4 overflow-hidden"
+              onContextMenu={(e) => e.preventDefault()}
+            >
               <img
                 src={activeCollection.series[lightboxIndex].url}
                 alt={activeCollection.series[lightboxIndex].title}
-                className="max-w-full max-h-[82vh] object-contain border border-line shadow-2xl"
+                draggable={false}
+                onDragStart={(e) => e.preventDefault()}
+                onContextMenu={(e) => e.preventDefault()}
+                className="max-w-full max-h-[82vh] object-contain border border-line shadow-2xl pointer-events-none select-none"
+              />
+              {/* Transparent overlay blocking right-click context menu */}
+              <div 
+                onContextMenu={(e) => e.preventDefault()} 
+                className="absolute inset-0 z-20 cursor-default"
               />
             </div>
 

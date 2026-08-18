@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { CinematicLoadingScreen } from './components/CinematicLoadingScreen';
@@ -10,7 +10,8 @@ import { StillsGallery } from './components/StillsGallery';
 import { AboutPage } from './components/AboutPage';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
-import { projectsData } from './data/projectsData';
+import { AdminCMS } from './components/AdminCMS';
+import { getInitialCmsData, saveCmsData, fetchCmsDataFromSupabase } from './services/cmsService';
 import { AnimatePresence, motion } from 'framer-motion';
 
 function MainContent() {
@@ -21,20 +22,47 @@ function MainContent() {
   const [viewMode, setViewMode] = useState('grid'); // 'grid', 'list'
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Filter projects list
-  const filteredProjects = projectsData.filter((project) => {
+  // CMS State
+  const [cmsData, setCmsData] = useState(() => getInitialCmsData());
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+
+  // Check URL slug / query / hash for /admin
+  useEffect(() => {
+    const path = window.location.pathname;
+    const search = window.location.search;
+    const hash = window.location.hash;
+
+    if (path.includes('/admin') || search.includes('admin=true') || hash === '#admin') {
+      setIsAdminOpen(true);
+    }
+
+    // Fetch latest cloud state from Supabase on mount
+    fetchCmsDataFromSupabase().then((cloudData) => {
+      if (cloudData && Array.isArray(cloudData.projects)) {
+        setCmsData(cloudData);
+      }
+    });
+  }, []);
+
+  // Save handler for Admin CMS
+  const handleSaveCmsData = async (newData) => {
+    setCmsData(newData);
+    await saveCmsData(newData);
+  };
+
+  // Filter active projects list from CMS data
+  const projects = cmsData.projects || [];
+  const filteredProjects = projects.filter((project) => {
     if (activeFilter === 'films') return project.category === 'Films';
     if (activeFilter === 'commercial') return project.category === 'Commercial';
     return true;
   });
 
   const handleSelectProject = (project) => {
-    // Trigger video page full-screen loading GIF
     setIsVideoLoading(true);
     setSelectedProject(project);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Hide loader after 1.1s page transition
     setTimeout(() => {
       setIsVideoLoading(false);
     }, 1100);
@@ -59,6 +87,18 @@ function MainContent() {
       {/* Film Grain Subtle Overlay */}
       <div className="film-grain" />
 
+      {/* ADMIN CMS MODAL */}
+      <AnimatePresence>
+        {isAdminOpen && (
+          <AdminCMS
+            cmsData={cmsData}
+            onSaveCmsData={handleSaveCmsData}
+            onClose={() => setIsAdminOpen(false)}
+            onLogout={() => setIsAdminOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Fullscreen Ligthelm Bootup Loading GIF */}
       <AnimatePresence>
         {isLoadingScreen && (
@@ -66,7 +106,7 @@ function MainContent() {
         )}
       </AnimatePresence>
 
-      {/* Fullscreen Video Page Transition Loading GIF (Bigger simple-loading.gif) */}
+      {/* Fullscreen Video Page Transition Loading GIF */}
       <AnimatePresence>
         {isVideoLoading && (
           <motion.div
@@ -101,6 +141,7 @@ function MainContent() {
             }}
             activeFilter={activeFilter}
             setActiveFilter={setActiveFilter}
+            onOpenAdmin={() => setIsAdminOpen(true)}
           />
 
           {/* Main Content Area — Full Width Layout */}
@@ -110,7 +151,7 @@ function MainContent() {
                 <ProjectDetailPage
                   key={viewKey}
                   project={selectedProject}
-                  allProjects={projectsData}
+                  allProjects={projects}
                   onBack={handleBackToGallery}
                   onSelectProject={handleSelectProject}
                 />
@@ -132,7 +173,7 @@ function MainContent() {
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <AboutPage />
+                  <AboutPage cmsInfo={cmsData.info} cmsClients={cmsData.clients} />
                 </motion.div>
               ) : (
                 /* Projects Section with GRID / LIST View Mode Toggle */
@@ -145,7 +186,15 @@ function MainContent() {
                   className="space-y-6 pb-12 sm:pb-16"
                 >
                   {/* Gallery Subheader Bar: GRID / LIST Toggle */}
-                  <div className="flex items-center justify-end text-xs font-mono-custom tracking-[0.2em] uppercase text-muted">
+                  <div className="flex items-center justify-between text-xs font-mono-custom tracking-[0.2em] uppercase text-muted">
+                    <button
+                      onClick={() => setIsAdminOpen(true)}
+                      className="text-[10px] text-muted/60 hover:text-ink transition-colors flex items-center gap-1 font-bold"
+                      title="Admin CMS Login (/admin)"
+                    >
+                      [ ADMIN CMS ]
+                    </button>
+
                     {/* GRID / LIST Toggle Buttons */}
                     <div className="flex items-center gap-2">
                       <button

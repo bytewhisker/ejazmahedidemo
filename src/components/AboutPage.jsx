@@ -59,11 +59,19 @@ const paragraphVariant = {
   }
 };
 
-export const AboutPage = () => {
+export const AboutPage = ({ cmsInfo, cmsClients }) => {
   const [activeImageKey, setActiveImageKey] = useState('default');
-  const [bioLang, setBioLang] = useState('en'); // 'en', 'bn', 'ar'
 
-  const currentBio = bioTextData[bioLang];
+  const personalEmail = cmsInfo?.personalEmail || 'contact@ejazmehedi.com';
+  const instagramUrl = cmsInfo?.instagramUrl || 'https://instagram.com/ezaz.mehedi';
+  const linkedinUrl = cmsInfo?.linkedinUrl || 'https://linkedin.com/in/ezaz-mehedi';
+  const activeClients = cmsClients || clientsData;
+
+  const [bioLang, setBioLang] = useState('en'); // 'en', 'bn', 'ar');
+
+  const currentBio = bioLang === 'en' && cmsInfo?.bioEn
+    ? { ...bioTextData.en, ...cmsInfo.bioEn }
+    : bioTextData[bioLang];
 
   return (
     <motion.div

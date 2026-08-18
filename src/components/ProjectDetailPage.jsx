@@ -27,7 +27,7 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
       transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
       className="min-h-screen bg-canvas text-ink pt-2 pb-24 px-4 sm:px-6 lg:px-8 font-sans select-none"
     >
-      <div className="max-w-6xl mx-auto space-y-6 md:space-y-8">
+      <div className="max-w-[1700px] mx-auto space-y-6 md:space-y-8">
         
         {/* Simple Title Header */}
         <div className="space-y-1 pt-2">
@@ -39,12 +39,13 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
           </p>
         </div>
 
-        {/* Video Player */}
-        <div className="w-full bg-surface overflow-hidden border border-line">
+        {/* Video Player — Full Cinema Width */}
+        <div className="w-full bg-black overflow-hidden border border-white/10 rounded-sm shadow-2xl">
           <CustomPlayer
             poster={project.poster}
             videoUrl={activeVideo.videoUrl}
             embedUrl={activeVideo.embedUrl}
+            vimeoId={activeVideo.vimeoId}
             title={project.title}
           />
         </div>
@@ -203,23 +204,38 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
 
       </div>
 
-      {/* Lightbox Popup */}
+      {/* Lightbox Popup — Non-Downloadable Protected Stills */}
       {lightboxImage && (
         <div
           onClick={() => setLightboxImage(null)}
-          className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center p-4"
+          onContextMenu={(e) => e.preventDefault()}
+          className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center p-4 select-none"
         >
           <button
             onClick={() => setLightboxImage(null)}
-            className="absolute top-6 right-6 p-2 text-white hover:text-neutral-400"
+            className="absolute top-6 right-6 p-2 text-white hover:text-neutral-400 z-50"
           >
             <X className="w-6 h-6" />
           </button>
-          <img
-            src={lightboxImage}
-            alt="Fullscreen Screengrab"
-            className="max-w-full max-h-[90vh] object-contain"
-          />
+          
+          <div 
+            className="relative max-w-full max-h-[90vh] flex items-center justify-center"
+            onContextMenu={(e) => e.preventDefault()}
+          >
+            <img
+              src={lightboxImage}
+              alt="Fullscreen Screengrab"
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
+              draggable="false"
+              className="max-w-full max-h-[90vh] object-contain pointer-events-none select-none border border-white/10"
+            />
+            {/* Transparent overlay over image to block right-click 'Save Image As' */}
+            <div 
+              onContextMenu={(e) => e.preventDefault()} 
+              className="absolute inset-0 z-20 cursor-default"
+            />
+          </div>
         </div>
       )}
     </motion.div>

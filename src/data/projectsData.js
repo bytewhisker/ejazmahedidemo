@@ -18,8 +18,9 @@ export const projectsData = [
         id: "main",
         labelKey: "mainFilm",
         title: "Main Film (Feature Trailer - 4K)",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
-        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        vimeoId: "160754109",
+        embedUrl: "https://player.vimeo.com/video/160754109?title=0&byline=0&portrait=0&badge=0&autopause=0",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
       }
     ],
     screengrabs: [
