@@ -79,8 +79,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               onClick={() => handleNavClick('projects', 'all')}
               isActive={activeTab === 'projects' && activeFilter === 'all'}
               className={`transition-colors ${activeTab === 'projects' && activeFilter === 'all'
-                  ? 'text-ink underline underline-offset-4'
-                  : 'text-muted hover:text-ink'
+                  ? 'text-accent underline underline-offset-4'
+                  : 'text-accent hover:text-accent'
                 }`}
             />
 
@@ -91,8 +91,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               onClick={() => handleNavClick('projects', 'films')}
               isActive={activeTab === 'projects' && activeFilter === 'films'}
               className={`transition-colors ${activeTab === 'projects' && activeFilter === 'films'
-                  ? 'text-ink underline underline-offset-4'
-                  : 'text-muted hover:text-ink'
+                  ? 'text-accent underline underline-offset-4'
+                  : 'text-accent hover:text-accent'
                 }`}
             />
 
@@ -103,8 +103,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               onClick={() => handleNavClick('projects', 'commercial')}
               isActive={activeTab === 'projects' && activeFilter === 'commercial'}
               className={`transition-colors ${activeTab === 'projects' && activeFilter === 'commercial'
-                  ? 'text-ink underline underline-offset-4'
-                  : 'text-muted hover:text-ink'
+                  ? 'text-accent underline underline-offset-4'
+                  : 'text-accent hover:text-accent'
                 }`}
             />
 
@@ -115,8 +115,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               onClick={() => handleNavClick('stills', 'all')}
               isActive={activeTab === 'stills'}
               className={`transition-colors ${activeTab === 'stills'
-                  ? 'text-ink underline underline-offset-4'
-                  : 'text-muted hover:text-ink'
+                  ? 'text-accent underline underline-offset-4'
+                  : 'text-accent hover:text-accent'
                 }`}
             />
           </nav>
@@ -129,8 +129,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               onClick={() => handleNavClick('about', 'all')}
               isActive={activeTab === 'about'}
               className={`transition-colors ${activeTab === 'about'
-                  ? 'text-ink underline underline-offset-4'
-                  : 'text-muted hover:text-ink'
+                  ? 'text-accent underline underline-offset-4'
+                  : 'text-accent hover:text-accent'
                 }`}
             />
 
@@ -165,8 +165,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                 onClick={() => handleNavClick('projects', 'all')}
                 isActive={activeTab === 'projects' && activeFilter === 'all'}
                 className={`w-full py-1 ${activeTab === 'projects' && activeFilter === 'all'
-                    ? 'text-ink underline underline-offset-4'
-                    : 'text-muted hover:text-ink'
+                    ? 'text-accent underline underline-offset-4'
+                    : 'text-accent hover:text-accent'
                   }`}
               />
 
@@ -177,8 +177,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                 onClick={() => handleNavClick('projects', 'films')}
                 isActive={activeTab === 'projects' && activeFilter === 'films'}
                 className={`w-full py-1 ${activeTab === 'projects' && activeFilter === 'films'
-                    ? 'text-ink underline underline-offset-4'
-                    : 'text-muted hover:text-ink'
+                    ? 'text-accent underline underline-offset-4'
+                    : 'text-accent hover:text-accent'
                   }`}
               />
 
@@ -189,8 +189,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                 onClick={() => handleNavClick('projects', 'commercial')}
                 isActive={activeTab === 'projects' && activeFilter === 'commercial'}
                 className={`w-full py-1 ${activeTab === 'projects' && activeFilter === 'commercial'
-                    ? 'text-ink underline underline-offset-4'
-                    : 'text-muted hover:text-ink'
+                    ? 'text-accent underline underline-offset-4'
+                    : 'text-accent hover:text-accent'
                   }`}
               />
 
@@ -201,8 +201,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                 onClick={() => handleNavClick('stills', 'all')}
                 isActive={activeTab === 'stills'}
                 className={`w-full py-1 ${activeTab === 'stills'
-                    ? 'text-ink underline underline-offset-4'
-                    : 'text-muted hover:text-ink'
+                    ? 'text-accent underline underline-offset-4'
+                    : 'text-accent hover:text-accent'
                   }`}
               />
 
@@ -214,8 +214,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                   onClick={() => handleNavClick('about', 'all')}
                   isActive={activeTab === 'about'}
                   className={`w-full py-1 ${activeTab === 'about'
-                      ? 'text-ink underline underline-offset-4'
-                      : 'text-muted hover:text-ink'
+                      ? 'text-accent underline underline-offset-4'
+                      : 'text-accent hover:text-accent'
                     }`}
                 />
               </div>

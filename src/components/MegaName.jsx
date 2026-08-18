@@ -81,7 +81,7 @@ export const MegaName = ({ text = 'EJAZ MEHEDI' }) => {
   return (
     <div
       ref={wrapRef}
-      className="flex w-full select-none items-end justify-center gap-[0.5vw] whitespace-nowrap px-[2vw]"
+      className="flex w-full select-none items-end justify-center gap-[0.5vw] whitespace-nowrap px-[0.5vw]"
       aria-label={text}
     >
       {text.split('').map((c, i, arr) => {
@@ -91,7 +91,8 @@ export const MegaName = ({ text = 'EJAZ MEHEDI' }) => {
         const f = 1 - 0.28 * Math.sin(t * Math.PI);
         // deep smile curve: ends lifted, middle drops low
         const arc = Math.sin(t * Math.PI) * 4.5;
-        const tilt = (t - 0.5) * 12;
+        // tilt: left letters lean down-right, right letters lean down-left
+        const tilt = (0.5 - t) * 12;
         return (
           <span
             key={`${c}-${i}`}
@@ -101,7 +102,7 @@ export const MegaName = ({ text = 'EJAZ MEHEDI' }) => {
             <span
               className="block font-mega font-black leading-[0.72] tracking-[0.005em] text-ink"
               style={{
-                fontSize: `min(${(13 * f).toFixed(3)}vw, ${(14 * f).toFixed(3)}rem)`,
+                fontSize: `min(${(15 * f).toFixed(3)}vw, ${(16 * f).toFixed(3)}rem)`,
                 transform: `translateY(${arc}vw) rotate(${tilt}deg)`,
               }}
             >

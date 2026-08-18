@@ -44,6 +44,9 @@ export const ProjectListView = ({ projects, onSelectProject }) => {
                 }}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={() => setHoveredProject(null)}
+                data-cursor="project"
+                data-cursor-text="OPEN"
+                data-cursor-subtext={project.category}
                 className="group cursor-pointer inline-flex items-center gap-3 w-fit transition-colors"
               >
                 <h3 className={`text-base sm:text-lg md:text-xl font-mono-custom tracking-[0.16em] uppercase font-bold transition-all duration-200 truncate ${

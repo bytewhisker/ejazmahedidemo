@@ -105,6 +105,13 @@
     transition: background-color 0.4s ease, color 0.4s ease;
   }
 
+  /* Hide default browser cursor on desktop pointer devices */
+  @media (hover: hover) and (pointer: fine) {
+    *, body, button, a, input, select, textarea, [role="button"], .cursor-pointer {
+      cursor: none !important;
+    }
+  }
+
   /* Single Minimalist Sans-Serif System — Neue Montreal with Inter fallback */
   .font-mono-custom,
   .font-editorial,

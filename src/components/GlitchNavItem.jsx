@@ -124,11 +124,12 @@ export const GlitchNavItem = ({
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      data-cursor="hover"
       className={`inline-block w-fit self-start text-left transition-colors py-0.5 select-none ${
         className ? className : (isActive ? 'text-ink font-bold tracking-[0.22em]' : isHovered ? 'text-ink' : 'text-muted hover:text-ink')
       }`}
     >
-      <span className={`relative inline-block transition-opacity duration-150 ${isGlitching ? 'opacity-90 font-mono text-amber-400 dark:text-amber-300' : ''}`}>
+      <span className={`relative inline-block transition-opacity duration-150 ${isGlitching ? 'opacity-90 font-mono text-accent' : ''}`}>
         <span aria-hidden="true" className="invisible whitespace-nowrap">{enText}</span>
         <span aria-hidden="true" className="invisible absolute inset-0 flex items-center justify-center whitespace-nowrap">{bnText}</span>
         <span aria-hidden="true" className="invisible absolute inset-0 flex items-center justify-center whitespace-nowrap">{arText}</span>

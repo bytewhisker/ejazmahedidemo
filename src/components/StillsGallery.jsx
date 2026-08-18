@@ -215,8 +215,12 @@ export const StillsGallery = () => {
                 onClick={() => setLightboxIndex(idx)}
                 className="shrink-0 group relative flex flex-col space-y-3"
               >
-                {/* PHOTOGRAPHY FRAME */}
-                <div className={`relative h-[60vh] md:h-[68vh] max-h-[760px] ${item.aspect} bg-surface overflow-hidden border border-line/40 transition-colors group-hover:border-ink-soft`}>
+                <div
+                  data-cursor="stills"
+                  data-cursor-text="ZOOM"
+                  data-cursor-subtext={item.location}
+                  className={`relative h-[60vh] md:h-[68vh] max-h-[760px] ${item.aspect} bg-surface overflow-hidden border border-line/40 transition-colors group-hover:border-ink-soft`}
+                >
                   <img
                     src={item.url}
                     alt={item.title}

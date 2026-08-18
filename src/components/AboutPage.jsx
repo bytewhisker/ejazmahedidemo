@@ -196,68 +196,48 @@ export const AboutPage = () => {
 
           {/* DIRECT CONTACT AREA */}
           <div className="pt-6 border-t border-line/60 space-y-6">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-sans tracking-[0.25em] uppercase text-muted font-semibold">
-                DIRECT CONTACT
+            <span className="text-[10px] font-sans tracking-[0.25em] uppercase text-muted font-semibold">
+              DIRECT CONTACT
+            </span>
+
+            {/* Personal Email — Electric Green Accent */}
+            <div className="bg-surface border border-line p-4 sm:p-5">
+              <span className="text-[9px] font-sans text-muted uppercase tracking-[0.25em] block">
+                PERSONAL EMAIL
               </span>
-              <span className="text-[9px] font-sans text-muted uppercase tracking-[0.2em]">WORLDWIDE AVAILABILITY</span>
-            </div>
-
-            {/* Personal Email Card — Electric Accent + 1-Click Copy */}
-            <div className="bg-surface border border-line p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="space-y-1.5">
-                <span className="text-[9px] font-sans text-muted uppercase tracking-[0.25em] block">PERSONAL EMAIL</span>
-                <a
-                  href={`mailto:${PERSONAL_EMAIL}`}
-                  className="text-lg sm:text-xl font-sans text-accent font-bold tracking-tight hover:brightness-110 transition-all"
-                >
-                  {PERSONAL_EMAIL}
-                </a>
-              </div>
-
-              <button
-                onClick={() => copyToClipboard(PERSONAL_EMAIL)}
-                className={`flex items-center justify-center gap-2 text-[10px] font-bold uppercase tracking-widest py-3 px-5 text-black bg-accent transition-all shrink-0 ${
-                  copiedEmail
-                    ? 'opacity-90'
-                    : 'hover:shadow-[0_0_22px_var(--accent-glow)] active:scale-95'
-                }`}
+              <a
+                href={`mailto:${PERSONAL_EMAIL}`}
+                className="text-lg sm:text-xl font-sans text-accent font-bold tracking-tight hover:brightness-110 transition-all"
               >
-                {copiedEmail ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedEmail ? 'COPIED!' : 'COPY EMAIL'}</span>
-              </button>
+                {PERSONAL_EMAIL}
+              </a>
             </div>
 
-            {/* Social Media — Brand Logo Tiles */}
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-1">
+            {/* Social Media — Logo Tiles */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-4 pt-1">
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center gap-3 text-muted hover:text-accent transition-colors"
+                aria-label="Instagram"
+                className="group flex items-center text-accent transition-colors"
               >
-                <span className="w-9 h-9 border border-line flex items-center justify-center group-hover:border-accent group-hover:bg-accent-soft transition-all">
+                <span className="w-9 h-9 border border-accent/40 flex items-center justify-center group-hover:bg-accent-soft group-hover:border-accent transition-all">
                   <InstagramIcon className="w-4 h-4" />
                 </span>
-                <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.2em]">Instagram</span>
               </a>
 
               <a
                 href={LINKEDIN_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center gap-3 text-muted hover:text-accent transition-colors"
+                aria-label="LinkedIn"
+                className="group flex items-center text-accent transition-colors"
               >
-                <span className="w-9 h-9 border border-line flex items-center justify-center group-hover:border-accent group-hover:bg-accent-soft transition-all">
+                <span className="w-9 h-9 border border-accent/40 flex items-center justify-center group-hover:bg-accent-soft group-hover:border-accent transition-all">
                   <LinkedinIcon className="w-4 h-4" />
                 </span>
-                <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.2em]">LinkedIn</span>
               </a>
-
-              <div className="flex items-center gap-2.5 text-muted">
-                <Phone className="w-3.5 h-3.5" strokeWidth={1.5} />
-                <span className="text-[11px] font-sans uppercase tracking-[0.2em]">London +44 20 7946 0912</span>
-              </div>
             </div>
 
           </div>

@@ -26,6 +26,9 @@ export const ProjectCard = ({ project, indexNumber, onClick }) => {
       onMouseLeave={() => setIsCardHovered(false)}
       onTouchStart={() => setIsCardHovered(true)}
       onTouchEnd={() => setIsCardHovered(false)}
+      data-cursor="project"
+      data-cursor-text="VIEW"
+      data-cursor-subtext={project.category}
       className="group cursor-pointer space-y-2 select-none"
     >
       {/* CHRIS MACARI BOLD PROJECT TITLE */}

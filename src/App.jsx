@@ -9,6 +9,7 @@ import { ProjectDetailPage } from './components/ProjectDetailPage';
 import { StillsGallery } from './components/StillsGallery';
 import { AboutPage } from './components/AboutPage';
 import { Footer } from './components/Footer';
+import { CustomCursor } from './components/CustomCursor';
 import { projectsData } from './data/projectsData';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -48,6 +49,9 @@ function MainContent() {
   return (
     <div className="min-h-screen bg-canvas text-ink flex flex-col font-sans selection:bg-ink selection:text-canvas relative">
       
+      {/* Custom Trailing Mouse Cursor */}
+      <CustomCursor />
+
       {/* Film Grain Subtle Overlay */}
       <div className="film-grain" />
 

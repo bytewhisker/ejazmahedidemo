@@ -71,7 +71,7 @@ export const SmoothHeaderName = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="relative flex items-center justify-center h-[5.2rem] sm:h-[7.2rem] md:h-[9.5rem] lg:h-[11.8rem] focus:outline-none cursor-pointer select-none group w-full overflow-hidden"
+      className="relative flex items-center justify-center h-[5.2rem] sm:h-[7.2rem] md:h-[9.5rem] lg:h-[11.8rem] focus:outline-none cursor-pointer select-none group w-full overflow-visible -mx-4 sm:-mx-8 md:-mx-12"
       aria-label="Ejaz Mehedi Home"
     >
       <AnimatePresence mode="wait">
