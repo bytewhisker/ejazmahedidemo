@@ -49,7 +49,7 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
             pointerEvents: scrolled ? 'none' : 'auto'
           }}
           transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
-          className="w-full flex items-center justify-between md:justify-center relative overflow-visible py-1"
+          className="w-full flex items-center justify-between md:justify-center relative overflow-visible py-1 pr-16 md:pr-0"
         >
           <SmoothHeaderName
             isLime={isLime}
@@ -57,20 +57,20 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
           />
 
           {/* MOBILE TOGGLES */}
-          <div className="md:hidden flex items-center gap-3 absolute right-0 top-1/2 -translate-y-1/2">
+          <div className="md:hidden flex items-center gap-2.5 absolute right-0 top-1/2 -translate-y-1/2">
             <button
               onClick={toggleTheme}
               className={`p-1.5 transition-colors ${isLime ? 'text-black/70 hover:text-black' : 'text-muted hover:text-ink'}`}
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {theme === 'dark' ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`p-1.5 focus:outline-none ${isLime ? 'text-black' : 'text-ink'}`}
               aria-label="Toggle Menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
         </motion.div>

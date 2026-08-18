@@ -5,17 +5,17 @@ const names = [
   { 
     id: 'en', 
     text: "EJAZ MEHEDI", 
-    fontClass: "font-mega tracking-tighter font-black text-[clamp(1.75rem,8vw,13.5rem)] leading-none" 
+    fontClass: "font-mega tracking-tighter font-black text-[clamp(1.2rem,8.6vw,13.5rem)] leading-none" 
   },
   { 
     id: 'bn', 
     text: "এজাজ মেহেদী", 
-    fontClass: "font-sans tracking-normal font-black text-[clamp(1.6rem,7vw,10.5rem)] leading-none" 
+    fontClass: "font-sans tracking-normal font-black text-[clamp(1.1rem,7.2vw,10.5rem)] leading-none" 
   },
   { 
     id: 'ar', 
     text: "إعزاز مهدي", 
-    fontClass: "font-sans tracking-normal font-black text-[clamp(1.6rem,7vw,10.5rem)] leading-none" 
+    fontClass: "font-sans tracking-normal font-black text-[clamp(1.1rem,7.2vw,10.5rem)] leading-none" 
   }
 ];
 
@@ -71,7 +71,7 @@ export const SmoothHeaderName = ({ onClick, isLime = false }) => {
   return (
     <button
       onClick={onClick}
-      className="relative flex items-center justify-center h-[3.8rem] sm:h-[6.2rem] md:h-[9.5rem] lg:h-[11.8rem] focus:outline-none cursor-pointer select-none group w-full overflow-visible"
+      className="relative flex items-center justify-center h-[3.2rem] sm:h-[6.2rem] md:h-[9.5rem] lg:h-[11.8rem] focus:outline-none cursor-pointer select-none group w-full overflow-hidden px-8 sm:px-12 md:px-0"
       aria-label="Ejaz Mehedi Home"
     >
       <AnimatePresence mode="wait">

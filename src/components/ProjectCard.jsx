@@ -18,7 +18,7 @@ export const ProjectCard = ({ project, indexNumber, onClick }) => {
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{
         duration: 0.9,
-        delay: Math.min((indexNumber - 1) * 0.1, 0.8), // Staggered slow cinematic reveal
+        delay: Math.min((indexNumber - 1) * 0.1, 0.8),
         ease: [0.16, 1, 0.3, 1]
       }}
       onClick={() => onClick(project)}
@@ -27,28 +27,26 @@ export const ProjectCard = ({ project, indexNumber, onClick }) => {
       onTouchStart={() => setIsCardHovered(true)}
       onTouchEnd={() => setIsCardHovered(false)}
       data-cursor="project"
-      data-cursor-text="VIEW"
-      data-cursor-subtext={project.category}
       className="group cursor-pointer space-y-2 select-none"
     >
       {/* CHRIS MACARI BOLD PROJECT TITLE */}
-      <div className="flex items-center justify-between text-xs font-mono-custom tracking-[0.18em] uppercase font-bold text-ink">
+      <div className="flex items-center justify-between text-xs sm:text-sm font-mono-custom tracking-[0.18em] uppercase font-bold text-ink">
         <div className="flex items-center gap-2 truncate">
           <span className="truncate group-hover:text-ink-soft transition-colors">{project.title}</span>
         </div>
         <span className="text-[10px] text-muted font-mono-custom font-bold tracking-widest shrink-0">{project.category}</span>
       </div>
 
-      {/* 3 Still Frames Container — Overall 3 stills hover preview */}
+      {/* 3 STILL FRAMES CONTAINER — PROMINENT & TALL ON MOBILE */}
       <div className="relative bg-canvas p-1 transition-colors">
         <div className="grid grid-cols-3 gap-1.5 sm:gap-1">
           {stills.map((stillUrl, idx) => (
             <div
               key={idx}
-              className={`relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden bg-surface transition-all duration-300 ${
+              className={`relative aspect-[3/4] sm:aspect-[16/10] overflow-hidden bg-surface transition-all duration-300 border border-line/40 ${
                 isCardHovered
-                  ? 'brightness-110 contrast-105'
-                  : 'brightness-90 opacity-90'
+                  ? 'brightness-110 contrast-105 border-ink-soft'
+                  : 'brightness-90 opacity-95'
               }`}
             >
               <img
@@ -63,7 +61,7 @@ export const ProjectCard = ({ project, indexNumber, onClick }) => {
                 }`}
               />
 
-              {/* GIF Preview Overlay — Plays across all 3 stills together on overall hover */}
+              {/* GIF Preview Overlay on hover / touch */}
               {isCardHovered && (
                 <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/50 backdrop-blur-[1px]">
                   <img
