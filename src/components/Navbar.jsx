@@ -5,7 +5,7 @@ import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
-export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter, onOpenAdmin }) => {
+export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
@@ -234,18 +234,6 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter,
                       : 'text-accent hover:text-accent'
                     }`}
                 />
-
-                {onOpenAdmin && (
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      onOpenAdmin();
-                    }}
-                    className="w-full text-left py-2 text-[10px] font-mono-custom tracking-[0.2em] uppercase text-[#b5ff32] font-bold"
-                  >
-                    🔐 ADMIN CMS PANEL (/ADMIN)
-                  </button>
-                )}
               </div>
             </nav>
           </motion.div>

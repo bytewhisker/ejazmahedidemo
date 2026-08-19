@@ -1,0 +1,9 @@
+# User-agent directives for search engine crawlers
+User-agent: *
+Allow: /
+
+# Disallow admin cms path from public index
+Disallow: /admin
+
+# XML Sitemap Location
+Sitemap: https://www.ejazmehedi.com/sitemap.xml
