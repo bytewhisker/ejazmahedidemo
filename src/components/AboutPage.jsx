@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { awardsData, pressData, clientsData } from '../data/projectsData';
 import { ExternalLink, Award, Sparkles, Film } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ejazPortrait from '../assets/ejaz-mehedi.png';
 
 const PERSONAL_EMAIL = 'contact@ejazmehedi.com';
 const INSTAGRAM_URL = 'https://instagram.com/ezaz.mehedi';
@@ -24,165 +23,8 @@ const LinkedinIcon = ({ className }) => (
   </svg>
 );
 
-/* ---------------------------------------------------- */
-/* CLIENT LOGOS VISUAL SHOWCASE (Matching User Image)   */
-/* ---------------------------------------------------- */
-const FeaturedClientLogosGrid = () => {
-  return (
-    <div className="bg-black text-white p-8 sm:p-12 rounded-sm border border-black shadow-2xl space-y-8">
-      <div className="flex items-center justify-between border-b border-white/20 pb-4">
-        <h3 className="font-mono-custom text-sm font-bold tracking-[0.3em] uppercase text-white">
-          CLIENTS
-        </h3>
-        <span className="text-[10px] font-mono-custom text-[#b5ff32] uppercase tracking-widest font-bold">
-          BRANDED DIRECTORIAL & CINEMATOGRAPHY
-        </span>
-      </div>
-
-      {/* 5-Column Grid matching user's reference image */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 sm:gap-12 items-center justify-items-center">
-        
-        {/* 1. Hulu */}
-        <div className="flex items-center justify-center p-4 hover:scale-110 transition-transform cursor-pointer">
-          <span className="text-[#1ce783] font-black text-3xl sm:text-4xl tracking-tighter lowercase font-sans">
-            hulu
-          </span>
-        </div>
-
-        {/* 2. Yamaha */}
-        <div className="flex items-center justify-center gap-2 p-4 text-[#e60012] hover:scale-110 transition-transform cursor-pointer">
-          <svg className="w-7 h-7 shrink-0 fill-current" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
-            <path d="M12 4v16M4 12h16M6.34 6.34l11.32 11.32M6.34 17.66L17.66 6.34" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-          <span className="font-black tracking-widest text-lg sm:text-xl font-sans uppercase">
-            YAMAHA
-          </span>
-        </div>
-
-        {/* 3. Vodafone */}
-        <div className="flex items-center justify-center gap-2.5 p-4 hover:scale-110 transition-transform cursor-pointer">
-          <div className="w-8 h-8 rounded-full bg-[#e60000] flex items-center justify-center shadow-lg">
-            <span className="text-white text-lg font-black italic leading-none transform translate-y-[-1px]">”</span>
-          </div>
-          <span className="font-bold text-lg sm:text-xl text-white tracking-tight lowercase font-sans">
-            vodafone
-          </span>
-        </div>
-
-        {/* 4. Waldorf Astoria */}
-        <div className="flex flex-col items-center justify-center text-center text-white p-4 space-y-0.5 hover:scale-110 transition-transform cursor-pointer">
-          <span className="font-serif text-2xl tracking-tighter font-normal text-white">W W</span>
-          <span className="text-[9px] font-mono-custom tracking-[0.2em] uppercase text-neutral-200 font-bold">
-            WALDORF ASTORIA
-          </span>
-          <span className="text-[7px] font-mono-custom tracking-[0.25em] uppercase text-neutral-400">
-            HOTELS & RESORTS
-          </span>
-        </div>
-
-        {/* 5. CNBC */}
-        <div className="flex flex-col items-center justify-center gap-1 p-4 hover:scale-110 transition-transform cursor-pointer">
-          <div className="flex items-center gap-0.5">
-            <span className="w-2 h-3.5 bg-red-500 rounded-t-full transform -rotate-45" />
-            <span className="w-2 h-4 bg-yellow-500 rounded-t-full transform -rotate-15" />
-            <span className="w-2 h-4.5 bg-green-500 rounded-t-full" />
-            <span className="w-2 h-4 bg-blue-500 rounded-t-full transform rotate-15" />
-            <span className="w-2 h-3.5 bg-purple-500 rounded-t-full transform rotate-45" />
-          </div>
-          <span className="font-black text-white tracking-widest text-base sm:text-lg font-sans uppercase">
-            CNBC
-          </span>
-        </div>
-
-        {/* 6. Disney+ */}
-        <div className="flex items-center justify-center gap-0.5 text-white p-4 hover:scale-110 transition-transform cursor-pointer">
-          <span className="font-editorial text-2xl sm:text-3xl font-bold tracking-tight text-blue-400 italic">
-            Disney
-          </span>
-          <span className="text-blue-400 font-black text-2xl sm:text-3xl">+</span>
-        </div>
-
-        {/* 7. The Economist */}
-        <div className="bg-[#e3120b] text-white px-4 py-2 text-center shadow-lg hover:scale-110 transition-transform cursor-pointer">
-          <span className="font-serif font-bold text-sm sm:text-base tracking-tight block leading-tight">
-            The<br/>Economist
-          </span>
-        </div>
-
-        {/* 8. Majid Al Futtaim */}
-        <div className="flex flex-col items-center justify-center text-white p-4 space-y-1 hover:scale-110 transition-transform cursor-pointer">
-          <div className="w-7 h-7 border-2 border-white rounded-t-full flex items-center justify-center">
-            <div className="w-2.5 h-3.5 bg-white rounded-t-full" />
-          </div>
-          <div className="text-center space-y-0.5">
-            <span className="text-[9px] font-sans text-neutral-300 block dir-rtl">ماجد الفطيم</span>
-            <span className="text-[9px] font-mono-custom tracking-widest uppercase font-bold text-white block">
-              MAJID AL FUTTAIM
-            </span>
-          </div>
-        </div>
-
-        {/* 9. Al Mouj Muscat */}
-        <div className="flex flex-col items-center justify-center text-[#0084c8] text-center p-4 space-y-0.5 hover:scale-110 transition-transform cursor-pointer">
-          <span className="text-xl font-bold font-sans tracking-tight">الموج</span>
-          <span className="text-lg font-black tracking-tight text-[#0084c8]">al mouj</span>
-          <span className="text-[8px] font-mono-custom tracking-[0.25em] uppercase text-neutral-400">muscat مسقط</span>
-        </div>
-
-        {/* 10. Uber */}
-        <div className="flex items-center justify-center p-4 hover:scale-110 transition-transform cursor-pointer">
-          <span className="text-white font-black text-3xl sm:text-4xl tracking-tighter font-sans">
-            Uber
-          </span>
-        </div>
-
-        {/* 11. Bank Muscat */}
-        <div className="flex items-center justify-center gap-2.5 text-white p-4 hover:scale-110 transition-transform cursor-pointer">
-          <div className="w-5 h-5 bg-[#e60012] transform rotate-45 shrink-0 shadow" />
-          <div className="flex flex-col text-left">
-            <span className="text-[9px] font-sans text-neutral-300 dir-rtl">بنك مسقط</span>
-            <span className="text-xs font-bold font-sans text-white uppercase tracking-wider">
-              bank muscat
-            </span>
-          </div>
-        </div>
-
-        {/* 12. OQGN */}
-        <div className="flex items-center justify-center text-white font-black text-2xl sm:text-3xl tracking-wider font-sans p-4 hover:scale-110 transition-transform cursor-pointer">
-          <span>OQ</span>
-          <span className="text-[#80ba27]">G</span>
-          <span>N</span>
-        </div>
-
-        {/* 13. The Sustainable City Yiti */}
-        <div className="bg-white text-black px-3 py-2 text-center rounded-sm space-y-0.5 shadow hover:scale-110 transition-transform cursor-pointer">
-          <span className="text-[9px] font-sans font-bold block text-blue-900 dir-rtl">المدينة المستدامة - يتي</span>
-          <span className="text-[8px] font-mono-custom tracking-wider uppercase font-bold text-blue-950 block">
-            THE SUSTAINABLE CITY - YITI
-          </span>
-        </div>
-
-        {/* 14. The Global Fund */}
-        <div className="flex items-center justify-center gap-2 text-white p-4 hover:scale-110 transition-transform cursor-pointer">
-          <svg className="w-6 h-6 text-white shrink-0 fill-current" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="2" />
-            <path d="M12 7a5 5 0 1 0 5 5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-          <div className="flex flex-col text-left text-white leading-tight font-black text-xs uppercase tracking-wider">
-            <span>THE</span>
-            <span>GLOBAL</span>
-            <span>FUND</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  );
-};
-
 const bioImages = {
-  default: ejazPortrait,
+  default: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop",
   moshari: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000&auto=format&fit=crop",
   foreigners: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1000&auto=format&fit=crop",
   clients: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop"
@@ -708,13 +550,13 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
         </div>
       </motion.div>
 
-      {/* SECTION: VISUAL CLIENT LOGOS & BRAND PARTNERS */}
+      {/* SECTION: SELECTED CLIENTS */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="space-y-8 pb-12"
+        className="space-y-6 md:space-y-8 pb-12"
       >
         <div className="flex items-center justify-between">
           <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-black/80">
@@ -725,11 +567,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
           </span>
         </div>
 
-        {/* 1. VISUAL BRAND LOGOS SHOWCASE (Matching Screenshot) */}
-        <FeaturedClientLogosGrid />
-
-        {/* 2. COMPLETE CLIENT TEXT TAGS GRID */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 text-xs font-mono-custom text-black font-bold pt-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 text-xs font-mono-custom text-black font-bold">
           {activeClients.map((client, idx) => (
             <div key={idx} className="border-l-2 border-black pl-3 py-2 bg-black/5 hover:bg-black hover:text-[#b5ff32] transition-colors rounded-r-sm">
               {client}
