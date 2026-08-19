@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { awardsData, pressData, clientsData } from '../data/projectsData';
 import { ExternalLink, Award, Sparkles, Film } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ejazPortrait from '../assets/ejaz-mehedi.png';
 
 const PERSONAL_EMAIL = 'contact@ejazmehedi.com';
 const INSTAGRAM_URL = 'https://instagram.com/ezaz.mehedi';
@@ -181,7 +182,7 @@ const FeaturedClientLogosGrid = () => {
 };
 
 const bioImages = {
-  default: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop",
+  default: ejazPortrait,
   moshari: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000&auto=format&fit=crop",
   foreigners: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1000&auto=format&fit=crop",
   clients: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop"
