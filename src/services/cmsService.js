@@ -1,7 +1,7 @@
 import { supabase } from '../lib/supabaseClient';
 import { projectsData, awardsData, pressData, clientsData } from '../data/projectsData';
 
-const CMS_STORAGE_KEY = 'ejaz_mehedi_cms_data_v1';
+const CMS_STORAGE_KEY = 'ejaz_mehedi_cms_data_v3';
 
 const defaultCmsData = {
   projects: projectsData,
@@ -9,13 +9,15 @@ const defaultCmsData = {
   press: pressData,
   clients: clientsData,
   info: {
-    personalEmail: "ejazmehedidop@gmail.com",
+    personalEmail: "contact@ejazmehedi.com",
     instagramUrl: "https://www.instagram.com/ejazmehedi",
     linkedinUrl: "https://www.linkedin.com/in/ejazmehedi",
     bioEn: {
-      p1: "Ejaz Mehedi is an internationally acclaimed Director & Director of Photography based between London, Paris, and Dhaka. His visual language bridges raw documentary realism with high-fashion, high-octane cinematic aesthetics.",
-      p2: "Having spent over a decade crafting commercial films for global houses like Porsche, Nike, and Mercedes-AMG, Ejaz champions analog 35mm film textures [ KODAK 35MM ] alongside ultra-high-speed motion control systems. His narrative work has earned prestigious honors at Cannes Lions [ GOLD CANNES LION ], Sundance, and the British Society of Cinematographers.",
-      p3: "Whether helming high-speed automotive velocity campaigns across European alpine passes [ GLOBAL CAMPAIGNS ] or shooting intimate anamorphic portraits in coastal estuaries, Ejaz brings painterly light precision and deeply atmospheric storytelling to every frame."
+      p1: "Born and raised in the cradle of Dhaka, Bangladesh, Ejaz is a self-taught cinematographer and filmmaker working on narratives, commercials, and music videos.",
+      p2: "Deeply moved by Rob Reiner's \"Stand By Me\" and Morshedul Islam's \"Dipu Number Two\", the two films perhaps sparked an artistic curiosity and passion for story in his childhood. While pursuing a photography degree in his early twenties with a deep-rooted interest in the art form, Ejaz became heavily invested in motion pictures after working on a series of documentary films.",
+      p3: "Recently Ejaz was behind the camera on Jordan Peele and Riz Ahmed's executive produced short film \"MOSHARI\" [ MOSHARI ]. The multi-OSCAR®-qualifying, groundbreaking, genre-bending horror short won 11 awards from 20+ festivals around the world in 2022.",
+      p4: "One of Ejaz's other recent films \"FOREIGNERS ONLY\" [ FOREIGNERS ONLY ] is the first Bangladeshi film commissioned for any US streaming platform by 20th Digital Studio. The film recently aired on US streaming giant HULU's Bite Size Halloween Season 3 - Episode 9.",
+      p5: "Currently based in Oman and Bangladesh, Ejaz actively seeks stories and projects that resonate with his South Asian roots and identity. He has also shot several commercials and branded content for a variety of clients including Vodafone, Yamaha, Uber, Majid-Al-Futtaim, Muscat Bay, BBC Storyworks, The Global Fund, Omran Group, and more [ GLOBAL CLIENTS ]."
     }
   }
 };

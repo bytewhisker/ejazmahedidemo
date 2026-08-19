@@ -61,11 +61,11 @@ export const translations = {
       contactTitle: "Get In Touch",
       name: "Ejaz Mehedi",
       role: "Director of Photography & Film Director",
-      bioText: "Ejaz Mehedi is an award-winning cinematographer and commercial director based internationally. With over 12 years of experience crafting visually stunning narrative feature films, high-concept commercials, and music videos, his work is characterized by poetic lighting, tactile textures, and emotional resonance.",
-      careerText: "Working seamlessly with digital format systems (ARRI Alexa 35, RED V-Raptor, Sony Venice) as well as 35mm analogue film stock, Ejaz collaborates with visionary filmmakers and global brands to translate compelling stories into unforgettable visual experiences.",
+      bioText: "Born and raised in the cradle of Dhaka, Bangladesh, Ejaz is a self-taught cinematographer and filmmaker working on narratives, commercials, and music videos. Deeply moved by Rob Reiner's 'Stand By Me' and Morshedul Islam's 'Dipu Number Two', the two films perhaps sparked an artistic curiosity and passion for story in his childhood.",
+      careerText: "Recently Ejaz was behind the camera on Jordan Peele and Riz Ahmed's executive produced short film 'MOSHARI', the multi-OSCAR®-qualifying horror short that won 11 awards from 20+ festivals globally. His other recent film 'FOREIGNERS ONLY' is the first Bangladeshi film commissioned for any US streaming platform by 20th Digital Studio on HULU.",
       email: "contact@ejazmehedi.com",
-      representation: "Global Representation: Iconoclast / Blur Films",
-      location: "Based in Dhaka & London — Available Worldwide"
+      representation: "Global Representation: Monkeypaw Productions / 20th Digital Studio",
+      location: "Based in Oman & Bangladesh — Available Worldwide"
     },
     footer: {
       rights: "All Rights Reserved",
@@ -135,11 +135,11 @@ export const translations = {
       contactTitle: "যোগাযোগ করুন",
       name: "এজাজ মেহেদী",
       role: "সিনেম্যাটোগ্রাফার ও চলচ্চিত্র নির্মাতা",
-      bioText: "এজাজ মেহেদী একজন আন্তর্জাতিকভাবে খ্যাতিমান আন্তর্জাতিক ডিরেক্টর অফ ফটোগ্রাফি এবং বিজ্ঞাপন নির্মাতা। এক দশকেরও বেশি সময় ধরে তিনি আলো ও আবহের মাধ্যমে চিত্রনাট্যের অনন্য অনুভূতি পর্দায় ফুটিয়ে তুলছেন।",
-      careerText: "অ্যারি অ্যালেক্সা, রেড ও ৩৫ মিমি ফিল্মে অভিজ্ঞ এজাজ বিশ্বজুড়ে স্বাধীন চলচ্চিত্র ও গ্লোবাল ব্র্যান্ডের সাথে কাজ করে যাচ্ছেন।",
+      bioText: "ঢাকার স্নিগ্ধ কোলে লালিত-পালিত এজাজ মেহেদী একজন স্বশিক্ষিত চিত্রগ্রাহক ও চলচ্চিত্র নির্মাতা, যিনি কাহিনিচিত্র, বাণিজ্যিক বিজ্ঞাপন ও মিউজিক ভিডিও নির্মাণে কাজ করছেন।",
+      careerText: "তিনি জর্ডান পিল ও রিজ আহমেদ প্রযোজিত বহু-অস্কার® যোগ্যতাসম্পন্ন চলচ্চিত্র 'মশারি' এবং ২০থ ডিজিটাল স্টুডিওর কমিশনকৃত হুলু-র 'ফরেনার্স অনলি' চলচ্চিত্রের ডিরেক্টর অফ ফটোগ্রাফি।",
       email: "contact@ejazmehedi.com",
-      representation: "আন্তর্জাতিক প্রতিনিধি: আইকনিক গ্লোবাল মিডিয়া",
-      location: "ঢাকা ও লন্ডন — কাজ করেন বিশ্বজুড়ে"
+      representation: "আন্তর্জাতিক প্রতিনিধি: মাঙ্কিফ গ্লোবাল মিডিয়া",
+      location: "ওমান ও বাংলাদেশ — কাজ করেন বিশ্বজুড়ে"
     },
     footer: {
       rights: "সর্বস্বত্ব সংরক্ষিত",
@@ -209,11 +209,11 @@ export const translations = {
       contactTitle: "تواصل معي",
       name: "إعزاز مهدي",
       role: "مدير تصوير سينمائي ومخرج أفلام",
-      bioText: "إعزاز مهدي هو مدير تصوير سينمائي ومخرج إعلانات حائز على جوائز عالمية. يمتلك خبرة تتجاوز 12 عاماً في إخراج الصورة السينمائية للأفلام والإعلانات التجارية.",
-      careerText: "يعمل بإتقان على كاميرات ARRI و RED وفيلم 35 ملم، ويتعاون مع كبرى الشركات والعلامات التجارية العالمية.",
+      bioText: "نشأ إعزاز مهدي في دكا، بنغلاديش، وهو مدير تصوير سينمائي ومخرج عصامي يعمل في الأفلام الروائية والإعلانات التجارية والفيديو كليب.",
+      careerText: "عمل كمدير تصوير للفيلم القصير 'موشاري' من إنتاج جوردان بيل وريز أحمد، وفيلم 'FOREIGNERS ONLY' لشبكة HULU العالمية.",
       email: "contact@ejazmehedi.com",
-      representation: "التمثيل العالمي: أيكونك ميديا",
-      location: "دكا ولندن — متاح لجميع دول العالم"
+      representation: "التمثيل العالمي: مونكي باو و 20th ديجيتال",
+      location: "عُمان وبنغلاديش — متاح لجميع دول العالم"
     },
     footer: {
       rights: "جميع الحقوق محفوظة",

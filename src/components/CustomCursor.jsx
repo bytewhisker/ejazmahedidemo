@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 /**
- * BlendCursor: A clean white dot cursor that follows the mouse with easing (lerp 0.18)
+ * BlendCursor: A clean white dot cursor that follows the mouse with easing (lerp 0.35)
  * and expands into a large circle when hovering over links, buttons, or project cards.
  * Uses `mix-blend-mode: difference` to invert whatever is underneath.
  */
@@ -35,8 +35,8 @@ export const CustomCursor = () => {
     const onEnter = () => setVisible(true);
 
     const render = () => {
-      pos.x += (target.x - pos.x) * 0.18;
-      pos.y += (target.y - pos.y) * 0.18;
+      pos.x += (target.x - pos.x) * 0.35;
+      pos.y += (target.y - pos.y) * 0.35;
       if (dotRef.current) {
         dotRef.current.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0) translate(-50%, -50%)`;
       }

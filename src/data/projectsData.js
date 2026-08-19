@@ -1,10 +1,10 @@
 export const projectsData = [
   {
-    id: "shadows-of-the-monsoon",
-    title: "Shadows of the Monsoon",
+    id: "moshari",
+    title: "MOSHARI",
     category: "Films",
-    year: "2025",
-    client: "Cinematic Vision Independent",
+    year: "2022",
+    client: "Jordan Peele & Riz Ahmed (Oscar® Qualifying)",
     aspectRatio: "2.39:1 Anamorphic",
     thumbnail: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop",
     hoverStills: [
@@ -17,10 +17,9 @@ export const projectsData = [
       {
         id: "main",
         labelKey: "mainFilm",
-        title: "Main Film (Feature Trailer - 4K)",
-        vimeoId: "160754109",
-        embedUrl: "https://player.vimeo.com/video/160754109?title=0&byline=0&portrait=0&badge=0&autopause=0",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+        title: "MOSHARI (Official Oscar® Qualifying Short)",
+        vimeoId: "759653578",
+        embedUrl: "https://player.vimeo.com/video/759653578?title=0&byline=0&portrait=0&badge=0&autopause=0"
       }
     ],
     screengrabs: [
@@ -29,752 +28,721 @@ export const projectsData = [
       "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Tanvir Hossain",
-      producer: "Nadia Rahman & Karim El-Sayed",
+      director: "Nuhash Humayun",
+      producer: "Bushra Afreen, Nuhash Humayun",
+      executiveProducer: "Jordan Peele, Riz Ahmed, Rashad Wajahat, Abrar Jahin Rafee",
       dop: "Ejaz Mehedi",
-      productionCompany: "Aura Film Works",
-      editor: "Julian Vance",
-      colorist: "Stefan Sonnenfeld (Company 3)",
-      music: "Hauschka & Arvo Pärt",
-      agency: "Ogilvy Film House",
-      client: "Sundance Channel / Netflix"
+      colorist: "Ejaz Mehedi",
+      music: "Dameer Khan",
+      publicist: "Catherine Lyn Scott, London Flair PR",
+      productionCompany: "Monkeypaw Productions & Left Handed Films"
     },
     story: {
-      background: "Filmed across remote riverbanks during torrential monsoon seasons, 'Shadows of the Monsoon' delves into memory, loss, and coastal tides.",
-      creativeProcess: "We pushed ARRI Alexa 35 sensors to ISO 3200, matching Cooke Anamorphic/i Full Frame Lenses to yield painterly bokeh.",
-      challenges: "High humidity and continuous rainfall required camera insulated enclosures during rapid handheld movements.",
-      productionStory: "Shot strictly during the golden 20-minute window before nightfall using 18K HMIs elevated on river cranes."
+      background: "20+ festivals, 11 awards. The first Oscar® Qualifying film in Bangladesh history. Executive Produced by Oscar® winning filmmakers Jordan Peele and Riz Ahmed. Filmed in Dhaka, Bangladesh.",
+      creativeProcess: "LOGLINE: Two sisters are forced inside a mosquito net (moshari) to survive - but can they survive each other?",
+      challenges: "Captured under intense atmospheric humidity in Dhaka, balancing claustrophobic interior mosquito net light with exterior dark apocalyptic landscapes.",
+      productionStory: "WINNER: SXSW Grand Jury Award (Best Midnight Short), Short Shorts & Asia Governor of Tokyo Award (Oscar® Qualifying), Atlanta Film Festival (Oscar® Qualifying), Woodstock Film Festival (Oscar® Qualifying), Fantasia Gold Award, and Hollywood Critics Association Nomination."
     }
   },
   {
-    id: "porsche-relentless-force",
-    title: "Porsche: Relentless Force",
-    category: "Commercial",
-    year: "2025",
-    client: "Porsche Global",
-    aspectRatio: "2.35:1 Dynamic",
-    thumbnail: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=1200&auto=format&fit=crop",
-    hoverStills: [
-      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=1000&auto=format&fit=crop"
-    ],
-    poster: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=1600&auto=format&fit=crop",
-    videos: [
-      {
-        id: "main",
-        labelKey: "mainFilm",
-        title: "Commercial Cut (60s TVC Master)",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-      }
-    ],
-    screengrabs: [
-      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=1000&auto=format&fit=crop"
-    ],
-    crew: {
-      director: "Ejaz Mehedi",
-      producer: "Christian Vance",
-      dop: "Ejaz Mehedi",
-      productionCompany: "Stuttgart Media Labs",
-      editor: "Alexander Berg",
-      colorist: "Damien Van Der Cruyssen",
-      music: "Max Richter",
-      agency: "DDB Berlin",
-      client: "Porsche AG"
-    },
-    story: {
-      background: "Commissioned by Porsche AG for the GT3 RS, this campaign showcases raw velocity and aerodynamic elegance.",
-      creativeProcess: "Utilizing custom gimbal mounts attached to a Mercedes-AMG tracking vehicle, capturing high-speed close-ups at 140 mph.",
-      challenges: "Freezing temperatures required pre-heating camera batteries and thermal lens warmers.",
-      productionStory: "Featured a low-angle tracking shot skimming 3 inches above the asphalt surface."
-    }
-  },
-  {
-    id: "chronicles-of-the-wind",
-    title: "Chronicles of the Wind",
+    id: "foreigners-only",
+    title: "FOREIGNERS ONLY",
     category: "Films",
-    year: "2025",
-    client: "Arte France Cinema",
-    aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
-    hoverStills: [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000&auto=format&fit=crop"
-    ],
-    poster: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop",
-    videos: [
-      {
-        id: "main",
-        labelKey: "mainFilm",
-        title: "Official Trailer",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-      }
-    ],
-    screengrabs: [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000&auto=format&fit=crop"
-    ],
-    crew: {
-      director: "Lucia Moreau",
-      producer: "Ejaz Mehedi",
-      dop: "Ejaz Mehedi",
-      productionCompany: "Arte France",
-      editor: "Claire Denis",
-      colorist: "Tom Poole",
-      music: "Hildur Guðnadóttir",
-      client: "Arte France Cinema"
-    },
-    story: {
-      background: "A poetic journey across coastal bluffs exploring memory, wind textures, and oceanic solitude.",
-      creativeProcess: "Shot on 65mm analogue film stock with custom vintage Zeiss prime lenses.",
-      challenges: "High coastal winds required specialized gyroscopic tripod stabilization.",
-      productionStory: "Filmed over 30 sunset sessions along the Brittany coastline."
-    }
-  },
-  {
-    id: "mercedes-amg-electric-velocity",
-    title: "Mercedes-AMG: Electric Velocity",
-    category: "Commercial",
-    year: "2025",
-    client: "Mercedes-Benz Global",
-    aspectRatio: "2.35:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=1200&auto=format&fit=crop",
-    hoverStills: [
-      "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=1000&auto=format&fit=crop"
-    ],
-    poster: "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=1600&auto=format&fit=crop",
-    videos: [
-      {
-        id: "main",
-        labelKey: "mainFilm",
-        title: "60s Global TVC",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
-      }
-    ],
-    screengrabs: [
-      "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=1000&auto=format&fit=crop"
-    ],
-    crew: {
-      director: "Ejaz Mehedi",
-      producer: "Marcus Lindner",
-      dop: "Ejaz Mehedi",
-      productionCompany: "Antoni Berlin",
-      editor: "Julian Vance",
-      colorist: "Stefan Sonnenfeld",
-      client: "Mercedes-AMG"
-    },
-    story: {
-      background: "Showcasing the zero-emissions electric performance of Mercedes-AMG EV supercars.",
-      creativeProcess: "High-speed chase vehicle camera rigging combined with FPV drone cinematography.",
-      challenges: "Night tunnel lighting transitions required custom wireless LED rigs.",
-      productionStory: "Filmed inside futuristic illuminated alpine tunnels in Zurich."
-    }
-  },
-  {
-    id: "the-silent-cartographer",
-    title: "The Silent Cartographer",
-    category: "Films",
-    year: "2025",
-    client: "National Geographic Documentary",
-    aspectRatio: "1.85:1 Spherical",
-    thumbnail: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200&auto=format&fit=crop",
-    hoverStills: [
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop"
-    ],
-    poster: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600&auto=format&fit=crop",
-    videos: [
-      {
-        id: "main",
-        labelKey: "mainFilm",
-        title: "Documentary Cut",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
-      }
-    ],
-    screengrabs: [
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop"
-    ],
-    crew: {
-      director: "Ejaz Mehedi",
-      producer: "Sarah Jenkins",
-      dop: "Ejaz Mehedi",
-      productionCompany: "NatGeo Films",
-      editor: "Chris King",
-      client: "National Geographic Society"
-    },
-    story: {
-      background: "A solitary cartographer mapping glacial shrinkage across the Himalayan plateau.",
-      creativeProcess: "High altitude 8K RED V-Raptor cameras in extreme cold conditions.",
-      challenges: "Temperatures down to -30°C at 18,000 feet elevation.",
-      productionStory: "Expedition team lived in remote basecamps over 40 days."
-    }
-  },
-  {
-    id: "apple-visionary-light",
-    title: "Apple: Visionary Light",
-    category: "Commercial",
-    year: "2025",
-    client: "Apple Inc.",
-    aspectRatio: "16:9 4K Cinema",
-    thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop",
-    hoverStills: [
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1000&auto=format&fit=crop"
-    ],
-    poster: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1600&auto=format&fit=crop",
-    videos: [
-      {
-        id: "main",
-        labelKey: "mainFilm",
-        title: "Product Launch Film",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
-      }
-    ],
-    screengrabs: [
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1000&auto=format&fit=crop"
-    ],
-    crew: {
-      director: "Ejaz Mehedi",
-      producer: "Media Arts Lab",
-      dop: "Ejaz Mehedi",
-      productionCompany: "TBWA\\Media Arts Lab",
-      editor: "Elliot Graham",
-      colorist: "Tom Poole",
-      client: "Apple Inc."
-    },
-    story: {
-      background: "Visualizing light reflections and computational photography in liquid optics.",
-      creativeProcess: "Shot with extreme macro cinema lenses and motorized precision sliders.",
-      challenges: "Maintaining razor-thin depth of field during high-speed camera motion.",
-      productionStory: "Captured over 100 macro light refractions in Cupertino studios."
-    }
-  },
-  {
-    id: "whispers-in-the-mist",
-    title: "Whispers in the Mist",
-    category: "Films",
-    year: "2024",
-    client: "BFI Short Film Fund",
+    year: "2022",
+    client: "HULU - Bite Size Halloween (20th Digital Studio)",
     aspectRatio: "2.39:1 Anamorphic",
     thumbnail: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1200&auto=format&fit=crop",
     hoverStills: [
       "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop"
     ],
     poster: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1600&auto=format&fit=crop",
     videos: [
       {
         id: "main",
         labelKey: "mainFilm",
-        title: "Short Film Master",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+        title: "FOREIGNERS ONLY (HULU / 20th Digital Studio)",
+        vimeoId: "783339687",
+        embedUrl: "https://player.vimeo.com/video/783339687?title=0&byline=0&portrait=0&badge=0&autopause=0"
       }
     ],
     screengrabs: [
       "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Arthur Pendelton",
-      producer: "Ejaz Mehedi",
+      director: "Nuhash Humayun",
+      executiveProducer: "David Worthen, Arbi Pedrossian, Jenna Cavelle, Valerie Stienberg",
       dop: "Ejaz Mehedi",
-      productionCompany: "BFI Shorts",
-      editor: "Joe Walker",
-      client: "BFI / Film4"
+      starring: "Mostofa Monwar, Iresh Zaker, Rebecca Nusrat Ali",
+      productionCompany: "20th Digital Studio & HULU",
+      postSupervisor: "Dagmawi Abebe"
     },
     story: {
-      background: "A psychological mystery set in fog-covered Scottish pine forests.",
-      creativeProcess: "Pushed 35mm film stock to ISO 1600 for natural organic grain.",
-      challenges: "Dense fog required waiting for natural thermal inversions.",
-      productionStory: "Honored at the London Short Film Festival for Best Cinematography."
+      background: "HULU Bite Size Halloween Season 3 Episode 9. Produced by 20th Digital Studio and HULU.",
+      creativeProcess: "LOGLINE: In Bangladesh, a tannery worker searches for an apartment but the local landlords want 'foreigners only.'",
+      challenges: "Blending dark satirical social commentary with eerie atmospheric lighting inside crowded Dhaka tannery districts.",
+      productionStory: "Featured across major horror film festivals and podcasts exploring post-colonial themes."
     }
   },
   {
-    id: "red-bull-alpine-flight",
-    title: "Red Bull: Alpine Flight",
-    category: "Commercial",
-    year: "2024",
-    client: "Red Bull Media House",
-    aspectRatio: "16:9 Dynamic",
-    thumbnail: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop",
+    id: "a-thing-about-kashem",
+    title: "A Thing About Kashem",
+    category: "Films",
+    year: "2025",
+    client: "Sayonara Film / Rhode Island Winner",
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1200&auto=format&fit=crop",
     hoverStills: [
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop"
     ],
-    poster: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop",
+    poster: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1600&auto=format&fit=crop",
     videos: [
       {
         id: "main",
         labelKey: "mainFilm",
-        title: "Action Master",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+        title: "A Thing About Kashem (Official Trailer)",
+        vimeoId: "1068808906",
+        embedUrl: "https://player.vimeo.com/video/1068808906?title=0&byline=0&portrait=0&badge=0&autopause=0"
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Ejaz Mehedi",
-      producer: "David Stern",
+      director: "Bijon Imtiaz",
+      screenplay: "Nuhash Humayun",
       dop: "Ejaz Mehedi",
-      productionCompany: "Red Bull Media",
-      client: "Red Bull Wingsuit Team"
+      colorist: "Ummid Ashraf",
+      producer: "Arifur Rahman & Nuhash Humayun",
+      coProducer: "Sakib Iftekhar, Imran Ahmed, Nusrat Amin Supti",
+      starring: "Intekhab Dinar, Hasnat Ripon, Moutushi Biswas",
+      productionCompany: "Goopy Bagha Productions, LongStory, Screenxcope",
+      distribution: "Sayonara Film"
     },
     story: {
-      background: "Tracking extreme wingsuit proximity flying down the Matterhorn mountain face.",
-      creativeProcess: "Custom helmet-mounted RED Komodo 6K cinema rigs.",
-      challenges: "Speeds exceeding 150 mph close to sheer rock walls.",
-      productionStory: "Nominated for Sports Emmy Award for Outstanding Cinematography."
+      background: "WINNER: Grand Prize Alternative Spirit Award - Rhode Island International Film Festival 2025.",
+      creativeProcess: "LOGLINE: A married man's unexpected bodily reaction, at the wrong time and in the wrong place, plunges him into a midlife crisis.",
+      challenges: "Handling delicate dramatic performance with intimate, sensitive visual compositions.",
+      productionStory: "Official Selection at Caostica 2025 (Spain), Los Angeles Diversity Film Festival 2025, and 48th Asian American International Film Festival NYC 2025."
     }
   },
   {
-    id: "symphony-of-the-tide",
-    title: "Symphony of the Tide",
-    category: "Films",
+    id: "azura-luxury-villas",
+    title: "Azura - The Azura Within",
+    category: "Commercial",
     year: "2024",
-    client: "Sundance Channel",
-    aspectRatio: "2.35:1 Anamorphic",
+    client: "Al Mouj / Dusk Films",
+    aspectRatio: "2.39:1 Anamorphic",
     thumbnail: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
     hoverStills: [
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop"
     ],
     poster: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop",
     videos: [
       {
         id: "main",
         labelKey: "mainFilm",
-        title: "Feature Film Preview",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+        title: "Azura - Luxury Villas Launch",
+        vimeoId: "1099692179",
+        embedUrl: "https://player.vimeo.com/video/1099692179?title=0&byline=0&portrait=0&badge=0&autopause=0"
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop"
-    ],
-    crew: {
-      director: "Tanvir Hossain",
-      producer: "Ejaz Mehedi",
-      dop: "Ejaz Mehedi",
-      productionCompany: "Aura Film Works",
-      client: "Sundance Channel"
-    },
-    story: {
-      background: "A meditative look into traditional fishing villages in the Sundarbans Delta.",
-      creativeProcess: "Natural twilight available light paired with Cooke Anamorphic glass.",
-      challenges: "Navigating deep tidal estuaries with heavy camera gear.",
-      productionStory: "Winner of Sundance World Cinema Cinematography Award."
-    }
-  },
-  {
-    id: "hp-beyond-boundaries",
-    title: "HP: Beyond Boundaries",
-    category: "Commercial",
-    year: "2024",
-    client: "HP Global",
-    aspectRatio: "16:9 4K Cinema",
-    thumbnail: "https://images.unsplash.com/photo-1517649763962-0c623266010b?q=80&w=1200&auto=format&fit=crop",
-    hoverStills: [
-      "https://images.unsplash.com/photo-1517649763962-0c623266010b?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=1000&auto=format&fit=crop"
-    ],
-    poster: "https://images.unsplash.com/photo-1517649763962-0c623266010b?q=80&w=1600&auto=format&fit=crop",
-    videos: [
-      {
-        id: "main",
-        labelKey: "mainFilm",
-        title: "60s Commercial",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
-      }
-    ],
-    screengrabs: [
-      "https://images.unsplash.com/photo-1517649763962-0c623266010b?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=1000&auto=format&fit=crop"
-    ],
-    crew: {
-      director: "Ejaz Mehedi",
-      producer: "Samantha Reed",
-      dop: "Ejaz Mehedi",
-      productionCompany: "Giant Spoon",
-      client: "HP Global"
-    },
-    story: {
-      background: "A global story celebrating digital creators, animators, and architects.",
-      creativeProcess: "High-speed motion control robotic arm paired with ARRI Alexa 35.",
-      challenges: "Synchronizing dynamic digital overlays with physical camera movement.",
-      productionStory: "Filmed across Tokyo, London, and San Francisco."
-    }
-  },
-  {
-    id: "echoes-of-silence",
-    title: "Echoes of Silence",
-    category: "Films",
-    year: "2024",
-    client: "Cannes Official Selection",
-    aspectRatio: "1.85:1 Spherical",
-    thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop",
-    hoverStills: [
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop"
-    ],
-    poster: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop",
-    videos: [
-      {
-        id: "main",
-        labelKey: "mainFilm",
-        title: "Official Short Film Master",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
-      }
-    ],
-    screengrabs: [
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=1000&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Farhana Ahmed",
-      producer: "Ejaz Mehedi",
+      director: "Anwar K Al Asmi",
       dop: "Ejaz Mehedi",
-      productionCompany: "Nomad Pictures",
-      editor: "Sarah Jenkins",
-      colorist: "Tom Poole",
-      client: "ARTE France"
+      productionManager: "Ossama Hassan",
+      editor: "Anwar K Al Asmi, Ejaz Mehedi",
+      colorist: "Marcus Friedlander (Sydney)",
+      client: "Al Mouj",
+      productionCompany: "Dusk Films"
     },
     story: {
-      background: "Selected for competition at Cannes Film Festival, Echoes of Silence explores solitary human connections.",
-      creativeProcess: "Shot exclusively on 35mm Kodak Vision3 500T film stock.",
-      challenges: "Working with limited analogue film canisters per scene required meticulous blocking.",
-      productionStory: "Rehearsed for 3 days to align actors' movements with sunset trajectory."
+      background: "Launch campaign for Azura Luxury Villas filmed in the coastal Sultanate of Oman.",
+      creativeProcess: "Framed around pristine natural sunlight and architectural ocean views.",
+      challenges: "Balancing high dynamic range exterior desert sunlight with rich interior villa textures.",
+      productionStory: "Produced in collaboration with international fashion stylists and Sydney color house."
     }
   },
   {
-    id: "nike-transcend-limits",
-    title: "Nike: Transcend Limits",
+    id: "golf-links-luxury",
+    title: "Golf Links - Nature of Luxury",
     category: "Commercial",
     year: "2024",
-    client: "Nike Worldwide",
-    aspectRatio: "16:9 4K Cinema",
-    thumbnail: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1200&auto=format&fit=crop",
-    hoverStills: [
-      "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1517649763962-0c623266010b?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=1000&auto=format&fit=crop"
-    ],
-    poster: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1600&auto=format&fit=crop",
-    videos: [
-      {
-        id: "main",
-        labelKey: "mainFilm",
-        title: "Global Commercial Campaign (60s)",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
-      }
-    ],
-    screengrabs: [
-      "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1517649763962-0c623266010b?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=1000&auto=format&fit=crop"
-    ],
-    crew: {
-      director: "Ejaz Mehedi",
-      producer: "Samantha Reed",
-      dop: "Ejaz Mehedi",
-      productionCompany: "Wieden+Kennedy Portland",
-      client: "Nike Global"
-    },
-    story: {
-      background: "Focused on human muscle explosive tension captured at 1000 frames per second.",
-      creativeProcess: "High-speed Phantom 4K digital cinema cameras with bolt robotic arms.",
-      challenges: "Lighting a 100-meter track at 1000fps required 200,000 watts of flicker-free LED arrays.",
-      productionStory: "Gained over 40 million organic views online upon broadcast release."
-    }
-  },
-  {
-    id: "midnight-in-tokyo",
-    title: "Midnight in Tokyo",
-    category: "Films",
-    year: "2024",
-    client: "Sony Pictures Classics",
+    client: "Al Mouj / Dusk Films",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1200&auto=format&fit=crop",
     hoverStills: [
-      "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1000&auto=format&fit=crop"
     ],
-    poster: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1600&auto=format&fit=crop",
+    poster: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1600&auto=format&fit=crop",
     videos: [
       {
         id: "main",
         labelKey: "mainFilm",
-        title: "Feature Film Preview",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+        title: "Golf Links - Nature of Luxury",
+        vimeoId: "1016231627",
+        embedUrl: "https://player.vimeo.com/video/1016231627?title=0&byline=0&portrait=0&badge=0&autopause=0"
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Kenji Takahashi",
-      producer: "Ejaz Mehedi",
+      director: "Anwar K Al Asmi & Ejaz Mehedi",
       dop: "Ejaz Mehedi",
-      productionCompany: "Nippon Cinema Labs",
-      client: "Sony Pictures"
+      productionManager: "Ossama Hassan",
+      client: "Al Mouj",
+      productionCompany: "Dusk Films"
     },
     story: {
-      background: "A nocturnal visual poem following an urban photographer wandering Shinjuku backalleys.",
-      creativeProcess: "Vintage Leica Noctilux f/0.95 glass attached to Sony Venice 2 cameras.",
-      challenges: "Navigating crowded narrow alleyways while operating handheld handheld rigs.",
-      productionStory: "Filmed exclusively between midnight and 4:30 AM over 14 consecutive nights."
+      background: "Launch campaign for Al Mouj Golf Links filmed in Sultanate of Oman.",
+      creativeProcess: "High-speed tracking of golf swings matched with aerial coastal horizons.",
+      challenges: "Dawn and dusk golden hour timing across expansive green courses.",
+      productionStory: "Co-directed and shot by Ejaz Mehedi."
     }
   },
   {
-    id: "red-bull-horizon-drift",
-    title: "Red Bull: Horizon Drift",
+    id: "oqgn-unseen",
+    title: "OQGN - Unseen",
     category: "Commercial",
     year: "2024",
-    client: "Red Bull Media House",
-    aspectRatio: "16:9 Dynamic",
+    client: "OQGN Gas Network / Gravity Productions",
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop",
+    hoverStills: [
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop"
+    ],
+    poster: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1600&auto=format&fit=crop",
+    videos: [
+      {
+        id: "main",
+        labelKey: "mainFilm",
+        title: "OQGN - Unseen Launch Commercial",
+        vimeoId: "1016231627",
+        embedUrl: "https://player.vimeo.com/video/1016231627?title=0&byline=0&portrait=0&badge=0&autopause=0"
+      }
+    ],
+    screengrabs: [
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop"
+    ],
+    crew: {
+      director: "Anwar K Al Asmi",
+      dop: "Ejaz Mehedi",
+      producer: "Ossama Hassan",
+      productionManager: "Reza Mostofi",
+      agency: "Ohi/Leo",
+      productionCompany: "Gravity Productions",
+      client: "OQGN"
+    },
+    story: {
+      background: "Launch commercial for OQGN - Oman Gas Network.",
+      creativeProcess: "Industrial scale lighting and macro pipe visuals filmed in Sultanate of Oman.",
+      challenges: "Extreme heat and security protocols inside active gas infrastructure.",
+      productionStory: "A visual ode to unseen energy networks shaping modern landscapes."
+    }
+  },
+  {
+    id: "yiti-dynamic-harmony",
+    title: "YITI - Dynamic Harmony",
+    category: "Commercial",
+    year: "2022",
+    client: "Diamond Developers x Omran Group",
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200&auto=format&fit=crop",
+    hoverStills: [
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop"
+    ],
+    poster: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600&auto=format&fit=crop",
+    videos: [
+      {
+        id: "main",
+        labelKey: "mainFilm",
+        title: "YITI - Dynamic Harmony (Sustainable City)",
+        vimeoId: "783019291",
+        embedUrl: "https://player.vimeo.com/video/783019291?title=0&byline=0&portrait=0&badge=0&autopause=0"
+      }
+    ],
+    screengrabs: [
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop"
+    ],
+    crew: {
+      director: "Anwar Al-Asmi & Ejaz Mehedi",
+      dop: "Ejaz Mehedi",
+      productionCompany: "RealityCG",
+      client: "Diamond Developers x Omran Group"
+    },
+    story: {
+      background: "Launch commercial for Yiti - The Sustainable City 2022.",
+      creativeProcess: "Exploring eco-architecture and natural mountain vistas in Oman.",
+      challenges: "High contrast mountain sunlight.",
+      productionStory: "Filmed in Sultanate of Oman."
+    }
+  },
+  {
+    id: "al-mouj-golf-10-years",
+    title: "Al-Mouj Golf - 10 Years of Golf",
+    category: "Commercial",
+    year: "2023",
+    client: "Al-Mouj / RealityCG",
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop",
+    hoverStills: [
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop"
+    ],
+    poster: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop",
+    videos: [
+      {
+        id: "main",
+        labelKey: "mainFilm",
+        title: "Al-Mouj Golf 10th Anniversary",
+        vimeoId: "817245793",
+        embedUrl: "https://player.vimeo.com/video/817245793?title=0&byline=0&portrait=0&badge=0&autopause=0"
+      }
+    ],
+    screengrabs: [
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop"
+    ],
+    crew: {
+      director: "Anwar Al-Asmi",
+      dop: "Ejaz Mehedi",
+      productionCompany: "RealityCG",
+      client: "Al-Mouj"
+    },
+    story: {
+      background: "Launch commercial for AL MOUJ GOLF 10 YEARS ANNIVERSARY.",
+      creativeProcess: "Cinematic retrospective celebrating a decade of international championship golf.",
+      challenges: "Matching legacy archival footage aesthetics with modern 4K digital cinema.",
+      productionStory: "Filmed in Sultanate of Oman."
+    }
+  },
+  {
+    id: "bank-muscat-the-gamer",
+    title: "Bank Muscat - The Gamer",
+    category: "Commercial",
+    year: "2021",
+    client: "Bank Muscat x Royal Oman Police",
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1200&auto=format&fit=crop",
+    hoverStills: [
+      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1000&auto=format&fit=crop"
+    ],
+    poster: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1600&auto=format&fit=crop",
+    videos: [
+      {
+        id: "main",
+        labelKey: "mainFilm",
+        title: "Bank Muscat - The Gamer (Behind The Mask)",
+        vimeoId: "652762503",
+        embedUrl: "https://player.vimeo.com/video/652762503?title=0&byline=0&portrait=0&badge=0&autopause=0"
+      }
+    ],
+    screengrabs: [
+      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1000&auto=format&fit=crop"
+    ],
+    crew: {
+      director: "Anwar Al-Asmi & Ejaz Mehedi",
+      dop: "Ejaz Mehedi",
+      producer: "Jamal Al-Asm",
+      productionCompany: "RealityCG",
+      client: "Bank Muscat x Royal Oman Police"
+    },
+    story: {
+      background: "The eighth episode of 'Behind The Mask' campaign for Bank Muscat and Royal Oman Police (ROP).",
+      creativeProcess: "Moody neon lighting portraying cyber-fraud gaming incidents.",
+      challenges: "Creating atmospheric tension in interior gaming studio setups.",
+      productionStory: "Filmed in Sultanate of Oman."
+    }
+  },
+  {
+    id: "yamaha-speed-girl",
+    title: "Yamaha - Speed Girl",
+    category: "Commercial",
+    year: "2022",
+    client: "Yamaha Bangladesh / GREY",
+    aspectRatio: "2.39:1 Anamorphic",
     thumbnail: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1200&auto=format&fit=crop",
     hoverStills: [
-      "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1000&auto=format&fit=crop"
     ],
     poster: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1600&auto=format&fit=crop",
     videos: [
       {
         id: "main",
         labelKey: "mainFilm",
-        title: "Action Cut",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+        title: "Yamaha - Speed Girl",
+        vimeoId: "784200840",
+        embedUrl: "https://player.vimeo.com/video/784200840?title=0&byline=0&portrait=0&badge=0&autopause=0"
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Ejaz Mehedi",
-      producer: "David Stern",
+      director: "Reehan Rahman",
       dop: "Ejaz Mehedi",
-      productionCompany: "Red Bull Media House",
-      client: "Red Bull"
+      producer: "Faisal Ahmed",
+      agency: "GREY",
+      productionCompany: "Deafrip Entertainment",
+      client: "Yamaha Bangladesh"
     },
     story: {
-      background: "High-octane drift spectacle shot across the salt flats of Utah at sunset.",
-      creativeProcess: "FPV drone tracking combined with ultra-low Russian Arm pursuit vehicles.",
-      challenges: "Dust storms and salt corrosion requiring continuous camera lens cleaning.",
-      productionStory: "Captured the iconic tandem drift loop in a single 2-minute take."
+      background: "High-octane motorcycle velocity commercial for Yamaha Bangladesh.",
+      creativeProcess: "High-speed tracking camera car rigs matching rapid night city maneuvers.",
+      challenges: "Low-light night street tracking.",
+      productionStory: "Filmed in Dhaka, Bangladesh."
     }
   },
   {
-    id: "the-lost-symphony",
-    title: "The Lost Symphony",
-    category: "Films",
-    year: "2023",
-    client: "BBC Film / BFI",
-    aspectRatio: "1.85:1",
+    id: "attic-echoes-in-your-attic",
+    title: "Attic - Echoes in Your Attic",
+    category: "Commercial",
+    year: "2022",
+    client: "GLITCH Studios",
+    aspectRatio: "2.39:1 Anamorphic",
     thumbnail: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200&auto=format&fit=crop",
     hoverStills: [
-      "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop"
     ],
     poster: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1600&auto=format&fit=crop",
     videos: [
       {
         id: "main",
         labelKey: "mainFilm",
-        title: "Short Film Master",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+        title: "Attic - Echoes in Your Attic (Music Video)",
+        vimeoId: "783260527",
+        embedUrl: "https://player.vimeo.com/video/783260527?title=0&byline=0&portrait=0&badge=0&autopause=0"
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
-      director: "Arthur Pendelton",
-      producer: "Ejaz Mehedi",
+      writer: "Shadab Shams",
+      director: "Tahmim Habib Dipro",
       dop: "Ejaz Mehedi",
-      productionCompany: "BFI Shorts",
-      client: "BBC"
+      executiveProducer: "Junaid Deep",
+      coProducer: "Shahib Ahmed",
+      productionDesigner: "Ratul Mahmud",
+      editor: "Fahad Zaman, Ejaz Mehedi",
+      colorist: "Ejaz Mehedi",
+      artDirector: "Ruthba Irteza",
+      starring: "Shadab Shams, Aisha Khan",
+      productionCompany: "GLITCH Studios"
     },
     story: {
-      background: "A documentary drama focusing on a reclusive classical composer in rural Scotland.",
-      creativeProcess: "Warm candlelight illumination combined with natural window daylight keying.",
-      challenges: "Recording live acoustic cello performances inside resonant historical cathedrals.",
-      productionStory: "Awarded Best Cinematography at the London Short Film Festival."
+      background: "Official music video for Attic. Written by Shadab Shams.",
+      creativeProcess: "Moody atmospheric interiors with custom art direction and color grading.",
+      challenges: "Intimate character framing.",
+      productionStory: "Produced by GLITCH Studios."
     }
   },
   {
-    id: "vogue-timeless-motion",
-    title: "Vogue: Timeless Motion",
+    id: "indalo-hobeki",
+    title: "Indalo - Hobeki",
     category: "Commercial",
-    year: "2023",
-    client: "Vogue Paris / Chanel",
-    aspectRatio: "4:3 Classic Academy",
+    year: "2019",
+    client: "Runout Films",
+    aspectRatio: "2.39:1 Anamorphic",
     thumbnail: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop",
     hoverStills: [
-      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop"
     ],
     poster: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop",
     videos: [
       {
         id: "main",
         labelKey: "mainFilm",
-        title: "Fashion Film Master",
-        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+        title: "Indalo - Hobeki (Official Music Video)",
+        vimeoId: "333803528",
+        embedUrl: "https://player.vimeo.com/video/333803528?title=0&byline=0&portrait=0&badge=0&autopause=0"
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop"
     ],
     crew: {
       director: "Ejaz Mehedi",
-      producer: "Camille Laurent",
+      starring: "Shaan Rahman",
+      executiveProducer: "Zubair Hasan Chowdhury, Jon Kabir",
+      producer: "Tawsif Akkas",
       dop: "Ejaz Mehedi",
-      productionCompany: "Vogue Paris Studios",
-      client: "Chanel Haute Couture"
+      vfx: "Glitch [Fahad Zaman, Ahmed Intisher Fardeen] x Salem Abduhu",
+      productionCompany: "Runout Films (Bangladesh)"
     },
     story: {
-      background: "An haute couture fashion film exploring 16mm black and white texture in Paris fashion archives.",
-      creativeProcess: "Shot on ARRI 416 16mm film camera using double X black and white negative stock.",
-      challenges: "Delicate vintage silk gowns requiring specialized soft reflector diffusion.",
-      productionStory: "Featured as opening film for Paris Haute Couture Week."
+      background: "A fictitious account of Subodh from the recurring series of graffiti arts that emerged on the walls of Dhaka city during late 2017 by the anonymous artist HOBEKI.",
+      creativeProcess: "Directed and shot by Ejaz Mehedi.",
+      challenges: "Street-level guerrilla filming across urban Dhaka wall art locations.",
+      productionStory: "Associate production by IMVISIBLE and Filmy Features."
     }
-  }
-];
-
-export const stillsData = [
-  {
-    id: "still-1",
-    title: "Midnight Solitude",
-    location: "Tokyo, Japan",
-    aspectRatio: "horizontal",
-    url: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1400&auto=format&fit=crop"
-  },
-  {
-    id: "still-2",
-    title: "Anamorphic Dawn",
-    location: "Sylhet Tea Gardens",
-    aspectRatio: "wide",
-    url: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1400&auto=format&fit=crop"
-  },
-  {
-    id: "still-3",
-    title: "Neon Reflections",
-    location: "Dhaka Old Town",
-    aspectRatio: "vertical",
-    url: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1400&auto=format&fit=crop"
-  },
-  {
-    id: "still-4",
-    title: "The Velocity Line",
-    location: "Nürburgring Track",
-    aspectRatio: "horizontal",
-    url: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=1400&auto=format&fit=crop"
-  },
-  {
-    id: "still-5",
-    title: "Golden Horizon",
-    location: "Cox's Bazar Sea Beach",
-    aspectRatio: "wide",
-    url: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1400&auto=format&fit=crop"
-  },
-  {
-    id: "still-6",
-    title: "Monochrome Portrait",
-    location: "London Studio",
-    aspectRatio: "vertical",
-    url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400&auto=format&fit=crop"
   }
 ];
 
 export const awardsData = [
   {
-    id: "award-1",
-    title: "Best Cinematography Award",
-    organization: "Asian International Film Festival",
-    date: "2025",
-    description: "Honored for groundbreaking low-light anamorphic photography in 'Shadows of the Monsoon'.",
-    thumbnail: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=600&auto=format&fit=crop",
-    link: "https://example.com/awards/2025-cinematography"
+    id: "award-moshari-sxsw",
+    title: "SXSW Grand Jury Award - Best Midnight Short",
+    organization: "SXSW Film Festival 2022",
+    date: "2022",
+    film: "MOSHARI",
+    badge: "Oscar® Qualifying",
+    description: "WINNER: Grand Jury Award for 'MOSHARI', Executive Produced by Jordan Peele & Riz Ahmed."
   },
   {
-    id: "award-2",
-    title: "Cannes Lions Gold Pencil - Commercial Directing",
-    organization: "Cannes Lions International Festival of Creativity",
-    date: "2024",
-    description: "Awarded for exceptional visual direction and high-speed motion tracking on 'Porsche: Relentless Force'.",
-    thumbnail: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?q=80&w=600&auto=format&fit=crop",
-    link: "https://example.com/cannes-lions/gold-2024"
+    id: "award-moshari-tokyo",
+    title: "Governor of Tokyo Award & Best Short",
+    organization: "Short Shorts Film Festival & Asia 2022",
+    date: "2022",
+    film: "MOSHARI",
+    badge: "Oscar® Qualifying",
+    description: "Official Oscar® Qualifying Winner for 'MOSHARI'."
   },
   {
-    id: "award-3",
-    title: "BSC Emerging Cinematographer Winner",
-    organization: "British Society of Cinematographers",
+    id: "award-moshari-woodstock",
+    title: "Mark Braunstein Award - Best Narrative Short",
+    organization: "Woodstock Film Festival 2022",
+    date: "2022",
+    film: "MOSHARI",
+    badge: "Oscar® Qualifying",
+    description: "Official Oscar® Qualifying Winner for Best Narrative Short."
+  },
+  {
+    id: "award-moshari-atlanta",
+    title: "Best Narrative Short",
+    organization: "Atlanta Film Festival 2022",
+    date: "2022",
+    film: "MOSHARI",
+    badge: "Oscar® Qualifying",
+    description: "Official Oscar® Qualifying Winner at Atlanta Film Festival."
+  },
+  {
+    id: "award-moshari-hca",
+    title: "Best Short Film (Nominee)",
+    organization: "Hollywood Critics Association 2022",
+    date: "2022",
+    film: "MOSHARI",
+    badge: "Nominee",
+    description: "Nominated for Best Short Film at Hollywood Critics Association."
+  },
+  {
+    id: "award-moshari-fantasia",
+    title: "Gold Award - Best Asian Short",
+    organization: "Fantasia International Film Festival 2022",
+    date: "2022",
+    film: "MOSHARI",
+    badge: "Gold Award",
+    description: "Gold Award Winner for Best Asian Short."
+  },
+  {
+    id: "award-moshari-goldlist",
+    title: "Best Live Action Short",
+    organization: "The Gold List 2022",
+    date: "2022",
+    film: "MOSHARI",
+    badge: "Winner",
+    description: "Honored on The Gold List for Best Live Action Short."
+  },
+  {
+    id: "award-moshari-miff",
+    title: "Best Short Fiction",
+    organization: "Melbourne International Film Festival (MIFF)",
+    date: "2022",
+    film: "MOSHARI",
+    badge: "Winner",
+    description: "Winner of Best Short Fiction at MIFF."
+  },
+  {
+    id: "award-moshari-bifan",
+    title: "Jury Award",
+    organization: "Bucheon International Fantastic Film Festival (BIFAN)",
+    date: "2022",
+    film: "MOSHARI",
+    badge: "Jury Award",
+    description: "Jury Award Winner at BIFAN."
+  },
+  {
+    id: "award-moshari-hollyshorts",
+    title: "Best Horror Award",
+    organization: "HollyShorts Film Festival 2022",
+    date: "2022",
+    film: "MOSHARI",
+    badge: "Winner",
+    description: "Best Horror Award Winner at HollyShorts."
+  },
+  {
+    id: "award-moshari-nashville",
+    title: "Best Graveyard Shift Short",
+    organization: "Nashville Film Festival 2022",
+    date: "2022",
+    film: "MOSHARI",
+    badge: "Winner",
+    description: "Best Graveyard Shift Short Winner at Nashville."
+  },
+  {
+    id: "award-moshari-neuchatel",
+    title: "Audience Award - Best Short",
+    organization: "Neuchâtel International Fantastic Film Festival",
+    date: "2022",
+    film: "MOSHARI",
+    badge: "Audience Award",
+    description: "Audience Award Winner for Best Short at Neuchâtel."
+  },
+  {
+    id: "award-foreigners-fantasia",
+    title: "Gold Award - Best Asian Short",
+    organization: "Fantasia Film Festival (Canada) 2023",
     date: "2023",
-    description: "Recognized for artistic excellence in 35mm analogue celluloid filmmaking.",
-    thumbnail: "https://images.unsplash.com/photo-1533158307587-828f0a76ef46?q=80&w=600&auto=format&fit=crop",
-    link: "https://example.com/bsc/emerging-dop"
+    film: "FOREIGNERS ONLY",
+    badge: "Gold Award",
+    description: "Gold Award Winner for HULU / 20th Digital Studio short 'FOREIGNERS ONLY'."
+  },
+  {
+    id: "award-foreigners-hollyshorts",
+    title: "Best Horror Award",
+    organization: "HollyShorts Film Festival (US) 2023",
+    date: "2023",
+    film: "FOREIGNERS ONLY",
+    badge: "Winner",
+    description: "Winner of Best Horror Award at HollyShorts."
+  },
+  {
+    id: "award-foreigners-neuchatel",
+    title: "Audience Award & Youth Award - Best Short Film",
+    organization: "Neuchâtel (Switzerland) 2023",
+    date: "2023",
+    film: "FOREIGNERS ONLY",
+    badge: "Audience & Youth Award",
+    description: "Winner of Audience Award & Youth Award at Neuchâtel."
+  },
+  {
+    id: "award-kashem-rhode-island",
+    title: "Grand Prize Alternative Spirit Award",
+    organization: "Rhode Island International Film Festival 2025",
+    date: "2025",
+    film: "A THING ABOUT KASHEM",
+    badge: "Grand Prize",
+    description: "WINNER: Grand Prize for 'A Thing About Kashem' (DOP: Ejaz Mehedi)."
   }
 ];
 
 export const pressData = [
   {
-    id: "press-1",
-    title: "British Cinematographer Magazine: Painting With Monsoon Light",
-    date: "November 2025",
-    publisher: "British Cinematographer",
-    description: "An in-depth feature interview with Ejaz Mehedi discussing push processing 35mm stock and custom water housings.",
-    thumbnail: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=600&auto=format&fit=crop",
-    link: "https://example.com/press/british-cinematographer"
+    id: "press-zeiss",
+    title: "ZEISS CINEMATOGRAPHY LENSPIRE - INTERVIEW WITH EJAZ MEHEDI",
+    date: "2023",
+    publisher: "ZEISS Lenspire",
+    description: "In-depth interview on optics, visual storytelling, and cinematography techniques.",
+    link: "https://lenspire.zeiss.com"
   },
   {
-    id: "press-2",
-    title: "American Cinematographer Podcast: Capturing High-Speed Porsche Curves",
-    date: "August 2024",
-    publisher: "ASC Press",
-    description: "Ejaz breaks down high-speed tracking vehicle mounts, optical filter choices, and HDR color grading workflows.",
-    thumbnail: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=600&auto=format&fit=crop",
-    link: "https://example.com/press/asc-podcast"
+    id: "press-prothom-alo",
+    title: "PROTHOM ALO - MIFF 2022 FEATURE",
+    date: "2022",
+    publisher: "Prothom Alo",
+    description: "Bangladeshi DOP Ejaz Mehedi's international recognition at Melbourne International Film Festival.",
+    link: "https://www.prothomalo.com"
+  },
+  {
+    id: "press-voyage-la",
+    title: "VOYAGE LA - RISING STARS - MEET EJAZ MEHEDI, SOUTH ASIAN CINEMATOGRAPHER",
+    date: "2023",
+    publisher: "Voyage LA",
+    description: "Rising Stars profile celebrating Ejaz Mehedi's narrative and commercial body of work.",
+    link: "http://voyagela.com"
+  },
+  {
+    id: "press-friday-night-podcast",
+    title: "FRIDAY NIGHT MOVIE PODCAST - INTERVIEW WITH THE SXSW WINNING FILMMAKERS",
+    date: "2022",
+    publisher: "Friday Night Movie Podcast",
+    description: "Behind the scenes on winning SXSW Grand Jury Award and crafting the imagery of MOSHARI.",
+    link: "#"
+  },
+  {
+    id: "press-protidiner-bangladesh",
+    title: "PROTIDINER BANGLADESH - বাংলাদেশি ডিওপি ইজাজ মেহেদির বিদেশে সাফল্য",
+    date: "2023",
+    publisher: "Protidiner Bangladesh",
+    description: "Highlighting cinematographer Ejaz Mehedi's global cinema accolades.",
+    link: "#"
+  },
+  {
+    id: "press-green-matters",
+    title: "GREEN MATTERS - MOSHARI HORROR MOVIE",
+    date: "2022",
+    publisher: "Green Matters",
+    description: "Environmental commentary and horror genre breakdown of MOSHARI.",
+    link: "#"
+  },
+  {
+    id: "press-ice-today",
+    title: "ICE TODAY - MOSHARI REVIEW - THE BEGINNING OF A NEW ERA",
+    date: "2022",
+    publisher: "ICE Today",
+    description: "Review celebrating MOSHARI as a landmark breakthrough in South Asian cinema.",
+    link: "#"
+  },
+  {
+    id: "press-manabzamin",
+    title: "DAILY MANABJAMIN - ENTERTAINMENT - EJAZ MEHEDI",
+    date: "2022",
+    publisher: "Daily Manabzamin",
+    description: "Entertainment section profile on cinematographer Ejaz Mehedi.",
+    link: "#"
+  },
+  {
+    id: "press-take2-indie",
+    title: "TAKE 2 INDIE REVIEW: END OF WORLD FORCES TWO SISTERS TO SURVIVE EACH OTHER",
+    date: "2022",
+    publisher: "Take 2 Indie Review",
+    description: "Critical review praising the cinematography and suspense of MOSHARI.",
+    link: "#"
+  },
+  {
+    id: "press-samakal",
+    title: "SAMAKAL - দেশি ডিওপির বিদেশে সাফল্য",
+    date: "2023",
+    publisher: "Samakal",
+    description: "Feature story on Ejaz Mehedi's international festival wins.",
+    link: "#"
+  },
+  {
+    id: "press-channel24",
+    title: "CHANNEL24 - ENTERTAINMENT - EJAZ MEHEDI, CINEMATOGRAPHER",
+    date: "2023",
+    publisher: "Channel24",
+    description: "Broadcast feature on cinematographer Ejaz Mehedi.",
+    link: "#"
   }
 ];
 
 export const clientsData = [
-  "Porsche AG", "Nike Global", "Samsung", "Netflix", "Sony Music", "ARTE France",
-  "Sundance Channel", "Ogilvy & Mather", "Wieden+Kennedy", "Unilever", "Red Bull Media", "Chanel"
+  "Hulu",
+  "Yamaha",
+  "Vodafone",
+  "Waldorf Astoria",
+  "CNBC",
+  "Disney+",
+  "The Economist",
+  "Majid Al Futtaim",
+  "Al Mouj Muscat",
+  "Uber",
+  "Bank Muscat",
+  "OQGN",
+  "The Sustainable City - Yiti",
+  "The Global Fund",
+  "20th Digital Studio",
+  "Monkeypaw Productions",
+  "BBC Storyworks",
+  "Omran Group",
+  "Sayonara Film"
 ];
