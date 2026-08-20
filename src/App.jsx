@@ -8,6 +8,7 @@ import { ProjectListView } from './components/ProjectListView';
 import { ProjectDetailPage } from './components/ProjectDetailPage';
 import { StillsGallery } from './components/StillsGallery';
 import { AboutPage } from './components/AboutPage';
+import { JournalPage } from './components/JournalPage';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { SEOHead } from './components/SEOHead';
@@ -46,6 +47,7 @@ function MainContent() {
     setSelectedProject(null);
     if (path.startsWith('/stills')) setActiveTab('stills');
     else if (path.startsWith('/about')) setActiveTab('about');
+    else if (path.startsWith('/journal')) setActiveTab('journal');
     else setActiveTab('projects');
   };
 
@@ -130,6 +132,7 @@ function MainContent() {
               setActiveTab(tab);
               if (tab === 'stills') window.history.pushState(null, '', '/stills');
               else if (tab === 'about') window.history.pushState(null, '', '/about');
+              else if (tab === 'journal') window.history.pushState(null, '', '/journal');
               else window.history.pushState(null, '', '/');
             }}
             activeFilter={activeFilter}
@@ -166,6 +169,16 @@ function MainContent() {
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <AboutPage />
+                </motion.div>
+              ) : activeTab === 'journal' ? (
+                <motion.div
+                  key={viewKey}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <JournalPage />
                 </motion.div>
               ) : (
                 /* Projects Section with GRID / LIST View Mode Toggle */

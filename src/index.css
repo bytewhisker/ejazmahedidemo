@@ -57,6 +57,7 @@ img {
 
 @theme inline {
   --font-mega: "Bodoni Moda", "Times New Roman", serif;
+  --font-sans: "Raleway", "Neue Montreal", Inter, Arial, Helvetica, system-ui, sans-serif;
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
@@ -109,7 +110,8 @@ img {
   body {
     background-color: var(--canvas);
     color: var(--ink);
-    font-family: 'Neue Montreal', Inter, Arial, Helvetica, system-ui, sans-serif;
+    font-family: 'Raleway', 'Neue Montreal', Inter, Arial, Helvetica, system-ui, sans-serif;
+    font-weight: 100;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
@@ -125,11 +127,11 @@ img {
     }
   }
 
-  /* Single Minimalist Sans-Serif System — Neue Montreal with Inter fallback */
+  /* Single Minimalist Sans-Serif System — Raleway thin (title & footer keep Bodoni Moda) */
   .font-mono-custom,
   .font-editorial,
   .font-display-heavy {
-    font-family: 'Neue Montreal', Inter, Arial, Helvetica, system-ui, sans-serif;
+    font-family: 'Raleway', 'Neue Montreal', Inter, Arial, Helvetica, system-ui, sans-serif;
   }
 
   /* Heavy Extended Display Grotesk Utility (kept for weight, same family) */

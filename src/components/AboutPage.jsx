@@ -180,25 +180,6 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       className="min-h-screen text-black pt-2 pb-24 px-4 sm:px-6 lg:px-8 font-sans select-none max-w-[1700px] mx-auto space-y-12 md:space-y-16"
     >
       
-      {/* MINIMALIST LIME HERO TITLE HEADER */}
-      <div className="border-b border-black/20 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div className="space-y-1">
-          <span className="text-[10px] font-mono-custom tracking-[0.25em] uppercase text-black/70 font-bold block">
-            INFORMATION & ARCHIVE
-          </span>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-black font-sans">
-            EJAZ MEHEDI
-          </h1>
-        </div>
-        <div className="text-xs font-mono-custom tracking-[0.2em] uppercase text-black font-bold flex flex-wrap items-center gap-2 sm:gap-3">
-          <span>CINEMATOGRAPHER</span>
-          <span>/</span>
-          <span>DOP</span>
-          <span>/</span>
-          <span className="bg-black text-[#b5ff32] px-2 py-0.5 rounded-sm">OMAN & BANGLADESH</span>
-        </div>
-      </div>
-
       {/* TOP SECTION: BIOGRAPHY + PORTRAIT & DIRECT CONTACT */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start border-b border-black/20 pb-12 md:pb-16">
         

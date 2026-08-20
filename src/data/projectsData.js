@@ -53,13 +53,13 @@ export const projectsData = [
     year: "2022",
     client: "HULU - Bite Size Halloween (20th Digital Studio)",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/projects/foreigners-only/still-01.webp",
     hoverStills: [
-      "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop"
+      "/projects/foreigners-only/still-01.webp",
+      "/projects/foreigners-only/still-02.webp",
+      "/projects/foreigners-only/still-03.webp"
     ],
-    poster: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1600&auto=format&fit=crop",
+    poster: "/projects/foreigners-only/still-01.webp",
     videos: [
       {
         id: "main",
@@ -70,8 +70,42 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop"
+      "/projects/foreigners-only/still-01.webp",
+      "/projects/foreigners-only/still-02.webp",
+      "/projects/foreigners-only/still-03.webp",
+      "/projects/foreigners-only/still-04.webp",
+      "/projects/foreigners-only/still-05.webp",
+      "/projects/foreigners-only/still-06.webp",
+      "/projects/foreigners-only/still-07.webp",
+      "/projects/foreigners-only/still-08.webp",
+      "/projects/foreigners-only/still-09.webp",
+      "/projects/foreigners-only/still-10.webp",
+      "/projects/foreigners-only/still-11.webp",
+      "/projects/foreigners-only/still-12.webp",
+      "/projects/foreigners-only/still-13.webp",
+      "/projects/foreigners-only/still-14.webp",
+      "/projects/foreigners-only/still-15.webp",
+      "/projects/foreigners-only/still-16.webp",
+      "/projects/foreigners-only/still-17.webp",
+      "/projects/foreigners-only/still-18.webp",
+      "/projects/foreigners-only/still-19.webp",
+      "/projects/foreigners-only/still-20.webp",
+      "/projects/foreigners-only/still-21.webp",
+      "/projects/foreigners-only/still-22.webp",
+      "/projects/foreigners-only/still-23.webp",
+      "/projects/foreigners-only/still-24.webp",
+      "/projects/foreigners-only/still-25.webp",
+      "/projects/foreigners-only/still-26.webp",
+      "/projects/foreigners-only/still-27.webp",
+      "/projects/foreigners-only/still-28.webp",
+      "/projects/foreigners-only/still-29.webp",
+      "/projects/foreigners-only/still-30.webp",
+      "/projects/foreigners-only/still-31.webp",
+      "/projects/foreigners-only/still-32.webp",
+      "/projects/foreigners-only/still-33.webp",
+      "/projects/foreigners-only/still-34.webp",
+      "/projects/foreigners-only/still-35.webp",
+      "/projects/foreigners-only/still-36.webp"
     ],
     crew: {
       director: "Nuhash Humayun",
@@ -281,11 +315,13 @@ export const projectsData = [
     year: "2022",
     client: "Diamond Developers x Omran Group",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/projects/yiti-dynamic-harmony/still-01.webp",
     hoverStills: [
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop"
+      "/projects/yiti-dynamic-harmony/still-01.webp",
+      "/projects/yiti-dynamic-harmony/still-02.webp",
+      "/projects/yiti-dynamic-harmony/still-03.webp"
     ],
-    poster: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600&auto=format&fit=crop",
+    poster: "/projects/yiti-dynamic-harmony/still-01.webp",
     videos: [
       {
         id: "main",
@@ -296,7 +332,18 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop"
+      "/projects/yiti-dynamic-harmony/still-01.webp",
+      "/projects/yiti-dynamic-harmony/still-02.webp",
+      "/projects/yiti-dynamic-harmony/still-03.webp",
+      "/projects/yiti-dynamic-harmony/still-04.webp",
+      "/projects/yiti-dynamic-harmony/still-05.webp",
+      "/projects/yiti-dynamic-harmony/still-06.webp",
+      "/projects/yiti-dynamic-harmony/still-07.webp",
+      "/projects/yiti-dynamic-harmony/still-08.webp",
+      "/projects/yiti-dynamic-harmony/still-09.webp",
+      "/projects/yiti-dynamic-harmony/still-10.webp",
+      "/projects/yiti-dynamic-harmony/still-11.webp",
+      "/projects/yiti-dynamic-harmony/still-12.webp"
     ],
     crew: {
       director: "Anwar Al-Asmi & Ejaz Mehedi",
@@ -357,11 +404,13 @@ export const projectsData = [
     year: "2021",
     client: "Bank Muscat x Royal Oman Police",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/projects/bank-muscat-the-gamer/still-01.webp",
     hoverStills: [
-      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1000&auto=format&fit=crop"
+      "/projects/bank-muscat-the-gamer/still-01.webp",
+      "/projects/bank-muscat-the-gamer/still-02.webp",
+      "/projects/bank-muscat-the-gamer/still-03.webp"
     ],
-    poster: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1600&auto=format&fit=crop",
+    poster: "/projects/bank-muscat-the-gamer/still-01.webp",
     videos: [
       {
         id: "main",
@@ -372,7 +421,18 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1000&auto=format&fit=crop"
+      "/projects/bank-muscat-the-gamer/still-01.webp",
+      "/projects/bank-muscat-the-gamer/still-02.webp",
+      "/projects/bank-muscat-the-gamer/still-03.webp",
+      "/projects/bank-muscat-the-gamer/still-04.webp",
+      "/projects/bank-muscat-the-gamer/still-05.webp",
+      "/projects/bank-muscat-the-gamer/still-06.webp",
+      "/projects/bank-muscat-the-gamer/still-07.webp",
+      "/projects/bank-muscat-the-gamer/still-08.webp",
+      "/projects/bank-muscat-the-gamer/still-09.webp",
+      "/projects/bank-muscat-the-gamer/still-10.webp",
+      "/projects/bank-muscat-the-gamer/still-11.webp",
+      "/projects/bank-muscat-the-gamer/still-12.webp"
     ],
     crew: {
       director: "Anwar Al-Asmi & Ejaz Mehedi",
@@ -396,11 +456,13 @@ export const projectsData = [
     year: "2022",
     client: "Yamaha Bangladesh / GREY",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/projects/yamaha-speed-girl/still-01.webp",
     hoverStills: [
-      "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1000&auto=format&fit=crop"
+      "/projects/yamaha-speed-girl/still-01.webp",
+      "/projects/yamaha-speed-girl/still-02.webp",
+      "/projects/yamaha-speed-girl/still-03.webp"
     ],
-    poster: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1600&auto=format&fit=crop",
+    poster: "/projects/yamaha-speed-girl/still-01.webp",
     videos: [
       {
         id: "main",
@@ -411,7 +473,18 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1000&auto=format&fit=crop"
+      "/projects/yamaha-speed-girl/still-01.webp",
+      "/projects/yamaha-speed-girl/still-02.webp",
+      "/projects/yamaha-speed-girl/still-03.webp",
+      "/projects/yamaha-speed-girl/still-04.webp",
+      "/projects/yamaha-speed-girl/still-05.webp",
+      "/projects/yamaha-speed-girl/still-06.webp",
+      "/projects/yamaha-speed-girl/still-07.webp",
+      "/projects/yamaha-speed-girl/still-08.webp",
+      "/projects/yamaha-speed-girl/still-09.webp",
+      "/projects/yamaha-speed-girl/still-10.webp",
+      "/projects/yamaha-speed-girl/still-11.webp",
+      "/projects/yamaha-speed-girl/still-12.webp"
     ],
     crew: {
       director: "Reehan Rahman",

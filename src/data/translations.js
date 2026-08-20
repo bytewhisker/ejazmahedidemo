@@ -4,9 +4,11 @@ export const translations = {
     brandTitle: "CINEMATOGRAPHER & DIRECTOR",
     nav: {
       allProjects: "All Projects",
+      overview: "Overview",
       films: "Films",
       commercial: "Commercial",
       stills: "Stills",
+      journal: "Journal",
       about: "About / Info"
     },
     hero: {
@@ -78,9 +80,11 @@ export const translations = {
     brandTitle: "সিনেম্যাটোগ্রাফার ও পরিচালক",
     nav: {
       allProjects: "সকল প্রজেক্ট",
+      overview: "ওভারভিউ",
       films: "চলচ্চিত্র",
       commercial: "বিজ্ঞাপন",
       stills: "স্থিরচিত্র",
+      journal: "জার্নাল",
       about: "পরিচিতি / তথ্য"
     },
     hero: {
@@ -155,6 +159,7 @@ export const translations = {
       films: "أفلام",
       commercial: "إعلانات",
       stills: "صور فوتوغرافية",
+      journal: "مجلة",
       about: "حول / معلومات"
     },
     hero: {

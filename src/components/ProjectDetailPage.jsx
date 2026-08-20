@@ -31,7 +31,7 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
         
         {/* Simple Title Header */}
         <div className="space-y-1 pt-2">
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-light font-serif tracking-wide text-ink">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-light font-sans tracking-wide text-ink">
             {project.title}
           </h1>
           <p className="text-[11px] sm:text-xs font-mono-custom text-muted uppercase tracking-widest">

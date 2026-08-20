@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { SmoothHeaderName } from './SmoothHeaderName';
 import { GlitchNavItem } from './GlitchNavItem';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
 export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const dropdownRef = useRef(null);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -23,14 +25,49 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const handleNavClick = (tab, filter = 'all') => {
     setActiveTab(tab);
     setActiveFilter(filter);
     setIsMobileMenuOpen(false);
+    setIsMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const isLime = activeTab === 'about';
+
+  const dropdownItems = [
+    {
+      enText: "STILLS",
+      bnText: "স্থিরচিত্র",
+      arText: "صور ثابتة",
+      onClick: () => handleNavClick('stills', 'all'),
+      isActive: activeTab === 'stills'
+    },
+    {
+      enText: "JOURNAL",
+      bnText: "জার্নাল",
+      arText: "مجلة",
+      onClick: () => handleNavClick('journal', 'all'),
+      isActive: activeTab === 'journal'
+    },
+    {
+      enText: "INFORMATION",
+      bnText: "তথ্য",
+      arText: "معلومات",
+      onClick: () => handleNavClick('about', 'all'),
+      isActive: activeTab === 'about'
+    }
+  ];
 
   return (
     <header className={`sticky top-0 z-50 px-4 sm:px-8 md:px-12 pt-1 md:pt-2 pb-2 transition-all duration-500 select-none ${
@@ -80,9 +117,9 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
 
           <nav className="flex items-center gap-8 lg:gap-12">
             <GlitchNavItem
-              enText="ALL PROJECTS"
-              bnText="সব প্রকল্প"
-              arText="جميع المشاريع"
+              enText="OVERVIEW"
+              bnText="ওভারভিউ"
+              arText="نظرة عامة"
               onClick={() => handleNavClick('projects', 'all')}
               isActive={activeTab === 'projects' && activeFilter === 'all'}
               className={`transition-colors ${
@@ -93,20 +130,7 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
             />
 
             <GlitchNavItem
-              enText="FILMS"
-              bnText="চলচ্চিত্র"
-              arText="أفلام"
-              onClick={() => handleNavClick('projects', 'films')}
-              isActive={activeTab === 'projects' && activeFilter === 'films'}
-              className={`transition-colors ${
-                activeTab === 'projects' && activeFilter === 'films'
-                  ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
-                  : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
-              }`}
-            />
-
-            <GlitchNavItem
-              enText="COMMERCIALS"
+              enText="COMMERCIAL"
               bnText="বিজ্ঞাপন"
               arText="إعلانات"
               onClick={() => handleNavClick('projects', 'commercial')}
@@ -119,13 +143,13 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
             />
 
             <GlitchNavItem
-              enText="STILLS"
-              bnText="স্থিরচিত্র"
-              arText="صور ثابتة"
-              onClick={() => handleNavClick('stills', 'all')}
-              isActive={activeTab === 'stills'}
+              enText="FILM"
+              bnText="চলচ্চিত্র"
+              arText="أفلام"
+              onClick={() => handleNavClick('projects', 'films')}
+              isActive={activeTab === 'projects' && activeFilter === 'films'}
               className={`transition-colors ${
-                activeTab === 'stills'
+                activeTab === 'projects' && activeFilter === 'films'
                   ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
                   : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
               }`}
@@ -133,18 +157,54 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
           </nav>
 
           <div className="flex items-center gap-8">
-            <GlitchNavItem
-              enText="INFORMATION"
-              bnText="তথ্য"
-              arText="معلومات"
-              onClick={() => handleNavClick('about', 'all')}
-              isActive={activeTab === 'about'}
-              className={`transition-colors ${
-                activeTab === 'about'
-                  ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
-                  : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
-              }`}
-            />
+            {/* RIGHT-SIDE DROPDOWN MENU — STILLS / JOURNAL / INFORMATION */}
+            <div ref={dropdownRef} className="relative">
+              <button
+                onClick={() => setIsMenuOpen((prev) => !prev)}
+                className={`flex items-center gap-1.5 transition-colors font-bold cursor-pointer ${
+                  isLime ? 'text-black/80 hover:text-black' : 'text-muted hover:text-ink'
+                }`}
+                aria-label="Menu"
+                aria-expanded={isMenuOpen}
+              >
+                <span>MENU</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-300 ${isMenuOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {isMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className={`absolute right-0 top-full mt-2 min-w-[11rem] border py-2 px-2 shadow-xl backdrop-blur-md ${
+                      isLime
+                        ? 'bg-[#b5ff32] border-black/30 text-black'
+                        : 'bg-surface border-line text-ink'
+                    }`}
+                  >
+                    {dropdownItems.map((item) => (
+                      <GlitchNavItem
+                        key={item.enText}
+                        enText={item.enText}
+                        bnText={item.bnText}
+                        arText={item.arText}
+                        onClick={item.onClick}
+                        isActive={item.isActive}
+                        className={`w-full py-1.5 transition-colors ${
+                          item.isActive
+                            ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
+                            : isLime ? 'text-black/80 hover:text-black' : 'text-muted hover:text-ink'
+                        }`}
+                      />
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             <button
               onClick={toggleTheme}
@@ -175,9 +235,9 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
           >
             <nav className="flex flex-col items-start space-y-3 text-xs font-mono-custom tracking-[0.2em] uppercase font-bold">
               <GlitchNavItem
-                enText="ALL PROJECTS"
-                bnText="সব প্রকল্প"
-                arText="جميع المشاريع"
+                enText="OVERVIEW"
+                bnText="ওভারভিউ"
+                arText="نظرة عامة"
                 onClick={() => handleNavClick('projects', 'all')}
                 isActive={activeTab === 'projects' && activeFilter === 'all'}
                 className={`w-full py-1 ${activeTab === 'projects' && activeFilter === 'all'
@@ -187,19 +247,7 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               />
 
               <GlitchNavItem
-                enText="FILMS"
-                bnText="চলচ্চিত্র"
-                arText="أفلام"
-                onClick={() => handleNavClick('projects', 'films')}
-                isActive={activeTab === 'projects' && activeFilter === 'films'}
-                className={`w-full py-1 ${activeTab === 'projects' && activeFilter === 'films'
-                    ? 'text-accent underline underline-offset-4'
-                    : 'text-accent hover:text-accent'
-                  }`}
-              />
-
-              <GlitchNavItem
-                enText="COMMERCIALS"
+                enText="COMMERCIAL"
                 bnText="বিজ্ঞাপন"
                 arText="إعلانات"
                 onClick={() => handleNavClick('projects', 'commercial')}
@@ -211,29 +259,32 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               />
 
               <GlitchNavItem
-                enText="STILLS"
-                bnText="স্থিরচিত্র"
-                arText="صور ثابتة"
-                onClick={() => handleNavClick('stills', 'all')}
-                isActive={activeTab === 'stills'}
-                className={`w-full py-1 ${activeTab === 'stills'
+                enText="FILM"
+                bnText="চলচ্চিত্র"
+                arText="أفلام"
+                onClick={() => handleNavClick('projects', 'films')}
+                isActive={activeTab === 'projects' && activeFilter === 'films'}
+                className={`w-full py-1 ${activeTab === 'projects' && activeFilter === 'films'
                     ? 'text-accent underline underline-offset-4'
                     : 'text-accent hover:text-accent'
                   }`}
               />
 
               <div className="pt-2 w-full border-t border-line space-y-2">
-                <GlitchNavItem
-                  enText="INFORMATION"
-                  bnText="তথ্য"
-                  arText="معلومات"
-                  onClick={() => handleNavClick('about', 'all')}
-                  isActive={activeTab === 'about'}
-                  className={`w-full py-1 ${activeTab === 'about'
-                      ? 'text-accent underline underline-offset-4'
-                      : 'text-accent hover:text-accent'
-                    }`}
-                />
+                {dropdownItems.map((item) => (
+                  <GlitchNavItem
+                    key={item.enText}
+                    enText={item.enText}
+                    bnText={item.bnText}
+                    arText={item.arText}
+                    onClick={item.onClick}
+                    isActive={item.isActive}
+                    className={`w-full py-1 ${item.isActive
+                        ? 'text-accent underline underline-offset-4'
+                        : 'text-accent hover:text-accent'
+                      }`}
+                  />
+                ))}
               </div>
             </nav>
           </motion.div>
