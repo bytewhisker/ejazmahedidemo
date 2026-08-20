@@ -9,6 +9,7 @@ export const translations = {
       commercial: "Commercial",
       stills: "Stills",
       journal: "Journal",
+      reel: "Reel",
       about: "About / Info"
     },
     hero: {
@@ -85,6 +86,7 @@ export const translations = {
       commercial: "বিজ্ঞাপন",
       stills: "স্থিরচিত্র",
       journal: "জার্নাল",
+      reel: "রিল",
       about: "পরিচিতি / তথ্য"
     },
     hero: {
@@ -160,6 +162,7 @@ export const translations = {
       commercial: "إعلانات",
       stills: "صور فوتوغرافية",
       journal: "مجلة",
+      reel: "ريل",
       about: "حول / معلومات"
     },
     hero: {

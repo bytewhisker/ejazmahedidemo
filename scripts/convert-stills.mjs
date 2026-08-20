@@ -11,6 +11,7 @@ const projects = [
   ['Bank Muscat - Gamer', 'bank-muscat-the-gamer'],
   ['Foreigners Only', 'foreigners-only'],
   ['Golf Links - Nature of Luxury', 'golf-links'],
+  ['Moshari', 'moshari'],
   ['Yamaha Speed girl', 'yamaha-speed-girl'],
   ['Yiti - Dynamic Harmony', 'yiti-dynamic-harmony']
 ];

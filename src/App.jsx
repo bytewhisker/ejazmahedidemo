@@ -9,6 +9,7 @@ import { ProjectDetailPage } from './components/ProjectDetailPage';
 import { StillsGallery } from './components/StillsGallery';
 import { AboutPage } from './components/AboutPage';
 import { JournalPage } from './components/JournalPage';
+import { ReelPage } from './components/ReelPage';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { SEOHead } from './components/SEOHead';
@@ -18,7 +19,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 function MainContent() {
   const [isLoadingScreen, setIsLoadingScreen] = useState(true);
   const [isVideoLoading, setIsVideoLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('projects'); // 'projects', 'stills', 'about'
+  const [activeTab, setActiveTab] = useState('reel'); // 'reel', 'projects', 'stills', 'about', 'journal'
   const [activeFilter, setActiveFilter] = useState('all'); // 'all', 'films', 'commercial'
   const [viewMode, setViewMode] = useState('grid'); // 'grid', 'list'
   const [selectedProject, setSelectedProject] = useState(null);
@@ -48,7 +49,9 @@ function MainContent() {
     if (path.startsWith('/stills')) setActiveTab('stills');
     else if (path.startsWith('/about')) setActiveTab('about');
     else if (path.startsWith('/journal')) setActiveTab('journal');
-    else setActiveTab('projects');
+    else if (path.startsWith('/reel')) setActiveTab('reel');
+    else if (path.startsWith('/projects')) setActiveTab('projects');
+    else setActiveTab('reel');
   };
 
   useEffect(() => {
@@ -133,7 +136,8 @@ function MainContent() {
               if (tab === 'stills') window.history.pushState(null, '', '/stills');
               else if (tab === 'about') window.history.pushState(null, '', '/about');
               else if (tab === 'journal') window.history.pushState(null, '', '/journal');
-              else window.history.pushState(null, '', '/');
+              else if (tab === 'reel') window.history.pushState(null, '', '/reel');
+              else window.history.pushState(null, '', '/projects');
             }}
             activeFilter={activeFilter}
             setActiveFilter={setActiveFilter}
@@ -179,6 +183,16 @@ function MainContent() {
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <JournalPage />
+                </motion.div>
+              ) : activeTab === 'reel' ? (
+                <motion.div
+                  key={viewKey}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <ReelPage />
                 </motion.div>
               ) : (
                 /* Projects Section with GRID / LIST View Mode Toggle */

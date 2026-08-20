@@ -7,13 +7,13 @@ export const projectsData = [
     year: "2022",
     client: "Jordan Peele & Riz Ahmed (Oscar® Qualifying)",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/projects/moshari/still-01.webp",
     hoverStills: [
-      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1000&auto=format&fit=crop"
+      "/projects/moshari/still-01.webp",
+      "/projects/moshari/still-02.webp",
+      "/projects/moshari/still-03.webp"
     ],
-    poster: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1600&auto=format&fit=crop",
+    poster: "/projects/moshari/still-01.webp",
     videos: [
       {
         id: "main",
@@ -24,9 +24,41 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1000&auto=format&fit=crop"
+      "/projects/moshari/still-01.webp",
+      "/projects/moshari/still-02.webp",
+      "/projects/moshari/still-03.webp",
+      "/projects/moshari/still-04.webp",
+      "/projects/moshari/still-05.webp",
+      "/projects/moshari/still-06.webp",
+      "/projects/moshari/still-07.webp",
+      "/projects/moshari/still-08.webp",
+      "/projects/moshari/still-09.webp",
+      "/projects/moshari/still-10.webp",
+      "/projects/moshari/still-11.webp",
+      "/projects/moshari/still-12.webp",
+      "/projects/moshari/still-13.webp",
+      "/projects/moshari/still-14.webp",
+      "/projects/moshari/still-15.webp",
+      "/projects/moshari/still-16.webp",
+      "/projects/moshari/still-17.webp",
+      "/projects/moshari/still-18.webp",
+      "/projects/moshari/still-19.webp",
+      "/projects/moshari/still-20.webp",
+      "/projects/moshari/still-21.webp",
+      "/projects/moshari/still-22.webp",
+      "/projects/moshari/still-23.webp",
+      "/projects/moshari/still-24.webp",
+      "/projects/moshari/still-25.webp",
+      "/projects/moshari/still-26.webp",
+      "/projects/moshari/still-27.webp",
+      "/projects/moshari/still-28.webp",
+      "/projects/moshari/still-29.webp",
+      "/projects/moshari/still-30.webp",
+      "/projects/moshari/still-31.webp",
+      "/projects/moshari/still-32.webp",
+      "/projects/moshari/still-33.webp",
+      "/projects/moshari/still-34.webp",
+      "/projects/moshari/still-35.webp"
     ],
     crew: {
       director: "Nuhash Humayun",

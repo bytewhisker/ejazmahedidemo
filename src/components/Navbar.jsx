@@ -117,6 +117,19 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
 
           <nav className="flex items-center gap-8 lg:gap-12">
             <GlitchNavItem
+              enText="REEL"
+              bnText="রিল"
+              arText="ريل"
+              onClick={() => handleNavClick('reel', 'all')}
+              isActive={activeTab === 'reel'}
+              className={`transition-colors ${
+                activeTab === 'reel'
+                  ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
+                  : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
+              }`}
+            />
+
+            <GlitchNavItem
               enText="OVERVIEW"
               bnText="ওভারভিউ"
               arText="نظرة عامة"
@@ -130,26 +143,26 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
             />
 
             <GlitchNavItem
-              enText="COMMERCIAL"
-              bnText="বিজ্ঞাপন"
-              arText="إعلانات"
-              onClick={() => handleNavClick('projects', 'commercial')}
-              isActive={activeTab === 'projects' && activeFilter === 'commercial'}
-              className={`transition-colors ${
-                activeTab === 'projects' && activeFilter === 'commercial'
-                  ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
-                  : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
-              }`}
-            />
-
-            <GlitchNavItem
-              enText="FILM"
+              enText="FILMS"
               bnText="চলচ্চিত্র"
               arText="أفلام"
               onClick={() => handleNavClick('projects', 'films')}
               isActive={activeTab === 'projects' && activeFilter === 'films'}
               className={`transition-colors ${
                 activeTab === 'projects' && activeFilter === 'films'
+                  ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
+                  : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
+              }`}
+            />
+
+            <GlitchNavItem
+              enText="COMMERCIALS"
+              bnText="বিজ্ঞাপন"
+              arText="إعلانات"
+              onClick={() => handleNavClick('projects', 'commercial')}
+              isActive={activeTab === 'projects' && activeFilter === 'commercial'}
+              className={`transition-colors ${
+                activeTab === 'projects' && activeFilter === 'commercial'
                   ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
                   : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
               }`}
@@ -235,6 +248,18 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
           >
             <nav className="flex flex-col items-start space-y-3 text-xs font-mono-custom tracking-[0.2em] uppercase font-bold">
               <GlitchNavItem
+                enText="REEL"
+                bnText="রিল"
+                arText="ريل"
+                onClick={() => handleNavClick('reel', 'all')}
+                isActive={activeTab === 'reel'}
+                className={`w-full py-1 ${activeTab === 'reel'
+                    ? 'text-accent underline underline-offset-4'
+                    : 'text-accent hover:text-accent'
+                  }`}
+              />
+
+              <GlitchNavItem
                 enText="OVERVIEW"
                 bnText="ওভারভিউ"
                 arText="نظرة عامة"
@@ -247,24 +272,24 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               />
 
               <GlitchNavItem
-                enText="COMMERCIAL"
-                bnText="বিজ্ঞাপন"
-                arText="إعلانات"
-                onClick={() => handleNavClick('projects', 'commercial')}
-                isActive={activeTab === 'projects' && activeFilter === 'commercial'}
-                className={`w-full py-1 ${activeTab === 'projects' && activeFilter === 'commercial'
+                enText="FILMS"
+                bnText="চলচ্চিত্র"
+                arText="أفلام"
+                onClick={() => handleNavClick('projects', 'films')}
+                isActive={activeTab === 'projects' && activeFilter === 'films'}
+                className={`w-full py-1 ${activeTab === 'projects' && activeFilter === 'films'
                     ? 'text-accent underline underline-offset-4'
                     : 'text-accent hover:text-accent'
                   }`}
               />
 
               <GlitchNavItem
-                enText="FILM"
-                bnText="চলচ্চিত্র"
-                arText="أفلام"
-                onClick={() => handleNavClick('projects', 'films')}
-                isActive={activeTab === 'projects' && activeFilter === 'films'}
-                className={`w-full py-1 ${activeTab === 'projects' && activeFilter === 'films'
+                enText="COMMERCIALS"
+                bnText="বিজ্ঞাপন"
+                arText="إعلانات"
+                onClick={() => handleNavClick('projects', 'commercial')}
+                isActive={activeTab === 'projects' && activeFilter === 'commercial'}
+                className={`w-full py-1 ${activeTab === 'projects' && activeFilter === 'commercial'
                     ? 'text-accent underline underline-offset-4'
                     : 'text-accent hover:text-accent'
                   }`}
