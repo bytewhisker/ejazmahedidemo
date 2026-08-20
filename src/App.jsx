@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { CinematicLoadingScreen } from './components/CinematicLoadingScreen';
@@ -30,10 +30,36 @@ function MainContent() {
     return true;
   });
 
+  // URL sync: apply the current pathname to app state (deep links, back/forward)
+  const applyPathToState = () => {
+    const path = window.location.pathname;
+    const projectMatch = path.match(/^\/projects\/([\w-]+)\/?$/);
+    if (projectMatch) {
+      const found = projectsData.find(
+        (p) => p.slug === projectMatch[1] || p.id === projectMatch[1]
+      );
+      if (found) {
+        setSelectedProject(found);
+        return;
+      }
+    }
+    setSelectedProject(null);
+    if (path.startsWith('/stills')) setActiveTab('stills');
+    else if (path.startsWith('/about')) setActiveTab('about');
+    else setActiveTab('projects');
+  };
+
+  useEffect(() => {
+    applyPathToState();
+    window.addEventListener('popstate', applyPathToState);
+    return () => window.removeEventListener('popstate', applyPathToState);
+  }, []);
+
   const handleSelectProject = (project) => {
     setIsVideoLoading(true);
     setSelectedProject(project);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.history.pushState(null, '', `/projects/${project.slug || project.id}`);
 
     setTimeout(() => {
       setIsVideoLoading(false);
@@ -42,6 +68,7 @@ function MainContent() {
 
   const handleBackToGallery = () => {
     setSelectedProject(null);
+    window.history.pushState(null, '', '/');
   };
 
   const viewKey = selectedProject ? `project-${selectedProject.id}` : `${activeTab}-${activeFilter}-${viewMode}`;
@@ -101,6 +128,9 @@ function MainContent() {
             setActiveTab={(tab) => {
               setSelectedProject(null);
               setActiveTab(tab);
+              if (tab === 'stills') window.history.pushState(null, '', '/stills');
+              else if (tab === 'about') window.history.pushState(null, '', '/about');
+              else window.history.pushState(null, '', '/');
             }}
             activeFilter={activeFilter}
             setActiveFilter={setActiveFilter}

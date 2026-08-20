@@ -6,63 +6,119 @@
   <!-- Main Portfolio Homepage -->
   <url>
     <loc>https://www.ejazmehedi.com/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Narrative & Commercial Film Portfolio -->
-  <url>
-    <loc>https://www.ejazmehedi.com/#films</loc>
-    <lastmod>2026-08-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Commercial Campaigns -->
-  <url>
-    <loc>https://www.ejazmehedi.com/#commercial</loc>
-    <lastmod>2026-08-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
   <!-- Still Photography Gallery -->
   <url>
-    <loc>https://www.ejazmehedi.com/#stills</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://www.ejazmehedi.com/stills</loc>
+    <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Biography, Press & Direct Contact -->
   <url>
-    <loc>https://www.ejazmehedi.com/#about</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://www.ejazmehedi.com/about</loc>
+    <lastmod>2026-08-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <!-- MOSHARI - Oscar Qualifying Film Project -->
   <url>
-    <loc>https://www.ejazmehedi.com/#moshari</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://www.ejazmehedi.com/projects/moshari</loc>
+    <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <!-- FOREIGNERS ONLY - HULU Film Project -->
   <url>
-    <loc>https://www.ejazmehedi.com/#foreigners-only</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://www.ejazmehedi.com/projects/foreigners-only</loc>
+    <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <!-- A THING ABOUT KASHEM Project -->
   <url>
-    <loc>https://www.ejazmehedi.com/#a-thing-about-kashem</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://www.ejazmehedi.com/projects/a-thing-about-kashem</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Azura - The Azura Within -->
+  <url>
+    <loc>https://www.ejazmehedi.com/projects/azura-the-azura-within</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Golf Links - Nature of Luxury -->
+  <url>
+    <loc>https://www.ejazmehedi.com/projects/golf-links-nature-of-luxury</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- OQGN - Unseen -->
+  <url>
+    <loc>https://www.ejazmehedi.com/projects/oqgn-unseen</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- YITI - Dynamic Harmony -->
+  <url>
+    <loc>https://www.ejazmehedi.com/projects/yiti-dynamic-harmony</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Al-Mouj Golf - 10 Years of Golf -->
+  <url>
+    <loc>https://www.ejazmehedi.com/projects/al-mouj-golf-10-years-of-golf</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Bank Muscat - The Gamer -->
+  <url>
+    <loc>https://www.ejazmehedi.com/projects/bank-muscat-the-gamer</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Yamaha - Speed Girl -->
+  <url>
+    <loc>https://www.ejazmehedi.com/projects/yamaha-speed-girl</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Attic - Echoes in Your Attic -->
+  <url>
+    <loc>https://www.ejazmehedi.com/projects/attic-echoes-in-your-attic</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Indalo - Hobeki -->
+  <url>
+    <loc>https://www.ejazmehedi.com/projects/indalo-hobeki</loc>
+    <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

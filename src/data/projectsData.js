@@ -1,6 +1,7 @@
 export const projectsData = [
   {
     id: "moshari",
+    slug: "moshari",
     title: "MOSHARI",
     category: "Films",
     year: "2022",
@@ -46,6 +47,7 @@ export const projectsData = [
   },
   {
     id: "foreigners-only",
+    slug: "foreigners-only",
     title: "FOREIGNERS ONLY",
     category: "Films",
     year: "2022",
@@ -88,6 +90,7 @@ export const projectsData = [
   },
   {
     id: "a-thing-about-kashem",
+    slug: "a-thing-about-kashem",
     title: "A Thing About Kashem",
     category: "Films",
     year: "2025",
@@ -133,6 +136,7 @@ export const projectsData = [
   },
   {
     id: "azura-luxury-villas",
+    slug: "azura-the-azura-within",
     title: "Azura - The Azura Within",
     category: "Commercial",
     year: "2024",
@@ -174,16 +178,19 @@ export const projectsData = [
   },
   {
     id: "golf-links-luxury",
+    slug: "golf-links-nature-of-luxury",
     title: "Golf Links - Nature of Luxury",
     category: "Commercial",
     year: "2024",
     client: "Al Mouj / Dusk Films",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/projects/golf-links/still-01.webp",
     hoverStills: [
-      "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1000&auto=format&fit=crop"
+      "/projects/golf-links/still-01.webp",
+      "/projects/golf-links/still-02.webp",
+      "/projects/golf-links/still-03.webp"
     ],
-    poster: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1600&auto=format&fit=crop",
+    poster: "/projects/golf-links/still-01.webp",
     videos: [
       {
         id: "main",
@@ -194,7 +201,22 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=1000&auto=format&fit=crop"
+      "/projects/golf-links/still-01.webp",
+      "/projects/golf-links/still-02.webp",
+      "/projects/golf-links/still-03.webp",
+      "/projects/golf-links/still-04.webp",
+      "/projects/golf-links/still-05.webp",
+      "/projects/golf-links/still-06.webp",
+      "/projects/golf-links/still-07.webp",
+      "/projects/golf-links/still-08.webp",
+      "/projects/golf-links/still-09.webp",
+      "/projects/golf-links/still-10.webp",
+      "/projects/golf-links/still-11.webp",
+      "/projects/golf-links/still-12.webp",
+      "/projects/golf-links/still-13.webp",
+      "/projects/golf-links/still-14.webp",
+      "/projects/golf-links/still-15.webp",
+      "/projects/golf-links/still-16.webp"
     ],
     crew: {
       director: "Anwar K Al Asmi & Ejaz Mehedi",
@@ -212,6 +234,7 @@ export const projectsData = [
   },
   {
     id: "oqgn-unseen",
+    slug: "oqgn-unseen",
     title: "OQGN - Unseen",
     category: "Commercial",
     year: "2024",
@@ -252,6 +275,7 @@ export const projectsData = [
   },
   {
     id: "yiti-dynamic-harmony",
+    slug: "yiti-dynamic-harmony",
     title: "YITI - Dynamic Harmony",
     category: "Commercial",
     year: "2022",
@@ -289,6 +313,7 @@ export const projectsData = [
   },
   {
     id: "al-mouj-golf-10-years",
+    slug: "al-mouj-golf-10-years-of-golf",
     title: "Al-Mouj Golf - 10 Years of Golf",
     category: "Commercial",
     year: "2023",
@@ -326,6 +351,7 @@ export const projectsData = [
   },
   {
     id: "bank-muscat-the-gamer",
+    slug: "bank-muscat-the-gamer",
     title: "Bank Muscat - The Gamer",
     category: "Commercial",
     year: "2021",
@@ -364,6 +390,7 @@ export const projectsData = [
   },
   {
     id: "yamaha-speed-girl",
+    slug: "yamaha-speed-girl",
     title: "Yamaha - Speed Girl",
     category: "Commercial",
     year: "2022",
@@ -403,6 +430,7 @@ export const projectsData = [
   },
   {
     id: "attic-echoes-in-your-attic",
+    slug: "attic-echoes-in-your-attic",
     title: "Attic - Echoes in Your Attic",
     category: "Commercial",
     year: "2022",
@@ -447,6 +475,7 @@ export const projectsData = [
   },
   {
     id: "indalo-hobeki",
+    slug: "indalo-hobeki",
     title: "Indalo - Hobeki",
     category: "Commercial",
     year: "2019",
