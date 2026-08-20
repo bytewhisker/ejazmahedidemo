@@ -236,7 +236,7 @@ export const StillsGallery = () => {
 
                 {/* STILL CAPTION (CLEAN TITLE, NO NUMBERING) */}
                 <div className="flex items-center justify-between text-xs font-mono-custom tracking-widest uppercase">
-                  <span className="text-ink font-bold group-hover:text-ink-soft transition-colors">
+                  <span className="text-ink font-normal group-hover:text-ink-soft transition-colors">
                     {item.title}
                   </span>
                   <span className="text-[10px] text-muted">{item.location}</span>

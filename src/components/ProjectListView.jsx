@@ -49,9 +49,9 @@ export const ProjectListView = ({ projects, onSelectProject }) => {
                 data-cursor-subtext={project.category}
                 className="group cursor-pointer inline-flex items-center gap-3 w-fit transition-colors"
               >
-                <h3 className={`text-base sm:text-lg md:text-xl font-mono-custom tracking-[0.16em] uppercase font-bold transition-all duration-200 truncate ${
+                <h3 className={`text-base sm:text-lg md:text-xl font-mono-custom tracking-[0.18em] uppercase font-normal transition-all duration-200 truncate ${
                   isHovered 
-                    ? 'text-ink translate-x-2' 
+                    ? 'text-ink translate-x-2 font-medium' 
                     : 'text-muted/60 group-hover:text-ink'
                 }`}>
                   {project.title}

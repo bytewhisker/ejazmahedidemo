@@ -33,7 +33,8 @@ export const AnimatedHeaderName = ({ onClick }) => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -24, opacity: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white font-serif uppercase uppercase select-none group-hover:text-neutral-300 transition-colors ${currentVariant.fontClass}`}
+          dir={currentVariant.text.includes('إعزاز') ? 'rtl' : 'ltr'}
+          className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white font-serif uppercase select-none group-hover:text-neutral-300 transition-colors ${currentVariant.fontClass}`}
         >
           {currentVariant.text}
         </motion.span>

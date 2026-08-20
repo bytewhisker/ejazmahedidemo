@@ -81,6 +81,7 @@ export const SmoothHeaderName = ({ onClick, isLime = false }) => {
           initial="initial"
           animate="animate"
           exit="exit"
+          dir={current.id === 'ar' ? 'rtl' : 'ltr'}
           className={`uppercase transition-colors whitespace-nowrap w-full text-center flex items-center justify-center h-full ${
             isLime ? 'text-black group-hover:text-black/80' : 'text-ink group-hover:text-ink-soft'
           } ${current.fontClass}`}

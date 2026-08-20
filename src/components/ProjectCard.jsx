@@ -29,12 +29,12 @@ export const ProjectCard = ({ project, indexNumber, onClick }) => {
       data-cursor="project"
       className="group cursor-pointer space-y-2 select-none"
     >
-      {/* CHRIS MACARI BOLD PROJECT TITLE */}
-      <div className="flex items-center justify-between text-[11px] sm:text-xs md:text-sm font-mono-custom tracking-[0.14em] sm:tracking-[0.18em] uppercase font-bold text-ink gap-2">
+      {/* MINIMALIST EDITORIAL PROJECT TITLE */}
+      <div className="flex items-center justify-between text-[11px] sm:text-xs md:text-sm font-mono-custom tracking-[0.16em] sm:tracking-[0.2em] uppercase font-normal text-ink gap-2">
         <div className="flex items-center gap-2 min-w-0">
           <span className="truncate group-hover:text-ink-soft transition-colors">{project.title}</span>
         </div>
-        <span className="text-[9px] sm:text-[10px] text-muted font-mono-custom font-bold tracking-widest shrink-0">{project.category}</span>
+        <span className="text-[9px] sm:text-[10px] text-muted font-mono-custom font-light tracking-widest shrink-0">{project.category}</span>
       </div>
 
       {/* 3 STILL FRAMES CONTAINER — WIDESCREEN FILM STILLS */}

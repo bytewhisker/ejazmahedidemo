@@ -61,6 +61,7 @@ export const GlitchHeaderName = ({ onClick }) => {
       aria-label="Ejaz Mehedi Home"
     >
       <span
+        dir={displayText.includes('إعزاز') ? 'rtl' : 'ltr'}
         className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif text-white uppercase tracking-[0.2em] transition-all duration-200 ${
           isGlitching ? 'text-amber-400 font-mono tracking-widest drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]' : 'group-hover:text-neutral-300'
         }`}

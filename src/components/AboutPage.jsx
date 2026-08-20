@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { awardsData, pressData, clientsData } from '../data/projectsData';
-import { ExternalLink, Award, Sparkles, Film } from 'lucide-react';
+import { ExternalLink, Award, Sparkles, Film, ArrowUpRight, Copy, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ejazPortrait from '../assets/ejaz-portrait.png';
 
@@ -24,13 +24,6 @@ const LinkedinIcon = ({ className }) => (
   </svg>
 );
 
-const bioImages = {
-  default: ejazPortrait,
-  oman: "https://media.istockphoto.com/id/1060040826/photo/oman-omani-flag-textile-cloth-fabric-waving-on-the-top-sunrise-mist-fog.jpg",
-  bangladesh: "https://img.magnific.com/premium-photo/national-flag-texture-bangladesh-map_485374-17422.jpg",
-  southasia: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Map_of_South_Asia.png/960px-Map_of_South_Asia.png"
-};
-
 const OmanFlagIcon = ({ className }) => (
   <svg viewBox="0 0 36 24" className={className} aria-hidden="true">
     <rect width="36" height="24" fill="#ffffff" />
@@ -48,6 +41,13 @@ const BangladeshFlagIcon = ({ className }) => (
   </svg>
 );
 
+const bioImages = {
+  default: ejazPortrait,
+  oman: "https://media.istockphoto.com/id/1060040826/photo/oman-omani-flag-textile-cloth-fabric-waving-on-the-top-sunrise-mist-fog.jpg",
+  bangladesh: "https://img.magnific.com/premium-photo/national-flag-texture-bangladesh-map_485374-17422.jpg",
+  southasia: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Map_of_South_Asia.png/960px-Map_of_South_Asia.png"
+};
+
 const bioTextData = {
   en: {
     p1: "Born and raised in the cradle of Dhaka, Bangladesh, Ejaz is a self-taught cinematographer and filmmaker working on narratives, commercials, and music videos.",
@@ -58,9 +58,9 @@ const bioTextData = {
   },
   bn: {
     p1: "ঢাকার স্নিগ্ধ কোলে লালিত-পালিত এজাজ মেহেদী একজন স্বশিক্ষিত চিত্রগ্রাহক ও চলচ্চিত্র নির্মাতা, যিনি কাহিনিচিত্র, বাণিজ্যিক বিজ্ঞাপন ও মিউজিক ভিডিও নির্মাণে কাজ করছেন।",
-    p2: "রব রাইনারের 'স্ট্যান্ড বাই মি' এবং মোরশেদুল ইসলামের 'দীপু নম্বর টু' ছবি দুটি শৈশবেই তাঁর মনে গল্প ও শিল্পের প্রতি গভীর অনুরাগের জন্ম দেয়। বিশের কোঠায় ফটোগ্রাফিতে ডিগ্রি অর্জনের সময় ডকুমেন্টির সিরিজে কাজের মাধ্যমে চলচ্ছছবির প্রতি তাঁর গভীর প্রেম তৈরি হয়।",
+    p2: "রব রাইনারের 'স্ট্যান্ড বাই মি' এবং মোরশেদুল ইসলামের 'দীপু নম্বর টু' ছবি দুটি শৈশবেই তাঁর মনে গল্প ও শিল্পের প্রতি গভীর অনুরাগের জন্ম দেয়। বিশের কোঠায় ফটোগ্রাফিতে ডিগ্রি অর্জনের সময় ডকুমেন্টারি সিরিজে কাজের মাধ্যমে চলচ্ছছবির প্রতি তাঁর গভীর প্রেম তৈরি হয়।",
     p3: "সম্প্রতি এজাজ জর্ডান পিল এবং রিজ আহমেদ প্রযোজিত প্রশংসিত স্বল্পদৈর্ঘ্য চলচ্চিত্র \"মশারি\"-র চিত্রগ্রাহক (DOP) হিসেবে কাজ করেছেন। অস্কার® যোগ্যতাসম্পন্ন এই হরর শর্ট ফিল্মটি ২০২২ সালে বিশ্বের ২০টিরও বেশি উৎসবে ১১টি পুরস্কার অর্জন করে।",
-    p4: "তাঁর অন্যতম আলোচিত চলচ্চিত্র \"ফরেনার্স অনলি\" হলো ২০থ ডিজিটাল স্টুডিও কর্তৃক মার্কিন স্ট্রিমারের জন্য কমিশন করা প্রথম বাংলাদেশি চলচ্চিত্র, যা পরে HULU-র বাইট সাইজ হ্যালোউইন সিজন ৩-এ পরিবেশিত হয়।",
+    p4: "তাঁর অন্যতম আলোচিত চলচ্চিত্র \"ফরেনার্স অনলি\" হলো ২০থ ডিজিটাল স্টুдио কর্তৃক মার্কিন স্ট্রিমারের জন্য কমিশন করা প্রথম বাংলাদেশি চলচ্চিত্র, যা পরে HULU-র বাইট সাইজ হ্যালোউইন সিজন ৩-এ পরিবেশিত হয়।",
     p5: "বর্তমানে ওমান ও বাংলাদেশে অবস্থানরত এজাজ দক্ষিণ এশীয় শেকড় ও পরিচয়ের সাথে সংগতিপূর্ণ গল্প খুঁজে চলেছেন। তিনি ভোডাফোন, ইয়ামাহা, উবার, মজিদ-আল-ফুত্তাইম, মাসকাট বে, বিবিসি স্টোরিওয়ার্কস, দ্য গ্লোবাল ফান্ড, ওমান গ্রুপসহ বিভিন্ন বৈশ্বিক ব্র্যান্ডের বাণিজ্যিক বিজ্ঞাপন চিত্রায়িত করেছেন।"
   },
   ar: {
@@ -73,31 +73,36 @@ const bioTextData = {
 };
 
 const paragraphVariant = {
-  initial: { opacity: 0, y: 15, filter: "blur(4px)" },
+  initial: { opacity: 0, y: 10 },
   animate: { 
     opacity: 1, 
     y: 0, 
-    filter: "blur(0px)",
-    transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } 
+    transition: { duration: 0.4, ease: [0.25, 1, 0.5, 1] } 
   }
 };
 
 export const AboutPage = ({ cmsInfo, cmsClients }) => {
   const [activeImageKey, setActiveImageKey] = useState('default');
-  const [awardFilter, setAwardFilter] = useState('all'); // 'all', 'moshari', 'foreigners'
+  const [awardFilter, setAwardFilter] = useState('all');
+  const [copiedEmail, setCopiedEmail] = useState(false);
 
   const personalEmail = cmsInfo?.personalEmail || PERSONAL_EMAIL;
   const instagramUrl = cmsInfo?.instagramUrl || INSTAGRAM_URL;
   const linkedinUrl = cmsInfo?.linkedinUrl || LINKEDIN_URL;
   const activeClients = cmsClients || clientsData;
 
-  const [bioLang, setBioLang] = useState('en'); // 'en', 'bn', 'ar'
+  const [bioLang, setBioLang] = useState('en');
 
   const currentBio = bioLang === 'en' && cmsInfo?.bioEn
     ? { ...bioTextData.en, ...cmsInfo.bioEn }
     : bioTextData[bioLang];
 
-  // Per-language interactive location keywords (hover swaps the portrait frame)
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(personalEmail);
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
   const interactiveKeywords = {
     en: [
       { key: 'oman', match: 'Oman', icon: <OmanFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
@@ -117,10 +122,8 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
     ]
   };
 
-  // Helper to highlight every keyword occurrence inside the bio text
   const renderInteractiveText = (text) => {
     if (!text) return null;
-
     const keywords = interactiveKeywords[bioLang] || interactiveKeywords.en;
     let parts = [text];
 
@@ -142,7 +145,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
                 onMouseLeave={() => setActiveImageKey('default')}
                 onTouchStart={() => setActiveImageKey(kw.key)}
                 onTouchEnd={() => setActiveImageKey('default')}
-                className="px-1.5 py-0.5 mx-0.5 bg-black text-[#b5ff32] font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-black/80 transition-colors inline-flex items-center gap-1 align-baseline rounded-sm"
+                className="px-1.5 py-0.5 mx-0.5 bg-black text-[#b5ff32] font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-black/80 transition-colors inline-flex items-center gap-1 align-baseline rounded-sm shadow-sm"
               >
                 {kw.icon}
                 {part.slice(idx, idx + kw.match.length)}
@@ -170,78 +173,116 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -16 }}
-      transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-      className="min-h-screen text-black pt-2 md:pt-4 pb-12 px-4 sm:px-8 max-w-[1700px] mx-auto space-y-12 md:space-y-16 font-sans select-none"
+      exit={{ opacity: 0, y: -12 }}
+      transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+      className="min-h-screen text-black pt-2 pb-24 px-4 sm:px-6 lg:px-8 font-sans select-none max-w-[1700px] mx-auto space-y-12 md:space-y-16"
     >
       
-      {/* OVERSIZED HERO SECTION TITLE */}
-      <div className="pt-2 md:pt-4 pb-8 md:pb-12 border-b border-black/20 space-y-3">
-        <h1 className="text-[14vw] sm:text-[12vw] md:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase text-black font-sans select-none">
-          INFORMATION
-        </h1>
-        <p className="text-xs sm:text-sm font-mono-custom tracking-[0.22em] uppercase text-black/80 font-bold pl-1 flex flex-wrap items-center gap-2">
-          <span>the biography & direct contact archive of</span>
-          <span className="font-editorial italic lowercase font-normal border-b border-black/40">ejaz mehedi</span>
-          <span className="text-[10px] bg-black text-[#b5ff32] px-2 py-0.5 font-bold uppercase rounded-sm">DOP & FILMMAKER</span>
-        </p>
+      {/* MINIMALIST LIME HERO TITLE HEADER */}
+      <div className="border-b border-black/20 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="space-y-1">
+          <span className="text-[10px] font-mono-custom tracking-[0.25em] uppercase text-black/70 font-bold block">
+            INFORMATION & ARCHIVE
+          </span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-black font-sans">
+            EJAZ MEHEDI
+          </h1>
+        </div>
+        <div className="text-xs font-mono-custom tracking-[0.2em] uppercase text-black font-bold flex flex-wrap items-center gap-2 sm:gap-3">
+          <span>CINEMATOGRAPHER</span>
+          <span>/</span>
+          <span>DOP</span>
+          <span>/</span>
+          <span className="bg-black text-[#b5ff32] px-2 py-0.5 rounded-sm">OMAN & BANGLADESH</span>
+        </div>
       </div>
 
-      {/* TOP SECTION: BIOGRAPHY + DIRECT CONTACT */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start border-b border-black/20 pb-16 md:pb-20">
+      {/* TOP SECTION: BIOGRAPHY + PORTRAIT & DIRECT CONTACT */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start border-b border-black/20 pb-12 md:pb-16">
         
         {/* Left Side: Photo Frame Container */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          className="lg:col-span-5 space-y-3"
-        >
-          <div className="flex items-center justify-between text-xs font-mono-custom tracking-[0.25em] uppercase text-black/80 font-bold">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
-              <span>BIOGRAPHY // DIRECTOR & DOP</span>
-            </div>
-            <span className="text-[10px] text-black/60 font-mono-custom">
-              {activeImageKey.toUpperCase()} VIEW
-            </span>
-          </div>
-
+        <div className="lg:col-span-5 space-y-6">
           <div className="w-full aspect-square overflow-hidden bg-black/10 border border-black/30 relative group shadow-xl">
-            <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
-              <AnimatePresence mode="popLayout" initial={false}>
-                <motion.img
-                  key={activeImageKey}
-                  src={bioImages[activeImageKey] || bioImages.default}
-                  alt={activeImageKey === 'default' ? 'Ejaz Mehedi Portrait' : `${activeImageKey} view`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
-                  draggable={false}
-                  className="absolute inset-0 w-full h-full object-cover filter brightness-95 contrast-105"
-                />
-              </AnimatePresence>
-            </div>
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.img
+                key={activeImageKey}
+                src={bioImages[activeImageKey] || bioImages.default}
+                alt="Ejaz Mehedi"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                draggable={false}
+                className="w-full h-full object-cover filter brightness-95 contrast-105 group-hover:scale-105 transition-transform duration-700"
+              />
+            </AnimatePresence>
             <div className="absolute bottom-3 left-3 bg-black/90 text-[#b5ff32] font-mono-custom text-[10px] font-bold px-3 py-1 uppercase tracking-widest border border-black/40">
               OMAN // BANGLADESH // WORLDWIDE
             </div>
           </div>
-        </motion.div>
 
-        {/* Right Side: Biography Paragraphs with Tiny Language Switch & Direct Contact */}
-        <div className="lg:col-span-7 space-y-8 pt-2">
+          {/* Contact Block */}
+          <div className="space-y-4 pt-2 border-t border-black/20">
+            <div className="text-[10px] font-mono-custom tracking-[0.25em] text-black/70 uppercase font-bold">
+              DIRECT INQUIRIES & BOOKINGS
+            </div>
+            
+            <div className="bg-black text-[#b5ff32] p-4 rounded-sm border border-black flex items-center justify-between gap-3 shadow-lg">
+              <a
+                href={`mailto:${personalEmail}`}
+                className="text-sm sm:text-base font-mono-custom font-bold text-[#b5ff32] hover:underline truncate"
+              >
+                {personalEmail}
+              </a>
+              <button
+                onClick={handleCopyEmail}
+                title="Copy Email Address"
+                className="px-2.5 py-1 bg-[#b5ff32] text-black text-[10px] font-mono-custom font-bold uppercase tracking-widest hover:bg-[#a2eb26] transition-colors shrink-0 flex items-center gap-1"
+              >
+                {copiedEmail ? <Check className="w-3 h-3 text-black" /> : <Copy className="w-3 h-3" />}
+                <span>{copiedEmail ? 'COPIED' : 'COPY'}</span>
+              </button>
+            </div>
+
+            <div className="flex items-center gap-6 pt-1 text-xs font-mono-custom uppercase tracking-widest text-black">
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:underline flex items-center gap-1.5 font-bold"
+              >
+                <InstagramIcon className="w-4 h-4" />
+                <span>INSTAGRAM</span>
+                <ArrowUpRight className="w-3 h-3 opacity-70" />
+              </a>
+
+              <a
+                href={linkedinUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:underline flex items-center gap-1.5 font-bold"
+              >
+                <LinkedinIcon className="w-4 h-4" />
+                <span>LINKEDIN</span>
+                <ArrowUpRight className="w-3 h-3 opacity-70" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side: Biography & Character Script Language Switcher */}
+        <div className="lg:col-span-7 space-y-6 pt-1">
           
-          {/* Biography Header with Tiny Language Selector */}
+          {/* Biography Header with Character Script Language Selector [ A | অ | ع ] */}
           <div className="flex items-center justify-between border-b border-black/20 pb-3">
-            <span className="text-xs font-mono-custom tracking-[0.25em] uppercase text-black/80 font-bold flex items-center gap-2">
+            <span className="text-[10px] font-mono-custom tracking-[0.25em] uppercase text-black/70 font-bold flex items-center gap-2">
               <Film className="w-3.5 h-3.5" />
               <span>BIOGRAPHY ARCHIVE</span>
             </span>
 
-            {/* Character Script Language Selector [ A | অ | ع ] */}
+            {/* Character Script Selector [ A / অ / ع ] */}
             <div className="flex items-center gap-1.5 text-xs font-mono-custom uppercase tracking-wider">
               <button
                 onClick={() => setBioLang('en')}
@@ -275,15 +316,15 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
             </div>
           </div>
 
-          {/* Animated Biography Paragraphs */}
+          {/* Biography Text Paragraphs */}
           <AnimatePresence mode="wait">
             <motion.div
               key={bioLang}
               initial="initial"
               animate="animate"
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ staggerChildren: 0.1 }}
-              className={`space-y-4 sm:space-y-5 text-sm sm:text-base leading-relaxed text-black font-medium ${
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ staggerChildren: 0.08 }}
+              className={`space-y-4 text-xs sm:text-sm leading-relaxed text-black font-medium ${
                 bioLang === 'ar' ? 'text-right dir-rtl font-sans' : ''
               }`}
             >
@@ -295,228 +336,120 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
             </motion.div>
           </AnimatePresence>
 
-          {/* DIRECT CONTACT AREA */}
-          <div className="pt-6 border-t border-black/20 space-y-6">
-            <span className="text-[10px] font-sans tracking-[0.25em] uppercase text-black/80 font-bold block">
-              DIRECT CONTACT & REPRESENTATION
-            </span>
-
-            {/* Personal Email Card */}
-            <div className="bg-black text-[#b5ff32] border border-black p-5 sm:p-6 rounded-sm shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div>
-                <span className="text-[9px] font-sans text-[#b5ff32]/70 uppercase tracking-[0.25em] block font-bold">
-                  PERSONAL EMAIL & BOOKINGS
-                </span>
-                <a
-                  href={`mailto:${personalEmail}`}
-                  className="text-lg sm:text-xl md:text-2xl font-mono-custom text-[#b5ff32] font-bold tracking-tight hover:underline transition-all"
-                >
-                  {personalEmail}
-                </a>
-              </div>
-              <a
-                href={`mailto:${personalEmail}`}
-                className="px-4 py-2 bg-[#b5ff32] text-black font-mono-custom text-xs font-bold uppercase tracking-widest hover:bg-[#a2eb26] transition-colors shrink-0 text-center"
-              >
-                SEND INQUIRY
-              </a>
-            </div>
-
-            {/* Social Media — Logo Tiles */}
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-4 pt-1">
-              <a
-                href={instagramUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                className="group flex items-center text-black transition-colors gap-2"
-              >
-                <span className="w-10 h-10 border border-black flex items-center justify-center group-hover:bg-black group-hover:text-[#b5ff32] transition-all">
-                  <InstagramIcon className="w-4 h-4" />
-                </span>
-                <span className="text-xs font-mono-custom font-bold uppercase tracking-wider group-hover:underline">
-                  INSTAGRAM
-                </span>
-              </a>
-
-              <a
-                href={linkedinUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="group flex items-center text-black transition-colors gap-2"
-              >
-                <span className="w-10 h-10 border border-black flex items-center justify-center group-hover:bg-black group-hover:text-[#b5ff32] transition-all">
-                  <LinkedinIcon className="w-4 h-4" />
-                </span>
-                <span className="text-xs font-mono-custom font-bold uppercase tracking-wider group-hover:underline">
-                  LINKEDIN
-                </span>
-              </a>
-            </div>
-
-          </div>
-
         </div>
 
       </div>
 
-      {/* FEATURED FILM ACCOLADES SHOWCASE: MOSHARI & FOREIGNERS ONLY */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="space-y-8 border-b border-black/20 pb-16 md:pb-20"
-      >
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-black/20 pb-4">
-          <div>
-            <span className="text-[10px] font-mono-custom text-black/60 uppercase tracking-[0.25em] font-bold block">
-              FEATURED NARRATIVE PROJECTS
-            </span>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight text-black">
-              MOSHARI & FOREIGNERS ONLY ACCOLADES
-            </h2>
-          </div>
-          <p className="text-xs font-mono-custom text-black/80 max-w-md">
-            Multi-Oscar® Qualifying Horror & First Bangladeshi Film Commissioned for HULU by 20th Digital Studio.
-          </p>
+      {/* FEATURED NARRATIVE HIGHLIGHTS (MOSHARI & FOREIGNERS ONLY) */}
+      <div className="space-y-6 border-b border-black/20 pb-12 md:pb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-black/20 pb-3">
+          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-black/70">
+            FEATURED NARRATIVE PROJECTS
+          </h2>
+          <span className="text-[10px] font-mono-custom text-black/60 uppercase font-bold">
+            EXECUTIVE PRODUCED & COMMISSIONED
+          </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           
-          {/* MOSHARI Showcase Box */}
-          <div className="bg-black text-white p-6 sm:p-8 rounded-sm space-y-5 border border-black shadow-2xl relative overflow-hidden">
-            <div className="flex items-center justify-between border-b border-white/20 pb-3">
-              <span className="text-[#b5ff32] font-mono-custom text-xs font-bold tracking-widest uppercase flex items-center gap-1.5">
+          {/* MOSHARI Box */}
+          <div className="bg-black text-white p-6 space-y-4 rounded-sm border border-black shadow-xl">
+            <div className="flex items-center justify-between border-b border-white/20 pb-2.5">
+              <span className="text-xs font-mono-custom font-bold text-[#b5ff32] tracking-wider uppercase flex items-center gap-1.5">
                 <Award className="w-4 h-4 text-[#b5ff32]" />
-                11 AWARDS // 20+ FESTIVALS
+                MOSHARI (2022)
               </span>
-              <span className="text-[10px] bg-[#b5ff32] text-black font-bold font-mono-custom px-2 py-0.5 uppercase">
+              <span className="text-[9px] font-mono-custom bg-[#b5ff32] text-black font-bold px-2 py-0.5 uppercase">
                 OSCAR® QUALIFYING
               </span>
             </div>
 
-            <div>
-              <h3 className="text-2xl sm:text-3xl font-black uppercase text-[#b5ff32] tracking-tight">
-                MOSHARI (2022)
-              </h3>
-              <p className="text-xs font-mono-custom text-neutral-400 pt-1">
-                Exec Produced by Jordan Peele & Riz Ahmed // DOP: Ejaz Mehedi
-              </p>
-            </div>
-
             <p className="text-xs text-neutral-300 leading-relaxed font-sans">
-              The groundbreaking, genre-bending horror short won 11 awards from 20+ festivals around the world in 2022 and 2023.
+              Exec produced by Jordan Peele & Riz Ahmed. DOP: Ejaz Mehedi. Winner of 11 awards across 20+ global festivals including SXSW, HollyShorts, Woodstock, and Short Shorts & Asia.
             </p>
 
-            <div className="space-y-2 pt-2 border-t border-white/10 text-xs font-mono-custom">
-              <div className="flex items-baseline justify-between text-[#b5ff32] font-bold">
-                <span>SXSW</span>
-                <span className="text-white text-right">Grand Jury Award, Best Midnight Short</span>
+            <div className="space-y-1.5 pt-2 text-[11px] font-mono-custom border-t border-white/10">
+              <div className="flex justify-between">
+                <span className="text-[#b5ff32] font-bold">SXSW</span>
+                <span className="text-neutral-300">Grand Jury Award, Best Midnight Short</span>
               </div>
-              <div className="flex items-baseline justify-between text-[#b5ff32] font-bold">
-                <span>SHORT SHORTS & ASIA</span>
-                <span className="text-white text-right">Governor of Tokyo Award (Oscar® Qualifying)</span>
+              <div className="flex justify-between">
+                <span className="text-[#b5ff32] font-bold">SHORT SHORTS & ASIA</span>
+                <span className="text-neutral-300">Governor of Tokyo Award</span>
               </div>
-              <div className="flex items-baseline justify-between text-[#b5ff32] font-bold">
-                <span>WOODSTOCK FILM FESTIVAL</span>
-                <span className="text-white text-right">Best Narrative Short (Oscar® Qualifying)</span>
-              </div>
-              <div className="flex items-baseline justify-between text-[#b5ff32] font-bold">
-                <span>ATLANTA FILM FESTIVAL</span>
-                <span className="text-white text-right">Best Narrative Short (Oscar® Qualifying)</span>
-              </div>
-              <div className="flex items-baseline justify-between text-[#b5ff32] font-bold">
-                <span>FANTASIA // HOLLYSHORTS</span>
-                <span className="text-white text-right">Gold Award & Best Horror Award</span>
+              <div className="flex justify-between">
+                <span className="text-[#b5ff32] font-bold">ATLANTA FILM FESTIVAL</span>
+                <span className="text-neutral-300">Best Narrative Short</span>
               </div>
             </div>
           </div>
 
-          {/* FOREIGNERS ONLY Showcase Box */}
-          <div className="bg-[#111111] text-white p-6 sm:p-8 rounded-sm space-y-5 border border-black shadow-2xl relative overflow-hidden">
-            <div className="flex items-center justify-between border-b border-white/20 pb-3">
-              <span className="text-[#b5ff32] font-mono-custom text-xs font-bold tracking-widest uppercase flex items-center gap-1.5">
+          {/* FOREIGNERS ONLY Box */}
+          <div className="bg-[#111111] text-white p-6 space-y-4 rounded-sm border border-black shadow-xl">
+            <div className="flex items-center justify-between border-b border-white/20 pb-2.5">
+              <span className="text-xs font-mono-custom font-bold text-[#b5ff32] tracking-wider uppercase flex items-center gap-1.5">
                 <Sparkles className="w-4 h-4 text-[#b5ff32]" />
-                HULU STREAMING EXCLUSIVE
-              </span>
-              <span className="text-[10px] bg-white text-black font-bold font-mono-custom px-2 py-0.5 uppercase">
-                20TH DIGITAL STUDIO
-              </span>
-            </div>
-
-            <div>
-              <h3 className="text-2xl sm:text-3xl font-black uppercase text-[#b5ff32] tracking-tight">
                 FOREIGNERS ONLY (2023)
-              </h3>
-              <p className="text-xs font-mono-custom text-neutral-400 pt-1">
-                HULU Bite Size Halloween Season 3 - Ep 9 // DOP: Ejaz Mehedi
-              </p>
+              </span>
+              <span className="text-[9px] font-mono-custom bg-white text-black font-bold px-2 py-0.5 uppercase">
+                HULU EXCLUSIVE
+              </span>
             </div>
 
             <p className="text-xs text-neutral-300 leading-relaxed font-sans">
-              First Bangladeshi film commissioned for any US streaming platform by 20th Digital Studio. Aired globally on US streaming giant HULU.
+              First Bangladeshi film commissioned for any US streaming platform by 20th Digital Studio. Premiered globally on HULU Bite Size Halloween Season 3.
             </p>
 
-            <div className="space-y-2 pt-2 border-t border-white/10 text-xs font-mono-custom">
-              <div className="flex items-baseline justify-between text-[#b5ff32] font-bold">
-                <span>FANTASIA FILM FESTIVAL (CANADA)</span>
-                <span className="text-white text-right">Gold Award, Best Asian Short</span>
+            <div className="space-y-1.5 pt-2 text-[11px] font-mono-custom border-t border-white/10">
+              <div className="flex justify-between">
+                <span className="text-[#b5ff32] font-bold">FANTASIA (CANADA)</span>
+                <span className="text-neutral-300">Gold Award, Best Asian Short</span>
               </div>
-              <div className="flex items-baseline justify-between text-[#b5ff32] font-bold">
-                <span>HOLLYSHORTS FILM FESTIVAL (US)</span>
-                <span className="text-white text-right">Best Horror Award</span>
+              <div className="flex justify-between">
+                <span className="text-[#b5ff32] font-bold">HOLLYSHORTS (US)</span>
+                <span className="text-neutral-300">Best Horror Award</span>
               </div>
-              <div className="flex items-baseline justify-between text-[#b5ff32] font-bold">
-                <span>BFI LONDON (UK)</span>
-                <span className="text-white text-right">Official Selection</span>
-              </div>
-              <div className="flex items-baseline justify-between text-[#b5ff32] font-bold">
-                <span>NEUCHATEL (SWITZERLAND)</span>
-                <span className="text-white text-right">Audience Award & Youth Award</span>
+              <div className="flex justify-between">
+                <span className="text-[#b5ff32] font-bold">BFI LONDON (UK)</span>
+                <span className="text-neutral-300">Official Selection</span>
               </div>
             </div>
           </div>
 
         </div>
-      </motion.div>
+      </div>
 
-      {/* SECTION: AWARDS & HONORS GRID WITH FILTER */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="space-y-6 md:space-y-8 border-b border-black/20 pb-16 md:pb-20"
-      >
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-black/80">
+      {/* FULL TABULAR AWARDS & HONORS ARCHIVE */}
+      <div className="space-y-6 border-b border-black/20 pb-12 md:pb-16">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/20 pb-3">
+          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-black/80">
             AWARDS & FESTIVAL EXHIBITIONS ({filteredAwards.length})
           </h2>
 
-          <div className="flex items-center gap-2 text-xs font-mono-custom uppercase tracking-wider">
+          {/* Minimal Filter */}
+          <div className="flex items-center gap-2 text-xs font-mono-custom uppercase tracking-widest">
             <button
               onClick={() => setAwardFilter('all')}
-              className={`px-3 py-1 rounded-sm font-bold ${
+              className={`px-2.5 py-0.5 rounded-sm font-bold ${
                 awardFilter === 'all' ? 'bg-black text-[#b5ff32]' : 'text-black/60 hover:text-black'
               }`}
             >
-              ALL ACCOLADES
+              ALL
             </button>
-            <span>/</span>
+            <span className="text-black/30">/</span>
             <button
               onClick={() => setAwardFilter('moshari')}
-              className={`px-3 py-1 rounded-sm font-bold ${
+              className={`px-2.5 py-0.5 rounded-sm font-bold ${
                 awardFilter === 'moshari' ? 'bg-black text-[#b5ff32]' : 'text-black/60 hover:text-black'
               }`}
             >
               MOSHARI
             </button>
-            <span>/</span>
+            <span className="text-black/30">/</span>
             <button
               onClick={() => setAwardFilter('foreigners')}
-              className={`px-3 py-1 rounded-sm font-bold ${
+              className={`px-2.5 py-0.5 rounded-sm font-bold ${
                 awardFilter === 'foreigners' ? 'bg-black text-[#b5ff32]' : 'text-black/60 hover:text-black'
               }`}
             >
@@ -525,106 +458,90 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {/* Tabular Archive */}
+        <div className="divide-y divide-black/15 text-xs font-mono-custom">
           {filteredAwards.map((award) => (
-            <div key={award.id} className="bg-black/5 border border-black/20 p-5 rounded-sm space-y-2 hover:bg-black/10 transition-all group">
-              <div className="flex items-center justify-between text-[10px] font-mono-custom text-black/70 font-bold uppercase">
-                <span>{award.date} // {award.film || 'FILM'}</span>
-                {award.badge && (
-                  <span className="bg-black text-[#b5ff32] px-2 py-0.5 text-[9px]">
-                    {award.badge}
-                  </span>
-                )}
+            <div
+              key={award.id}
+              className="py-3.5 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 items-baseline hover:bg-black/5 transition-colors px-1"
+            >
+              <div className="sm:col-span-2 text-black/70 font-bold">
+                {award.date}
               </div>
-              <h3 className="text-sm font-sans text-black font-bold group-hover:underline">
+              <div className="sm:col-span-3 text-black font-black uppercase truncate">
+                {award.film || 'NARRATIVE'}
+              </div>
+              <div className="sm:col-span-4 text-black font-medium">
                 {award.title}
-              </h3>
-              <p className="text-xs font-mono-custom text-black/80 font-bold">
+              </div>
+              <div className="sm:col-span-3 text-black/70 text-right hidden sm:block truncate font-bold">
                 {award.organization}
-              </p>
-              <p className="text-xs text-black/70 leading-relaxed font-medium">
-                {award.description}
-              </p>
+              </div>
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
-      {/* SECTION: PRESS & INTERVIEWS */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="space-y-6 md:space-y-8 border-b border-black/20 pb-16 md:pb-20"
-      >
-        <div className="flex items-center justify-between">
-          <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-black/80">
-            PRESS & INTERVIEWS ARCHIVE ({pressData.length})
+      {/* PRESS & INTERVIEWS ARCHIVE */}
+      <div className="space-y-6 border-b border-black/20 pb-12 md:pb-16">
+        <div className="flex items-center justify-between border-b border-black/20 pb-3">
+          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-black/80">
+            PRESS & INTERVIEWS ({pressData.length})
           </h2>
           <span className="text-[10px] font-mono-custom text-black/60 uppercase font-bold">
-            GLOBAL MEDIA COVERAGE
+            GLOBAL COVERAGE
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="divide-y divide-black/15 text-xs font-mono-custom">
           {pressData.map((item) => (
             <div
               key={item.id}
-              className="bg-black/5 border border-black/20 p-5 rounded-sm space-y-3 group hover:border-black transition-colors"
+              className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-black/5 transition-colors px-1 group"
             >
-              <div className="flex items-center justify-between text-xs font-mono-custom text-black/70 font-bold uppercase">
-                <span>{item.publisher}</span>
-                <span>{item.date}</span>
+              <div className="space-y-1 max-w-3xl">
+                <div className="flex items-center gap-3 text-black/70">
+                  <span className="font-bold text-black uppercase">{item.publisher}</span>
+                  <span>—</span>
+                  <span>{item.date}</span>
+                </div>
+                <h3 className="text-sm font-sans text-black font-bold group-hover:underline">
+                  {item.title}
+                </h3>
               </div>
-              <h3 className="text-base font-sans text-black font-bold leading-snug group-hover:opacity-80 transition-opacity">
-                {item.title}
-              </h3>
-              <p className="text-xs text-black/80 font-medium leading-relaxed">
-                {item.description}
-              </p>
 
               {item.link && item.link !== '#' && (
                 <a
                   href={item.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-xs font-mono-custom text-black font-bold hover:underline uppercase tracking-widest inline-flex items-center gap-1 pt-1"
+                  className="text-[11px] font-mono-custom text-black hover:bg-black hover:text-[#b5ff32] border border-black px-2.5 py-1 flex items-center gap-1 uppercase tracking-widest shrink-0 font-bold transition-all rounded-sm"
                 >
-                  <span>READ ARTICLE / INTERVIEW</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <span>READ ARTICLE</span>
+                  <ArrowUpRight className="w-3 h-3" />
                 </a>
               )}
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
-      {/* SECTION: SELECTED CLIENTS */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="space-y-6 md:space-y-8 pb-12"
-      >
-        <div className="flex items-center justify-between">
-          <h2 className="text-xs font-mono-custom tracking-[0.3em] uppercase font-bold text-black/80">
+      {/* SELECTED CLIENTS */}
+      <div className="space-y-6 pb-8">
+        <div className="border-b border-black/20 pb-3">
+          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-black/80">
             SELECTED CLIENTS & BRANDED PARTNERS
           </h2>
-          <span className="text-[10px] font-mono-custom text-black/60 uppercase font-bold">
-            INTERNATIONAL CAMPAIGNS
-          </span>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 text-xs font-mono-custom text-black font-bold">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 text-xs font-mono-custom text-black font-bold">
           {activeClients.map((client, idx) => (
-            <div key={idx} className="border-l-2 border-black pl-3 py-2 bg-black/5 hover:bg-black hover:text-[#b5ff32] transition-colors rounded-r-sm">
+            <div key={idx} className="border-l-2 border-black pl-3 py-2 bg-black/5 hover:bg-black hover:text-[#b5ff32] transition-all rounded-r-sm">
               {client}
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
     </motion.div>
   );
