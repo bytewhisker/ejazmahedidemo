@@ -65,7 +65,7 @@ export const ProjectCard = ({ project, indexNumber, onClick }) => {
               {isCardHovered && (
                 <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/50 backdrop-blur-[1px]">
                   <img
-                    src="https://ligthelm.work/static/img/simple-loading.gif"
+                    src="/project-loader.gif"
                     alt="Still preview loading"
                     className="w-8 h-8 md:w-10 md:h-10 object-contain filter brightness-120"
                   />

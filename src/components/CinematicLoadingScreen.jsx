@@ -17,9 +17,9 @@ export const CinematicLoadingScreen = ({ onComplete }) => {
       exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
       className="fixed inset-0 z-[10000] bg-black flex items-center justify-center overflow-hidden select-none"
     >
-      {/* Salomon Ligthelm Fullscreen Loading GIF */}
+      {/* Fullscreen Web Loading GIF */}
       <img
-        src="https://ligthelm.work/static/img/loading.gif"
+        src="/web-loading.gif"
         alt="Loading..."
         className="w-full h-full object-cover"
       />

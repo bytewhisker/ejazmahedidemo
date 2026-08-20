@@ -107,7 +107,7 @@ function MainContent() {
             className="fixed inset-0 z-[10000] bg-black flex flex-col items-center justify-center select-none"
           >
             <img
-              src="https://ligthelm.work/static/img/simple-loading.gif"
+              src="/project-loader.gif"
               alt="Loading project..."
               className="w-32 h-32 md:w-44 md:h-44 object-contain filter brightness-110"
             />

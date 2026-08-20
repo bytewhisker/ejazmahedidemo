@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { awardsData, pressData, clientsData } from '../data/projectsData';
 import { ExternalLink, Award, Sparkles, Film } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ejazPortrait from '../assets/ejaz-portrait.png';
 
 const PERSONAL_EMAIL = 'contact@ejazmehedi.com';
 const INSTAGRAM_URL = 'https://instagram.com/ezaz.mehedi';
@@ -24,33 +25,50 @@ const LinkedinIcon = ({ className }) => (
 );
 
 const bioImages = {
-  default: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop",
-  moshari: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000&auto=format&fit=crop",
-  foreigners: "https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=1000&auto=format&fit=crop",
-  clients: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop"
+  default: ejazPortrait,
+  oman: "https://media.istockphoto.com/id/1060040826/photo/oman-omani-flag-textile-cloth-fabric-waving-on-the-top-sunrise-mist-fog.jpg",
+  bangladesh: "https://img.magnific.com/premium-photo/national-flag-texture-bangladesh-map_485374-17422.jpg",
+  southasia: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Map_of_South_Asia.png/960px-Map_of_South_Asia.png"
 };
+
+const OmanFlagIcon = ({ className }) => (
+  <svg viewBox="0 0 36 24" className={className} aria-hidden="true">
+    <rect width="36" height="24" fill="#ffffff" />
+    <rect y="8" width="36" height="8" fill="#e21836" />
+    <rect y="16" width="36" height="8" fill="#009b4e" />
+    <rect width="12" height="24" fill="#e21836" />
+    <path d="M5 6c1.6 2.1 1.6 4.4 0 6.5-0.8-1.1-1.3-2.2-1.3-3.25S4.2 7.1 5 6z" fill="#ffffff" />
+  </svg>
+);
+
+const BangladeshFlagIcon = ({ className }) => (
+  <svg viewBox="0 0 36 24" className={className} aria-hidden="true">
+    <rect width="36" height="24" fill="#006a4e" />
+    <circle cx="14.4" cy="12" r="6.3" fill="#f42a41" />
+  </svg>
+);
 
 const bioTextData = {
   en: {
     p1: "Born and raised in the cradle of Dhaka, Bangladesh, Ejaz is a self-taught cinematographer and filmmaker working on narratives, commercials, and music videos.",
     p2: "Deeply moved by Rob Reiner's \"Stand By Me\" and Morshedul Islam's \"Dipu Number Two\", the two films perhaps sparked an artistic curiosity and passion for story in his childhood. While pursuing a photography degree in his early twenties with a deep-rooted interest in the art form, Ejaz became heavily invested in motion pictures after working on a series of documentary films.",
-    p3: "Recently Ejaz was behind the camera on Jordan Peele and Riz Ahmed's executive produced short film \"MOSHARI\" [ MOSHARI ]. The multi-OSCAR®-qualifying, groundbreaking, genre-bending horror short won 11 awards from 20+ festivals around the world in 2022.",
-    p4: "One of Ejaz's other recent films \"FOREIGNERS ONLY\" [ FOREIGNERS ONLY ] is the first Bangladeshi film commissioned for any US streaming platform by 20th Digital Studio. The film recently aired on US streaming giant HULU's Bite Size Halloween Season 3 - Episode 9.",
-    p5: "Currently based in Oman and Bangladesh, Ejaz actively seeks stories and projects that resonate with his South Asian roots and identity. He has also shot several commercials and branded content for a variety of clients including Vodafone, Yamaha, Uber, Majid-Al-Futtaim, Muscat Bay, BBC Storyworks, The Global Fund, Omran Group, and more [ GLOBAL CLIENTS ]."
+    p3: "Recently Ejaz was behind the camera on Jordan Peele and Riz Ahmed's executive produced short film \"MOSHARI\". The multi-OSCAR®-qualifying, groundbreaking, genre-bending horror short won 11 awards from 20+ festivals around the world in 2022.",
+    p4: "One of Ejaz's other recent films \"FOREIGNERS ONLY\" is the first Bangladeshi film commissioned for any US streaming platform by 20th Digital Studio. The film recently aired on US streaming giant HULU's Bite Size Halloween Season 3 - Episode 9.",
+    p5: "Currently based in Oman and Bangladesh, Ejaz actively seeks stories and projects that resonate with his South Asian roots and identity. He has also shot several commercials and branded content for a variety of clients including Vodafone, Yamaha, Uber, Majid-Al-Futtaim, Muscat Bay, BBC Storyworks, The Global Fund, Omran Group, and more."
   },
   bn: {
     p1: "ঢাকার স্নিগ্ধ কোলে লালিত-পালিত এজাজ মেহেদী একজন স্বশিক্ষিত চিত্রগ্রাহক ও চলচ্চিত্র নির্মাতা, যিনি কাহিনিচিত্র, বাণিজ্যিক বিজ্ঞাপন ও মিউজিক ভিডিও নির্মাণে কাজ করছেন।",
     p2: "রব রাইনারের 'স্ট্যান্ড বাই মি' এবং মোরশেদুল ইসলামের 'দীপু নম্বর টু' ছবি দুটি শৈশবেই তাঁর মনে গল্প ও শিল্পের প্রতি গভীর অনুরাগের জন্ম দেয়। বিশের কোঠায় ফটোগ্রাফিতে ডিগ্রি অর্জনের সময় ডকুমেন্টির সিরিজে কাজের মাধ্যমে চলচ্ছছবির প্রতি তাঁর গভীর প্রেম তৈরি হয়।",
-    p3: "সম্প্রতি এজাজ জর্ডান পিল এবং রিজ আহমেদ প্রযোজিত প্রশংসিত স্বল্পদৈর্ঘ্য চলচ্চিত্র \"মশারি\"-র চিত্রগ্রাহক (DOP) হিসেবে কাজ করেছেন [ MOSHARI ]। অস্কার® যোগ্যতাসম্পন্ন এই হরর শর্ট ফিল্মটি ২০২২ সালে বিশ্বের ২০টিরও বেশি উৎসবে ১১টি পুরস্কার অর্জন করে।",
-    p4: "তাঁর পরিচালিত অন্য অন্যতম আলোচিত চলচ্চিত্র \"ফরেনার্স অনলি\" [ FOREIGNERS ONLY ] হলো ২০থ ডিজিটাল স্টুডিও কর্তৃক মার্কিন স্ট্রিমারের জন্য কমিশন করা প্রথম বাংলাদেশি চলচ্চিত্র, যা পরে HULU-র বাইট সাইজ হ্যালোউইন সিজন ৩-এ পরিবেশিত হয়।",
-    p5: "বর্তমানে ওমান ও বাংলাদেশে অবস্থানরত এজাজ দক্ষিণ এশীয় শেকড় ও পরিচয়ের সাথে সংগতিপূর্ণ গল্প খুঁজে চলেছেন। তিনি ভোডাফোন, ইয়ামাহা, উবার, মজিদ-আল-ফুত্তাইম, মাসকাট বে, বিবিসি স্টোরিওয়ার্কস, দ্য গ্লোবাল ফান্ড, ওমান গ্রুপসহ বিভিন্ন বৈশ্বিক ব্র্যান্ডের বাণিজ্যিক বিজ্ঞাপন চিত্রায়িত করেছেন [ GLOBAL CLIENTS ]।"
+    p3: "সম্প্রতি এজাজ জর্ডান পিল এবং রিজ আহমেদ প্রযোজিত প্রশংসিত স্বল্পদৈর্ঘ্য চলচ্চিত্র \"মশারি\"-র চিত্রগ্রাহক (DOP) হিসেবে কাজ করেছেন। অস্কার® যোগ্যতাসম্পন্ন এই হরর শর্ট ফিল্মটি ২০২২ সালে বিশ্বের ২০টিরও বেশি উৎসবে ১১টি পুরস্কার অর্জন করে।",
+    p4: "তাঁর অন্যতম আলোচিত চলচ্চিত্র \"ফরেনার্স অনলি\" হলো ২০থ ডিজিটাল স্টুডিও কর্তৃক মার্কিন স্ট্রিমারের জন্য কমিশন করা প্রথম বাংলাদেশি চলচ্চিত্র, যা পরে HULU-র বাইট সাইজ হ্যালোউইন সিজন ৩-এ পরিবেশিত হয়।",
+    p5: "বর্তমানে ওমান ও বাংলাদেশে অবস্থানরত এজাজ দক্ষিণ এশীয় শেকড় ও পরিচয়ের সাথে সংগতিপূর্ণ গল্প খুঁজে চলেছেন। তিনি ভোডাফোন, ইয়ামাহা, উবার, মজিদ-আল-ফুত্তাইম, মাসকাট বে, বিবিসি স্টোরিওয়ার্কস, দ্য গ্লোবাল ফান্ড, ওমান গ্রুপসহ বিভিন্ন বৈশ্বিক ব্র্যান্ডের বাণিজ্যিক বিজ্ঞাপন চিত্রায়িত করেছেন।"
   },
   ar: {
     p1: "نشأ إعزاز مهدي في دكا، بنغلاديش، وهو مدير تصوير سينمائي ومخرج عصامي يعمل في الأفلام الروائية والإعلانات التجارية والفيديو كليب.",
     p2: "تأثر في طفولته بشدة بفيلم 'Stand By Me' للمخرج روب راينر وفيلم 'Dipu Number Two' للمخرج مرشد الإسلام، مما أشعل شغفه بالسرد البصري. وأثناء دراسته للتصوير الفوتوغرافي في أوائل عشرينياته، دخل عالم السينما عبر إخراج الأفلام الوثائقية.",
-    p3: "مؤخراً، عمل إعزاز كمدير تصوير للفيلم القصير 'موشاري' [ MOSHARI ] من إنتاج جوردان بيل وريز أحمد. حصد الفيلم المؤهل لجوائز الأوسكار® 11 جائزة في أكثر من 20 مهرجاناً سينمائياً حول العالم في عام 2022.",
-    p4: "كما يعد فيلمه القصير 'FOREIGNERS ONLY' [ FOREIGNERS ONLY ] أول فيلم بنغلاديشي يتم تكليفه للمنصات الأمريكية بواسطة 20th Digital Studio، حيث عُرض على منصة HULU العالمية.",
-    p5: "يقيم إعزاز حالياً بين عُمان وبنغلاديش، ويسعى دائماً لإخراج قصص تعبر عن هويته وجذوره في جنوب آسيا. وقد صور إعلانات تجارية لعلامات بارزة مثل فودافون، ياماها، أوبر، ماجد الفطيم، مسقط باي، بي بي سي ستوري ووركس، عمران، وغيرها [ GLOBAL CLIENTS ]."
+    p3: "مؤخراً، عمل إعزاز كمدير تصوير للفيلم القصير 'موشاري' من إنتاج جوردان بيل وريز أحمد. حصد الفيلم المؤهل لجوائز الأوسكار® 11 جائزة في أكثر من 20 مهرجاناً سينمائياً حول العالم في عام 2022.",
+    p4: "كما يعد فيلمه القصير 'FOREIGNERS ONLY' أول فيلم بنغلاديشي يتم تكليفه للمنصات الأمريكية بواسطة 20th Digital Studio، حيث عُرض على منصة HULU العالمية.",
+    p5: "يقيم إعزاز حالياً بين عُمان وبنغلاديش، ويسعى دائماً لإخراج قصص تعبر عن هويته وجذوره في جنوب آسيا. وقد صور إعلانات تجارية لعلامات بارزة مثل فودافون، ياماها، أوبر، ماجد الفطيم، مسقط باي، بي بي سي ستوري ووركس، عمران، وغيرها."
   }
 };
 
@@ -79,39 +97,61 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
     ? { ...bioTextData.en, ...cmsInfo.bioEn }
     : bioTextData[bioLang];
 
-  // Helper to parse interactive badges inside bio text
+  // Per-language interactive location keywords (hover swaps the portrait frame)
+  const interactiveKeywords = {
+    en: [
+      { key: 'oman', match: 'Oman', icon: <OmanFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
+      { key: 'bangladesh', match: 'Bangladesh', icon: <BangladeshFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
+      { key: 'southasia', match: 'South Asian' },
+      { key: 'southasia', match: 'South Asia' }
+    ],
+    bn: [
+      { key: 'oman', match: 'ওমান', icon: <OmanFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
+      { key: 'bangladesh', match: 'বাংলাদেশ', icon: <BangladeshFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
+      { key: 'southasia', match: 'দক্ষিণ এশীয়' }
+    ],
+    ar: [
+      { key: 'oman', match: 'عُمان', icon: <OmanFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
+      { key: 'bangladesh', match: 'بنغلاديش', icon: <BangladeshFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
+      { key: 'southasia', match: 'جنوب آسيا' }
+    ]
+  };
+
+  // Helper to highlight every keyword occurrence inside the bio text
   const renderInteractiveText = (text) => {
     if (!text) return null;
 
-    const badges = [
-      { key: 'moshari', label: '[ MOSHARI ]' },
-      { key: 'foreigners', label: '[ FOREIGNERS ONLY ]' },
-      { key: 'clients', label: '[ GLOBAL CLIENTS ]' }
-    ];
-
+    const keywords = interactiveKeywords[bioLang] || interactiveKeywords.en;
     let parts = [text];
 
-    badges.forEach(({ key, label }) => {
+    keywords.forEach((kw) => {
       const nextParts = [];
       parts.forEach((part) => {
-        if (typeof part === 'string' && part.includes(label)) {
-          const sub = part.split(label);
-          for (let i = 0; i < sub.length; i++) {
-            nextParts.push(sub[i]);
-            if (i < sub.length - 1) {
-              nextParts.push(
-                <span
-                  key={`${key}-${i}`}
-                  onMouseEnter={() => setActiveImageKey(key)}
-                  onMouseLeave={() => setActiveImageKey('default')}
-                  onTouchStart={() => setActiveImageKey(key)}
-                  className="px-2 py-0.5 mx-1 bg-black text-[#b5ff32] font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-black/80 transition-colors inline-block rounded-sm"
-                >
-                  {label}
-                </span>
-              );
-            }
+        if (typeof part === 'string') {
+          const lower = part.toLowerCase();
+          const kwLower = kw.match.toLowerCase();
+          let idx = lower.indexOf(kwLower);
+          let cursor = 0;
+          let count = 0;
+          while (idx !== -1) {
+            nextParts.push(part.slice(cursor, idx));
+            nextParts.push(
+              <span
+                key={`${kw.key}-${count++}`}
+                onMouseEnter={() => setActiveImageKey(kw.key)}
+                onMouseLeave={() => setActiveImageKey('default')}
+                onTouchStart={() => setActiveImageKey(kw.key)}
+                onTouchEnd={() => setActiveImageKey('default')}
+                className="px-1.5 py-0.5 mx-0.5 bg-black text-[#b5ff32] font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-black/80 transition-colors inline-flex items-center gap-1 align-baseline rounded-sm"
+              >
+                {kw.icon}
+                {part.slice(idx, idx + kw.match.length)}
+              </span>
+            );
+            cursor = idx + kw.match.length;
+            idx = lower.indexOf(kwLower, cursor);
           }
+          nextParts.push(part.slice(cursor));
         } else {
           nextParts.push(part);
         }
@@ -170,11 +210,21 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
           </div>
 
           <div className="w-full aspect-square overflow-hidden bg-black/10 border border-black/30 relative group shadow-xl">
-            <img
-              src={bioImages[activeImageKey] || bioImages.default}
-              alt="Ejaz Mehedi Portrait"
-              className="w-full h-full object-cover transition-all duration-700 filter brightness-95 contrast-105 group-hover:scale-105"
-            />
+            <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.img
+                  key={activeImageKey}
+                  src={bioImages[activeImageKey] || bioImages.default}
+                  alt={activeImageKey === 'default' ? 'Ejaz Mehedi Portrait' : `${activeImageKey} view`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+                  draggable={false}
+                  className="absolute inset-0 w-full h-full object-cover filter brightness-95 contrast-105"
+                />
+              </AnimatePresence>
+            </div>
             <div className="absolute bottom-3 left-3 bg-black/90 text-[#b5ff32] font-mono-custom text-[10px] font-bold px-3 py-1 uppercase tracking-widest border border-black/40">
               OMAN // BANGLADESH // WORLDWIDE
             </div>

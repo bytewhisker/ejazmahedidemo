@@ -109,7 +109,7 @@ export const ProjectListView = ({ projects, onSelectProject }) => {
               {/* Central GIF Preview Overlay */}
               <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/35 backdrop-blur-[1px]">
                 <img
-                  src="https://ligthelm.work/static/img/simple-loading.gif"
+                  src="/project-loader.gif"
                   alt="Video Preview Animation"
                   className="w-12 h-12 object-contain filter brightness-125"
                 />
