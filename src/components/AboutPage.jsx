@@ -1,28 +1,11 @@
 import React, { useState } from 'react';
 import { awardsData, pressData, clientsData } from '../data/projectsData';
-import { ExternalLink, Award, Sparkles, Film, ArrowUpRight, Copy, Check } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ejazPortrait from '../assets/ejaz-portrait.png';
 
 const PERSONAL_EMAIL = 'contact@ejazmehedi.com';
-const INSTAGRAM_URL = 'https://instagram.com/ezaz.mehedi';
-const LINKEDIN_URL = 'https://linkedin.com/in/ezaz-mehedi';
-
-const InstagramIcon = ({ className }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-  </svg>
-);
-
-const LinkedinIcon = ({ className }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
+const INSTAGRAM_URL = 'https://instagram.com/ejazmehedi';
 
 const OmanFlagIcon = ({ className }) => (
   <svg viewBox="0 0 36 24" className={className} aria-hidden="true">
@@ -84,11 +67,9 @@ const paragraphVariant = {
 export const AboutPage = ({ cmsInfo, cmsClients }) => {
   const [activeImageKey, setActiveImageKey] = useState('default');
   const [awardFilter, setAwardFilter] = useState('all');
-  const [copiedEmail, setCopiedEmail] = useState(false);
 
   const personalEmail = cmsInfo?.personalEmail || PERSONAL_EMAIL;
   const instagramUrl = cmsInfo?.instagramUrl || INSTAGRAM_URL;
-  const linkedinUrl = cmsInfo?.linkedinUrl || LINKEDIN_URL;
   const activeClients = cmsClients || clientsData;
 
   const [bioLang, setBioLang] = useState('en');
@@ -96,12 +77,6 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
   const currentBio = bioLang === 'en' && cmsInfo?.bioEn
     ? { ...bioTextData.en, ...cmsInfo.bioEn }
     : bioTextData[bioLang];
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(personalEmail);
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2000);
-  };
 
   const interactiveKeywords = {
     en: [
@@ -181,7 +156,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
     >
       
       {/* TOP SECTION: BIOGRAPHY + PORTRAIT & DIRECT CONTACT */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start border-b border-black/20 pb-12 md:pb-16">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start pb-12 md:pb-16">
         
         {/* Left Side: Photo Frame Container */}
         <div className="lg:col-span-5 space-y-6">
@@ -199,57 +174,6 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
                 className="w-full h-full object-cover filter brightness-95 contrast-105 group-hover:scale-105 transition-transform duration-700"
               />
             </AnimatePresence>
-            <div className="absolute bottom-3 left-3 bg-black/90 text-[#b5ff32] font-mono-custom text-[10px] font-bold px-3 py-1 uppercase tracking-widest border border-black/40">
-              OMAN // BANGLADESH // WORLDWIDE
-            </div>
-          </div>
-
-          {/* Contact Block */}
-          <div className="space-y-4 pt-2 border-t border-black/20">
-            <div className="text-[10px] font-mono-custom tracking-[0.25em] text-black/70 uppercase font-bold">
-              DIRECT INQUIRIES & BOOKINGS
-            </div>
-            
-            <div className="bg-black text-[#b5ff32] p-4 rounded-sm border border-black flex items-center justify-between gap-3 shadow-lg">
-              <a
-                href={`mailto:${personalEmail}`}
-                className="text-sm sm:text-base font-mono-custom font-bold text-[#b5ff32] hover:underline truncate"
-              >
-                {personalEmail}
-              </a>
-              <button
-                onClick={handleCopyEmail}
-                title="Copy Email Address"
-                className="px-2.5 py-1 bg-[#b5ff32] text-black text-[10px] font-mono-custom font-bold uppercase tracking-widest hover:bg-[#a2eb26] transition-colors shrink-0 flex items-center gap-1"
-              >
-                {copiedEmail ? <Check className="w-3 h-3 text-black" /> : <Copy className="w-3 h-3" />}
-                <span>{copiedEmail ? 'COPIED' : 'COPY'}</span>
-              </button>
-            </div>
-
-            <div className="flex items-center gap-6 pt-1 text-xs font-mono-custom uppercase tracking-widest text-black">
-              <a
-                href={instagramUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:underline flex items-center gap-1.5 font-bold"
-              >
-                <InstagramIcon className="w-4 h-4" />
-                <span>INSTAGRAM</span>
-                <ArrowUpRight className="w-3 h-3 opacity-70" />
-              </a>
-
-              <a
-                href={linkedinUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:underline flex items-center gap-1.5 font-bold"
-              >
-                <LinkedinIcon className="w-4 h-4" />
-                <span>LINKEDIN</span>
-                <ArrowUpRight className="w-3 h-3 opacity-70" />
-              </a>
-            </div>
           </div>
         </div>
 
@@ -257,12 +181,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
         <div className="lg:col-span-7 space-y-6 pt-1">
           
           {/* Biography Header with Character Script Language Selector [ A | অ | ع ] */}
-          <div className="flex items-center justify-between border-b border-black/20 pb-3">
-            <span className="text-[10px] font-mono-custom tracking-[0.25em] uppercase text-black/70 font-bold flex items-center gap-2">
-              <Film className="w-3.5 h-3.5" />
-              <span>BIOGRAPHY ARCHIVE</span>
-            </span>
-
+          <div className="flex items-center justify-end pb-3">
             {/* Character Script Selector [ A / অ / ع ] */}
             <div className="flex items-center gap-1.5 text-xs font-mono-custom uppercase tracking-wider">
               <button
@@ -317,93 +236,35 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
             </motion.div>
           </AnimatePresence>
 
-        </div>
-
-      </div>
-
-      {/* FEATURED NARRATIVE HIGHLIGHTS (MOSHARI & FOREIGNERS ONLY) */}
-      <div className="space-y-6 border-b border-black/20 pb-12 md:pb-16">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-black/20 pb-3">
-          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-black/70">
-            FEATURED NARRATIVE PROJECTS
-          </h2>
-          <span className="text-[10px] font-mono-custom text-black/60 uppercase font-bold">
-            EXECUTIVE PRODUCED & COMMISSIONED
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          
-          {/* MOSHARI Box */}
-          <div className="bg-black text-white p-6 space-y-4 rounded-sm border border-black shadow-xl">
-            <div className="flex items-center justify-between border-b border-white/20 pb-2.5">
-              <span className="text-xs font-mono-custom font-bold text-[#b5ff32] tracking-wider uppercase flex items-center gap-1.5">
-                <Award className="w-4 h-4 text-[#b5ff32]" />
-                MOSHARI (2022)
-              </span>
-              <span className="text-[9px] font-mono-custom bg-[#b5ff32] text-black font-bold px-2 py-0.5 uppercase">
-                OSCAR® QUALIFYING
-              </span>
-            </div>
-
-            <p className="text-xs text-neutral-300 leading-relaxed font-sans">
-              Exec produced by Jordan Peele & Riz Ahmed. DOP: Ejaz Mehedi. Winner of 11 awards across 20+ global festivals including SXSW, HollyShorts, Woodstock, and Short Shorts & Asia.
-            </p>
-
-            <div className="space-y-1.5 pt-2 text-[11px] font-mono-custom border-t border-white/10">
-              <div className="flex justify-between">
-                <span className="text-[#b5ff32] font-bold">SXSW</span>
-                <span className="text-neutral-300">Grand Jury Award, Best Midnight Short</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#b5ff32] font-bold">SHORT SHORTS & ASIA</span>
-                <span className="text-neutral-300">Governor of Tokyo Award</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#b5ff32] font-bold">ATLANTA FILM FESTIVAL</span>
-                <span className="text-neutral-300">Best Narrative Short</span>
-              </div>
-            </div>
-          </div>
-
-          {/* FOREIGNERS ONLY Box */}
-          <div className="bg-[#111111] text-white p-6 space-y-4 rounded-sm border border-black shadow-xl">
-            <div className="flex items-center justify-between border-b border-white/20 pb-2.5">
-              <span className="text-xs font-mono-custom font-bold text-[#b5ff32] tracking-wider uppercase flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-[#b5ff32]" />
-                FOREIGNERS ONLY (2023)
-              </span>
-              <span className="text-[9px] font-mono-custom bg-white text-black font-bold px-2 py-0.5 uppercase">
-                HULU EXCLUSIVE
-              </span>
-            </div>
-
-            <p className="text-xs text-neutral-300 leading-relaxed font-sans">
-              First Bangladeshi film commissioned for any US streaming platform by 20th Digital Studio. Premiered globally on HULU Bite Size Halloween Season 3.
-            </p>
-
-            <div className="space-y-1.5 pt-2 text-[11px] font-mono-custom border-t border-white/10">
-              <div className="flex justify-between">
-                <span className="text-[#b5ff32] font-bold">FANTASIA (CANADA)</span>
-                <span className="text-neutral-300">Gold Award, Best Asian Short</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#b5ff32] font-bold">HOLLYSHORTS (US)</span>
-                <span className="text-neutral-300">Best Horror Award</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#b5ff32] font-bold">BFI LONDON (UK)</span>
-                <span className="text-neutral-300">Official Selection</span>
-              </div>
-            </div>
+          {/* Contact Info at bottom of biography */}
+          <div className="pt-8 space-y-3 text-sm font-mono-custom">
+            {/* Instagram Link */}
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-black font-bold uppercase tracking-[0.2em] hover:opacity-70 transition-opacity flex items-center gap-1 group"
+            >
+              EJAZMEHEDI
+              <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </a>
+            {/* Email */}
+            <a
+              href={`mailto:${personalEmail}`}
+              className="text-black font-bold uppercase tracking-[0.2em] hover:opacity-70 transition-opacity flex items-center gap-1 group"
+            >
+              {personalEmail}
+              <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </a>
           </div>
 
         </div>
+
       </div>
 
       {/* FULL TABULAR AWARDS & HONORS ARCHIVE */}
-      <div className="space-y-6 border-b border-black/20 pb-12 md:pb-16">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/20 pb-3">
+      <div className="space-y-6 pb-12 md:pb-16">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3">
           <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-black/80">
             AWARDS & FESTIVAL EXHIBITIONS ({filteredAwards.length})
           </h2>
@@ -440,7 +301,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
         </div>
 
         {/* Tabular Archive */}
-        <div className="divide-y divide-black/15 text-xs font-mono-custom">
+        <div className="text-xs font-mono-custom">
           {filteredAwards.map((award) => (
             <div
               key={award.id}
@@ -464,8 +325,8 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       </div>
 
       {/* PRESS & INTERVIEWS ARCHIVE */}
-      <div className="space-y-6 border-b border-black/20 pb-12 md:pb-16">
-        <div className="flex items-center justify-between border-b border-black/20 pb-3">
+      <div className="space-y-6 pb-12 md:pb-16">
+        <div className="flex items-center justify-between pb-3">
           <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-black/80">
             PRESS & INTERVIEWS ({pressData.length})
           </h2>
@@ -474,7 +335,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
           </span>
         </div>
 
-        <div className="divide-y divide-black/15 text-xs font-mono-custom">
+        <div className="text-xs font-mono-custom">
           {pressData.map((item) => (
             <div
               key={item.id}
@@ -509,7 +370,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
 
       {/* SELECTED CLIENTS */}
       <div className="space-y-6 pb-8">
-        <div className="border-b border-black/20 pb-3">
+        <div className="pb-3">
           <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-black/80">
             SELECTED CLIENTS & BRANDED PARTNERS
           </h2>
@@ -517,7 +378,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 text-xs font-mono-custom text-black font-bold">
           {activeClients.map((client, idx) => (
-            <div key={idx} className="border-l-2 border-black pl-3 py-2 bg-black/5 hover:bg-black hover:text-[#b5ff32] transition-all rounded-r-sm">
+            <div key={idx} className="pl-3 py-2 bg-black/5 hover:bg-black hover:text-[#b5ff32] transition-all rounded-r-sm">
               {client}
             </div>
           ))}

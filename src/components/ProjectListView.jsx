@@ -28,7 +28,6 @@ export const ProjectListView = ({ projects, onSelectProject }) => {
       <div className="flex flex-col space-y-1 py-2">
         {projects.map((project) => {
           const isHovered = hoveredProject?.id === project.id;
-          const directorName = project.crew?.director || project.client || 'EJAZ MEHEDI';
 
           return (
             <div
@@ -57,10 +56,10 @@ export const ProjectListView = ({ projects, onSelectProject }) => {
                   {project.title}
                 </h3>
 
-                <span className={`text-xs font-mono-custom uppercase transition-colors truncate hidden sm:inline ${
-                  isHovered ? 'text-muted' : 'text-muted/40'
+                <span className={`text-xs font-mono-custom lowercase transition-colors truncate hidden sm:inline ${
+                  isHovered ? 'text-ink-soft' : 'text-muted/80'
                 }`}>
-                  — {directorName}
+                  — {project.category === 'Commercial' ? 'commercial' : 'film'}
                 </span>
               </div>
             </div>

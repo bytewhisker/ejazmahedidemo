@@ -5,17 +5,17 @@ const names = [
   { 
     id: 'en', 
     text: "EJAZ MEHEDI", 
-    fontClass: "font-mega tracking-tighter font-black text-[clamp(1.2rem,8.6vw,13.5rem)] leading-none" 
+    fontClass: "font-sans tracking-normal font-black text-[clamp(0.8rem,5.2vw,7.5rem)] leading-none" 
   },
   { 
     id: 'bn', 
     text: "এজাজ মেহেদী", 
-    fontClass: "font-sans tracking-normal font-black text-[clamp(1.1rem,7.2vw,10.5rem)] leading-none" 
+    fontClass: "font-sans tracking-normal font-black text-[clamp(0.8rem,5.2vw,7.5rem)] leading-none" 
   },
   { 
     id: 'ar', 
     text: "إعزاز مهدي", 
-    fontClass: "font-sans tracking-normal font-black text-[clamp(1.1rem,7.2vw,10.5rem)] leading-none" 
+    fontClass: "font-sans tracking-[0.3em] font-black text-[clamp(1rem,6.4vw,9.2rem)] leading-none" 
   }
 ];
 

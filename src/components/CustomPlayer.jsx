@@ -14,9 +14,9 @@ export const CustomPlayer = ({ poster, videoUrl, embedUrl, vimeoId, title }) => 
     setProgress(0);
   }, [videoUrl, embedUrl, vimeoId]);
 
-  // Determine effective Vimeo embed URL
+  // Determine effective Vimeo embed URL (no autoplay — playback is user-initiated)
   const effectiveVimeoUrl = vimeoId 
-    ? `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0&badge=0&autopause=0`
+    ? `https://player.vimeo.com/video/${vimeoId}?title=0&byline=0&portrait=0&badge=0&autopause=0`
     : embedUrl && (embedUrl.includes('vimeo.com') || embedUrl.includes('youtube.com'))
       ? embedUrl
       : null;

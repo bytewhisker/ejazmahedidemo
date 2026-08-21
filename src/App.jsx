@@ -15,6 +15,7 @@ import { CustomCursor } from './components/CustomCursor';
 import { SEOHead } from './components/SEOHead';
 import { projectsData } from './data/projectsData';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Grid, List } from 'lucide-react';
 
 function MainContent() {
   const [isLoadingScreen, setIsLoadingScreen] = useState(true);
@@ -76,7 +77,7 @@ function MainContent() {
     window.history.pushState(null, '', '/');
   };
 
-  const viewKey = selectedProject ? `project-${selectedProject.id}` : `${activeTab}-${activeFilter}-${viewMode}`;
+  const viewKey = selectedProject ? `project-${selectedProject.id}` : activeTab;
 
   return (
     <div className={`min-h-screen flex flex-col font-sans relative transition-colors duration-700 ease-in-out ${
@@ -201,49 +202,56 @@ function MainContent() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   className="space-y-6 pb-12 sm:pb-16"
                 >
                   {/* Gallery Subheader Bar: GRID / LIST Toggle */}
                   <div className="flex items-center justify-end text-xs font-mono-custom tracking-[0.2em] uppercase text-muted">
-                    {/* GRID / LIST Toggle Buttons */}
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => setViewMode('grid')}
-                        className={`transition-colors font-bold ${
-                          viewMode === 'grid'
-                            ? 'text-ink'
-                            : 'text-muted hover:text-ink'
+                        aria-label="Grid view"
+                        className={`transition-colors p-1.5 ${
+                          viewMode === 'grid' ? 'text-ink' : 'text-muted hover:text-ink'
                         }`}
                       >
-                        GRID
+                        <Grid className="w-4 h-4" />
                       </button>
-                      <span>/</span>
+                      <span className="text-line-strong">/</span>
                       <button
                         onClick={() => setViewMode('list')}
-                        className={`transition-colors font-bold ${
-                          viewMode === 'list'
-                            ? 'text-ink'
-                            : 'text-muted hover:text-ink'
+                        aria-label="List view"
+                        className={`transition-colors p-1.5 ${
+                          viewMode === 'list' ? 'text-ink' : 'text-muted hover:text-ink'
                         }`}
                       >
-                        LIST
+                        <List className="w-4 h-4" />
                       </button>
                     </div>
                   </div>
 
-                  {/* Render Grid or List view */}
+                  {/* Render Grid or List — filter animates IN-PLACE, no page transition */}
                   {viewMode === 'grid' ? (
-                    <div className="grid grid-cols-1 gap-y-4 sm:gap-y-6 md:gap-y-7">
-                      {filteredProjects.map((project, idx) => (
-                        <ProjectCard
-                          key={project.id}
-                          project={project}
-                          indexNumber={idx + 1}
-                          onClick={handleSelectProject}
-                        />
-                      ))}
-                    </div>
+                    <motion.div layout className="grid grid-cols-1 gap-y-4 sm:gap-y-6 md:gap-y-7">
+                      <AnimatePresence mode="popLayout">
+                        {filteredProjects.map((project, idx) => (
+                          <motion.div
+                            key={project.id}
+                            layout
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10, scale: 0.97 }}
+                            transition={{ duration: 0.35, delay: idx * 0.04, ease: [0.25, 1, 0.5, 1] }}
+                          >
+                            <ProjectCard
+                              project={project}
+                              indexNumber={idx + 1}
+                              onClick={handleSelectProject}
+                            />
+                          </motion.div>
+                        ))}
+                      </AnimatePresence>
+                    </motion.div>
                   ) : (
                     <ProjectListView
                       projects={filteredProjects}
