@@ -32,7 +32,9 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
     setActiveTab(tab);
     setActiveFilter(filter);
     setIsMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (tab !== activeTab) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const isLime = activeTab === 'about';
@@ -257,7 +259,7 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               variants={listVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-col items-center justify-center gap-3 flex-1"
+              className="flex flex-col items-end justify-center gap-3 flex-1 pr-2"
             >
               {mobileOverlayItems.map((item) => (
                 <motion.button

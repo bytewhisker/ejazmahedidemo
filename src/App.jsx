@@ -233,15 +233,12 @@ function MainContent() {
                   {/* Render Grid or List — filter animates IN-PLACE, no page transition */}
                   {viewMode === 'grid' ? (
                     <motion.div layout className="grid grid-cols-1 gap-y-4 sm:gap-y-6 md:gap-y-7">
-                      <AnimatePresence mode="popLayout">
+                      <AnimatePresence mode="popLayout" initial={false}>
                         {filteredProjects.map((project, idx) => (
                           <motion.div
                             key={project.id}
                             layout
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10, scale: 0.97 }}
-                            transition={{ duration: 0.35, delay: idx * 0.04, ease: [0.25, 1, 0.5, 1] }}
+                            transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
                           >
                             <ProjectCard
                               project={project}
