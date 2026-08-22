@@ -515,6 +515,39 @@ export const projectsData = [
     }
   },
   {
+    id: "mai-natures-new-address",
+    slug: "mai-natures-new-address",
+    title: "MAI - Nature's New Address",
+    category: "Commercial",
+    year: "2026",
+    client: "MAI / DUSK",
+    comingSoon: true,
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "/projects/mai-natures-new-address/still-01.webp",
+    hoverStills: [
+      "/projects/mai-natures-new-address/still-01.webp",
+      "/projects/mai-natures-new-address/still-02.webp",
+      "/projects/mai-natures-new-address/still-03.webp"
+    ],
+    poster: "/projects/mai-natures-new-address/still-01.webp",
+    videos: [],
+    screengrabs: [
+      "/projects/mai-natures-new-address/still-02.webp",
+      "/projects/mai-natures-new-address/still-03.webp",
+      "/projects/mai-natures-new-address/still-04.webp"
+    ],
+    crew: {
+      client: "MAI",
+      productionCompany: "DUSK"
+    },
+    story: {
+      background: "Coming soon — MAI - Nature's New Address.",
+      creativeProcess: "Full campaign details will be revealed on release.",
+      challenges: "TBA.",
+      productionStory: "Coming soon."
+    }
+  },
+  {
     id: "bank-muscat-the-gamer",
     slug: "bank-muscat-the-gamer",
     title: "Bank Muscat - The Gamer",

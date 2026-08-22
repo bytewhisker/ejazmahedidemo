@@ -39,16 +39,24 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
           </p>
         </div>
 
-        {/* Video Player — Full Cinema Width */}
-        <div className="w-full bg-black overflow-hidden border border-white/10 rounded-sm shadow-2xl">
-          <CustomPlayer
-            poster={project.poster}
-            videoUrl={activeVideo.videoUrl}
-            embedUrl={activeVideo.embedUrl}
-            vimeoId={activeVideo.vimeoId}
-            title={project.title}
-          />
-        </div>
+        {/* Video Player — Full Cinema Width (placeholder for coming soon projects) */}
+        {project.comingSoon || !activeVideo ? (
+          <div className="w-full aspect-video bg-canvas overflow-hidden border border-line/40 rounded-sm shadow-2xl flex items-center justify-center select-none">
+            <span className="text-lg sm:text-2xl font-mono-custom tracking-[0.3em] uppercase text-muted">
+              Coming Soon
+            </span>
+          </div>
+        ) : (
+          <div className="w-full bg-black overflow-hidden border border-white/10 rounded-sm shadow-2xl">
+            <CustomPlayer
+              poster={project.poster}
+              videoUrl={activeVideo.videoUrl}
+              embedUrl={activeVideo.embedUrl}
+              vimeoId={activeVideo.vimeoId}
+              title={project.title}
+            />
+          </div>
+        )}
 
         {/* UNDERNEATH VIDEO: TAB SYSTEM (Mobile Responsive Scroll) */}
         <div className="pt-4 md:pt-6 space-y-6 md:space-y-8">

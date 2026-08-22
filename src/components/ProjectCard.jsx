@@ -35,6 +35,11 @@ export const ProjectCard = ({ project, indexNumber, onClick }) => {
           <span className="truncate group-hover:text-ink-soft transition-colors">{project.title}</span>
           <span className="text-ink-soft font-mono-custom font-light tracking-widest shrink-0 normal-case">/ {project.category === 'Commercial' ? 'commercial' : 'film'}</span>
         </div>
+        {project.comingSoon && (
+          <span className="shrink-0 text-[10px] sm:text-[11px] font-mono-custom tracking-[0.2em] text-accent border border-accent/50 px-2 py-0.5">
+            COMING SOON
+          </span>
+        )}
       </div>
 
       {/* 3 STILL FRAMES CONTAINER — WIDESCREEN FILM STILLS */}
