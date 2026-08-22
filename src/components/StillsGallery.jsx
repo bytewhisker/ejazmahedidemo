@@ -55,25 +55,8 @@ export const StillsGallery = () => {
   const scrollRef = useRef(null);
   const activeCollection = collections.find(c => c.id === activeCollectionId) || collections[0];
 
-  // Vertical mouse wheel over the strip should scroll the PAGE, not jump the
-  // horizontal carousel (browser maps deltaY -> scrollLeft on x-overflow).
-  // Only hijack when the strip can actually scroll sideways; otherwise let the
-  // browser scroll the page natively (no fight -> no shake/bounce-up).
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const onWheel = (e) => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        const canScrollX = el.scrollWidth > el.clientWidth + 1;
-        if (canScrollX) {
-          e.preventDefault();
-          window.scrollBy({ top: e.deltaY, behavior: 'auto' });
-        }
-      }
-    };
-    el.addEventListener('wheel', onWheel, { passive: false });
-    return () => el.removeEventListener('wheel', onWheel);
-  }, [activeCollectionId]);
+  // Browser natively handles vertical scroll over overflow-x containers without hijacking.
+  // Wheel hijacking removed to prevent scroll jumping/rubber-banding.
 
   // Arrow-only navigation — scroll to item, NO mousemove hover follow
   const goToItem = (idx) => {

@@ -6,16 +6,6 @@ const names = [
     id: 'en', 
     text: "EJAZ MEHEDI", 
     fontClass: "font-sans tracking-normal font-black text-[clamp(1.4rem,6vw,7.5rem)] leading-none" 
-  },
-  { 
-    id: 'bn', 
-    text: "এজাজ মেহেদী", 
-    fontClass: "font-sans tracking-normal font-black text-[clamp(1.6rem,6.5vw,7.5rem)] leading-none" 
-  },
-  { 
-    id: 'ar', 
-    text: "إعزاز مهدي", 
-    fontClass: "font-sans tracking-[0.3em] font-black text-[clamp(1.5rem,7vw,9.2rem)] leading-none" 
   }
 ];
 

@@ -75,8 +75,8 @@ img {
 @layer base {
   :root,
   [data-theme="dark"] {
-    --canvas: #040404;
-    --surface: #0e0e0e;
+    --canvas: #000000;
+    --surface: #000000;
     --surface-2: #161616;
     --ink: #f5f5f7;
     --ink-soft: #d4d4d6;
@@ -87,7 +87,7 @@ img {
     --accent: #b5ff32;
     --accent-soft: rgba(181, 255, 50, 0.12);
     --accent-glow: rgba(181, 255, 50, 0.35);
-    --header-bg: rgba(4, 4, 4, 0.95);
+    --header-bg: rgba(0, 0, 0, 0.95);
     color-scheme: dark;
   }
 
@@ -178,7 +178,8 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.025;
+  opacity: 0;
+  display: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   z-index: 9999;
 }
@@ -191,8 +192,7 @@ img {
    Background stays lime green always.
    Text: black in dark mode (original), white in light mode.
    Chips stay black with lime text in both modes. */
-[data-theme="dark"] .about-inverted,
-[data-theme="dark"].about-inverted {
+.about-inverted {
   --about-bg: #b5ff32;
   --about-ink: #0a0a0a;
   --about-ink-80: rgba(10, 10, 10, 0.8);
@@ -210,14 +210,14 @@ img {
 [data-theme="light"] .about-inverted,
 [data-theme="light"].about-inverted {
   --about-bg: #b5ff32;
-  --about-ink: #ffffff;
-  --about-ink-80: rgba(255, 255, 255, 0.8);
-  --about-ink-70: rgba(255, 255, 255, 0.7);
-  --about-ink-60: rgba(255, 255, 255, 0.6);
-  --about-ink-30: rgba(255, 255, 255, 0.3);
-  --about-ink-10: rgba(255, 255, 255, 0.1);
-  --about-ink-5: rgba(255, 255, 255, 0.05);
-  --about-border: rgba(255, 255, 255, 0.3);
+  --about-ink: #0a0a0a;
+  --about-ink-80: rgba(10, 10, 10, 0.8);
+  --about-ink-70: rgba(10, 10, 10, 0.7);
+  --about-ink-60: rgba(10, 10, 10, 0.6);
+  --about-ink-30: rgba(10, 10, 10, 0.3);
+  --about-ink-10: rgba(10, 10, 10, 0.1);
+  --about-ink-5: rgba(10, 10, 10, 0.05);
+  --about-border: rgba(0, 0, 0, 0.3);
   --about-chip-bg: #000000;
   --about-chip-text: #b5ff32;
   --about-chip-hover: rgba(0, 0, 0, 0.8);

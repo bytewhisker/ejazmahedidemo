@@ -3,8 +3,10 @@ import { awardsData, pressData, clientsData } from '../data/projectsData';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ejazPortrait from '../assets/ejaz-portrait.webp';
-import omanMap from '../assets/oman-map.png';
-import bangladeshMap from '../assets/bangladesh-map.jpg';
+import omanMap from '../assets/oman-outline.png';
+import bangladeshMap from '../assets/bangladesh-outline.png';
+import bangladeshView from '../assets/bangladesh-view.webp';
+import omanView from '../assets/oman-view.webp';
 
 const PERSONAL_EMAIL = 'contact@ejazmehedi.com';
 const INSTAGRAM_URL = 'https://instagram.com/ejazmehedi';
@@ -15,11 +17,10 @@ const keywordImages = {
   southasia: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Map_of_South_Asia.png/960px-Map_of_South_Asia.png"
 };
 
-const bioImages = {
-  default: ejazPortrait,
-  oman: omanMap,
-  bangladesh: bangladeshMap,
-  southasia: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Map_of_South_Asia.png/960px-Map_of_South_Asia.png"
+// Real photos shown in the portrait frame on hover
+const portraitHoverPhotos = {
+  oman: [omanView],
+  bangladesh: [bangladeshView],
 };
 
 const bioTextData = {
@@ -57,7 +58,7 @@ const paragraphVariant = {
 };
 
 export const AboutPage = ({ cmsInfo, cmsClients }) => {
-  const [activeImageKey, setActiveImageKey] = useState('default');
+  const [hoveredKeyword, setHoveredKeyword] = useState(null);
   const [awardFilter, setAwardFilter] = useState('all');
 
   const personalEmail = cmsInfo?.personalEmail || PERSONAL_EMAIL;
@@ -73,19 +74,15 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
   const interactiveKeywords = {
     en: [
       { key: 'oman', match: 'Oman' },
-      { key: 'bangladesh', match: 'Bangladesh' },
-      { key: 'southasia', match: 'South Asian' },
-      { key: 'southasia', match: 'South Asia' }
+      { key: 'bangladesh', match: 'Bangladesh' }
     ],
     bn: [
       { key: 'oman', match: 'ওমান' },
-      { key: 'bangladesh', match: 'বাংলাদেশ' },
-      { key: 'southasia', match: 'দক্ষিণ এশীয়' }
+      { key: 'bangladesh', match: 'বাংলাদেশ' }
     ],
     ar: [
       { key: 'oman', match: 'عُمان' },
-      { key: 'bangladesh', match: 'بنغلاديش' },
-      { key: 'southasia', match: 'جنوب آسيا' }
+      { key: 'bangladesh', match: 'بنغلاديش' }
     ]
   };
 
@@ -112,18 +109,18 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
             nextParts.push(
               <span
                 key={`${kw.key}-${count++}`}
-                onMouseEnter={() => setActiveImageKey(kw.key)}
-                onMouseLeave={() => setActiveImageKey('default')}
-                onTouchStart={() => setActiveImageKey(kw.key)}
-                onTouchEnd={() => setActiveImageKey('default')}
-                className="cursor-pointer hover:opacity-70 transition-opacity inline-flex items-center gap-1 align-baseline"
+                onMouseEnter={() => setHoveredKeyword(kw.key)}
+                onMouseLeave={() => setHoveredKeyword(null)}
+                onTouchStart={() => setHoveredKeyword(kw.key)}
+                onTouchEnd={() => setHoveredKeyword(null)}
+                className="cursor-pointer hover:opacity-70 transition-opacity inline-flex items-center gap-0.5 align-baseline font-medium"
                 title={kw.key === 'oman' ? 'Oman' : kw.key === 'bangladesh' ? 'Bangladesh' : 'South Asia'}
               >
                 {part.slice(idx, end)}
                 <img
                   src={keywordImages[kw.key]}
                   alt=""
-                  className="inline-block h-2.5 w-auto opacity-80 pointer-events-none"
+                  className="inline-block h-6 md:h-7 w-auto opacity-90 pointer-events-none -mb-0.5"
                   draggable={false}
                 />
               </span>
@@ -154,27 +151,59 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
-      className="min-h-screen text-[var(--about-ink)] pt-2 pb-24 px-4 sm:px-6 lg:px-8 font-sans select-none max-w-[1700px] mx-auto space-y-12 md:space-y-16"
+      className="min-h-screen text-[var(--about-ink)] font-medium pt-2 pb-24 px-4 sm:px-6 lg:px-8 font-sans select-none max-w-[1700px] mx-auto space-y-12 md:space-y-16"
     >
       
       {/* TOP SECTION: BIOGRAPHY + PORTRAIT & DIRECT CONTACT */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start pb-12 md:pb-16">
         
-        {/* Left Side: Photo Frame Container */}
+        {/* Left Side: Photo Frame Container — swaps to demo photo on keyword hover */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="w-full aspect-square overflow-hidden bg-[var(--about-ink-10)] border border-[var(--about-border)] relative group shadow-xl">
-            <AnimatePresence mode="popLayout" initial={false}>
-              <motion.img
-                key={activeImageKey}
-                src={bioImages[activeImageKey] || bioImages.default}
-                alt="Ejaz Mehedi"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                draggable={false}
-                className="w-full h-full object-cover filter brightness-95 contrast-105 group-hover:scale-105 transition-transform duration-700"
-              />
+          <div className="w-full aspect-[4/5] md:aspect-square overflow-hidden bg-[var(--about-ink-10)] border border-[var(--about-border)] relative group shadow-xl">
+            <AnimatePresence mode="wait">
+              {hoveredKeyword && portraitHoverPhotos[hoveredKeyword] ? (
+                <motion.div
+                  key={hoveredKeyword}
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.02 }}
+                  transition={{ duration: 0.32, ease: [0.25, 1, 0.5, 1] }}
+                  className="absolute inset-0"
+                >
+                  {portraitHoverPhotos[hoveredKeyword].length === 1 ? (
+                    <img
+                      src={portraitHoverPhotos[hoveredKeyword][0]}
+                      alt={hoveredKeyword}
+                      draggable={false}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full grid grid-rows-2 gap-1 p-1 bg-[var(--about-ink-5)]">
+                      {portraitHoverPhotos[hoveredKeyword].slice(0, 2).map((src, i) => (
+                        <img
+                          key={i}
+                          src={src}
+                          alt={`${hoveredKeyword} ${i + 1}`}
+                          draggable={false}
+                          className="w-full h-full object-cover"
+                        />
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              ) : (
+                <motion.img
+                  key="default-portrait"
+                  src={ejazPortrait}
+                  alt="Ejaz Mehedi"
+                  draggable={false}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.28 }}
+                  className="absolute inset-0 w-full h-full object-cover filter brightness-95 contrast-105 group-hover:scale-105 transition-transform duration-700"
+                />
+              )}
             </AnimatePresence>
           </div>
         </div>
@@ -190,27 +219,27 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
                 onClick={() => setBioLang('en')}
                 title="English"
                 className={`px-2.5 py-1 transition-all rounded-sm text-xs ${
-                  bioLang === 'en' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)]'
+                  bioLang === 'en' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink)] hover:text-[var(--about-ink)]'
                 }`}
               >
                 A
               </button>
-              <span className="text-[var(--about-ink-30)] text-[10px]">/</span>
+              <span className="text-[var(--about-ink)] text-[10px]">/</span>
               <button
                 onClick={() => setBioLang('bn')}
                 title="বাংলা"
                 className={`px-2.5 py-1 transition-all rounded-sm text-xs font-sans ${
-                  bioLang === 'bn' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)]'
+                  bioLang === 'bn' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink)] hover:text-[var(--about-ink)]'
                 }`}
               >
                 অ
               </button>
-              <span className="text-[var(--about-ink-30)] text-[10px]">/</span>
+              <span className="text-[var(--about-ink)] text-[10px]">/</span>
               <button
                 onClick={() => setBioLang('ar')}
                 title="العربية"
                 className={`px-2.5 py-1 transition-all rounded-sm text-xs font-sans ${
-                  bioLang === 'ar' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)]'
+                  bioLang === 'ar' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink)] hover:text-[var(--about-ink)]'
                 }`}
               >
                 ع
@@ -239,25 +268,52 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
           </AnimatePresence>
 
           {/* Contact Info at bottom of biography */}
-          <div className="pt-8 space-y-3 text-sm font-mono-custom">
-            {/* Instagram Link */}
-            <a
-              href={instagramUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="text-[var(--about-ink)] tracking-[0.2em] hover:opacity-70 transition-opacity flex items-center gap-1 group"
-            >
-              EJAZMEHEDI
-              <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </a>
-            {/* Email */}
-            <a
-              href={`mailto:${personalEmail}`}
-              className="text-[var(--about-ink)] tracking-[0.2em] hover:opacity-70 transition-opacity flex items-center gap-1 group"
-            >
-              {personalEmail}
-              <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </a>
+          <div className="pt-8 space-y-5 text-sm font-mono-custom">
+            <div className="space-y-0.5">
+              <div className="text-[var(--about-ink)] uppercase tracking-widest text-xs font-semibold">INSTAGRAM</div>
+              <a
+                href="https://instagram.com/ejazmehedi"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[var(--about-ink)] hover:opacity-70 transition-opacity block"
+              >
+                @ejazmehedi
+              </a>
+            </div>
+            
+            <div className="space-y-0.5">
+              <div className="text-[var(--about-ink)] uppercase tracking-widest text-xs font-semibold">PERSONAL</div>
+              <a
+                href="mailto:ejazmeh.work@gmail.com"
+                className="text-[var(--about-ink)] hover:opacity-70 transition-opacity block"
+              >
+                ejazmeh.work@gmail.com
+              </a>
+            </div>
+
+            <div className="space-y-0.5">
+              <div className="text-[var(--about-ink)] uppercase tracking-widest text-xs font-semibold">Vimeo</div>
+              <a
+                href="https://vimeo.com/ejazmehedi"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[var(--about-ink)] hover:opacity-70 transition-opacity block"
+              >
+                https://vimeo.com/ejazmehedi
+              </a>
+            </div>
+
+            <div className="space-y-0.5">
+              <div className="text-[var(--about-ink)] uppercase tracking-widest text-xs font-semibold">IMDb:</div>
+              <a
+                href="https://www.imdb.com/name/nm13341457/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[var(--about-ink)] hover:opacity-70 transition-opacity block"
+              >
+                https://www.imdb.com/name/nm13341457/
+              </a>
+            </div>
           </div>
 
         </div>
@@ -267,7 +323,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       {/* FULL TABULAR AWARDS & HONORS ARCHIVE */}
       <div className="space-y-6 pb-12 md:pb-16">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3">
-          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase text-[var(--about-ink-80)]">
+          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase text-[var(--about-ink)]">
             AWARDS & FESTIVAL EXHIBITIONS ({filteredAwards.length})
           </h2>
 
@@ -276,25 +332,25 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
             <button
               onClick={() => setAwardFilter('all')}
               className={`px-2.5 py-0.5 rounded-sm ${
-                awardFilter === 'all' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink-60)] hover:text-[var(--about-ink)]'
+                awardFilter === 'all' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink)] hover:text-[var(--about-ink)]'
               }`}
             >
               ALL
             </button>
-            <span className="text-[var(--about-ink-30)]">/</span>
+            <span className="text-[var(--about-ink)]">/</span>
             <button
               onClick={() => setAwardFilter('moshari')}
               className={`px-2.5 py-0.5 rounded-sm ${
-                awardFilter === 'moshari' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink-60)] hover:text-[var(--about-ink)]'
+                awardFilter === 'moshari' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink)] hover:text-[var(--about-ink)]'
               }`}
             >
               MOSHARI
             </button>
-            <span className="text-[var(--about-ink-30)]">/</span>
+            <span className="text-[var(--about-ink)]">/</span>
             <button
               onClick={() => setAwardFilter('foreigners')}
               className={`px-2.5 py-0.5 rounded-sm ${
-                awardFilter === 'foreigners' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink-60)] hover:text-[var(--about-ink)]'
+                awardFilter === 'foreigners' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink)] hover:text-[var(--about-ink)]'
               }`}
             >
               FOREIGNERS ONLY
@@ -309,7 +365,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
               key={award.id}
               className="py-3.5 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 items-baseline hover:bg-[var(--about-ink-5)] transition-colors px-1"
             >
-              <div className="sm:col-span-2 text-[var(--about-ink-70)]">
+              <div className="sm:col-span-2 text-[var(--about-ink)]">
                 {award.date}
               </div>
               <div className="sm:col-span-3 text-[var(--about-ink)] uppercase truncate">
@@ -318,7 +374,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
               <div className="sm:col-span-4 text-[var(--about-ink)] font-medium">
                 {award.title}
               </div>
-              <div className="sm:col-span-3 text-[var(--about-ink-70)] text-right hidden sm:block truncate">
+              <div className="sm:col-span-3 text-[var(--about-ink)] text-right hidden sm:block truncate">
                 {award.organization}
               </div>
             </div>
@@ -329,10 +385,10 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       {/* PRESS & INTERVIEWS ARCHIVE */}
       <div className="space-y-6 pb-12 md:pb-16">
         <div className="flex items-center justify-between pb-3">
-          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase text-[var(--about-ink-80)]">
+          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase text-[var(--about-ink)]">
             PRESS & INTERVIEWS ({pressData.length})
           </h2>
-          <span className="text-[10px] font-mono-custom text-[var(--about-ink-60)] uppercase">GLOBAL COVERAGE
+          <span className="text-[10px] font-mono-custom text-[var(--about-ink)] uppercase">GLOBAL COVERAGE
           </span>
         </div>
 
@@ -343,7 +399,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
               className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[var(--about-ink-5)] transition-colors px-1 group"
             >
               <div className="space-y-1 max-w-3xl">
-                <div className="flex items-center gap-3 text-[var(--about-ink-70)]">
+                <div className="flex items-center gap-3 text-[var(--about-ink)]">
                   <span className="text-[var(--about-ink)] uppercase">{item.publisher}</span>
                   <span>—</span>
                   <span>{item.date}</span>
@@ -386,6 +442,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
         </div>
       </div>
 
+      {/* Floating map removed — hover now swaps the portrait frame above with demo photos */}
     </motion.div>
   );
 };

@@ -48,8 +48,8 @@ function MainContent() {
       }
     }
     setSelectedProject(null);
-    if (path.startsWith('/stills')) setActiveTab('stills');
-    else if (path.startsWith('/about')) setActiveTab('about');
+    // stills page hidden for now — route to reel
+    if (path.startsWith('/about')) setActiveTab('about');
     else if (path.startsWith('/journal')) setActiveTab('journal');
     else if (path.startsWith('/reel')) setActiveTab('reel');
     else if (path.startsWith('/overview')) setActiveTab('projects');
@@ -136,8 +136,7 @@ function MainContent() {
             setActiveTab={(tab) => {
               setSelectedProject(null);
               setActiveTab(tab);
-              if (tab === 'stills') window.history.pushState(null, '', '/stills');
-              else if (tab === 'about') window.history.pushState(null, '', '/about');
+              if (tab === 'about') window.history.pushState(null, '', '/about');
               else if (tab === 'journal') window.history.pushState(null, '', '/journal');
               else if (tab === 'reel') window.history.pushState(null, '', '/');
               else window.history.pushState(null, '', '/overview');
@@ -157,16 +156,6 @@ function MainContent() {
                   onBack={handleBackToGallery}
                   onSelectProject={handleSelectProject}
                 />
-              ) : activeTab === 'stills' ? (
-                <motion.div
-                  key={viewKey}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <StillsGallery />
-                </motion.div>
               ) : activeTab === 'about' ? (
                 <motion.div
                   key={viewKey}

@@ -39,14 +39,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
 
   const isLime = activeTab === 'about';
 
+  // STILLS hidden for now — unhide later
   const dropdownItems = [
-    {
-      enText: "STILLS",
-      bnText: "স্থিরচিত্র",
-      arText: "صور ثابتة",
-      onClick: () => handleNavClick('stills', 'all'),
-      isActive: activeTab === 'stills'
-    },
     {
       enText: "INFORMATION",
       bnText: "তথ্য",
@@ -56,9 +50,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
     }
   ];
 
-  // Only stills and information live in the mobile overlay
+  // Only information lives in the mobile overlay for now (stills hidden)
   const mobileOverlayItems = [
-    { label: 'stills',      onClick: () => handleNavClick('stills', 'all'), isActive: activeTab === 'stills' },
     { label: 'information', onClick: () => handleNavClick('about', 'all'),  isActive: activeTab === 'about' },
   ];
 
@@ -89,14 +82,16 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
 
           {/* TOP HERO HEADER TITLE BANNER */}
           <motion.div
+            initial={false}
             animate={{
               opacity: scrolled ? 0 : 1,
               height: scrolled ? 0 : 'auto',
-              scale: scrolled ? 0.96 : 1,
+              scale: scrolled ? 0.95 : 1,
               pointerEvents: scrolled ? 'none' : 'auto'
             }}
-            transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
-            className="w-full flex items-center justify-between md:justify-center relative overflow-visible py-1 pr-16 md:pr-0"
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflowAnchor: 'none' }}
+            className="w-full flex items-center justify-between md:justify-center relative overflow-hidden py-1 pr-16 md:pr-0"
           >
             <SmoothHeaderName
               isLime={isLime}
