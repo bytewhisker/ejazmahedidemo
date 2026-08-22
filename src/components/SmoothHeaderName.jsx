@@ -5,17 +5,17 @@ const names = [
   { 
     id: 'en', 
     text: "EJAZ MEHEDI", 
-    fontClass: "font-sans tracking-normal font-black text-[clamp(0.8rem,5.2vw,7.5rem)] leading-none" 
+    fontClass: "font-sans tracking-normal font-black text-[clamp(1.4rem,6vw,7.5rem)] leading-none" 
   },
   { 
     id: 'bn', 
     text: "এজাজ মেহেদী", 
-    fontClass: "font-sans tracking-normal font-black text-[clamp(0.8rem,5.2vw,7.5rem)] leading-none" 
+    fontClass: "font-sans tracking-normal font-black text-[clamp(1.6rem,6.5vw,7.5rem)] leading-none" 
   },
   { 
     id: 'ar', 
     text: "إعزاز مهدي", 
-    fontClass: "font-sans tracking-[0.3em] font-black text-[clamp(1rem,6.4vw,9.2rem)] leading-none" 
+    fontClass: "font-sans tracking-[0.3em] font-black text-[clamp(1.5rem,7vw,9.2rem)] leading-none" 
   }
 ];
 
@@ -83,7 +83,7 @@ export const SmoothHeaderName = ({ onClick, isLime = false }) => {
           exit="exit"
           dir={current.id === 'ar' ? 'rtl' : 'ltr'}
           className={`uppercase transition-colors whitespace-nowrap w-full text-center flex items-center justify-center h-full ${
-            isLime ? 'text-black group-hover:text-black/80' : 'text-ink group-hover:text-ink-soft'
+            isLime ? 'text-[var(--about-ink)] group-hover:text-[var(--about-ink-80)]' : 'text-ink group-hover:text-ink-soft'
           } ${current.fontClass}`}
         >
           {items.map((item, itemIdx) => (

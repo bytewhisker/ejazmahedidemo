@@ -82,7 +82,7 @@ function MainContent() {
   return (
     <div className={`min-h-screen flex flex-col font-sans relative transition-colors duration-700 ease-in-out ${
       activeTab === 'about' && !selectedProject
-        ? 'bg-[#b5ff32] text-black selection:bg-black selection:text-[#b5ff32]'
+        ? 'about-inverted bg-[var(--about-bg)] text-[var(--about-ink)] selection:bg-[var(--about-ink)] selection:text-[var(--about-bg)]'
         : 'bg-canvas text-ink selection:bg-ink selection:text-canvas'
     }`}>
       
@@ -137,7 +137,7 @@ function MainContent() {
               if (tab === 'stills') window.history.pushState(null, '', '/stills');
               else if (tab === 'about') window.history.pushState(null, '', '/about');
               else if (tab === 'journal') window.history.pushState(null, '', '/journal');
-              else if (tab === 'reel') window.history.pushState(null, '', '/reel');
+              else if (tab === 'reel') window.history.pushState(null, '', '/');
               else window.history.pushState(null, '', '/projects');
             }}
             activeFilter={activeFilter}

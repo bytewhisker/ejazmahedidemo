@@ -58,6 +58,7 @@ img {
 @theme inline {
   --font-mega: "Bodoni Moda", "Times New Roman", serif;
   --font-sans: "Raleway", "Neue Montreal", Inter, Arial, Helvetica, system-ui, sans-serif;
+  --font-haas: "neue-haas-grotesk-display", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
@@ -134,6 +135,11 @@ img {
     font-family: 'Raleway', 'Neue Montreal', Inter, Arial, Helvetica, system-ui, sans-serif;
   }
 
+  /* Neue Haas Grotesk Display — same as Mika reference site */
+  .font-haas {
+    font-family: "neue-haas-grotesk-display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
   /* Heavy Extended Display Grotesk Utility (kept for weight, same family) */
   .font-display-heavy {
     font-weight: 800;
@@ -180,3 +186,39 @@ img {
 /* Hide scrollbar for horizontal mobile nav row */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── ABOUT / INFORMATION PAGE — LIME BG, THEME-BASED TEXT ───
+   Background stays lime green always.
+   Text: black in dark mode (original), white in light mode.
+   Chips stay black with lime text in both modes. */
+[data-theme="dark"] .about-inverted,
+[data-theme="dark"].about-inverted {
+  --about-bg: #b5ff32;
+  --about-ink: #0a0a0a;
+  --about-ink-80: rgba(10, 10, 10, 0.8);
+  --about-ink-70: rgba(10, 10, 10, 0.7);
+  --about-ink-60: rgba(10, 10, 10, 0.6);
+  --about-ink-30: rgba(10, 10, 10, 0.3);
+  --about-ink-10: rgba(10, 10, 10, 0.1);
+  --about-ink-5: rgba(10, 10, 10, 0.05);
+  --about-border: rgba(0, 0, 0, 0.3);
+  --about-chip-bg: #000000;
+  --about-chip-text: #b5ff32;
+  --about-chip-hover: rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="light"] .about-inverted,
+[data-theme="light"].about-inverted {
+  --about-bg: #b5ff32;
+  --about-ink: #ffffff;
+  --about-ink-80: rgba(255, 255, 255, 0.8);
+  --about-ink-70: rgba(255, 255, 255, 0.7);
+  --about-ink-60: rgba(255, 255, 255, 0.6);
+  --about-ink-30: rgba(255, 255, 255, 0.3);
+  --about-ink-10: rgba(255, 255, 255, 0.1);
+  --about-ink-5: rgba(255, 255, 255, 0.05);
+  --about-border: rgba(255, 255, 255, 0.3);
+  --about-chip-bg: #000000;
+  --about-chip-text: #b5ff32;
+  --about-chip-hover: rgba(0, 0, 0, 0.8);
+}

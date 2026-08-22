@@ -63,27 +63,27 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
   ];
 
   const overlayVariants = {
-    hidden:  { opacity: 0, scale: 0.97 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.35, ease: [0.25, 1, 0.5, 1] } },
-    exit:    { opacity: 0, scale: 0.97, transition: { duration: 0.25, ease: [0.5, 0, 0.75, 0] } },
+    hidden:  { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.2, ease: 'easeOut' } },
+    exit:    { opacity: 0, transition: { duration: 0.15, ease: 'easeIn' } },
   };
 
   const listVariants = {
     hidden:  {},
-    visible: { transition: { staggerChildren: 0.07, delayChildren: 0.15 } },
+    visible: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } },
   };
 
   const itemVariants = {
-    hidden:  { opacity: 0, x: 40 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: [0.25, 1, 0.5, 1] } },
+    hidden:  { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } },
   };
 
   return (
     <>
-      <header className={`sticky top-0 z-50 px-4 sm:px-8 md:px-12 pt-1 md:pt-2 pb-2 transition-all duration-500 select-none ${
+      <header className={`sticky top-0 z-50 px-4 sm:px-8 md:px-12 pt-1 md:pt-2 pb-2 transition-colors duration-700 ease-in-out select-none ${
         isLime
-          ? 'bg-[#b5ff32]/95 backdrop-blur-md border-b border-black/20 text-black'
-          : 'glass-header border-b border-line'
+          ? 'bg-[var(--about-bg)] text-[var(--about-ink)]'
+          : 'glass-header'
       }`}>
         <div className="w-full mx-auto flex flex-col items-center gap-1.5">
 
@@ -100,24 +100,26 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
           >
             <SmoothHeaderName
               isLime={isLime}
-              onClick={() => handleNavClick('projects', 'all')}
+              onClick={() => handleNavClick('reel', 'all')}
             />
 
             {/* MOBILE CONTROLS — theme toggle + "menu" text */}
             <div className="md:hidden flex items-center gap-3 absolute right-0 top-1/2 -translate-y-1/2">
               <button
                 onClick={toggleTheme}
-                className={`p-1.5 transition-colors ${isLime ? 'text-black/70 hover:text-black' : 'text-muted hover:text-ink'}`}
+                className={`p-1.5 transition-colors ${isLime ? 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)]' : 'text-muted hover:text-ink'}`}
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
               </button>
 
-              {/* "menu" text button — only opens STILLS + INFO overlay */}
+              {/* "menu" button — Mika style: just italic text, no box */}
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
-                className={`font-mono-custom text-xs font-bold uppercase tracking-[0.22em] transition-colors ${
-                  isLime ? 'text-black' : 'text-ink'
+                className={`font-haas italic font-bold text-[1.1rem] leading-none transition-opacity ${
+                  isLime
+                    ? 'text-[var(--about-ink)] hover:opacity-70'
+                    : 'text-ink hover:opacity-70'
                 }`}
                 aria-label="Open menu"
               >
@@ -127,7 +129,7 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
           </motion.div>
 
           {/* MOBILE NAV ROW — always visible: REEL · OVERVIEW · FILMS · COMMERCIALS */}
-          <div className="md:hidden w-full flex items-center gap-4 pb-1 pt-0.5 text-[10px] font-mono-custom tracking-[0.18em] uppercase font-bold overflow-x-auto no-scrollbar">
+          <div className="md:hidden w-full flex items-center gap-4 pb-1 pt-0.5 text-[10px] font-haas tracking-[0.18em] uppercase font-bold overflow-x-auto no-scrollbar">
             {[
               { label: 'REEL',        isActive: activeTab === 'reel',                                     onClick: () => handleNavClick('reel', 'all') },
               { label: 'OVERVIEW',    isActive: activeTab === 'projects' && activeFilter === 'all',        onClick: () => handleNavClick('projects', 'all') },
@@ -140,10 +142,10 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                 className={`shrink-0 transition-colors ${
                   isActive
                     ? isLime
-                      ? 'text-black underline underline-offset-4 decoration-black decoration-2'
+                      ? 'text-[var(--about-ink)] underline underline-offset-4 decoration-[var(--about-ink)] decoration-2'
                       : 'text-accent underline underline-offset-4'
                     : isLime
-                      ? 'text-black/70 hover:text-black'
+                      ? 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)]'
                       : 'text-accent hover:text-accent'
                 }`}
               >
@@ -153,7 +155,7 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
           </div>
 
           {/* DESKTOP HORIZONTAL NAVBAR ROW */}
-          <div className="hidden md:flex w-full items-center justify-between pt-2.5 pb-1 text-xs font-mono-custom tracking-[0.22em] uppercase font-bold">
+          <div className="hidden md:flex w-full items-center justify-between pt-2.5 pb-1 text-xs font-haas tracking-[0.22em] uppercase font-bold">
             <nav className="flex items-center gap-8 lg:gap-12">
               <GlitchNavItem
                 enText="REEL" bnText="রিল" arText="ريل"
@@ -161,8 +163,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                 isActive={activeTab === 'reel'}
                 className={`transition-colors ${
                   activeTab === 'reel'
-                    ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
-                    : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
+                    ? isLime ? 'text-[var(--about-ink)] underline underline-offset-4 decoration-2 decoration-[var(--about-ink)]' : 'text-accent underline underline-offset-4'
+                    : isLime ? 'text-[var(--about-ink-80)] hover:text-[var(--about-ink)]' : 'text-accent hover:text-accent'
                 }`}
               />
               <GlitchNavItem
@@ -171,8 +173,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                 isActive={activeTab === 'projects' && activeFilter === 'all'}
                 className={`transition-colors ${
                   activeTab === 'projects' && activeFilter === 'all'
-                    ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
-                    : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
+                    ? isLime ? 'text-[var(--about-ink)] underline underline-offset-4 decoration-2 decoration-[var(--about-ink)]' : 'text-accent underline underline-offset-4'
+                    : isLime ? 'text-[var(--about-ink-80)] hover:text-[var(--about-ink)]' : 'text-accent hover:text-accent'
                 }`}
               />
               <GlitchNavItem
@@ -181,8 +183,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                 isActive={activeTab === 'projects' && activeFilter === 'films'}
                 className={`transition-colors ${
                   activeTab === 'projects' && activeFilter === 'films'
-                    ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
-                    : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
+                    ? isLime ? 'text-[var(--about-ink)] underline underline-offset-4 decoration-2 decoration-[var(--about-ink)]' : 'text-accent underline underline-offset-4'
+                    : isLime ? 'text-[var(--about-ink-80)] hover:text-[var(--about-ink)]' : 'text-accent hover:text-accent'
                 }`}
               />
               <GlitchNavItem
@@ -191,8 +193,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                 isActive={activeTab === 'projects' && activeFilter === 'commercial'}
                 className={`transition-colors ${
                   activeTab === 'projects' && activeFilter === 'commercial'
-                    ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
-                    : isLime ? 'text-black/80 hover:text-black' : 'text-accent hover:text-accent'
+                    ? isLime ? 'text-[var(--about-ink)] underline underline-offset-4 decoration-2 decoration-[var(--about-ink)]' : 'text-accent underline underline-offset-4'
+                    : isLime ? 'text-[var(--about-ink-80)] hover:text-[var(--about-ink)]' : 'text-accent hover:text-accent'
                 }`}
               />
             </nav>
@@ -206,14 +208,14 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                   isActive={item.isActive}
                   className={`transition-colors ${
                     item.isActive
-                      ? isLime ? 'text-black underline underline-offset-4 decoration-2 decoration-black' : 'text-accent underline underline-offset-4'
-                      : isLime ? 'text-black/80 hover:text-black' : 'text-muted hover:text-ink'
+                      ? isLime ? 'text-[var(--about-ink)] underline underline-offset-4 decoration-2 decoration-[var(--about-ink)]' : 'text-accent underline underline-offset-4'
+                      : isLime ? 'text-[var(--about-ink-80)] hover:text-[var(--about-ink)]' : 'text-accent hover:text-accent'
                   }`}
                 />
               ))}
               <button
                 onClick={toggleTheme}
-                className={`transition-colors font-bold ${isLime ? 'text-black/70 hover:text-black' : 'text-muted hover:text-ink'}`}
+                className={`transition-colors font-bold ${isLime ? 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)]' : 'text-muted hover:text-ink'}`}
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
@@ -233,47 +235,55 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="md:hidden fixed inset-0 z-[200] bg-[#b5ff32] flex flex-col px-6 pt-5 pb-10 select-none"
+            className="md:hidden fixed inset-0 z-[200] bg-[#b5ff32] flex flex-col px-6 pt-6 pb-10 select-none"
           >
-            {/* Top bar: wordmark left + circular CLOSE button right */}
-            <div className="flex items-center justify-between mb-auto">
-              <span
-                className="font-sans font-black text-black text-xl tracking-tight cursor-pointer"
+            {/* Top bar: wordmark left + × close button right */}
+            <div className="flex items-center justify-between">
+              <motion.span
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+                className="font-haas font-black text-black text-[clamp(2.4rem,10.5vw,5rem)] uppercase leading-none tracking-tight cursor-pointer"
                 onClick={() => { setIsMobileMenuOpen(false); handleNavClick('projects', 'all'); }}
               >
                 EJAZ MEHEDI
-              </span>
+              </motion.span>
 
-              {/* Circular close button */}
-              <button
+              {/* × close button — just the cross icon */}
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.2, delay: 0.05 }}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="w-14 h-14 rounded-full bg-black text-[#b5ff32] flex items-center justify-center font-mono-custom text-[10px] font-bold uppercase tracking-[0.15em] leading-tight hover:bg-black/80 transition-colors shrink-0"
+                className="text-black hover:opacity-60 transition-opacity shrink-0 flex items-center justify-center p-1"
                 aria-label="Close menu"
               >
-                close
-              </button>
+                <span style={{ fontSize: '2rem', lineHeight: 1, fontWeight: 300 }}>✕</span>
+              </motion.button>
             </div>
 
-            {/* Nav items — stills + information only, centered, lowercase */}
+            {/* Nav items — middle-right aligned, lowercase — Mika style */}
             <motion.nav
               variants={listVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-col items-end justify-center gap-3 flex-1 pr-2"
+              className="flex flex-col items-end justify-center gap-6 flex-1 pr-2"
             >
               {mobileOverlayItems.map((item) => (
-                <motion.button
-                  key={item.label}
-                  variants={itemVariants}
-                  onClick={item.onClick}
-                  className={`font-sans font-normal text-center leading-none transition-all text-4xl tracking-tight ${
-                    item.isActive
-                      ? 'text-black underline underline-offset-4 decoration-black decoration-2'
-                      : 'text-black/70 hover:text-black'
-                  }`}
-                >
-                  {item.label}
-                </motion.button>
+                <div key={item.label} className="overflow-hidden pb-2">
+                  <motion.button
+                    variants={itemVariants}
+                    onClick={item.onClick}
+                    className={`font-haas font-bold text-right leading-[1.15] block transition-opacity ${
+                      item.isActive
+                        ? 'text-black opacity-100 underline underline-offset-[10px] decoration-[3px]'
+                        : 'text-black opacity-90 hover:opacity-100'
+                    }`}
+                    style={{ fontSize: 'clamp(1.7rem, 7.5vw, 3rem)' }}
+                  >
+                    {item.label}
+                  </motion.button>
+                </div>
               ))}
             </motion.nav>
 

@@ -25,6 +25,7 @@ export const GlitchNavItem = ({
 
   const glitchIntervalRef = useRef(null);
   const phaseTimeoutRef = useRef(null);
+  const startDelayRef = useRef(null);
   const hoveredRef = useRef(false);
   const currentTextRef = useRef(enText);
 
@@ -37,6 +38,7 @@ export const GlitchNavItem = ({
   const stopAllTimers = () => {
     if (glitchIntervalRef.current) clearInterval(glitchIntervalRef.current);
     if (phaseTimeoutRef.current) clearTimeout(phaseTimeoutRef.current);
+    if (startDelayRef.current) clearTimeout(startDelayRef.current);
   };
 
   const triggerGlitch = (targetText, onComplete) => {
@@ -101,7 +103,10 @@ export const GlitchNavItem = ({
     if (hoveredRef.current) return;
     hoveredRef.current = true;
     setIsHovered(true);
-    runLanguageCycle();
+    // Stay on English for 800ms before starting the cycle
+    startDelayRef.current = setTimeout(() => {
+      if (hoveredRef.current) runLanguageCycle();
+    }, 800);
   };
 
   const handleMouseLeave = () => {

@@ -120,7 +120,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
                 onMouseLeave={() => setActiveImageKey('default')}
                 onTouchStart={() => setActiveImageKey(kw.key)}
                 onTouchEnd={() => setActiveImageKey('default')}
-                className="px-1.5 py-0.5 mx-0.5 bg-black text-[#b5ff32] font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-black/80 transition-colors inline-flex items-center gap-1 align-baseline rounded-sm shadow-sm"
+                className="px-1.5 py-0.5 mx-0.5 bg-[var(--about-chip-bg)] text-[var(--about-chip-text)] font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-[var(--about-chip-hover)] transition-colors inline-flex items-center gap-1 align-baseline rounded-sm shadow-sm"
               >
                 {kw.icon}
                 {part.slice(idx, idx + kw.match.length)}
@@ -152,7 +152,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
-      className="min-h-screen text-black pt-2 pb-24 px-4 sm:px-6 lg:px-8 font-sans select-none max-w-[1700px] mx-auto space-y-12 md:space-y-16"
+      className="min-h-screen text-[var(--about-ink)] pt-2 pb-24 px-4 sm:px-6 lg:px-8 font-sans select-none max-w-[1700px] mx-auto space-y-12 md:space-y-16"
     >
       
       {/* TOP SECTION: BIOGRAPHY + PORTRAIT & DIRECT CONTACT */}
@@ -160,7 +160,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
         
         {/* Left Side: Photo Frame Container */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="w-full aspect-square overflow-hidden bg-black/10 border border-black/30 relative group shadow-xl">
+          <div className="w-full aspect-square overflow-hidden bg-[var(--about-ink-10)] border border-[var(--about-border)] relative group shadow-xl">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.img
                 key={activeImageKey}
@@ -188,27 +188,27 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
                 onClick={() => setBioLang('en')}
                 title="English"
                 className={`px-2.5 py-1 transition-all rounded-sm font-bold text-xs ${
-                  bioLang === 'en' ? 'bg-black text-[#b5ff32] font-black scale-105 shadow' : 'text-black/70 hover:text-black hover:bg-black/10'
+                  bioLang === 'en' ? 'bg-[var(--about-chip-bg)] text-[var(--about-chip-text)] font-black scale-105 shadow' : 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)] hover:bg-[var(--about-ink-10)]'
                 }`}
               >
                 A
               </button>
-              <span className="text-black/30 text-[10px]">/</span>
+              <span className="text-[var(--about-ink-30)] text-[10px]">/</span>
               <button
                 onClick={() => setBioLang('bn')}
                 title="বাংলা"
                 className={`px-2.5 py-1 transition-all rounded-sm font-bold text-xs font-sans ${
-                  bioLang === 'bn' ? 'bg-black text-[#b5ff32] font-black scale-105 shadow' : 'text-black/70 hover:text-black hover:bg-black/10'
+                  bioLang === 'bn' ? 'bg-[var(--about-chip-bg)] text-[var(--about-chip-text)] font-black scale-105 shadow' : 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)] hover:bg-[var(--about-ink-10)]'
                 }`}
               >
                 অ
               </button>
-              <span className="text-black/30 text-[10px]">/</span>
+              <span className="text-[var(--about-ink-30)] text-[10px]">/</span>
               <button
                 onClick={() => setBioLang('ar')}
                 title="العربية"
                 className={`px-2.5 py-1 transition-all rounded-sm font-bold text-xs font-sans ${
-                  bioLang === 'ar' ? 'bg-black text-[#b5ff32] font-black scale-105 shadow' : 'text-black/70 hover:text-black hover:bg-black/10'
+                  bioLang === 'ar' ? 'bg-[var(--about-chip-bg)] text-[var(--about-chip-text)] font-black scale-105 shadow' : 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)] hover:bg-[var(--about-ink-10)]'
                 }`}
               >
                 ع
@@ -224,7 +224,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
               animate="animate"
               exit={{ opacity: 0, y: -6 }}
               transition={{ staggerChildren: 0.08 }}
-              className={`space-y-4 text-xs sm:text-sm leading-relaxed text-black font-medium ${
+              className={`space-y-4 text-xs sm:text-sm leading-relaxed text-[var(--about-ink)] font-medium ${
                 bioLang === 'ar' ? 'text-right dir-rtl font-sans' : ''
               }`}
             >
@@ -243,7 +243,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
               href={instagramUrl}
               target="_blank"
               rel="noreferrer"
-              className="text-black font-bold uppercase tracking-[0.2em] hover:opacity-70 transition-opacity flex items-center gap-1 group"
+              className="text-[var(--about-ink)] font-bold uppercase tracking-[0.2em] hover:opacity-70 transition-opacity flex items-center gap-1 group"
             >
               EJAZMEHEDI
               <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -251,7 +251,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
             {/* Email */}
             <a
               href={`mailto:${personalEmail}`}
-              className="text-black font-bold uppercase tracking-[0.2em] hover:opacity-70 transition-opacity flex items-center gap-1 group"
+              className="text-[var(--about-ink)] font-bold uppercase tracking-[0.2em] hover:opacity-70 transition-opacity flex items-center gap-1 group"
             >
               {personalEmail}
               <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -265,7 +265,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       {/* FULL TABULAR AWARDS & HONORS ARCHIVE */}
       <div className="space-y-6 pb-12 md:pb-16">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3">
-          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-black/80">
+          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-[var(--about-ink-80)]">
             AWARDS & FESTIVAL EXHIBITIONS ({filteredAwards.length})
           </h2>
 
@@ -274,25 +274,25 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
             <button
               onClick={() => setAwardFilter('all')}
               className={`px-2.5 py-0.5 rounded-sm font-bold ${
-                awardFilter === 'all' ? 'bg-black text-[#b5ff32]' : 'text-black/60 hover:text-black'
+                awardFilter === 'all' ? 'bg-[var(--about-chip-bg)] text-[var(--about-chip-text)]' : 'text-[var(--about-ink-60)] hover:text-[var(--about-ink)]'
               }`}
             >
               ALL
             </button>
-            <span className="text-black/30">/</span>
+            <span className="text-[var(--about-ink-30)]">/</span>
             <button
               onClick={() => setAwardFilter('moshari')}
               className={`px-2.5 py-0.5 rounded-sm font-bold ${
-                awardFilter === 'moshari' ? 'bg-black text-[#b5ff32]' : 'text-black/60 hover:text-black'
+                awardFilter === 'moshari' ? 'bg-[var(--about-chip-bg)] text-[var(--about-chip-text)]' : 'text-[var(--about-ink-60)] hover:text-[var(--about-ink)]'
               }`}
             >
               MOSHARI
             </button>
-            <span className="text-black/30">/</span>
+            <span className="text-[var(--about-ink-30)]">/</span>
             <button
               onClick={() => setAwardFilter('foreigners')}
               className={`px-2.5 py-0.5 rounded-sm font-bold ${
-                awardFilter === 'foreigners' ? 'bg-black text-[#b5ff32]' : 'text-black/60 hover:text-black'
+                awardFilter === 'foreigners' ? 'bg-[var(--about-chip-bg)] text-[var(--about-chip-text)]' : 'text-[var(--about-ink-60)] hover:text-[var(--about-ink)]'
               }`}
             >
               FOREIGNERS ONLY
@@ -305,18 +305,18 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
           {filteredAwards.map((award) => (
             <div
               key={award.id}
-              className="py-3.5 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 items-baseline hover:bg-black/5 transition-colors px-1"
+              className="py-3.5 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 items-baseline hover:bg-[var(--about-ink-5)] transition-colors px-1"
             >
-              <div className="sm:col-span-2 text-black/70 font-bold">
+              <div className="sm:col-span-2 text-[var(--about-ink-70)] font-bold">
                 {award.date}
               </div>
-              <div className="sm:col-span-3 text-black font-black uppercase truncate">
+              <div className="sm:col-span-3 text-[var(--about-ink)] font-black uppercase truncate">
                 {award.film || 'NARRATIVE'}
               </div>
-              <div className="sm:col-span-4 text-black font-medium">
+              <div className="sm:col-span-4 text-[var(--about-ink)] font-medium">
                 {award.title}
               </div>
-              <div className="sm:col-span-3 text-black/70 text-right hidden sm:block truncate font-bold">
+              <div className="sm:col-span-3 text-[var(--about-ink-70)] text-right hidden sm:block truncate font-bold">
                 {award.organization}
               </div>
             </div>
@@ -327,10 +327,10 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       {/* PRESS & INTERVIEWS ARCHIVE */}
       <div className="space-y-6 pb-12 md:pb-16">
         <div className="flex items-center justify-between pb-3">
-          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-black/80">
+          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-[var(--about-ink-80)]">
             PRESS & INTERVIEWS ({pressData.length})
           </h2>
-          <span className="text-[10px] font-mono-custom text-black/60 uppercase font-bold">
+          <span className="text-[10px] font-mono-custom text-[var(--about-ink-60)] uppercase font-bold">
             GLOBAL COVERAGE
           </span>
         </div>
@@ -339,15 +339,15 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
           {pressData.map((item) => (
             <div
               key={item.id}
-              className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-black/5 transition-colors px-1 group"
+              className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[var(--about-ink-5)] transition-colors px-1 group"
             >
               <div className="space-y-1 max-w-3xl">
-                <div className="flex items-center gap-3 text-black/70">
-                  <span className="font-bold text-black uppercase">{item.publisher}</span>
+                <div className="flex items-center gap-3 text-[var(--about-ink-70)]">
+                  <span className="font-bold text-[var(--about-ink)] uppercase">{item.publisher}</span>
                   <span>—</span>
                   <span>{item.date}</span>
                 </div>
-                <h3 className="text-sm font-sans text-black font-bold group-hover:underline">
+                <h3 className="text-sm font-sans text-[var(--about-ink)] font-bold group-hover:underline">
                   {item.title}
                 </h3>
               </div>
@@ -357,7 +357,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
                   href={item.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-[11px] font-mono-custom text-black hover:bg-black hover:text-[#b5ff32] border border-black px-2.5 py-1 flex items-center gap-1 uppercase tracking-widest shrink-0 font-bold transition-all rounded-sm"
+                  className="text-[11px] font-mono-custom text-[var(--about-ink)] hover:bg-[var(--about-chip-bg)] hover:text-[var(--about-chip-text)] border border-[var(--about-border)] px-2.5 py-1 flex items-center gap-1 uppercase tracking-widest shrink-0 font-bold transition-all rounded-sm"
                 >
                   <span>READ ARTICLE</span>
                   <ArrowUpRight className="w-3 h-3" />
@@ -371,14 +371,14 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       {/* SELECTED CLIENTS */}
       <div className="space-y-6 pb-8">
         <div className="pb-3">
-          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-black/80">
+          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-[var(--about-ink-80)]">
             SELECTED CLIENTS & BRANDED PARTNERS
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 text-xs font-mono-custom text-black font-bold">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 text-xs font-mono-custom text-[var(--about-ink)] font-bold">
           {activeClients.map((client, idx) => (
-            <div key={idx} className="pl-3 py-2 bg-black/5 hover:bg-black hover:text-[#b5ff32] transition-all rounded-r-sm">
+            <div key={idx} className="pl-3 py-2 bg-[var(--about-ink-5)] hover:bg-[var(--about-chip-bg)] hover:text-[var(--about-chip-text)] transition-all rounded-r-sm">
               {client}
             </div>
           ))}

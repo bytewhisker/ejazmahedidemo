@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Maximize2, X } from 'lucide-react';
+import { Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const collections = [
   {
@@ -50,66 +50,84 @@ export const StillsGallery = () => {
   const [activeCollectionId, setActiveCollectionId] = useState('hyperborea');
   const [activeSubItem, setActiveSubItem] = useState(null);
   const [lightboxIndex, setLightboxIndex] = useState(null);
-  
-  const scrollRef = useRef(null);
-  const isDraggingRef = useRef(false);
-  const startXRef = useRef(0);
-  const scrollLeftRef = useRef(0);
-  const targetScrollLeft = useRef(0);
-  const animFrameRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  const scrollRef = useRef(null);
   const activeCollection = collections.find(c => c.id === activeCollectionId) || collections[0];
 
-  // Lerp Animation Loop for Smooth Mouse Motion Panning
+  // Vertical mouse wheel over the strip should scroll the PAGE, not jump the
+  // horizontal carousel (browser maps deltaY -> scrollLeft on x-overflow).
+  // Only hijack when the strip can actually scroll sideways; otherwise let the
+  // browser scroll the page natively (no fight -> no shake/bounce-up).
   useEffect(() => {
-    const updateScroll = () => {
-      if (scrollRef.current && !isDraggingRef.current) {
-        const current = scrollRef.current.scrollLeft;
-        const diff = targetScrollLeft.current - current;
-        if (Math.abs(diff) > 0.5) {
-          scrollRef.current.scrollLeft += diff * 0.08;
+    const el = scrollRef.current;
+    if (!el) return;
+    const onWheel = (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        const canScrollX = el.scrollWidth > el.clientWidth + 1;
+        if (canScrollX) {
+          e.preventDefault();
+          window.scrollBy({ top: e.deltaY, behavior: 'auto' });
         }
       }
-      animFrameRef.current = requestAnimationFrame(updateScroll);
     };
-    animFrameRef.current = requestAnimationFrame(updateScroll);
-    return () => cancelAnimationFrame(animFrameRef.current);
-  }, []);
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => el.removeEventListener('wheel', onWheel);
+  }, [activeCollectionId]);
 
-  // Mouse Movement Carousel Panning
-  const handleMouseMove = (e) => {
-    if (!scrollRef.current || isDraggingRef.current) return;
-    const rect = scrollRef.current.getBoundingClientRect();
-    const xRatio = (e.clientX - rect.left) / rect.width;
-    const maxScroll = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
-    if (maxScroll > 0) {
-      targetScrollLeft.current = Math.max(0, Math.min(maxScroll, xRatio * maxScroll));
+  // Arrow-only navigation — scroll to item, NO mousemove hover follow
+  const goToItem = (idx) => {
+    const total = activeCollection.series.length;
+    const next = (idx + total) % total;
+    setCurrentIndex(next);
+    const nextId = activeCollection.series[next]?.id;
+    if (nextId) setActiveSubItem(nextId);
+    const el = document.getElementById(`still-${activeCollection.series[next].id}`);
+    if (el && scrollRef.current) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     }
   };
 
-  // Mouse Drag / Touch Mechanics
-  const handleMouseDown = (e) => {
-    isDraggingRef.current = true;
-    startXRef.current = e.pageX - scrollRef.current.offsetLeft;
-    scrollLeftRef.current = scrollRef.current.scrollLeft;
-  };
+  const handlePrev = () => goToItem(currentIndex - 1);
+  const handleNext = () => goToItem(currentIndex + 1);
 
-  const handleMouseLeave = () => {
-    isDraggingRef.current = false;
-  };
+  // Keep currentIndex in sync when user manually scrolls/swipes (optional, not hover)
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const children = Array.from(el.children);
+        let closest = 0;
+        let minDist = Infinity;
+        children.forEach((child, i) => {
+          const dist = Math.abs(child.getBoundingClientRect().left - el.getBoundingClientRect().left);
+          if (dist < minDist) { minDist = dist; closest = i; }
+        });
+        if (closest !== currentIndex) setCurrentIndex(closest);
+      });
+    };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => { el.removeEventListener('scroll', onScroll); cancelAnimationFrame(raf); };
+  }, [activeCollectionId, currentIndex]);
 
-  const handleMouseUp = () => {
-    isDraggingRef.current = false;
-  };
-
-  const handleDragMove = (e) => {
-    if (!isDraggingRef.current || !scrollRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startXRef.current) * 1.5;
-    scrollRef.current.scrollLeft = scrollLeftRef.current - walk;
-    targetScrollLeft.current = scrollRef.current.scrollLeft;
-  };
+  // Keyboard arrows
+  useEffect(() => {
+    const onKey = (e) => {
+      if (lightboxIndex !== null) {
+        if (e.key === 'Escape') setLightboxIndex(null);
+        if (e.key === 'ArrowLeft') setLightboxIndex((p) => (p - 1 + activeCollection.series.length) % activeCollection.series.length);
+        if (e.key === 'ArrowRight') setLightboxIndex((p) => (p + 1) % activeCollection.series.length);
+        return;
+      }
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [handlePrev, handleNext, lightboxIndex, activeCollection.series.length]);
 
   return (
     <motion.div
@@ -117,17 +135,16 @@ export const StillsGallery = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full min-h-[calc(100vh-140px)] flex flex-col justify-between select-none py-2 md:py-4"
+      className="w-full flex flex-col gap-4 py-2 md:py-4 pb-16 md:pb-28 select-none"
     >
-      {/* EVGENIA ARBUGAEVA CLEAN CAROUSEL LAYOUT */}
-      <div className="flex-1 flex flex-col lg:flex-row items-stretch gap-4 lg:gap-12 w-full">
+      {/* RESTORED MULTI-IMAGE LAYOUT — original sizing, arrow only, no hover follow */}
+      <div className="flex flex-col lg:flex-row items-stretch gap-4 lg:gap-12 w-full">
 
-        {/* LEFT SIDEBAR: CLEAN COLLECTION LIST (NO NUMBERS) */}
+        {/* LEFT SIDEBAR */}
         <aside className="w-full lg:w-72 shrink-0 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-line/60 pb-3 lg:pb-0 lg:pr-8">
           <div className="space-y-4 lg:space-y-6">
-            <div className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-muted border-b border-line/40 pb-2 flex items-center justify-between">
-              <span>PHOTOGRAPHY ARCHIVE</span>
-              <span className="text-[10px] text-muted/60 lg:hidden">SWIPE FOR STILLS →</span>
+            <div className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-muted border-b border-line/40 pb-2">
+              PHOTOGRAPHY ARCHIVE
             </div>
 
             <nav className="flex lg:flex-col overflow-x-auto whitespace-nowrap gap-4 lg:gap-0 lg:space-y-4 scrollbar-none pb-1 lg:pb-0">
@@ -139,10 +156,8 @@ export const StillsGallery = () => {
                       onClick={() => {
                         setActiveCollectionId(col.id);
                         setActiveSubItem(null);
-                        if (scrollRef.current) {
-                          scrollRef.current.scrollLeft = 0;
-                          targetScrollLeft.current = 0;
-                        }
+                        setCurrentIndex(0);
+                        if (scrollRef.current) scrollRef.current.scrollLeft = 0;
                       }}
                       className={`text-left text-xs font-mono-custom tracking-[0.18em] uppercase transition-colors block font-bold cursor-pointer ${
                         isActive ? 'text-ink underline lg:no-underline' : 'text-muted hover:text-ink'
@@ -151,7 +166,6 @@ export const StillsGallery = () => {
                       {col.title}
                     </button>
 
-                    {/* Sub-series list (No numbers) */}
                     {isActive && (
                       <motion.ul
                         initial={{ opacity: 0, height: 0 }}
@@ -163,14 +177,11 @@ export const StillsGallery = () => {
                           <li key={item.id}>
                             <button
                               onClick={() => {
-                                setActiveSubItem(item.id);
-                                const el = document.getElementById(`still-${item.id}`);
-                                if (el && scrollRef.current) {
-                                  el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-                                }
+                                const idx = col.series.findIndex(s => s.id === item.id);
+                                goToItem(idx);
                               }}
                               className={`text-[11px] font-mono-custom tracking-wider block text-left transition-colors cursor-pointer ${
-                                activeSubItem === item.id ? 'text-ink font-bold underline' : 'text-muted/80 hover:text-ink'
+                                activeCollection.series[currentIndex]?.id === item.id ? 'text-ink font-bold underline' : 'text-muted/80 hover:text-ink'
                               }`}
                             >
                               {item.title}
@@ -191,64 +202,94 @@ export const StillsGallery = () => {
           </div>
         </aside>
 
-        {/* RIGHT CAROUSEL AREA: MOUSE-MOVING & HAND-DRAGGING CAROUSEL */}
-        <main className="flex-1 flex flex-col relative min-w-0">
-          
-          <div
-            ref={scrollRef}
-            onMouseMove={(e) => {
-              handleMouseMove(e);
-              handleDragMove(e);
-            }}
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseLeave}
-            className="flex-1 flex items-center gap-4 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-none py-2 select-none cursor-grab active:cursor-grabbing"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {activeCollection.series.map((item, idx) => (
-              <motion.div
-                key={item.id}
-                id={`still-${item.id}`}
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                onClick={() => setLightboxIndex(idx)}
-                className="shrink-0 group relative flex flex-col space-y-3 w-[78vw] sm:w-[50vw] md:w-auto"
-              >
-                <div
-                  data-cursor="stills"
-                  className={`relative h-[48vh] sm:h-[58vh] md:h-[68vh] max-h-[760px] ${item.aspect} bg-surface overflow-hidden border border-line/40 transition-colors group-hover:border-ink-soft`}
+        {/* RIGHT STRIP — MULTIPLE IMAGES, ORIGINAL SIZE, ARROW NAV ONLY */}
+        <main className="flex-1 flex flex-col min-w-0 gap-4">
+          {/* Relative wrapper so floating slide buttons overlay the strip */}
+          <div className="relative">
+            {/* Horizontal strip — no mousemove handler, only scrollIntoView via arrows */}
+            <div
+              ref={scrollRef}
+              className="flex flex-1 items-center gap-4 sm:gap-6 md:gap-8 overflow-x-auto overflow-y-hidden scrollbar-none py-2 snap-x snap-proximity"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {activeCollection.series.map((item, idx) => (
+                <motion.div
+                  key={item.id}
+                  id={`still-${item.id}`}
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.45, delay: idx * 0.05 }}
+                  onClick={() => setLightboxIndex(idx)}
+                  className="shrink-0 snap-start group relative flex flex-col space-y-3 w-[78vw] sm:w-[50vw] md:w-auto"
                 >
-                  <img
-                    src={item.url}
-                    alt={item.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover filter brightness-95 group-hover:brightness-105 group-hover:scale-105 transition-all duration-700 pointer-events-none"
-                  />
-
-                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="p-3 bg-black/80 backdrop-blur-md text-white border border-white/20 rounded-full">
-                      <Maximize2 className="w-4 h-4" />
+                {/* MEDIUM SIZE — restored proportions, dvh for no mobile shake */}
+                <div
+                  className={`relative h-[40dvh] sm:h-[48dvh] md:h-[54dvh] max-h-[640px] min-h-[240px] ${item.aspect} bg-surface overflow-hidden border border-line/40 transition-colors group-hover:border-ink-soft`}
+                >
+                    <img
+                      src={item.url}
+                      alt={item.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover filter brightness-95 group-hover:brightness-105 group-hover:scale-[1.02] transition-all duration-700 pointer-events-none"
+                    />
+                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="p-3 bg-black/80 backdrop-blur-md text-white border border-white/20 rounded-full">
+                        <Maximize2 className="w-4 h-4" />
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* STILL CAPTION (CLEAN TITLE, NO NUMBERING) */}
-                <div className="flex items-center justify-between text-xs font-mono-custom tracking-widest uppercase">
-                  <span className="text-ink font-normal group-hover:text-ink-soft transition-colors">
+                <div className="flex items-center justify-between gap-3 text-xs font-mono-custom tracking-widest uppercase min-w-0">
+                  <span className="text-ink font-normal group-hover:text-ink-soft transition-colors truncate">
                     {item.title}
                   </span>
-                  <span className="text-[10px] text-muted">{item.location}</span>
+                  <span className="text-[10px] text-muted shrink-0 text-right">{item.location}</span>
                 </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Floating slide buttons — overlay on the strip, desktop only */}
+            <button
+              onClick={handlePrev}
+              aria-label="Previous still"
+              className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 p-3 bg-black/55 backdrop-blur-md border border-white/20 text-white hover:bg-black/80 transition-colors cursor-pointer z-10"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={handleNext}
+              aria-label="Next still"
+              className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 p-3 bg-black/55 backdrop-blur-md border border-white/20 text-white hover:bg-black/80 transition-colors cursor-pointer z-10"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
 
+          {/* Arrow controls — only way to advance (plus swipe), no hover-follow */}
+          <div className="flex items-center justify-end gap-3 pt-2">
+            <span className="text-[11px] font-mono-custom tracking-widest tabular-nums text-muted">
+              {String(currentIndex + 1).padStart(2, '0')} / {String(activeCollection.series.length).padStart(2, '0')}
+            </span>
+            <button
+              onClick={handlePrev}
+              aria-label="Previous still"
+              className="p-2 border border-line text-muted hover:text-ink hover:border-ink-soft transition-colors cursor-pointer"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={handleNext}
+              aria-label="Next still"
+              className="p-2 border border-line text-muted hover:text-ink hover:border-ink-soft transition-colors cursor-pointer"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </main>
       </div>
 
-      {/* LIGHTBOX MODAL */}
+      {/* LIGHTBOX — arrow nav */}
       <AnimatePresence>
         {lightboxIndex !== null && (
           <motion.div
@@ -257,41 +298,45 @@ export const StillsGallery = () => {
             exit={{ opacity: 0 }}
             onClick={() => setLightboxIndex(null)}
             onContextMenu={(e) => e.preventDefault()}
-            className="fixed inset-0 z-[9999] bg-black/95 flex flex-col justify-between p-4 sm:p-8"
+            className="fixed inset-0 z-[9999] bg-black/95 flex flex-col p-4 sm:p-8"
           >
             <div className="w-full flex items-center justify-between text-xs font-mono-custom tracking-widest uppercase text-muted z-10">
-              <span className="text-ink font-bold">
-                {activeCollection.series[lightboxIndex].title}
+              <span className="text-white font-bold truncate pr-4">
+                {activeCollection.series[lightboxIndex].title} <span className="text-white/60 font-normal hidden sm:inline">— {activeCollection.series[lightboxIndex].location}</span>
               </span>
-              <button
-                onClick={() => setLightboxIndex(null)}
-                className="p-2 text-muted hover:text-white transition-colors cursor-pointer"
-              >
+              <button onClick={() => setLightboxIndex(null)} className="p-2 text-white/70 hover:text-white transition-colors shrink-0 cursor-pointer">
                 <X className="w-6 h-6" />
               </button>
             </div>
 
-            <div 
-              className="relative flex-1 flex items-center justify-center my-4 overflow-hidden"
-              onContextMenu={(e) => e.preventDefault()}
-            >
-              <img
+            <div className="relative flex-1 flex items-center justify-center my-4 overflow-hidden" onClick={(e) => e.stopPropagation()}>
+              <motion.img
+                key={activeCollection.series[lightboxIndex].id}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.3 }}
                 src={activeCollection.series[lightboxIndex].url}
                 alt={activeCollection.series[lightboxIndex].title}
                 draggable={false}
-                onDragStart={(e) => e.preventDefault()}
-                onContextMenu={(e) => e.preventDefault()}
-                className="max-w-full max-h-[82vh] object-contain border border-line shadow-2xl pointer-events-none select-none"
+                className="max-w-full max-h-[82dvh] object-contain border border-white/10 shadow-2xl select-none"
               />
-              {/* Transparent overlay blocking right-click context menu */}
-              <div 
-                onContextMenu={(e) => e.preventDefault()} 
-                className="absolute inset-0 z-20 cursor-default"
-              />
+              <button
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex((p) => (p - 1 + activeCollection.series.length) % activeCollection.series.length); }}
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-3 bg-black/60 backdrop-blur-md border border-white/20 text-white hover:bg-black/80 cursor-pointer"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex((p) => (p + 1) % activeCollection.series.length); }}
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-3 bg-black/60 backdrop-blur-md border border-white/20 text-white hover:bg-black/80 cursor-pointer"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
 
-            <div className="text-center text-xs font-mono-custom text-muted uppercase tracking-widest">
-              LOCATION: {activeCollection.series[lightboxIndex].location}
+            <div className="text-center text-xs font-mono-custom text-white/50 uppercase tracking-widest">
+              {lightboxIndex + 1} / {activeCollection.series.length} — LOCATION: {activeCollection.series[lightboxIndex].location}
             </div>
           </motion.div>
         )}

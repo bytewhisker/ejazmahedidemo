@@ -35,8 +35,9 @@ export const CustomCursor = () => {
     const onEnter = () => setVisible(true);
 
     const render = () => {
-      pos.x += (target.x - pos.x) * 0.35;
-      pos.y += (target.y - pos.y) * 0.35;
+      // 1:1 Real-time tracking (no delay/lag)
+      pos.x += (target.x - pos.x) * 1;
+      pos.y += (target.y - pos.y) * 1;
       if (dotRef.current) {
         dotRef.current.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0) translate(-50%, -50%)`;
       }

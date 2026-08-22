@@ -100,7 +100,7 @@ export const MegaName = ({ text = 'EJAZ MEHEDI' }) => {
             className="inline-block origin-bottom will-change-transform"
           >
             <span
-              className="block font-mega font-black leading-[0.72] tracking-[0.005em] text-ink"
+              className="block font-mega font-black leading-[0.72] tracking-[0.005em] text-[var(--about-ink)]"
               style={{
                 fontSize: `min(${(15 * f).toFixed(3)}vw, ${(16 * f).toFixed(3)}rem)`,
                 transform: `translateY(${arc}vw) rotate(${tilt}deg)`,

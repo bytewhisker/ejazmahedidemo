@@ -16,21 +16,24 @@ export const CustomPlayer = ({ poster, videoUrl, embedUrl, vimeoId, title }) => 
 
   // Determine effective Vimeo embed URL (no autoplay — playback is user-initiated)
   const effectiveVimeoUrl = vimeoId 
-    ? `https://player.vimeo.com/video/${vimeoId}?title=0&byline=0&portrait=0&badge=0&autopause=0`
+    ? `https://player.vimeo.com/video/${vimeoId}?title=0&byline=0&portrait=0&badge=0&autopause=0&transparent=0&color=ffffff`
     : embedUrl && (embedUrl.includes('vimeo.com') || embedUrl.includes('youtube.com'))
-      ? embedUrl
+      ? embedUrl.includes('?') ? `${embedUrl}&transparent=0` : `${embedUrl}?transparent=0`
       : null;
 
   // Iframe Embed Player (Vimeo / YouTube) — Full Width Responsive 16:9 Cinema Container
   if (effectiveVimeoUrl) {
     return (
-      <div className="relative w-full aspect-video bg-black overflow-hidden select-none rounded-sm shadow-2xl">
+      <div className="relative w-full aspect-video bg-canvas overflow-hidden select-none rounded-sm shadow-2xl">
         <iframe
           src={effectiveVimeoUrl}
           title={title || "Video Player"}
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
           allowFullScreen
-          className="absolute inset-0 w-full h-full border-0 bg-black"
+          frameBorder="0"
+          scrolling="no"
+          style={{ border: 'none', background: 'var(--canvas)' }}
+          className="absolute inset-0 w-full h-full bg-canvas"
         />
       </div>
     );
@@ -83,7 +86,7 @@ export const CustomPlayer = ({ poster, videoUrl, embedUrl, vimeoId, title }) => 
   };
 
   return (
-    <div className="relative w-full aspect-video bg-black overflow-hidden group select-none rounded-sm shadow-2xl">
+    <div className="relative w-full aspect-video bg-canvas overflow-hidden group select-none rounded-sm shadow-2xl">
       
       {/* Video Poster Cover Image */}
       {!isPlaying && (
