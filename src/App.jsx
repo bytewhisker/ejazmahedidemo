@@ -51,6 +51,7 @@ function MainContent() {
     else if (path.startsWith('/about')) setActiveTab('about');
     else if (path.startsWith('/journal')) setActiveTab('journal');
     else if (path.startsWith('/reel')) setActiveTab('reel');
+    else if (path.startsWith('/overview')) setActiveTab('projects');
     else if (path.startsWith('/projects')) setActiveTab('projects');
     else setActiveTab('reel');
   };
@@ -138,7 +139,7 @@ function MainContent() {
               else if (tab === 'about') window.history.pushState(null, '', '/about');
               else if (tab === 'journal') window.history.pushState(null, '', '/journal');
               else if (tab === 'reel') window.history.pushState(null, '', '/');
-              else window.history.pushState(null, '', '/projects');
+              else window.history.pushState(null, '', '/overview');
             }}
             activeFilter={activeFilter}
             setActiveFilter={setActiveFilter}
