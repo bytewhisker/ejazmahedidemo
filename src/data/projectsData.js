@@ -162,13 +162,13 @@ export const projectsData = [
     year: "2025",
     client: "Sayonara Film / Rhode Island Winner",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/projects/a-thing-about-kashem/still-01.webp",
     hoverStills: [
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop"
+      "/projects/a-thing-about-kashem/still-01.webp",
+      "/projects/a-thing-about-kashem/still-02.webp",
+      "/projects/a-thing-about-kashem/still-03.webp"
     ],
-    poster: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1600&auto=format&fit=crop",
+    poster: "/projects/a-thing-about-kashem/still-01.webp",
     videos: [
       {
         id: "main",
@@ -179,8 +179,9 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000&auto=format&fit=crop"
+      "/projects/a-thing-about-kashem/still-04.webp",
+      "/projects/a-thing-about-kashem/still-05.webp",
+      "/projects/a-thing-about-kashem/still-06.webp"
     ],
     crew: {
       director: "Bijon Imtiaz",
@@ -208,12 +209,13 @@ export const projectsData = [
     year: "2024",
     client: "Al Mouj / Dusk Films",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/projects/azura-the-azura-within/still-01.webp",
     hoverStills: [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1000&auto=format&fit=crop"
+      "/projects/azura-the-azura-within/still-01.webp",
+      "/projects/azura-the-azura-within/still-02.webp",
+      "/projects/azura-the-azura-within/still-03.webp"
     ],
-    poster: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop",
+    poster: "/projects/azura-the-azura-within/still-01.webp",
     videos: [
       {
         id: "main",
@@ -224,7 +226,18 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop"
+      "/projects/azura-the-azura-within/still-04.webp",
+      "/projects/azura-the-azura-within/still-05.webp",
+      "/projects/azura-the-azura-within/still-06.webp",
+      "/projects/azura-the-azura-within/still-07.webp",
+      "/projects/azura-the-azura-within/still-08.webp",
+      "/projects/azura-the-azura-within/still-09.webp",
+      "/projects/azura-the-azura-within/still-10.webp",
+      "/projects/azura-the-azura-within/still-11.webp",
+      "/projects/azura-the-azura-within/still-12.webp",
+      "/projects/azura-the-azura-within/still-13.webp",
+      "/projects/azura-the-azura-within/still-14.webp",
+      "/projects/azura-the-azura-within/still-15.webp"
     ],
     crew: {
       director: "Anwar K Al Asmi",
@@ -306,11 +319,13 @@ export const projectsData = [
     year: "2024",
     client: "OQGN Gas Network / Gravity Productions",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/projects/oqgn-unseen/still-01.webp",
     hoverStills: [
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop"
+      "/projects/oqgn-unseen/still-01.webp",
+      "/projects/oqgn-unseen/still-02.webp",
+      "/projects/oqgn-unseen/still-03.webp"
     ],
-    poster: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1600&auto=format&fit=crop",
+    poster: "/projects/oqgn-unseen/still-01.webp",
     videos: [
       {
         id: "main",
@@ -321,7 +336,16 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1000&auto=format&fit=crop"
+      "/projects/oqgn-unseen/still-04.webp",
+      "/projects/oqgn-unseen/still-05.webp",
+      "/projects/oqgn-unseen/still-06.webp",
+      "/projects/oqgn-unseen/still-07.webp",
+      "/projects/oqgn-unseen/still-08.webp",
+      "/projects/oqgn-unseen/still-09.webp",
+      "/projects/oqgn-unseen/still-10.webp",
+      "/projects/oqgn-unseen/still-11.webp",
+      "/projects/oqgn-unseen/still-12.webp",
+      "/projects/oqgn-unseen/still-13.webp"
     ],
     crew: {
       director: "Anwar K Al Asmi",
