@@ -9,22 +9,11 @@ import bangladeshMap from '../assets/bangladesh-map.jpg';
 const PERSONAL_EMAIL = 'contact@ejazmehedi.com';
 const INSTAGRAM_URL = 'https://instagram.com/ejazmehedi';
 
-const OmanFlagIcon = ({ className }) => (
-  <svg viewBox="0 0 36 24" className={className} aria-hidden="true">
-    <rect width="36" height="24" fill="#ffffff" />
-    <rect y="8" width="36" height="8" fill="#e21836" />
-    <rect y="16" width="36" height="8" fill="#009b4e" />
-    <rect width="12" height="24" fill="#e21836" />
-    <path d="M5 6c1.6 2.1 1.6 4.4 0 6.5-0.8-1.1-1.3-2.2-1.3-3.25S4.2 7.1 5 6z" fill="#ffffff" />
-  </svg>
-);
-
-const BangladeshFlagIcon = ({ className }) => (
-  <svg viewBox="0 0 36 24" className={className} aria-hidden="true">
-    <rect width="36" height="24" fill="#006a4e" />
-    <circle cx="14.4" cy="12" r="6.3" fill="#f42a41" />
-  </svg>
-);
+const keywordImages = {
+  oman: omanMap,
+  bangladesh: bangladeshMap,
+  southasia: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Map_of_South_Asia.png/960px-Map_of_South_Asia.png"
+};
 
 const bioImages = {
   default: ejazPortrait,
@@ -83,19 +72,19 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
 
   const interactiveKeywords = {
     en: [
-      { key: 'oman', match: 'Oman', icon: <OmanFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
-      { key: 'bangladesh', match: 'Bangladesh', icon: <BangladeshFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
+      { key: 'oman', match: 'Oman' },
+      { key: 'bangladesh', match: 'Bangladesh' },
       { key: 'southasia', match: 'South Asian' },
       { key: 'southasia', match: 'South Asia' }
     ],
     bn: [
-      { key: 'oman', match: 'ওমান', icon: <OmanFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
-      { key: 'bangladesh', match: 'বাংলাদেশ', icon: <BangladeshFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
-      { key: 'southasia', match: 'দক্ষিণ এশীয়' }
+      { key: 'oman', match: 'ওমান' },
+      { key: 'bangladesh', match: 'বাংলাদেশ' },
+      { key: 'southasia', match: 'দক্ষিণ এশীয়' }
     ],
     ar: [
-      { key: 'oman', match: 'عُمان', icon: <OmanFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
-      { key: 'bangladesh', match: 'بنغلاديش', icon: <BangladeshFlagIcon className="w-3.5 h-3.5 rounded-[1px]" /> },
+      { key: 'oman', match: 'عُمان' },
+      { key: 'bangladesh', match: 'بنغلاديش' },
       { key: 'southasia', match: 'جنوب آسيا' }
     ]
   };
@@ -127,10 +116,16 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
                 onMouseLeave={() => setActiveImageKey('default')}
                 onTouchStart={() => setActiveImageKey(kw.key)}
                 onTouchEnd={() => setActiveImageKey('default')}
-                className="px-1.5 py-0.5 mx-0.5 bg-[var(--about-chip-bg)] text-[var(--about-chip-text)] font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-[var(--about-chip-hover)] transition-colors inline-flex items-center gap-1 align-baseline rounded-sm shadow-sm"
+                className="cursor-pointer hover:opacity-70 transition-opacity inline-flex items-center gap-1 align-baseline"
+                title={kw.key === 'oman' ? 'Oman' : kw.key === 'bangladesh' ? 'Bangladesh' : 'South Asia'}
               >
-                {kw.icon}
                 {part.slice(idx, end)}
+                <img
+                  src={keywordImages[kw.key]}
+                  alt=""
+                  className="inline-block h-2.5 w-auto opacity-80 pointer-events-none"
+                  draggable={false}
+                />
               </span>
             );
             cursor = end;
@@ -194,8 +189,8 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
               <button
                 onClick={() => setBioLang('en')}
                 title="English"
-                className={`px-2.5 py-1 transition-all rounded-sm font-bold text-xs ${
-                  bioLang === 'en' ? 'bg-[var(--about-chip-bg)] text-[var(--about-chip-text)] font-black scale-105 shadow' : 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)] hover:bg-[var(--about-ink-10)]'
+                className={`px-2.5 py-1 transition-all rounded-sm text-xs ${
+                  bioLang === 'en' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)]'
                 }`}
               >
                 A
@@ -204,8 +199,8 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
               <button
                 onClick={() => setBioLang('bn')}
                 title="বাংলা"
-                className={`px-2.5 py-1 transition-all rounded-sm font-bold text-xs font-sans ${
-                  bioLang === 'bn' ? 'bg-[var(--about-chip-bg)] text-[var(--about-chip-text)] font-black scale-105 shadow' : 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)] hover:bg-[var(--about-ink-10)]'
+                className={`px-2.5 py-1 transition-all rounded-sm text-xs font-sans ${
+                  bioLang === 'bn' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)]'
                 }`}
               >
                 অ
@@ -214,8 +209,8 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
               <button
                 onClick={() => setBioLang('ar')}
                 title="العربية"
-                className={`px-2.5 py-1 transition-all rounded-sm font-bold text-xs font-sans ${
-                  bioLang === 'ar' ? 'bg-[var(--about-chip-bg)] text-[var(--about-chip-text)] font-black scale-105 shadow' : 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)] hover:bg-[var(--about-ink-10)]'
+                className={`px-2.5 py-1 transition-all rounded-sm text-xs font-sans ${
+                  bioLang === 'ar' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)]'
                 }`}
               >
                 ع
@@ -250,7 +245,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
               href={instagramUrl}
               target="_blank"
               rel="noreferrer"
-              className="text-[var(--about-ink)] font-bold uppercase tracking-[0.2em] hover:opacity-70 transition-opacity flex items-center gap-1 group"
+              className="text-[var(--about-ink)] tracking-[0.2em] hover:opacity-70 transition-opacity flex items-center gap-1 group"
             >
               EJAZMEHEDI
               <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -258,7 +253,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
             {/* Email */}
             <a
               href={`mailto:${personalEmail}`}
-              className="text-[var(--about-ink)] font-bold uppercase tracking-[0.2em] hover:opacity-70 transition-opacity flex items-center gap-1 group"
+              className="text-[var(--about-ink)] tracking-[0.2em] hover:opacity-70 transition-opacity flex items-center gap-1 group"
             >
               {personalEmail}
               <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -272,7 +267,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       {/* FULL TABULAR AWARDS & HONORS ARCHIVE */}
       <div className="space-y-6 pb-12 md:pb-16">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3">
-          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-[var(--about-ink-80)]">
+          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase text-[var(--about-ink-80)]">
             AWARDS & FESTIVAL EXHIBITIONS ({filteredAwards.length})
           </h2>
 
@@ -280,8 +275,8 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
           <div className="flex items-center gap-2 text-xs font-mono-custom uppercase tracking-widest">
             <button
               onClick={() => setAwardFilter('all')}
-              className={`px-2.5 py-0.5 rounded-sm font-bold ${
-                awardFilter === 'all' ? 'bg-[var(--about-chip-bg)] text-[var(--about-chip-text)]' : 'text-[var(--about-ink-60)] hover:text-[var(--about-ink)]'
+              className={`px-2.5 py-0.5 rounded-sm ${
+                awardFilter === 'all' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink-60)] hover:text-[var(--about-ink)]'
               }`}
             >
               ALL
@@ -289,8 +284,8 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
             <span className="text-[var(--about-ink-30)]">/</span>
             <button
               onClick={() => setAwardFilter('moshari')}
-              className={`px-2.5 py-0.5 rounded-sm font-bold ${
-                awardFilter === 'moshari' ? 'bg-[var(--about-chip-bg)] text-[var(--about-chip-text)]' : 'text-[var(--about-ink-60)] hover:text-[var(--about-ink)]'
+              className={`px-2.5 py-0.5 rounded-sm ${
+                awardFilter === 'moshari' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink-60)] hover:text-[var(--about-ink)]'
               }`}
             >
               MOSHARI
@@ -298,8 +293,8 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
             <span className="text-[var(--about-ink-30)]">/</span>
             <button
               onClick={() => setAwardFilter('foreigners')}
-              className={`px-2.5 py-0.5 rounded-sm font-bold ${
-                awardFilter === 'foreigners' ? 'bg-[var(--about-chip-bg)] text-[var(--about-chip-text)]' : 'text-[var(--about-ink-60)] hover:text-[var(--about-ink)]'
+              className={`px-2.5 py-0.5 rounded-sm ${
+                awardFilter === 'foreigners' ? 'text-[var(--about-ink)] underline underline-offset-4' : 'text-[var(--about-ink-60)] hover:text-[var(--about-ink)]'
               }`}
             >
               FOREIGNERS ONLY
@@ -314,16 +309,16 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
               key={award.id}
               className="py-3.5 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 items-baseline hover:bg-[var(--about-ink-5)] transition-colors px-1"
             >
-              <div className="sm:col-span-2 text-[var(--about-ink-70)] font-bold">
+              <div className="sm:col-span-2 text-[var(--about-ink-70)]">
                 {award.date}
               </div>
-              <div className="sm:col-span-3 text-[var(--about-ink)] font-black uppercase truncate">
+              <div className="sm:col-span-3 text-[var(--about-ink)] uppercase truncate">
                 {award.film || 'NARRATIVE'}
               </div>
               <div className="sm:col-span-4 text-[var(--about-ink)] font-medium">
                 {award.title}
               </div>
-              <div className="sm:col-span-3 text-[var(--about-ink-70)] text-right hidden sm:block truncate font-bold">
+              <div className="sm:col-span-3 text-[var(--about-ink-70)] text-right hidden sm:block truncate">
                 {award.organization}
               </div>
             </div>
@@ -334,11 +329,10 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       {/* PRESS & INTERVIEWS ARCHIVE */}
       <div className="space-y-6 pb-12 md:pb-16">
         <div className="flex items-center justify-between pb-3">
-          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-[var(--about-ink-80)]">
+          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase text-[var(--about-ink-80)]">
             PRESS & INTERVIEWS ({pressData.length})
           </h2>
-          <span className="text-[10px] font-mono-custom text-[var(--about-ink-60)] uppercase font-bold">
-            GLOBAL COVERAGE
+          <span className="text-[10px] font-mono-custom text-[var(--about-ink-60)] uppercase">GLOBAL COVERAGE
           </span>
         </div>
 
@@ -350,11 +344,11 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
             >
               <div className="space-y-1 max-w-3xl">
                 <div className="flex items-center gap-3 text-[var(--about-ink-70)]">
-                  <span className="font-bold text-[var(--about-ink)] uppercase">{item.publisher}</span>
+                  <span className="text-[var(--about-ink)] uppercase">{item.publisher}</span>
                   <span>—</span>
                   <span>{item.date}</span>
                 </div>
-                <h3 className="text-sm font-sans text-[var(--about-ink)] font-bold group-hover:underline">
+                <h3 className="text-sm font-sans text-[var(--about-ink)] group-hover:underline">
                   {item.title}
                 </h3>
               </div>
@@ -364,7 +358,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
                   href={item.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-[11px] font-mono-custom text-[var(--about-ink)] hover:bg-[var(--about-chip-bg)] hover:text-[var(--about-chip-text)] border border-[var(--about-border)] px-2.5 py-1 flex items-center gap-1 uppercase tracking-widest shrink-0 font-bold transition-all rounded-sm"
+                  className="text-[11px] font-mono-custom text-[var(--about-ink)] hover:opacity-60 border border-[var(--about-border)] px-2.5 py-1 flex items-center gap-1 uppercase tracking-widest shrink-0 transition-all rounded-sm"
                 >
                   <span>READ ARTICLE</span>
                   <ArrowUpRight className="w-3 h-3" />
@@ -378,14 +372,14 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       {/* SELECTED CLIENTS */}
       <div className="space-y-6 pb-8">
         <div className="pb-3">
-          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase font-bold text-[var(--about-ink-80)]">
+          <h2 className="text-xs font-mono-custom tracking-[0.25em] uppercase text-[var(--about-ink-80)]">
             SELECTED CLIENTS & BRANDED PARTNERS
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 text-xs font-mono-custom text-[var(--about-ink)] font-bold">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 text-xs font-mono-custom text-[var(--about-ink)]">
           {activeClients.map((client, idx) => (
-            <div key={idx} className="pl-3 py-2 bg-[var(--about-ink-5)] hover:bg-[var(--about-chip-bg)] hover:text-[var(--about-chip-text)] transition-all rounded-r-sm">
+            <div key={idx} className="pl-3 py-2 bg-[var(--about-ink-5)] hover:bg-[var(--about-ink-10)] transition-all rounded-r-sm">
               {client}
             </div>
           ))}
