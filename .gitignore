@@ -14,7 +14,7 @@ dist-ssr
 
 # Local working folders (not part of the site)
 ae
-assets
+/assets/
 cursor demo
 
 # Editor directories and files
