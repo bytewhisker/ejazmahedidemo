@@ -26,7 +26,8 @@ function MainContent() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   // Filter active projects list
-  const projects = projectsData;
+  const HIDDEN_PROJECT_SLUGS = ['indalo-hobeki', 'attic-echoes-in-your-attic'];
+  const projects = projectsData.filter((p) => !HIDDEN_PROJECT_SLUGS.includes(p.slug));
   const filteredProjects = projects.filter((project) => {
     if (activeFilter === 'films') return project.category === 'Films';
     if (activeFilter === 'commercial') return project.category === 'Commercial';

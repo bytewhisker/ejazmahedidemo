@@ -422,11 +422,13 @@ export const projectsData = [
     year: "2023",
     client: "Al-Mouj / RealityCG",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/projects/al-mouj-golf-10-years-of-golf/still-01.webp",
     hoverStills: [
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop"
+      "/projects/al-mouj-golf-10-years-of-golf/still-01.webp",
+      "/projects/al-mouj-golf-10-years-of-golf/still-02.webp",
+      "/projects/al-mouj-golf-10-years-of-golf/still-03.webp"
     ],
-    poster: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop",
+    poster: "/projects/al-mouj-golf-10-years-of-golf/still-01.webp",
     videos: [
       {
         id: "main",
@@ -437,7 +439,14 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop"
+      "/projects/al-mouj-golf-10-years-of-golf/still-04.webp",
+      "/projects/al-mouj-golf-10-years-of-golf/still-05.webp",
+      "/projects/al-mouj-golf-10-years-of-golf/still-06.webp",
+      "/projects/al-mouj-golf-10-years-of-golf/still-07.webp",
+      "/projects/al-mouj-golf-10-years-of-golf/still-08.webp",
+      "/projects/al-mouj-golf-10-years-of-golf/still-09.webp",
+      "/projects/al-mouj-golf-10-years-of-golf/still-10.webp",
+      "/projects/al-mouj-golf-10-years-of-golf/still-11.webp"
     ],
     crew: {
       director: "Anwar Al-Asmi",
@@ -450,6 +459,59 @@ export const projectsData = [
       creativeProcess: "Cinematic retrospective celebrating a decade of international championship golf.",
       challenges: "Matching legacy archival footage aesthetics with modern 4K digital cinema.",
       productionStory: "Filmed in Sultanate of Oman."
+    }
+  },
+  {
+    id: "changan-magic-hour",
+    slug: "changan-magic-hour",
+    title: "Changan - Magic Hour",
+    category: "Commercial",
+    year: "2025",
+    client: "Changan / DUSK",
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "/projects/changan-magic-hour/still-01.webp",
+    hoverStills: [
+      "/projects/changan-magic-hour/still-01.webp",
+      "/projects/changan-magic-hour/still-02.webp",
+      "/projects/changan-magic-hour/still-03.webp"
+    ],
+    poster: "/projects/changan-magic-hour/still-01.webp",
+    videos: [
+      {
+        id: "main",
+        labelKey: "mainFilm",
+        title: "Changan - Magic Hour",
+        vimeoId: "1032612336",
+        embedUrl: "https://player.vimeo.com/video/1032612336?title=0&byline=0&portrait=0&badge=0&autopause=0"
+      }
+    ],
+    screengrabs: [
+      "/projects/changan-magic-hour/still-04.webp",
+      "/projects/changan-magic-hour/still-05.webp",
+      "/projects/changan-magic-hour/still-06.webp",
+      "/projects/changan-magic-hour/still-07.webp",
+      "/projects/changan-magic-hour/still-08.webp",
+      "/projects/changan-magic-hour/still-09.webp",
+      "/projects/changan-magic-hour/still-10.webp",
+      "/projects/changan-magic-hour/still-11.webp",
+      "/projects/changan-magic-hour/still-12.webp",
+      "/projects/changan-magic-hour/still-13.webp",
+      "/projects/changan-magic-hour/still-14.webp",
+      "/projects/changan-magic-hour/still-15.webp",
+      "/projects/changan-magic-hour/still-16.webp",
+      "/projects/changan-magic-hour/still-17.webp",
+      "/projects/changan-magic-hour/still-18.webp"
+    ],
+    crew: {
+      dop: "Ejaz Mehedi",
+      client: "Changan",
+      productionCompany: "DUSK"
+    },
+    story: {
+      background: "Commercial for Changan shot at magic hour.",
+      creativeProcess: "Golden-hour automotive cinematography with cinematic lighting.",
+      challenges: "Capturing the fleeting magic-hour window while keeping car and landscape perfectly lit.",
+      productionStory: "Filmed for Changan's latest model launch."
     }
   },
   {

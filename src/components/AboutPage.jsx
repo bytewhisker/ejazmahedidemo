@@ -33,25 +33,26 @@ const bioImages = {
 
 const bioTextData = {
   en: {
-    p1: "Born and raised in the cradle of Dhaka, Bangladesh, Ejaz is a self-taught cinematographer and filmmaker working on narratives, commercials, and music videos.",
-    p2: "Deeply moved by Rob Reiner's \"Stand By Me\" and Morshedul Islam's \"Dipu Number Two\", the two films perhaps sparked an artistic curiosity and passion for story in his childhood. While pursuing a photography degree in his early twenties with a deep-rooted interest in the art form, Ejaz became heavily invested in motion pictures after working on a series of documentary films.",
-    p3: "Recently Ejaz was behind the camera on Jordan Peele and Riz Ahmed's executive produced short film \"MOSHARI\". The multi-OSCAR®-qualifying, groundbreaking, genre-bending horror short won 11 awards from 20+ festivals around the world in 2022.",
-    p4: "One of Ejaz's other recent films \"FOREIGNERS ONLY\" is the first Bangladeshi film commissioned for any US streaming platform by 20th Digital Studio. The film recently aired on US streaming giant HULU's Bite Size Halloween Season 3 - Episode 9.",
-    p5: "Currently based in Oman and Bangladesh, Ejaz actively seeks stories and projects that resonate with his South Asian roots and identity. He has also shot several commercials and branded content for a variety of clients including Vodafone, Yamaha, Uber, Majid-Al-Futtaim, Muscat Bay, BBC Storyworks, The Global Fund, Omran Group, and more."
+    p1: "Ejaz Mehedi is a Bangladeshi cinematographer and filmmaker whose visual perspective has been shaped by both an intimacy with home and long periods spent away from it. He grew up in Dhaka, where some of his earliest memories of cinema came through films such as Rob Reiner's Stand By Me and Morshedul Islam's Dipu Number Two. Different in language and geography but similar in their emotional attention to landscapes, friendship, memory, growing up and trauma, both films stayed with him long before he understood filmmaking as a profession.",
+    p2: "His formative years later took him from Dhaka to Nottingham in the United Kingdom and Cyberjaya in Malaysia, followed by years of living and working across different countries. Distance gradually changed the way he looked at Bangladesh. Returning home after long stretches abroad gave him the perspective of both an insider and an outsider: deeply familiar with the rhythms and contradictions of South Asian life, yet able to observe them with a certain separation. That duality has become central to his work, combining culturally specific stories with a broader international visual language.",
+    p3: "His work has since screened at more than 55 film festivals across 15 countries and received 19 awards. He photographed Nuhash Humayun's MOSHARI, executive produced by Jordan Peele's Monkeypaw Productions and Riz Ahmed's Left Handed Films. The film became the first Bangladeshi short to qualify for the Academy Awards and received major recognition at SXSW, the Melbourne International Film Festival and Fantasia. He also served as Director of Photography on FOREIGNERS ONLY, produced for 20th Digital Studio and released on Hulu, as well as A Thing About Kashem and the feature film Moving Bangladesh.",
+    p4: "Alongside film, Ejaz has directed and photographed commercial and branded work for clients including BBC StoryWorks, The Economist, Vodafone, Yamaha, Uber, UNICEF and organisations across the Gulf. He is currently based between Muscat, Dhaka and, more recently, New York City. In Oman, he also runs DUSK, a hybrid creative agency and production company producing premium brand films, commercials and branded content for clients across Oman and the wider region."
   },
   bn: {
-    p1: "ঢাকার স্নিগ্ধ কোলে লালিত-পালিত এজাজ মেহেদী একজন স্বশিক্ষিত চিত্রগ্রাহক ও চলচ্চিত্র নির্মাতা, যিনি কাহিনিচিত্র, বাণিজ্যিক বিজ্ঞাপন ও মিউজিক ভিডিও নির্মাণে কাজ করছেন।",
-    p2: "রব রাইনারের 'স্ট্যান্ড বাই মি' এবং মোরশেদুল ইসলামের 'দীপু নম্বর টু' ছবি দুটি শৈশবেই তাঁর মনে গল্প ও শিল্পের প্রতি গভীর অনুরাগের জন্ম দেয়। বিশের কোঠায় ফটোগ্রাফিতে ডিগ্রি অর্জনের সময় ডকুমেন্টারি সিরিজে কাজের মাধ্যমে চলচ্ছছবির প্রতি তাঁর গভীর প্রেম তৈরি হয়।",
-    p3: "সম্প্রতি এজাজ জর্ডান পিল এবং রিজ আহমেদ প্রযোজিত প্রশংসিত স্বল্পদৈর্ঘ্য চলচ্চিত্র \"মশারি\"-র চিত্রগ্রাহক (DOP) হিসেবে কাজ করেছেন। অস্কার® যোগ্যতাসম্পন্ন এই হরর শর্ট ফিল্মটি ২০২২ সালে বিশ্বের ২০টিরও বেশি উৎসবে ১১টি পুরস্কার অর্জন করে।",
-    p4: "তাঁর অন্যতম আলোচিত চলচ্চিত্র \"ফরেনার্স অনলি\" হলো ২০থ ডিজিটাল স্টুдио কর্তৃক মার্কিন স্ট্রিমারের জন্য কমিশন করা প্রথম বাংলাদেশি চলচ্চিত্র, যা পরে HULU-র বাইট সাইজ হ্যালোউইন সিজন ৩-এ পরিবেশিত হয়।",
-    p5: "বর্তমানে ওমান ও বাংলাদেশে অবস্থানরত এজাজ দক্ষিণ এশীয় শেকড় ও পরিচয়ের সাথে সংগতিপূর্ণ গল্প খুঁজে চলেছেন। তিনি ভোডাফোন, ইয়ামাহা, উবার, মজিদ-আল-ফুত্তাইম, মাসকাট বে, বিবিসি স্টোরিওয়ার্কস, দ্য গ্লোবাল ফান্ড, ওমান গ্রুপসহ বিভিন্ন বৈশ্বিক ব্র্যান্ডের বাণিজ্যিক বিজ্ঞাপন চিত্রায়িত করেছেন।"
+    p1: "এজাজ মেহেদী একজন বাংলাদেশি চিত্রগ্রাহক (Cinematographer) ও চলচ্চিত্র নির্মাতা, যার ভিজ্যুয়াল দৃষ্টিভঙ্গি গড়ে উঠেছে নিজের দেশকে খুব কাছ থেকে দেখা এবং দীর্ঘ সময় দেশ থেকে দূরে থাকার অভিজ্ঞতার মধ্য দিয়ে। তিনি ঢাকায় বেড়ে উঠেছেন। চলচ্চিত্রের প্রতি তাঁর আগ্রহের শুরু হয়েছিল শৈশবে, যখন তিনি রব রাইনারের Stand By Me এবং মোরশেদুল ইসলামের দীপু নাম্বার টু দেখেন। ভাষা ও ভৌগোলিক প্রেক্ষাপট ভিন্ন হলেও বন্ধুত্ব, স্মৃতি, বেড়ে ওঠা, ট্রমা এবং পরিবেশকে ঘিরে মানবিক গল্প বলার ক্ষেত্রে দুটি চলচ্চিত্রের মধ্যে যে আবেগময় সাদৃশ্য ছিল, তা তাঁকে গভীরভাবে প্রভাবিত করে। অনেক আগে থেকেই এই চলচ্চিত্রগুলো তাঁর মনে স্থায়ী ছাপ ফেলে, যখন তিনি এখনও চলচ্চিত্র নির্মাণকে পেশা হিসেবে ভাবেননি।",
+    p2: "পরবর্তীতে তাঁর শিক্ষাজীবন ও কর্মজীবন তাঁকে ঢাকা থেকে যুক্তরাজ্যের নটিংহ্যাম এবং মালয়েশিয়ার সাইবারজায়ায় নিয়ে যায়। এরপর তিনি বিভিন্ন দেশে বসবাস ও কাজ করেন। দীর্ঘ সময় বিদেশে থাকার ফলে বাংলাদেশের প্রতি তাঁর দৃষ্টিভঙ্গি বদলে যায়। দীর্ঘ বিরতির পর দেশে ফিরে আসা তাঁকে একই সঙ্গে একজন অন্তর্দৃষ্টিসম্পন্ন স্থানীয় এবং একজন পর্যবেক্ষণশীল বহিরাগত হিসেবে দেখার সুযোগ দেয়। দক্ষিণ এশিয়ার জীবনযাত্রার ছন্দ, বৈপরীত্য ও সাংস্কৃতিক বাস্তবতার সঙ্গে গভীর পরিচিতি থাকার পাশাপাশি তিনি সেগুলোকে একটি নিরপেক্ষ দূরত্ব থেকেও পর্যবেক্ষণ করতে সক্ষম হন। এই দ্বৈত অভিজ্ঞতাই তাঁর কাজের অন্যতম বৈশিষ্ট্য, যেখানে স্থানীয় সাংস্কৃতিক গল্প আন্তর্জাতিক ভিজ্যুয়াল ভাষার সঙ্গে মিশে যায়।",
+    p3: "এ পর্যন্ত তাঁর কাজ ১৫টি দেশের ৫৫টিরও বেশি চলচ্চিত্র উৎসবে প্রদর্শিত হয়েছে এবং ১৯টি পুরস্কার অর্জন করেছে। তিনি নুহাশ হুমায়ূনের MOSHARI চলচ্চিত্রের চিত্রগ্রাহক ছিলেন, যা জর্ডান পিলের Monkeypaw Productions এবং রিজ আহমেদের Left Handed Films–এর নির্বাহী প্রযোজনায় নির্মিত হয়। চলচ্চিত্রটি একাডেমি অ্যাওয়ার্ডসের জন্য যোগ্যতা অর্জনকারী প্রথম বাংলাদেশি স্বল্পদৈর্ঘ্য চলচ্চিত্র হিসেবে ইতিহাস সৃষ্টি করে এবং SXSW, Melbourne International Film Festival ও Fantasia–তে উল্লেখযোগ্য স্বীকৃতি লাভ করে।",
+    p4: "এজাজ FOREIGNERS ONLY চলচ্চিত্রের পরিচালক অব ফটোগ্রাফি (Director of Photography) হিসেবেও কাজ করেছেন, যা 20th Digital Studio-এর জন্য নির্মিত এবং Hulu-তে মুক্তি পেয়েছে। এছাড়া তিনি A Thing About Kashem এবং পূর্ণদৈর্ঘ্য চলচ্চিত্র Moving Bangladesh–এর চিত্রগ্রাহক ছিলেন।",
+    p5: "চলচ্চিত্রের পাশাপাশি তিনি BBC StoryWorks, The Economist, Vodafone, Yamaha, Uber, UNICEF এবং উপসাগরীয় অঞ্চলের বিভিন্ন প্রতিষ্ঠানের জন্য বাণিজ্যিক ও ব্র্যান্ডেড কনটেন্ট পরিচালনা ও চিত্রগ্রহণ করেছেন।",
+    p6: "বর্তমানে তিনি ওমানের মাস্কাট, বাংলাদেশের ঢাকা এবং সাম্প্রতিক সময়ে নিউ ইয়র্ক সিটির মধ্যে সময় ভাগ করে কাজ করছেন। ওমানে তিনি DUSK নামের একটি হাইব্রিড ক্রিয়েটিভ এজেন্সি ও প্রোডাকশন কোম্পানি পরিচালনা করেন, যা ওমান এবং বৃহত্তর অঞ্চলের বিভিন্ন ক্লায়েন্টের জন্য প্রিমিয়াম ব্র্যান্ড ফিল্ম, বিজ্ঞাপনচিত্র এবং ব্র্যান্ডেড কনটেন্ট নির্মাণ করে।"
   },
   ar: {
-    p1: "نشأ إعزاز مهدي في دكا، بنغلاديش، وهو مدير تصوير سينمائي ومخرج عصامي يعمل في الأفلام الروائية والإعلانات التجارية والفيديو كليب.",
-    p2: "تأثر في طفولته بشدة بفيلم 'Stand By Me' للمخرج روب راينر وفيلم 'Dipu Number Two' للمخرج مرشد الإسلام، مما أشعل شغفه بالسرد البصري. وأثناء دراسته للتصوير الفوتوغرافي في أوائل عشرينياته، دخل عالم السينما عبر إخراج الأفلام الوثائقية.",
-    p3: "مؤخراً، عمل إعزاز كمدير تصوير للفيلم القصير 'موشاري' من إنتاج جوردان بيل وريز أحمد. حصد الفيلم المؤهل لجوائز الأوسكار® 11 جائزة في أكثر من 20 مهرجاناً سينمائياً حول العالم في عام 2022.",
-    p4: "كما يعد فيلمه القصير 'FOREIGNERS ONLY' أول فيلم بنغلاديشي يتم تكليفه للمنصات الأمريكية بواسطة 20th Digital Studio، حيث عُرض على منصة HULU العالمية.",
-    p5: "يقيم إعزاز حالياً بين عُمان وبنغلاديش، ويسعى دائماً لإخراج قصص تعبر عن هويته وجذوره في جنوب آسيا. وقد صور إعلانات تجارية لعلامات بارزة مثل فودافون، ياماها، أوبر، ماجد الفطيم، مسقط باي، بي بي سي ستوري ووركس، عمران، وغيرها."
+    p1: "إيجاز مهدي هو مدير تصوير سينمائي وصانع أفلام بنغلاديشي، تشكّلت رؤيته البصرية من خلال ارتباطه العميق بوطنه ومن خلال فترات طويلة قضاها بعيداً عنه. نشأ في مدينة دكا، حيث بدأت علاقته المبكرة بالسينما من خلال أفلام مثل Stand By Me للمخرج روب راينر وDipu Number Two للمخرج مرشد الإسلام. وعلى الرغم من اختلافهما في اللغة والجغرافيا، فقد اشتركا في اهتمامهما بالمشاعر الإنسانية والمناظر الطبيعية والصداقة والذاكرة وتجارب النضج والصدمات النفسية، وهي عناصر تركت أثراً عميقاً في نفسه قبل أن يدرك أن صناعة الأفلام يمكن أن تكون مهنةً له.",
+    p2: "لاحقاً انتقل من دكا إلى نوتنغهام في المملكة المتحدة ثم إلى سايبَر جايا في ماليزيا خلال سنواته التكوينية، قبل أن يعيش ويعمل في عدة دول أخرى. ومع مرور الوقت، غيّر البعد الجغرافي طريقته في النظر إلى بنغلاديش. فقد منحته العودة إلى الوطن بعد فترات طويلة من الغياب منظوراً يجمع بين الداخل والخارج؛ فهو على دراية عميقة بإيقاع الحياة في جنوب آسيا وتناقضاتها، وفي الوقت نفسه قادر على تأملها من مسافة نقدية وموضوعية. وقد أصبحت هذه الازدواجية عنصراً محورياً في أعماله، حيث يمزج بين القصص ذات الخصوصية الثقافية المحلية ولغة بصرية ذات طابع عالمي.",
+    p3: "عُرضت أعماله في أكثر من 55 مهرجاناً سينمائياً في 15 دولة، وحصدت 19 جائزة. وكان مدير التصوير لفيلم MOSHARI للمخرج نوحاش همايون، والذي تولت إنتاجه التنفيذي شركتا Monkeypaw Productions التابعة لجوردان بيل وLeft Handed Films التابعة لريز أحمد. وقد أصبح الفيلم أول فيلم قصير من بنغلاديش يتأهل لجوائز الأوسكار، كما نال إشادة واسعة في مهرجانات SXSW وMelbourne International Film Festival وFantasia.",
+    p4: "كما شغل منصب مدير التصوير (Director of Photography) لفيلم FOREIGNERS ONLY، الذي أُنتج لصالح 20th Digital Studio وعُرض على منصة Hulu، بالإضافة إلى فيلم A Thing About Kashem والفيلم الروائي الطويل Moving Bangladesh.",
+    p5: "وبالتوازي مع عمله السينمائي، أخرج وصوّر أعمالاً تجارية ومحتوىً بصرياً للعلامات التجارية لصالح جهات عالمية مثل BBC StoryWorks وThe Economist وVodafone وYamaha وUber وUNICEF، إضافةً إلى عدد من المؤسسات في منطقة الخليج.",
+    p6: "يقيم إيجاز مهدي حالياً بين مسقط ودكا، ومؤخراً مدينة نيويورك. كما يدير في سلطنة عُمان شركة DUSK، وهي وكالة إبداعية وشركة إنتاج هجينة متخصصة في إنتاج الأفلام التجارية الراقية والإعلانات والمحتوى المرتبط بالعلامات التجارية لعملاء في عُمان والمنطقة على نطاق أوسع."
   }
 };
 
@@ -112,6 +113,10 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
           let cursor = 0;
           let count = 0;
           while (idx !== -1) {
+            // Extend the chip to the end of the inflected word so suffixes
+            // (e.g. "Bangladeshi", "বাংলাদেশি", "বাংলাদেশের") stay inside it
+            let end = idx + kwLower.length;
+            while (end < part.length && /[\p{L}\p{M}]/u.test(part[end])) end++;
             nextParts.push(part.slice(cursor, idx));
             nextParts.push(
               <span
@@ -123,10 +128,10 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
                 className="px-1.5 py-0.5 mx-0.5 bg-[var(--about-chip-bg)] text-[var(--about-chip-text)] font-mono-custom text-xs font-bold uppercase cursor-pointer hover:bg-[var(--about-chip-hover)] transition-colors inline-flex items-center gap-1 align-baseline rounded-sm shadow-sm"
               >
                 {kw.icon}
-                {part.slice(idx, idx + kw.match.length)}
+                {part.slice(idx, end)}
               </span>
             );
-            cursor = idx + kw.match.length;
+            cursor = end;
             idx = lower.indexOf(kwLower, cursor);
           }
           nextParts.push(part.slice(cursor));
