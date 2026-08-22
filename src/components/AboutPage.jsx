@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { awardsData, pressData, clientsData } from '../data/projectsData';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ejazPortrait from '../assets/ejaz-portrait.png';
+import ejazPortrait from '../assets/ejaz-portrait.webp';
+import omanMap from '../assets/oman-map.png';
+import bangladeshMap from '../assets/bangladesh-map.jpg';
 
 const PERSONAL_EMAIL = 'contact@ejazmehedi.com';
 const INSTAGRAM_URL = 'https://instagram.com/ejazmehedi';
@@ -26,8 +28,8 @@ const BangladeshFlagIcon = ({ className }) => (
 
 const bioImages = {
   default: ejazPortrait,
-  oman: "https://media.istockphoto.com/id/1060040826/photo/oman-omani-flag-textile-cloth-fabric-waving-on-the-top-sunrise-mist-fog.jpg",
-  bangladesh: "https://img.magnific.com/premium-photo/national-flag-texture-bangladesh-map_485374-17422.jpg",
+  oman: omanMap,
+  bangladesh: bangladeshMap,
   southasia: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Map_of_South_Asia.png/960px-Map_of_South_Asia.png"
 };
 
