@@ -962,7 +962,7 @@ export const pressData = [
     date: "2022",
     publisher: "Friday Night Movie Podcast",
     description: "Behind the scenes on winning SXSW Grand Jury Award and crafting the imagery of MOSHARI.",
-    link: "https://www.frinightmovie.com/episodes/moshari-made-mom-jump"
+    link: "https://www.frinightmovie.com/post/moshari-made-mom-jump-fnm-reaction-video-interview-with-the-sxsw-award-winning-filmmakers"
   },
   {
     id: "press-protidiner-bangladesh",
