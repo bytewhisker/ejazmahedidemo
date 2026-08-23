@@ -938,7 +938,7 @@ export const pressData = [
     date: "2023",
     publisher: "ZEISS Lenspire",
     description: "In-depth interview on optics, visual storytelling, and cinematography techniques.",
-    link: "https://lenspire.zeiss.com/cinematography/en/whos-the-vampire-moshari-a-postapocalyptic-survival-tale-filmed-by-bangladeshi-cinematographer-ejaz-mehedi-with-zeiss-cp-3-lenses/"
+    link: "https://lenspire.zeiss.com/cine/en/article/moshari"
   },
   {
     id: "press-prothom-alo",
