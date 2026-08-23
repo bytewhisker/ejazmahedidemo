@@ -51,13 +51,13 @@ export const ProjectListView = ({ projects, onSelectProject }) => {
                 <h3 className={`text-base sm:text-lg md:text-xl font-mono-custom tracking-[0.18em] uppercase font-normal transition-all duration-200 truncate ${
                   isHovered 
                     ? 'text-ink translate-x-2 font-medium' 
-                    : 'text-muted/60 group-hover:text-ink'
+                    : 'text-ink group-hover:text-ink'
                 }`}>
                   {project.title}
                 </h3>
 
-                <span className={`text-xs font-mono-custom lowercase transition-colors truncate hidden sm:inline ${
-                  isHovered ? 'text-ink-soft' : 'text-muted/80'
+                <span className={`text-base sm:text-lg md:text-xl font-mono-custom lowercase transition-colors truncate ${
+                  isHovered ? 'text-accent font-medium' : 'text-ink-soft/90 group-hover:text-ink-soft'
                 }`}>
                   — {project.category === 'Commercial' ? 'commercial' : 'film'}
                 </span>

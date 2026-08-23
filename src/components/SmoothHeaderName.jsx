@@ -5,7 +5,7 @@ const names = [
   { 
     id: 'en', 
     text: "EJAZ MEHEDI", 
-    fontClass: "font-sans tracking-normal font-black text-[clamp(1.4rem,6vw,7.5rem)] leading-none" 
+    fontClass: "font-mega tracking-tight font-bold text-[clamp(1.5rem,6.5vw,8rem)] leading-none" 
   }
 ];
 

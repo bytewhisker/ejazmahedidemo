@@ -56,9 +56,12 @@ img {
 }
 
 @theme inline {
-  --font-mega: "Bodoni Moda", "Times New Roman", serif;
-  --font-sans: "Raleway", "Neue Montreal", Inter, Arial, Helvetica, system-ui, sans-serif;
-  --font-haas: "neue-haas-grotesk-display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-oswald: "Oswald", sans-serif;
+  --font-girott: "Oswald", sans-serif;
+  --font-mega: "Oswald", sans-serif;
+  --font-focal: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-haas: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
@@ -108,17 +111,21 @@ img {
     color-scheme: light;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
   body {
     background-color: var(--canvas);
     color: var(--ink);
-    font-family: 'Raleway', 'Neue Montreal', Inter, Arial, Helvetica, system-ui, sans-serif;
-    font-weight: 100;
-    overflow-x: hidden;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 400;
+    overflow-x: clip;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   /* Hide default browser cursor on desktop pointer devices */
@@ -128,19 +135,19 @@ img {
     }
   }
 
-  /* Single Minimalist Sans-Serif System — Raleway thin (title & footer keep Bodoni Moda) */
+  /* Single Minimalist Sans-Serif System — Inter */
   .font-mono-custom,
   .font-editorial,
   .font-display-heavy {
-    font-family: 'Raleway', 'Neue Montreal', Inter, Arial, Helvetica, system-ui, sans-serif;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
-  /* Neue Haas Grotesk Display — same as Mika reference site */
+  /* Neue Haas Grotesk Display / Inter font class */
   .font-haas {
-    font-family: "neue-haas-grotesk-display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
-  /* Heavy Extended Display Grotesk Utility (kept for weight, same family) */
+  /* Heavy Extended Display Grotesk Utility */
   .font-display-heavy {
     font-weight: 800;
   }
@@ -162,12 +169,14 @@ img {
   }
 }
 
-/* Glass Header - Clean Borderless Design */
+/* Glass Header - Clean Borderless Design with GPU Hardware Acceleration */
 .glass-header {
   background: var(--header-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: none;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* Subtle Film Grain */
@@ -221,4 +230,11 @@ img {
   --about-chip-bg: #000000;
   --about-chip-text: #b5ff32;
   --about-chip-hover: rgba(0, 0, 0, 0.8);
+}
+
+/* Video Player Iframe Fixes */
+iframe {
+  background-color: #000000 !important;
+  border: none !important;
+  outline: none !important;
 }

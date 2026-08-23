@@ -27,7 +27,29 @@ function MainContent() {
 
   // Filter active projects list
   const HIDDEN_PROJECT_SLUGS = ['indalo-hobeki', 'attic-echoes-in-your-attic'];
-  const projects = projectsData.filter((p) => !HIDDEN_PROJECT_SLUGS.includes(p.slug));
+  const PROJECT_ORDER = [
+    'mai-natures-new-address',
+    'moshari',
+    'azura-the-azura-within',
+    'foreigners-only',
+    'a-thing-about-kashem',
+    'changan-magic-hour',
+    'golf-links-nature-of-luxury',
+    'maktoob',
+    'last-night-in-korea',
+    'oqgn-unseen',
+    'al-mouj-golf-10-years-of-golf',
+    'yiti-dynamic-harmony',
+    'bank-muscat-the-gamer',
+    'yamaha-speed-girl',
+  ];
+  const projects = projectsData
+    .filter((p) => !HIDDEN_PROJECT_SLUGS.includes(p.slug))
+    .sort((a, b) => {
+      const ai = PROJECT_ORDER.indexOf(a.slug);
+      const bi = PROJECT_ORDER.indexOf(b.slug);
+      return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+    });
   const filteredProjects = projects.filter((project) => {
     if (activeFilter === 'films') return project.category === 'Films';
     if (activeFilter === 'commercial') return project.category === 'Commercial';
@@ -251,8 +273,8 @@ function MainContent() {
             </AnimatePresence>
           </main>
 
-          {/* Giant Signature Footer — Information page only */}
-          {activeTab === 'about' && !selectedProject && <Footer />}
+          {/* Signature Footer - MegaName typography only on Information page */}
+          <Footer isLime={activeTab === 'about' && !selectedProject} showMegaName={activeTab === 'about' && !selectedProject} />
         </motion.div>
       )}
     </div>

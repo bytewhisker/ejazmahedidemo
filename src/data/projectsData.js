@@ -205,7 +205,7 @@ export const projectsData = [
     id: "azura-luxury-villas",
     slug: "azura-the-azura-within",
     title: "Azura - The Azura Within",
-    category: "Commercial",
+    category: "Films",
     year: "2024",
     client: "Al Mouj / Dusk Films",
     aspectRatio: "2.39:1 Anamorphic",
@@ -737,6 +737,50 @@ export const projectsData = [
       challenges: "Street-level guerrilla filming across urban Dhaka wall art locations.",
       productionStory: "Associate production by IMVISIBLE and Filmy Features."
     }
+  },
+  {
+    id: "maktoob",
+    slug: "maktoob",
+    title: "Maktoob",
+    category: "Films",
+    year: "2025",
+    client: "Coming Soon",
+    comingSoon: true,
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "/projects/moshari/still-01.webp",
+    hoverStills: ["/projects/moshari/still-01.webp"],
+    poster: "/projects/moshari/still-01.webp",
+    videos: [],
+    screengrabs: [],
+    crew: { dop: "Ejaz Mehedi" },
+    story: {
+      background: "Coming soon — Maktoob.",
+      creativeProcess: "Full details will be revealed on release.",
+      challenges: "TBA.",
+      productionStory: "Coming soon."
+    }
+  },
+  {
+    id: "last-night-in-korea",
+    slug: "last-night-in-korea",
+    title: "Last Night In Korea",
+    category: "Films",
+    year: "2025",
+    client: "Coming Soon",
+    comingSoon: true,
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "/projects/moshari/still-01.webp",
+    hoverStills: ["/projects/moshari/still-01.webp"],
+    poster: "/projects/moshari/still-01.webp",
+    videos: [],
+    screengrabs: [],
+    crew: { dop: "Ejaz Mehedi" },
+    story: {
+      background: "Coming soon — Last Night In Korea.",
+      creativeProcess: "Full details will be revealed on release.",
+      challenges: "TBA.",
+      productionStory: "Coming soon."
+    }
   }
 ];
 
@@ -744,7 +788,7 @@ export const awardsData = [
   {
     id: "award-moshari-sxsw",
     title: "SXSW Grand Jury Award - Best Midnight Short",
-    organization: "SXSW Film Festival 2022",
+    organization: "SXSW Film Festival",
     date: "2022",
     film: "MOSHARI",
     badge: "Oscar® Qualifying",
@@ -753,7 +797,7 @@ export const awardsData = [
   {
     id: "award-moshari-tokyo",
     title: "Governor of Tokyo Award & Best Short",
-    organization: "Short Shorts Film Festival & Asia 2022",
+    organization: "Short Shorts Film Festival & Asia",
     date: "2022",
     film: "MOSHARI",
     badge: "Oscar® Qualifying",
@@ -762,7 +806,7 @@ export const awardsData = [
   {
     id: "award-moshari-woodstock",
     title: "Mark Braunstein Award - Best Narrative Short",
-    organization: "Woodstock Film Festival 2022",
+    organization: "Woodstock Film Festival",
     date: "2022",
     film: "MOSHARI",
     badge: "Oscar® Qualifying",
@@ -771,7 +815,7 @@ export const awardsData = [
   {
     id: "award-moshari-atlanta",
     title: "Best Narrative Short",
-    organization: "Atlanta Film Festival 2022",
+    organization: "Atlanta Film Festival",
     date: "2022",
     film: "MOSHARI",
     badge: "Oscar® Qualifying",
@@ -780,7 +824,7 @@ export const awardsData = [
   {
     id: "award-moshari-hca",
     title: "Best Short Film (Nominee)",
-    organization: "Hollywood Critics Association 2022",
+    organization: "Hollywood Critics Association",
     date: "2022",
     film: "MOSHARI",
     badge: "Nominee",
@@ -789,7 +833,7 @@ export const awardsData = [
   {
     id: "award-moshari-fantasia",
     title: "Gold Award - Best Asian Short",
-    organization: "Fantasia International Film Festival 2022",
+    organization: "Fantasia International Film Festival",
     date: "2022",
     film: "MOSHARI",
     badge: "Gold Award",
@@ -798,7 +842,7 @@ export const awardsData = [
   {
     id: "award-moshari-goldlist",
     title: "Best Live Action Short",
-    organization: "The Gold List 2022",
+    organization: "The Gold List",
     date: "2022",
     film: "MOSHARI",
     badge: "Winner",
@@ -825,7 +869,7 @@ export const awardsData = [
   {
     id: "award-moshari-hollyshorts",
     title: "Best Horror Award",
-    organization: "HollyShorts Film Festival 2022",
+    organization: "HollyShorts Film Festival",
     date: "2022",
     film: "MOSHARI",
     badge: "Winner",
@@ -834,7 +878,7 @@ export const awardsData = [
   {
     id: "award-moshari-nashville",
     title: "Best Graveyard Shift Short",
-    organization: "Nashville Film Festival 2022",
+    organization: "Nashville Film Festival",
     date: "2022",
     film: "MOSHARI",
     badge: "Winner",
@@ -852,7 +896,7 @@ export const awardsData = [
   {
     id: "award-foreigners-fantasia",
     title: "Gold Award - Best Asian Short",
-    organization: "Fantasia Film Festival (Canada) 2023",
+    organization: "Fantasia International Film Festival",
     date: "2023",
     film: "FOREIGNERS ONLY",
     badge: "Gold Award",
@@ -861,7 +905,7 @@ export const awardsData = [
   {
     id: "award-foreigners-hollyshorts",
     title: "Best Horror Award",
-    organization: "HollyShorts Film Festival (US) 2023",
+    organization: "HollyShorts Film Festival",
     date: "2023",
     film: "FOREIGNERS ONLY",
     badge: "Winner",
@@ -870,7 +914,7 @@ export const awardsData = [
   {
     id: "award-foreigners-neuchatel",
     title: "Audience Award & Youth Award - Best Short Film",
-    organization: "Neuchâtel (Switzerland) 2023",
+    organization: "Neuchâtel International Fantastic Film Festival",
     date: "2023",
     film: "FOREIGNERS ONLY",
     badge: "Audience & Youth Award",
@@ -879,7 +923,7 @@ export const awardsData = [
   {
     id: "award-kashem-rhode-island",
     title: "Grand Prize Alternative Spirit Award",
-    organization: "Rhode Island International Film Festival 2025",
+    organization: "Rhode Island International Film Festival",
     date: "2025",
     film: "A THING ABOUT KASHEM",
     badge: "Grand Prize",
@@ -894,7 +938,7 @@ export const pressData = [
     date: "2023",
     publisher: "ZEISS Lenspire",
     description: "In-depth interview on optics, visual storytelling, and cinematography techniques.",
-    link: "https://lenspire.zeiss.com"
+    link: "https://lenspire.zeiss.com/cinematography/en/whos-the-vampire-moshari-a-postapocalyptic-survival-tale-filmed-by-bangladeshi-cinematographer-ejaz-mehedi-with-zeiss-cp-3-lenses/"
   },
   {
     id: "press-prothom-alo",
@@ -902,7 +946,7 @@ export const pressData = [
     date: "2022",
     publisher: "Prothom Alo",
     description: "Bangladeshi DOP Ejaz Mehedi's international recognition at Melbourne International Film Festival.",
-    link: "https://www.prothomalo.com"
+    link: "https://www.prothomalo.com/entertainment/dhallywood"
   },
   {
     id: "press-voyage-la",
@@ -910,7 +954,7 @@ export const pressData = [
     date: "2023",
     publisher: "Voyage LA",
     description: "Rising Stars profile celebrating Ejaz Mehedi's narrative and commercial body of work.",
-    link: "http://voyagela.com"
+    link: "http://voyagela.com/interview/rising-stars-meet-ejaz-mehedi-of-muscat-oman-dhaka-bangladesh/"
   },
   {
     id: "press-friday-night-podcast",
@@ -918,7 +962,7 @@ export const pressData = [
     date: "2022",
     publisher: "Friday Night Movie Podcast",
     description: "Behind the scenes on winning SXSW Grand Jury Award and crafting the imagery of MOSHARI.",
-    link: "#"
+    link: "https://www.frinightmovie.com/episodes/moshari-made-mom-jump"
   },
   {
     id: "press-protidiner-bangladesh",
@@ -926,7 +970,7 @@ export const pressData = [
     date: "2023",
     publisher: "Protidiner Bangladesh",
     description: "Highlighting cinematographer Ejaz Mehedi's global cinema accolades.",
-    link: "#"
+    link: "https://www.protidinerbangladesh.com/entertainment"
   },
   {
     id: "press-green-matters",
@@ -934,7 +978,7 @@ export const pressData = [
     date: "2022",
     publisher: "Green Matters",
     description: "Environmental commentary and horror genre breakdown of MOSHARI.",
-    link: "#"
+    link: "https://www.greenmatters.com/p/moshari-climate-horror-short-film"
   },
   {
     id: "press-ice-today",
@@ -942,7 +986,7 @@ export const pressData = [
     date: "2022",
     publisher: "ICE Today",
     description: "Review celebrating MOSHARI as a landmark breakthrough in South Asian cinema.",
-    link: "#"
+    link: "https://icetoday.net"
   },
   {
     id: "press-manabzamin",
@@ -950,7 +994,7 @@ export const pressData = [
     date: "2022",
     publisher: "Daily Manabzamin",
     description: "Entertainment section profile on cinematographer Ejaz Mehedi.",
-    link: "#"
+    link: "https://mzamin.com"
   },
   {
     id: "press-take2-indie",
@@ -958,7 +1002,7 @@ export const pressData = [
     date: "2022",
     publisher: "Take 2 Indie Review",
     description: "Critical review praising the cinematography and suspense of MOSHARI.",
-    link: "#"
+    link: "https://take2indiereview.net"
   },
   {
     id: "press-samakal",
@@ -966,7 +1010,7 @@ export const pressData = [
     date: "2023",
     publisher: "Samakal",
     description: "Feature story on Ejaz Mehedi's international festival wins.",
-    link: "#"
+    link: "https://samakal.com/entertainment"
   },
   {
     id: "press-channel24",
@@ -974,7 +1018,7 @@ export const pressData = [
     date: "2023",
     publisher: "Channel24",
     description: "Broadcast feature on cinematographer Ejaz Mehedi.",
-    link: "#"
+    link: "https://www.channel24bd.tv/entertainment"
   }
 ];
 
@@ -993,7 +1037,6 @@ export const clientsData = [
   "Left Handed Films",
   "Bank Muscat",
   "Al Mouj Oman",
-  "Dusk Films",
   "RealityCG",
   "OQGN",
   "Sayonara Film"

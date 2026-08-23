@@ -6,13 +6,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
 export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter }) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
+  // Instant responsive scroll trigger — locks collapsed state on scroll
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      const sy = window.scrollY;
+      if (sy > 25) {
+        setScrolled(true);
+      } else if (sy <= 5) {
+        setScrolled(false);
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -39,7 +45,6 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
 
   const isLime = activeTab === 'about';
 
-  // STILLS hidden for now — unhide later
   const dropdownItems = [
     {
       enText: "INFORMATION",
@@ -50,9 +55,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
     }
   ];
 
-  // Only information lives in the mobile overlay for now (stills hidden)
   const mobileOverlayItems = [
-    { label: 'information', onClick: () => handleNavClick('about', 'all'),  isActive: activeTab === 'about' },
+    { label: 'information', onClick: () => handleNavClick('about', 'all'), isActive: activeTab === 'about' },
   ];
 
   const overlayVariants = {
@@ -73,58 +77,51 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
 
   return (
     <>
-      <header className={`sticky top-0 z-50 px-4 sm:px-8 md:px-12 pt-1 md:pt-2 pb-2 transition-colors duration-700 ease-in-out select-none ${
+      {/* ROOT STICKY CONTAINER — DIRECT CHILD OF MAIN PAGE WRAPPER */}
+      <header className={`sticky top-0 z-50 w-full px-4 sm:px-8 md:px-12 transition-all duration-300 select-none transform-gpu ${
+        scrolled ? 'pt-3 md:pt-4 pb-4 md:pb-6' : 'pt-2 pb-2 md:pb-3'
+      } ${
         isLime
           ? 'bg-[var(--about-bg)] text-[var(--about-ink)]'
           : 'glass-header'
       }`}>
-        <div className="w-full mx-auto flex flex-col items-center gap-1.5">
+        <div className="w-full max-w-[1700px] mx-auto flex flex-col items-center">
 
-          {/* TOP HERO HEADER TITLE BANNER */}
-          <motion.div
-            initial={false}
-            animate={{
-              opacity: scrolled ? 0 : 1,
-              height: scrolled ? 0 : 'auto',
-              scale: scrolled ? 0.95 : 1,
-              pointerEvents: scrolled ? 'none' : 'auto'
-            }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            style={{ overflowAnchor: 'none' }}
-            className="w-full flex items-center justify-between md:justify-center relative overflow-hidden py-1 pr-16 md:pr-0"
-          >
-            <SmoothHeaderName
-              isLime={isLime}
-              onClick={() => handleNavClick('reel', 'all')}
-            />
+          {/* HERO TITLE BANNER — Smoothly collapses to 0 height so nav links glide to top-0 */}
+          <div className={`w-full overflow-hidden transition-all duration-300 ease-in-out transform-gpu ${
+            scrolled ? 'max-h-0 opacity-0 py-0 mb-0' : 'max-h-40 opacity-100 pt-2 pb-1 mb-1'
+          }`}>
+            <div className="w-full flex items-center justify-between md:justify-center relative pr-16 md:pr-0">
+              <SmoothHeaderName
+                isLime={isLime}
+                onClick={() => handleNavClick('reel', 'all')}
+              />
 
-            {/* MOBILE CONTROLS — theme toggle + "menu" text */}
-            <div className="md:hidden flex items-center gap-3 absolute right-0 top-1/2 -translate-y-1/2">
-              <button
-                onClick={toggleTheme}
-                className={`p-1.5 transition-colors ${isLime ? 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)]' : 'text-muted hover:text-ink'}`}
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-              </button>
+              {/* MOBILE CONTROLS — theme toggle + "menu" text */}
+              <div className="md:hidden flex items-center gap-3 absolute right-0 top-1/2 -translate-y-1/2">
+                <button
+                  onClick={toggleTheme}
+                  className={`p-1.5 transition-colors ${isLime ? 'text-[var(--about-ink-70)] hover:text-[var(--about-ink)]' : 'text-muted hover:text-ink'}`}
+                  aria-label="Toggle theme"
+                >
+                  {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                </button>
 
-              {/* "menu" button — Mika style: just italic text, no box */}
-              <button
-                onClick={() => setIsMobileMenuOpen(true)}
-                className={`font-haas italic font-bold text-[1.1rem] leading-none transition-opacity ${
-                  isLime
-                    ? 'text-[var(--about-ink)] hover:opacity-70'
-                    : 'text-ink hover:opacity-70'
-                }`}
-                aria-label="Open menu"
-              >
-                menu
-              </button>
+                <button
+                  onClick={() => setIsMobileMenuOpen(true)}
+                  className={`font-haas italic font-bold text-[1.1rem] leading-none transition-opacity ${
+                    isLime ? 'text-[var(--about-ink)] hover:opacity-70' : 'text-ink hover:opacity-70'
+                  }`}
+                  aria-label="Open menu"
+                >
+                  menu
+                </button>
+              </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* MOBILE NAV ROW — always visible: REEL · OVERVIEW · FILMS · COMMERCIALS */}
-          <div className="md:hidden w-full flex items-center gap-4 pb-1 pt-0.5 text-[10px] font-haas tracking-[0.18em] uppercase font-bold overflow-x-auto no-scrollbar">
+          {/* MOBILE NAV ROW — ALWAYS FLOATING AT TOP-0 WHEN SCROLLING */}
+          <div className="md:hidden w-full flex items-center gap-4 py-2 text-[10px] font-haas tracking-[0.18em] uppercase font-bold overflow-x-auto no-scrollbar">
             {[
               { label: 'REEL',        isActive: activeTab === 'reel',                                     onClick: () => handleNavClick('reel', 'all') },
               { label: 'OVERVIEW',    isActive: activeTab === 'projects' && activeFilter === 'all',        onClick: () => handleNavClick('projects', 'all') },
@@ -149,8 +146,8 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
             ))}
           </div>
 
-          {/* DESKTOP HORIZONTAL NAVBAR ROW */}
-          <div className="hidden md:flex w-full items-center justify-between pt-2.5 pb-1 text-xs font-haas tracking-[0.22em] uppercase font-bold">
+          {/* DESKTOP HORIZONTAL NAVBAR ROW — ELEGANT SPACING WHEN FLOATING */}
+          <div className="hidden md:flex w-full items-center justify-between py-2 md:py-3 text-xs font-haas tracking-[0.22em] uppercase font-bold">
             <nav className="flex items-center gap-8 lg:gap-12">
               <GlitchNavItem
                 enText="REEL" bnText="রিল" arText="ريل"
@@ -221,7 +218,7 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
         </div>
       </header>
 
-      {/* ─── MOBILE FULL-SCREEN LIME OVERLAY (mika style) ─── */}
+      {/* ─── MOBILE FULL-SCREEN LIME OVERLAY ─── */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -232,7 +229,6 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
             exit="exit"
             className="md:hidden fixed inset-0 z-[200] bg-[#b5ff32] flex flex-col px-6 pt-6 pb-10 select-none"
           >
-            {/* Top bar: wordmark left + × close button right */}
             <div className="flex items-center justify-between">
               <motion.span
                 initial={{ opacity: 0, y: -8 }}
@@ -244,11 +240,10 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                 EJAZ MEHEDI
               </motion.span>
 
-              {/* × close button — just the cross icon */}
               <motion.button
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.2, delay: 0.05 }}
+                transition={{ duration: 0.2 }}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-black hover:opacity-60 transition-opacity shrink-0 flex items-center justify-center p-1"
                 aria-label="Close menu"
@@ -257,7 +252,6 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               </motion.button>
             </div>
 
-            {/* Nav items — middle-right aligned, lowercase — Mika style */}
             <motion.nav
               variants={listVariants}
               initial="hidden"
@@ -281,7 +275,6 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                 </div>
               ))}
             </motion.nav>
-
           </motion.div>
         )}
       </AnimatePresence>

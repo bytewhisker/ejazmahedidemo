@@ -151,15 +151,15 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
-      className="min-h-screen text-[var(--about-ink)] font-medium pt-2 pb-24 px-4 sm:px-6 lg:px-8 font-sans select-none max-w-[1700px] mx-auto space-y-12 md:space-y-16"
+      className="min-h-screen text-[var(--about-ink)] font-medium pt-2 pb-24 px-4 sm:px-8 md:px-12 font-sans select-none max-w-[1700px] mx-auto space-y-12 md:space-y-16"
     >
       
       {/* TOP SECTION: BIOGRAPHY + PORTRAIT & DIRECT CONTACT */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start pb-12 md:pb-16">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-stretch pb-12 md:pb-16">
         
         {/* Left Side: Photo Frame Container — swaps to demo photo on keyword hover */}
-        <div className="lg:col-span-5 space-y-6">
-          <div className="w-full aspect-[4/5] md:aspect-square overflow-hidden bg-[var(--about-ink-10)] border border-[var(--about-border)] relative group shadow-xl">
+        <div className="lg:col-span-5 flex flex-col">
+          <div className="w-full flex-1 min-h-[480px] lg:min-h-0 overflow-hidden bg-[var(--about-ink-10)] border border-[var(--about-border)] relative group shadow-xl">
             <AnimatePresence mode="wait">
               {hoveredKeyword && portraitHoverPhotos[hoveredKeyword] ? (
                 <motion.div
@@ -365,17 +365,19 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
               key={award.id}
               className="py-3.5 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 items-baseline hover:bg-[var(--about-ink-5)] transition-colors px-1"
             >
-              <div className="sm:col-span-2 text-[var(--about-ink)]">
-                {award.date}
+              {/* 1. FESTIVAL NAME WITH YEAR */}
+              <div className="sm:col-span-5 text-[var(--about-ink)] font-normal truncate">
+                {award.organization} {award.date}
               </div>
-              <div className="sm:col-span-3 text-[var(--about-ink)] uppercase truncate">
-                {award.film || 'NARRATIVE'}
-              </div>
+
+              {/* 2. AWARD NAME */}
               <div className="sm:col-span-4 text-[var(--about-ink)] font-medium">
                 {award.title}
               </div>
-              <div className="sm:col-span-3 text-[var(--about-ink)] text-right hidden sm:block truncate">
-                {award.organization}
+
+              {/* 3. FILM NAME */}
+              <div className="sm:col-span-3 text-[var(--about-ink)] uppercase text-right truncate">
+                {award.film || 'NARRATIVE'}
               </div>
             </div>
           ))}
@@ -409,11 +411,11 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
                 </h3>
               </div>
 
-              {item.link && item.link !== '#' && (
+              {item.link && (
                 <a
                   href={item.link}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="text-[11px] font-mono-custom text-[var(--about-ink)] hover:opacity-60 border border-[var(--about-border)] px-2.5 py-1 flex items-center gap-1 uppercase tracking-widest shrink-0 transition-all rounded-sm"
                 >
                   <span>READ ARTICLE</span>
