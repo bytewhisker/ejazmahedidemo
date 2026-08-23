@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CustomPlayer } from './CustomPlayer';
-import { Image as ImageIcon, Users, BookOpen, ChevronRight, ChevronLeft, Maximize2, X } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Maximize2, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProject }) => {
@@ -65,31 +65,28 @@ export const ProjectDetailPage = ({ project, allProjects, onBack, onSelectProjec
           <div className="flex items-center justify-start gap-6 md:gap-8 border-b border-line pb-4 text-xs font-mono-custom tracking-[0.2em] uppercase font-bold overflow-x-auto no-scrollbar whitespace-nowrap">
             <button
               onClick={() => setUnderVideoTab('screengrabs')}
-              className={`flex items-center gap-2 transition-colors py-1 shrink-0 ${
+              className={`transition-colors py-1 shrink-0 ${
                 underVideoTab === 'screengrabs' ? 'text-ink underline underline-offset-8 font-bold' : 'text-muted hover:text-ink-soft'
               }`}
             >
-              <ImageIcon className="w-4 h-4" />
               <span>SCREENGRABS ({project.screengrabs.length})</span>
             </button>
 
             <button
               onClick={() => setUnderVideoTab('crew')}
-              className={`flex items-center gap-2 transition-colors py-1 shrink-0 ${
+              className={`transition-colors py-1 shrink-0 ${
                 underVideoTab === 'crew' ? 'text-ink underline underline-offset-8 font-bold' : 'text-muted hover:text-ink-soft'
               }`}
             >
-              <Users className="w-4 h-4" />
-              <span>PROJECT CREW</span>
+              <span>CREW</span>
             </button>
 
             <button
               onClick={() => setUnderVideoTab('story')}
-              className={`flex items-center gap-2 transition-colors py-1 shrink-0 ${
+              className={`transition-colors py-1 shrink-0 ${
                 underVideoTab === 'story' ? 'text-ink underline underline-offset-8 font-bold' : 'text-muted hover:text-ink-soft'
               }`}
             >
-              <BookOpen className="w-4 h-4" />
               <span>STORY BEHIND THE PROJECT</span>
             </button>
           </div>

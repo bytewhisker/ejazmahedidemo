@@ -1,0 +1,25 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Disable automatic trailing slash redirect for physical directories
+  DirectorySlash Off
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # If the request maps to a real existing file (e.g., .webp, .png, .css, .js), serve directly
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # If the request maps to a real directory ONLY if it contains an index.html file, serve directly
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^ - [L]
+
+  # Otherwise serve root index.html for Single Page Application routing (slugs like /projects/moshari)
+  RewriteRule ^ /index.html [L]
+</IfModule>
