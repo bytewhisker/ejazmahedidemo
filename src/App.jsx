@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { CMSProvider, useCMS } from './context/CMSContext';
+import { AdminAuth } from './components/admin/AdminAuth';
+import { AdminPanel } from './components/admin/AdminPanel';
+import { AdminFloatingBar } from './components/admin/AdminFloatingBar';
 import { CinematicLoadingScreen } from './components/CinematicLoadingScreen';
 import { Navbar } from './components/Navbar';
 import { ProjectCard } from './components/ProjectCard';
@@ -13,43 +17,31 @@ import { ReelPage } from './components/ReelPage';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { SEOHead } from './components/SEOHead';
-import { projectsData } from './data/projectsData';
-import { AnimatePresence, motion } from 'framer-motion';
-import { Grid, List } from 'lucide-react';
+import { AnimatePresence, motion, Reorder } from 'framer-motion';
+import { Grid, List, X, Plus, Save } from 'lucide-react';
 
 function MainContent() {
+  const { projects: cmsProjects, isAdminLoggedIn, reorderProjects, updateProject, addProject, showSaveToast } = useCMS();
   const [isLoadingScreen, setIsLoadingScreen] = useState(true);
   const [isVideoLoading, setIsVideoLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('reel'); // 'reel', 'projects', 'stills', 'about', 'journal'
+  const [activeTab, setActiveTab] = useState('reel'); // 'reel', 'projects', 'stills', 'about', 'journal', 'admin'
   const [activeFilter, setActiveFilter] = useState('all'); // 'all', 'films', 'commercial'
   const [viewMode, setViewMode] = useState('grid'); // 'grid', 'list'
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isAdminRoute, setIsAdminRoute] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(true);
 
-  // Filter active projects list
+  // Edit Project & Add Project Modals
+  const [editingProject, setEditingProject] = useState(null);
+  const [isAddingNew, setIsAddingNew] = useState(false);
+  const [newProjectData, setNewProjectData] = useState({
+    title: '', category: 'Commercial', year: new Date().getFullYear().toString(), client: '', vimeoId: '', synopsis: '', thumbnail: 'still-01.png'
+  });
+
+  // Filter active projects list from CMS state
   const HIDDEN_PROJECT_SLUGS = ['indalo-hobeki', 'attic-echoes-in-your-attic'];
-  const PROJECT_ORDER = [
-    'mai-natures-new-address',
-    'moshari',
-    'azura-the-azura-within',
-    'foreigners-only',
-    'a-thing-about-kashem',
-    'changan-magic-hour',
-    'golf-links-nature-of-luxury',
-    'maktoob',
-    'last-night-in-korea',
-    'oqgn-unseen',
-    'al-mouj-golf-10-years-of-golf',
-    'yiti-dynamic-harmony',
-    'bank-muscat-the-gamer',
-    'yamaha-speed-girl',
-  ];
-  const projects = projectsData
-    .filter((p) => !HIDDEN_PROJECT_SLUGS.includes(p.slug))
-    .sort((a, b) => {
-      const ai = PROJECT_ORDER.indexOf(a.slug);
-      const bi = PROJECT_ORDER.indexOf(b.slug);
-      return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
-    });
+  const projects = cmsProjects.filter((p) => !HIDDEN_PROJECT_SLUGS.includes(p.slug));
+
   const filteredProjects = projects.filter((project) => {
     if (activeFilter === 'films') return project.category === 'Films';
     if (activeFilter === 'commercial') return project.category === 'Commercial';
@@ -59,9 +51,15 @@ function MainContent() {
   // URL sync: apply the current pathname to app state (deep links, back/forward)
   const applyPathToState = () => {
     const path = window.location.pathname;
+    if (path.startsWith('/admin')) {
+      setIsAdminRoute(true);
+      return;
+    }
+    setIsAdminRoute(false);
+
     const projectMatch = path.match(/^\/projects\/([\w-]+)\/?$/);
     if (projectMatch) {
-      const found = projectsData.find(
+      const found = cmsProjects.find(
         (p) => p.slug === projectMatch[1] || p.id === projectMatch[1]
       );
       if (found) {
@@ -70,7 +68,6 @@ function MainContent() {
       }
     }
     setSelectedProject(null);
-    // stills page hidden for now — route to reel
     if (path.startsWith('/about')) setActiveTab('about');
     else if (path.startsWith('/journal')) setActiveTab('journal');
     else if (path.startsWith('/reel')) setActiveTab('reel');
@@ -83,7 +80,12 @@ function MainContent() {
     applyPathToState();
     window.addEventListener('popstate', applyPathToState);
     return () => window.removeEventListener('popstate', applyPathToState);
-  }, []);
+  }, [cmsProjects]);
+
+  // If on /admin route and NOT logged in: render Admin Auth
+  if (isAdminRoute && !isAdminLoggedIn) {
+    return <AdminAuth />;
+  }
 
   const handleSelectProject = (project) => {
     setIsVideoLoading(true);
@@ -101,6 +103,15 @@ function MainContent() {
     window.history.pushState(null, '', '/');
   };
 
+  const handleCreateProject = (e) => {
+    e.preventDefault();
+    if (!newProjectData.title) return;
+    const created = addProject(newProjectData);
+    setIsAddingNew(false);
+    setNewProjectData({ title: '', category: 'Commercial', year: new Date().getFullYear().toString(), client: '', vimeoId: '', synopsis: '', thumbnail: 'still-01.png' });
+    handleSelectProject(created);
+  };
+
   const viewKey = selectedProject ? `project-${selectedProject.id}` : activeTab;
 
   return (
@@ -108,8 +119,17 @@ function MainContent() {
       activeTab === 'about' && !selectedProject
         ? 'about-inverted bg-[var(--about-bg)] text-[var(--about-ink)] selection:bg-[var(--about-ink)] selection:text-[var(--about-bg)]'
         : 'bg-canvas text-ink selection:bg-ink selection:text-canvas'
-    }`}>
+    } ${isAdminLoggedIn ? 'pt-16' : ''}`}>
       
+      {/* On-Page Live Webflow Admin Floating Bar */}
+      {isAdminLoggedIn && (
+        <AdminFloatingBar
+          isEditMode={isEditMode}
+          setIsEditMode={setIsEditMode}
+          onOpenAddProject={() => setIsAddingNew(true)}
+        />
+      )}
+
       {/* Dynamic SEO Head Manager */}
       <SEOHead activeTab={activeTab} selectedProject={selectedProject} activeFilter={activeFilter} />
 
@@ -119,14 +139,14 @@ function MainContent() {
       {/* Film Grain Subtle Overlay */}
       <div className="film-grain" />
 
-      {/* Fullscreen Ligthelm Bootup Loading GIF */}
+      {/* Fullscreen Bootup Loading GIF */}
       <AnimatePresence>
         {isLoadingScreen && (
           <CinematicLoadingScreen onComplete={() => setIsLoadingScreen(false)} />
         )}
       </AnimatePresence>
 
-      {/* Fullscreen Video Page Transition Loading GIF */}
+      {/* Fullscreen Video Transition Loading GIF */}
       <AnimatePresence>
         {isVideoLoading && (
           <motion.div
@@ -152,7 +172,7 @@ function MainContent() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex-1 flex flex-col"
         >
-          {/* Single Clean Navigation Bar */}
+          {/* Navigation Bar */}
           <Navbar
             activeTab={selectedProject ? 'project_detail' : activeTab}
             setActiveTab={(tab) => {
@@ -167,7 +187,7 @@ function MainContent() {
             setActiveFilter={setActiveFilter}
           />
 
-          {/* Main Content Area — Full Width Layout */}
+          {/* Main Content Area */}
           <main className="flex-1 w-full mx-auto px-4 sm:px-8 md:px-12 py-4 md:py-6 select-none">
             <AnimatePresence mode="wait">
               {selectedProject ? (
@@ -177,6 +197,7 @@ function MainContent() {
                   allProjects={projects}
                   onBack={handleBackToGallery}
                   onSelectProject={handleSelectProject}
+                  isEditMode={isAdminLoggedIn && isEditMode}
                 />
               ) : activeTab === 'about' ? (
                 <motion.div
@@ -186,7 +207,7 @@ function MainContent() {
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <AboutPage />
+                  <AboutPage isEditMode={isAdminLoggedIn && isEditMode} />
                 </motion.div>
               ) : activeTab === 'journal' ? (
                 <motion.div
@@ -218,7 +239,7 @@ function MainContent() {
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   className="space-y-6 pb-12 sm:pb-16"
                 >
-                  {/* Gallery Subheader Bar: GRID / LIST Toggle */}
+                  {/* View Mode Toggle */}
                   <div className="flex items-center justify-end text-xs font-mono-custom tracking-[0.2em] uppercase text-muted">
                     <div className="flex items-center gap-2">
                       <button
@@ -243,8 +264,26 @@ function MainContent() {
                     </div>
                   </div>
 
-                  {/* Render Grid or List — filter animates IN-PLACE, no page transition */}
-                  {viewMode === 'grid' ? (
+                  {/* Render Live Reorderable Grid when in Edit Mode */}
+                  {isAdminLoggedIn && isEditMode ? (
+                    <Reorder.Group
+                      values={filteredProjects}
+                      onReorder={reorderProjects}
+                      className="grid grid-cols-1 gap-y-6"
+                    >
+                      {filteredProjects.map((project, idx) => (
+                        <Reorder.Item key={project.id} value={project} className="cursor-grab active:cursor-grabbing">
+                          <ProjectCard
+                            project={project}
+                            indexNumber={idx + 1}
+                            onClick={handleSelectProject}
+                            isEditMode={true}
+                            onEditProject={(p) => setEditingProject(p)}
+                          />
+                        </Reorder.Item>
+                      ))}
+                    </Reorder.Group>
+                  ) : viewMode === 'grid' ? (
                     <motion.div layout className="grid grid-cols-1 gap-y-4 sm:gap-y-6 md:gap-y-7">
                       <AnimatePresence mode="popLayout" initial={false}>
                         {filteredProjects.map((project, idx) => (
@@ -257,6 +296,7 @@ function MainContent() {
                               project={project}
                               indexNumber={idx + 1}
                               onClick={handleSelectProject}
+                              isEditMode={false}
                             />
                           </motion.div>
                         ))}
@@ -273,20 +313,223 @@ function MainContent() {
             </AnimatePresence>
           </main>
 
-          {/* Signature Footer - MegaName typography only on Information page */}
           <Footer isLime={activeTab === 'about' && !selectedProject} showMegaName={activeTab === 'about' && !selectedProject} />
         </motion.div>
       )}
+
+      {/* MODAL: EDIT PROJECT DETAILS */}
+      <AnimatePresence>
+        {editingProject && (
+          <div data-admin="true" className="admin-root fixed inset-0 z-[999999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-surface border border-line-strong rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-6 shadow-2xl font-mono-custom text-xs"
+            >
+              <div className="flex items-center justify-between border-b border-line pb-3">
+                <h3 className="text-sm font-bold text-ink uppercase tracking-wider">
+                  Edit Project: {editingProject.title}
+                </h3>
+                <button onClick={() => setEditingProject(null)} className="p-1 text-muted hover:text-ink cursor-pointer">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <label className="block text-[10px] tracking-widest text-muted uppercase">Project Title</label>
+                  <input
+                    type="text"
+                    value={editingProject.title}
+                    onChange={(e) => setEditingProject({ ...editingProject, title: e.target.value })}
+                    className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <label className="block text-[10px] tracking-widest text-muted uppercase">Category</label>
+                    <select
+                      value={editingProject.category}
+                      onChange={(e) => setEditingProject({ ...editingProject, category: e.target.value })}
+                      className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded"
+                    >
+                      <option value="Commercial">Commercial</option>
+                      <option value="Films">Films</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="block text-[10px] tracking-widest text-muted uppercase">Year</label>
+                    <input
+                      type="text"
+                      value={editingProject.year}
+                      onChange={(e) => setEditingProject({ ...editingProject, year: e.target.value })}
+                      className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="block text-[10px] tracking-widest text-muted uppercase">Client / Festival</label>
+                  <input
+                    type="text"
+                    value={editingProject.client || ''}
+                    onChange={(e) => setEditingProject({ ...editingProject, client: e.target.value })}
+                    className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="block text-[10px] tracking-widest text-muted uppercase">Vimeo Video ID</label>
+                  <input
+                    type="text"
+                    value={editingProject.videos?.[0]?.vimeoId || ''}
+                    onChange={(e) => {
+                      const vId = e.target.value.trim();
+                      const updatedVids = vId ? [
+                        {
+                          id: 'main',
+                          labelKey: 'mainFilm',
+                          title: editingProject.title,
+                          vimeoId: vId,
+                          embedUrl: `https://player.vimeo.com/video/${vId}?title=0&byline=0&portrait=0&badge=0&autopause=0`
+                        }
+                      ] : [];
+                      setEditingProject({ ...editingProject, videos: updatedVids });
+                    }}
+                    placeholder="e.g. 1220862850"
+                    className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="block text-[10px] tracking-widest text-muted uppercase">Synopsis / Description</label>
+                  <textarea
+                    rows={4}
+                    value={editingProject.synopsis || editingProject.description || ''}
+                    onChange={(e) => setEditingProject({ ...editingProject, synopsis: e.target.value, description: e.target.value })}
+                    className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-end gap-3 border-t border-line pt-4">
+                <button onClick={() => setEditingProject(null)} className="px-4 py-2 bg-line/40 hover:bg-line text-ink rounded cursor-pointer">
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    updateProject(editingProject.id, editingProject);
+                    setEditingProject(null);
+                  }}
+                  className="px-5 py-2 bg-accent text-canvas font-bold uppercase tracking-wider rounded flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Save className="w-4 h-4" />
+                  <span>Save Changes</span>
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* MODAL: ADD NEW PROJECT */}
+      <AnimatePresence>
+        {isAddingNew && (
+          <div data-admin="true" className="admin-root fixed inset-0 z-[999999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-surface border border-line-strong rounded-xl w-full max-w-lg p-6 space-y-4 shadow-2xl font-mono-custom text-xs"
+            >
+              <div className="flex items-center justify-between border-b border-line pb-3">
+                <h3 className="text-sm font-bold text-ink uppercase tracking-wider">
+                  Add New Project
+                </h3>
+                <button onClick={() => setIsAddingNew(false)} className="p-1 text-muted hover:text-ink cursor-pointer">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <form onSubmit={handleCreateProject} className="space-y-4">
+                <div className="space-y-1">
+                  <label className="block text-[10px] tracking-widest text-muted uppercase">Title</label>
+                  <input
+                    type="text"
+                    required
+                    value={newProjectData.title}
+                    onChange={(e) => setNewProjectData({ ...newProjectData, title: e.target.value })}
+                    placeholder="MY NEW FILM"
+                    className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <label className="block text-[10px] tracking-widest text-muted uppercase">Category</label>
+                    <select
+                      value={newProjectData.category}
+                      onChange={(e) => setNewProjectData({ ...newProjectData, category: e.target.value })}
+                      className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded"
+                    >
+                      <option value="Commercial">Commercial</option>
+                      <option value="Films">Films</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="block text-[10px] tracking-widest text-muted uppercase">Year</label>
+                    <input
+                      type="text"
+                      value={newProjectData.year}
+                      onChange={(e) => setNewProjectData({ ...newProjectData, year: e.target.value })}
+                      className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="block text-[10px] tracking-widest text-muted uppercase">Vimeo Video ID</label>
+                  <input
+                    type="text"
+                    value={newProjectData.vimeoId}
+                    onChange={(e) => setNewProjectData({ ...newProjectData, vimeoId: e.target.value })}
+                    placeholder="e.g. 1220862850"
+                    className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded"
+                  />
+                </div>
+
+                <div className="flex items-center justify-end gap-3 border-t border-line pt-4">
+                  <button type="button" onClick={() => setIsAddingNew(false)} className="px-4 py-2 bg-line/40 hover:bg-line text-ink rounded cursor-pointer">
+                    Cancel
+                  </button>
+                  <button type="submit" className="px-5 py-2 bg-accent text-canvas font-bold uppercase tracking-wider rounded flex items-center gap-1.5 cursor-pointer">
+                    <Plus className="w-4 h-4 stroke-[3]" />
+                    <span>Create Project</span>
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 }
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <ThemeProvider>
-        <MainContent />
-      </ThemeProvider>
-    </LanguageProvider>
+    <CMSProvider>
+      <LanguageProvider>
+        <ThemeProvider>
+          <MainContent />
+        </ThemeProvider>
+      </LanguageProvider>
+    </CMSProvider>
   );
 }
+

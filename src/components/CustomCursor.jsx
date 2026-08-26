@@ -1,16 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 
 /**
- * BlendCursor: A clean white dot cursor that follows the mouse with easing (lerp 0.35)
- * and expands into a large circle when hovering over links, buttons, or project cards.
- * Uses `mix-blend-mode: difference` to invert whatever is underneath.
+ * CustomCursor: A sleek white dot cursor that follows mouse movement with lerp
+ * and expands into a large circle over links, buttons, and video players.
+ * Uses mix-blend-mode: difference for high-contrast visibility on all backgrounds.
  */
 export const CustomCursor = () => {
   const dotRef = useRef(null);
   const [hovering, setHovering] = useState(false);
   const [visible, setVisible] = useState(false);
+  const isAdmin = typeof window !== 'undefined' && window.location.pathname.startsWith('/admin');
 
   useEffect(() => {
+    if (isAdmin) {
+      document.body.classList.add('admin-mode');
+      return () => document.body.classList.remove('admin-mode');
+    }
+    document.body.classList.remove('admin-mode');
+
     // Only activate custom cursor on fine pointer devices (desktop)
     const isTouchDevice =
       "ontouchstart" in window || navigator.maxTouchPoints > 0;
@@ -26,16 +33,28 @@ export const CustomCursor = () => {
       setVisible(true);
 
       const el = e.target?.closest?.(
-        "a, button, [data-cursor-hover], [data-cursor], [role='button'], input, select"
+        "a, button, [data-cursor-hover], [data-cursor], [role='button'], input, select, iframe, video, .custom-player-overlay"
       );
       setHovering(Boolean(el));
     };
 
-    const onLeave = () => setVisible(false);
+    const onLeave = (e) => {
+      // If mouse is still inside viewport bounds (e.g. over video iframe), stay visible
+      if (
+        e &&
+        e.clientX > 0 &&
+        e.clientX < window.innerWidth &&
+        e.clientY > 0 &&
+        e.clientY < window.innerHeight
+      ) {
+        return;
+      }
+      setVisible(false);
+    };
+
     const onEnter = () => setVisible(true);
 
     const render = () => {
-      // 1:1 Real-time tracking (no delay/lag)
       pos.x += (target.x - pos.x) * 1;
       pos.y += (target.y - pos.y) * 1;
       if (dotRef.current) {
@@ -44,18 +63,20 @@ export const CustomCursor = () => {
       frame = requestAnimationFrame(render);
     };
 
-    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMove, { capture: true });
     document.addEventListener("mouseleave", onLeave);
     document.addEventListener("mouseenter", onEnter);
     frame = requestAnimationFrame(render);
 
     return () => {
-      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mousemove", onMove, { capture: true });
       document.removeEventListener("mouseleave", onLeave);
       document.removeEventListener("mouseenter", onEnter);
       cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [isAdmin]);
+
+  if (isAdmin) return null;
 
   return (
     <div

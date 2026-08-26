@@ -1,21 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-const names = [
-  { 
-    id: 'en', 
-    text: "EJAZ MEHEDI", 
-    fontClass: "font-mega tracking-tight font-bold text-[clamp(1.5rem,6.5vw,8rem)] leading-none" 
-  }
-];
-
-function getGraphemes(text) {
-  if (typeof Intl !== 'undefined' && Intl.Segmenter) {
-    const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
-    return Array.from(segmenter.segment(text), (s) => s.segment);
-  }
-  return text.split('');
-}
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const containerVariants = {
   initial: {},
@@ -44,51 +28,37 @@ const itemVariants = {
 };
 
 export const SmoothHeaderName = ({ onClick, isLime = false }) => {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % names.length);
-    }, 4200);
-    return () => clearInterval(timer);
-  }, []);
-
-  const current = names[index];
-  const items = current.id === 'ar' 
-    ? current.text.split(' ') 
-    : getGraphemes(current.text);
+  const lines = ["EJAZ", "MEHEDI"];
 
   return (
     <button
       onClick={onClick}
-      className="relative flex items-center justify-center h-[3.2rem] sm:h-[6.2rem] md:h-[9.5rem] lg:h-[11.8rem] focus:outline-none cursor-pointer select-none group w-full overflow-hidden px-8 sm:px-12 md:px-0"
+      className="relative flex flex-col items-start justify-start h-auto py-1 focus:outline-none cursor-pointer select-none group overflow-visible text-left"
       aria-label="Ejaz Mehedi Home"
     >
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={index}
-          variants={containerVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          dir={current.id === 'ar' ? 'rtl' : 'ltr'}
-          className={`uppercase transition-colors whitespace-nowrap w-full text-center flex items-center justify-center h-full ${
-            isLime ? 'text-[var(--about-ink)] group-hover:text-[var(--about-ink-80)]' : 'text-ink group-hover:text-ink-soft'
-          } ${current.fontClass}`}
-        >
-          {items.map((item, itemIdx) => (
-            <motion.span
-              key={`${index}-${itemIdx}`}
-              variants={itemVariants}
-              className="inline-block transform-gpu"
-            >
-              {current.id === 'ar'
-                ? itemIdx === items.length - 1 ? item : item + '\u00A0'
-                : item === ' ' ? '\u00A0' : item}
-            </motion.span>
-          ))}
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        variants={containerVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className={`uppercase transition-colors flex flex-col items-start text-left font-mega font-extrabold leading-[0.80] text-[clamp(2.8rem,9vw,9.5rem)] tracking-[0.015em] ${
+          isLime ? 'text-[var(--about-ink)] group-hover:text-[var(--about-ink-80)]' : 'text-ink group-hover:text-ink-soft'
+        }`}
+      >
+        {lines.map((line, lineIdx) => (
+          <div key={lineIdx} className="flex items-center">
+            {line.split('').map((char, charIdx) => (
+              <motion.span
+                key={`${lineIdx}-${charIdx}`}
+                variants={itemVariants}
+                className="inline-block transform-gpu"
+              >
+                {char}
+              </motion.span>
+            ))}
+          </div>
+        ))}
+      </motion.div>
     </button>
   );
 };

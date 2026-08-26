@@ -1,5 +1,39 @@
 export const projectsData = [
   {
+    id: "mai-natures-new-address",
+    slug: "mai-natures-new-address",
+    title: "MAI - Nature's New Address",
+    category: "Commercial",
+    year: "",
+    client: "Madinat Al Irfan - An integrated urban ecosystem",
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "/projects/mai-natures-new-address/still-01.png",
+    hoverStills: [
+      "/projects/mai-natures-new-address/still-01.png",
+      "/projects/mai-natures-new-address/still-02.png",
+      "/projects/mai-natures-new-address/still-03.png"
+    ],
+    poster: "/projects/mai-natures-new-address/still-01.png",
+    videos: [],
+    screengrabs: [
+      "/projects/mai-natures-new-address/still-02.png",
+      "/projects/mai-natures-new-address/still-03.png",
+      "/projects/mai-natures-new-address/still-04.png"
+    ],
+    crew: {
+      director: "Anwar K Al Asmi",
+      dop: "Ejaz Mehedi",
+      client: "Madinat Al Irfan",
+      productionCompany: "DUSK"
+    },
+    story: {
+      background: "Madinat Al Irfan - An integrated urban ecosystem.",
+      creativeProcess: "High-end natural lighting and organic landscape compositions.",
+      challenges: "Balancing soft golden hour lighting with rich interior atmosphere.",
+      productionStory: "Filmed in collaboration with DUSK."
+    }
+  },
+  {
     id: "moshari",
     slug: "moshari",
     title: "MOSHARI",
@@ -7,13 +41,13 @@ export const projectsData = [
     year: "2022",
     client: "Jordan Peele & Riz Ahmed (Oscar® Qualifying)",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/moshari/still-01.webp",
+    thumbnail: "/projects/moshari/still-01.png",
     hoverStills: [
-      "/projects/moshari/still-01.webp",
-      "/projects/moshari/still-02.webp",
-      "/projects/moshari/still-03.webp"
+      "/projects/moshari/still-01.png",
+      "/projects/moshari/still-02.png",
+      "/projects/moshari/still-03.png"
     ],
-    poster: "/projects/moshari/still-01.webp",
+    poster: "/projects/moshari/still-01.png",
     videos: [
       {
         id: "main",
@@ -24,41 +58,31 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "/projects/moshari/still-01.webp",
-      "/projects/moshari/still-02.webp",
-      "/projects/moshari/still-03.webp",
-      "/projects/moshari/still-04.webp",
-      "/projects/moshari/still-05.webp",
-      "/projects/moshari/still-06.webp",
-      "/projects/moshari/still-07.webp",
-      "/projects/moshari/still-08.webp",
-      "/projects/moshari/still-09.webp",
-      "/projects/moshari/still-10.webp",
-      "/projects/moshari/still-11.webp",
-      "/projects/moshari/still-12.webp",
-      "/projects/moshari/still-13.webp",
-      "/projects/moshari/still-14.webp",
-      "/projects/moshari/still-15.webp",
-      "/projects/moshari/still-16.webp",
-      "/projects/moshari/still-17.webp",
-      "/projects/moshari/still-18.webp",
-      "/projects/moshari/still-19.webp",
-      "/projects/moshari/still-20.webp",
-      "/projects/moshari/still-21.webp",
-      "/projects/moshari/still-22.webp",
-      "/projects/moshari/still-23.webp",
-      "/projects/moshari/still-24.webp",
-      "/projects/moshari/still-25.webp",
-      "/projects/moshari/still-26.webp",
-      "/projects/moshari/still-27.webp",
-      "/projects/moshari/still-28.webp",
-      "/projects/moshari/still-29.webp",
-      "/projects/moshari/still-30.webp",
-      "/projects/moshari/still-31.webp",
-      "/projects/moshari/still-32.webp",
-      "/projects/moshari/still-33.webp",
-      "/projects/moshari/still-34.webp",
-      "/projects/moshari/still-35.webp"
+      "/projects/moshari/still-01.png",
+      "/projects/moshari/still-02.png",
+      "/projects/moshari/still-03.png",
+      "/projects/moshari/still-04.png",
+      "/projects/moshari/still-05.png",
+      "/projects/moshari/still-06.png",
+      "/projects/moshari/still-07.png",
+      "/projects/moshari/still-08.png",
+      "/projects/moshari/still-09.png",
+      "/projects/moshari/still-10.png",
+      "/projects/moshari/still-11.png",
+      "/projects/moshari/still-12.png",
+      "/projects/moshari/still-13.png",
+      "/projects/moshari/still-14.png",
+      "/projects/moshari/still-15.png",
+      "/projects/moshari/still-16.png",
+      "/projects/moshari/still-17.png",
+      "/projects/moshari/still-18.png",
+      "/projects/moshari/still-19.png",
+      "/projects/moshari/still-20.png",
+      "/projects/moshari/still-21.png",
+      "/projects/moshari/still-22.png",
+      "/projects/moshari/still-23.png",
+      "/projects/moshari/still-24.png",
+      "/projects/moshari/still-25.png"
     ],
     crew: {
       director: "Nuhash Humayun",
@@ -78,6 +102,63 @@ export const projectsData = [
     }
   },
   {
+    id: "azura-luxury-villas",
+    slug: "azura-the-azura-within",
+    title: "Azura - The Azura Within",
+    category: "Films",
+    year: "2024",
+    client: "Al Mouj / Dusk Films",
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "/projects/azura-the-azura-within/still-01.png",
+    hoverStills: [
+      "/projects/azura-the-azura-within/still-01.png",
+      "/projects/azura-the-azura-within/still-02.png",
+      "/projects/azura-the-azura-within/still-03.png"
+    ],
+    poster: "/projects/azura-the-azura-within/still-01.png",
+    videos: [
+      {
+        id: "main",
+        labelKey: "mainFilm",
+        title: "Azura - Luxury Villas Launch",
+        vimeoId: "1099692179",
+        embedUrl: "https://player.vimeo.com/video/1099692179?title=0&byline=0&portrait=0&badge=0&autopause=0"
+      }
+    ],
+    screengrabs: [
+      "/projects/azura-the-azura-within/still-01.png",
+      "/projects/azura-the-azura-within/still-02.png",
+      "/projects/azura-the-azura-within/still-03.png",
+      "/projects/azura-the-azura-within/still-04.png",
+      "/projects/azura-the-azura-within/still-05.png",
+      "/projects/azura-the-azura-within/still-06.png",
+      "/projects/azura-the-azura-within/still-07.png",
+      "/projects/azura-the-azura-within/still-08.png",
+      "/projects/azura-the-azura-within/still-09.png",
+      "/projects/azura-the-azura-within/still-10.png",
+      "/projects/azura-the-azura-within/still-11.png",
+      "/projects/azura-the-azura-within/still-12.png",
+      "/projects/azura-the-azura-within/still-13.png",
+      "/projects/azura-the-azura-within/still-14.png",
+      "/projects/azura-the-azura-within/still-15.png"
+    ],
+    crew: {
+      director: "Anwar K Al Asmi",
+      dop: "Ejaz Mehedi",
+      productionManager: "Ossama Hassan",
+      editor: "Anwar K Al Asmi, Ejaz Mehedi",
+      colorist: "Marcus Friedlander (Sydney)",
+      client: "Al Mouj",
+      productionCompany: "Dusk Films"
+    },
+    story: {
+      background: "Launch campaign for Azura Luxury Villas filmed in the coastal Sultanate of Oman.",
+      creativeProcess: "Framed around pristine natural sunlight and architectural ocean views.",
+      challenges: "Balancing high dynamic range exterior desert sunlight with rich interior villa textures.",
+      productionStory: "Produced in collaboration with international fashion stylists and Sydney color house."
+    }
+  },
+  {
     id: "foreigners-only",
     slug: "foreigners-only",
     title: "FOREIGNERS ONLY",
@@ -85,13 +166,13 @@ export const projectsData = [
     year: "2022",
     client: "HULU - Bite Size Halloween (20th Digital Studio)",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/foreigners-only/still-01.webp",
+    thumbnail: "/projects/foreigners-only/still-01.png",
     hoverStills: [
-      "/projects/foreigners-only/still-01.webp",
-      "/projects/foreigners-only/still-02.webp",
-      "/projects/foreigners-only/still-03.webp"
+      "/projects/foreigners-only/still-01.png",
+      "/projects/foreigners-only/still-02.png",
+      "/projects/foreigners-only/still-03.png"
     ],
-    poster: "/projects/foreigners-only/still-01.webp",
+    poster: "/projects/foreigners-only/still-01.png",
     videos: [
       {
         id: "main",
@@ -102,42 +183,42 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "/projects/foreigners-only/still-01.webp",
-      "/projects/foreigners-only/still-02.webp",
-      "/projects/foreigners-only/still-03.webp",
-      "/projects/foreigners-only/still-04.webp",
-      "/projects/foreigners-only/still-05.webp",
-      "/projects/foreigners-only/still-06.webp",
-      "/projects/foreigners-only/still-07.webp",
-      "/projects/foreigners-only/still-08.webp",
-      "/projects/foreigners-only/still-09.webp",
-      "/projects/foreigners-only/still-10.webp",
-      "/projects/foreigners-only/still-11.webp",
-      "/projects/foreigners-only/still-12.webp",
-      "/projects/foreigners-only/still-13.webp",
-      "/projects/foreigners-only/still-14.webp",
-      "/projects/foreigners-only/still-15.webp",
-      "/projects/foreigners-only/still-16.webp",
-      "/projects/foreigners-only/still-17.webp",
-      "/projects/foreigners-only/still-18.webp",
-      "/projects/foreigners-only/still-19.webp",
-      "/projects/foreigners-only/still-20.webp",
-      "/projects/foreigners-only/still-21.webp",
-      "/projects/foreigners-only/still-22.webp",
-      "/projects/foreigners-only/still-23.webp",
-      "/projects/foreigners-only/still-24.webp",
-      "/projects/foreigners-only/still-25.webp",
-      "/projects/foreigners-only/still-26.webp",
-      "/projects/foreigners-only/still-27.webp",
-      "/projects/foreigners-only/still-28.webp",
-      "/projects/foreigners-only/still-29.webp",
-      "/projects/foreigners-only/still-30.webp",
-      "/projects/foreigners-only/still-31.webp",
-      "/projects/foreigners-only/still-32.webp",
-      "/projects/foreigners-only/still-33.webp",
-      "/projects/foreigners-only/still-34.webp",
-      "/projects/foreigners-only/still-35.webp",
-      "/projects/foreigners-only/still-36.webp"
+      "/projects/foreigners-only/still-01.png",
+      "/projects/foreigners-only/still-02.png",
+      "/projects/foreigners-only/still-03.png",
+      "/projects/foreigners-only/still-04.png",
+      "/projects/foreigners-only/still-05.png",
+      "/projects/foreigners-only/still-06.png",
+      "/projects/foreigners-only/still-07.png",
+      "/projects/foreigners-only/still-08.png",
+      "/projects/foreigners-only/still-09.png",
+      "/projects/foreigners-only/still-10.png",
+      "/projects/foreigners-only/still-11.png",
+      "/projects/foreigners-only/still-12.png",
+      "/projects/foreigners-only/still-13.png",
+      "/projects/foreigners-only/still-14.png",
+      "/projects/foreigners-only/still-15.png",
+      "/projects/foreigners-only/still-16.png",
+      "/projects/foreigners-only/still-17.png",
+      "/projects/foreigners-only/still-18.png",
+      "/projects/foreigners-only/still-19.png",
+      "/projects/foreigners-only/still-20.png",
+      "/projects/foreigners-only/still-21.png",
+      "/projects/foreigners-only/still-22.png",
+      "/projects/foreigners-only/still-23.png",
+      "/projects/foreigners-only/still-24.png",
+      "/projects/foreigners-only/still-25.png",
+      "/projects/foreigners-only/still-26.png",
+      "/projects/foreigners-only/still-27.png",
+      "/projects/foreigners-only/still-28.png",
+      "/projects/foreigners-only/still-29.png",
+      "/projects/foreigners-only/still-30.png",
+      "/projects/foreigners-only/still-31.png",
+      "/projects/foreigners-only/still-32.png",
+      "/projects/foreigners-only/still-33.png",
+      "/projects/foreigners-only/still-34.png",
+      "/projects/foreigners-only/still-35.png",
+      "/projects/foreigners-only/still-36.png"
     ],
     crew: {
       director: "Nuhash Humayun",
@@ -162,13 +243,13 @@ export const projectsData = [
     year: "2025",
     client: "Sayonara Film / Rhode Island Winner",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/a-thing-about-kashem/still-01.webp",
+    thumbnail: "/projects/a-thing-about-kashem/still-01.png",
     hoverStills: [
-      "/projects/a-thing-about-kashem/still-01.webp",
-      "/projects/a-thing-about-kashem/still-02.webp",
-      "/projects/a-thing-about-kashem/still-03.webp"
+      "/projects/a-thing-about-kashem/still-01.png",
+      "/projects/a-thing-about-kashem/still-02.png",
+      "/projects/a-thing-about-kashem/still-03.png"
     ],
-    poster: "/projects/a-thing-about-kashem/still-01.webp",
+    poster: "/projects/a-thing-about-kashem/1.jpg",
     videos: [
       {
         id: "main",
@@ -179,9 +260,33 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "/projects/a-thing-about-kashem/still-04.webp",
-      "/projects/a-thing-about-kashem/still-05.webp",
-      "/projects/a-thing-about-kashem/still-06.webp"
+      "/projects/a-thing-about-kashem/still-01.png",
+      "/projects/a-thing-about-kashem/still-02.png",
+      "/projects/a-thing-about-kashem/still-03.png",
+      "/projects/a-thing-about-kashem/still-04.png",
+      "/projects/a-thing-about-kashem/still-05.png",
+      "/projects/a-thing-about-kashem/still-06.png"
+    ],
+    setStills: [
+      "/projects/a-thing-about-kashem/set-01.jpg",
+      "/projects/a-thing-about-kashem/set-02.jpg",
+      "/projects/a-thing-about-kashem/set-03.jpg",
+      "/projects/a-thing-about-kashem/set-04.jpg",
+      "/projects/a-thing-about-kashem/set-05.jpg",
+      "/projects/a-thing-about-kashem/set-06.jpg",
+      "/projects/a-thing-about-kashem/set-07.jpg",
+      "/projects/a-thing-about-kashem/set-08.jpg",
+      "/projects/a-thing-about-kashem/set-09.jpg",
+      "/projects/a-thing-about-kashem/set-10.jpg",
+      "/projects/a-thing-about-kashem/set-11.jpg",
+      "/projects/a-thing-about-kashem/set-12.jpg",
+      "/projects/a-thing-about-kashem/set-13.jpg",
+      "/projects/a-thing-about-kashem/set-14.jpg",
+      "/projects/a-thing-about-kashem/set-15.jpg",
+      "/projects/a-thing-about-kashem/set-16.jpg",
+      "/projects/a-thing-about-kashem/set-17.jpg",
+      "/projects/a-thing-about-kashem/set-18.jpg",
+      "/projects/a-thing-about-kashem/set-19.jpg"
     ],
     crew: {
       director: "Bijon Imtiaz",
@@ -202,57 +307,100 @@ export const projectsData = [
     }
   },
   {
-    id: "azura-luxury-villas",
-    slug: "azura-the-azura-within",
-    title: "Azura - The Azura Within",
+    id: "moving-bangladesh",
+    slug: "moving-bangladesh",
+    title: "Moving Bangladesh",
     category: "Films",
-    year: "2024",
-    client: "Al Mouj / Dusk Films",
+    year: "Upcoming",
+    client: "70mm Films / TIFF Lab",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/azura-the-azura-within/still-01.webp",
+    fullWidthCardStill: "/projects/moving-bangladesh/wide-stills.png",
+    fullWidthScreengrabs: true,
+    thumbnail: "/projects/moving-bangladesh/wide-stills.png",
     hoverStills: [
-      "/projects/azura-the-azura-within/still-01.webp",
-      "/projects/azura-the-azura-within/still-02.webp",
-      "/projects/azura-the-azura-within/still-03.webp"
+      "/projects/moving-bangladesh/wide-stills.png",
+      "/projects/moving-bangladesh/poster.png"
     ],
-    poster: "/projects/azura-the-azura-within/still-01.webp",
+    poster: "/projects/moving-bangladesh/poster.png",
+    heroStill: "/projects/moving-bangladesh/wide-stills.png",
+    videos: [],
+    synopsis: "In Bangladesh, a group of young students create a ride-sharing app to beat Dhaka's notorious traffic jams, changing their lives and the nation forever.",
+    description: "Upcoming debut feature film directed by Nuhash Humayun and photographed by Ejaz Mehedi.",
+    screengrabs: [
+      "/projects/moving-bangladesh/wide-stills.png"
+    ],
+    setStills: [
+      "/projects/moving-bangladesh/set-01.jpg",
+      "/projects/moving-bangladesh/set-02.jpg",
+      "/projects/moving-bangladesh/set-03.jpg"
+    ],
+    crew: {
+      director: "Nuhash Humayun",
+      dop: "Ejaz Mehedi",
+      producer: "Arefin Bashar, Nuhash Humayun",
+      productionCompany: "70mm Films"
+    },
+    story: {
+      background: "Official selection & development at Open Doors Locarno, TIFF Filmmaker Lab, Film Bazaar, and CNC Grant Winner.",
+      creativeProcess: "LOGLINE: In Bangladesh, a group of young students create a ride-sharing app to beat Dhaka's notorious traffic jams, changing their lives and the nation forever.",
+      challenges: "Capturing the vibrant, chaotic kinetic energy of Dhaka city traffic and youth startup culture.",
+      productionStory: "Upcoming feature film. Filmed in Dhaka, Bangladesh."
+    }
+  },
+  {
+    id: "changan-magic-hour",
+    slug: "changan-magic-hour",
+    title: "Changan - Magic Hour",
+    category: "Commercial",
+    year: "2025",
+    client: "Changan / DUSK",
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "/projects/changan-magic-hour/still-01.png",
+    hoverStills: [
+      "/projects/changan-magic-hour/still-01.png",
+      "/projects/changan-magic-hour/still-02.png",
+      "/projects/changan-magic-hour/still-03.png"
+    ],
+    poster: "/projects/changan-magic-hour/still-01.png",
     videos: [
       {
         id: "main",
         labelKey: "mainFilm",
-        title: "Azura - Luxury Villas Launch",
-        vimeoId: "1099692179",
-        embedUrl: "https://player.vimeo.com/video/1099692179?title=0&byline=0&portrait=0&badge=0&autopause=0"
+        title: "Changan - Magic Hour",
+        vimeoId: "1032612336",
+        embedUrl: "https://player.vimeo.com/video/1032612336?title=0&byline=0&portrait=0&badge=0&autopause=0"
       }
     ],
     screengrabs: [
-      "/projects/azura-the-azura-within/still-04.webp",
-      "/projects/azura-the-azura-within/still-05.webp",
-      "/projects/azura-the-azura-within/still-06.webp",
-      "/projects/azura-the-azura-within/still-07.webp",
-      "/projects/azura-the-azura-within/still-08.webp",
-      "/projects/azura-the-azura-within/still-09.webp",
-      "/projects/azura-the-azura-within/still-10.webp",
-      "/projects/azura-the-azura-within/still-11.webp",
-      "/projects/azura-the-azura-within/still-12.webp",
-      "/projects/azura-the-azura-within/still-13.webp",
-      "/projects/azura-the-azura-within/still-14.webp",
-      "/projects/azura-the-azura-within/still-15.webp"
+      "/projects/changan-magic-hour/still-01.png",
+      "/projects/changan-magic-hour/still-02.png",
+      "/projects/changan-magic-hour/still-03.png",
+      "/projects/changan-magic-hour/still-04.png",
+      "/projects/changan-magic-hour/still-05.png",
+      "/projects/changan-magic-hour/still-06.png",
+      "/projects/changan-magic-hour/still-07.png",
+      "/projects/changan-magic-hour/still-08.png",
+      "/projects/changan-magic-hour/still-09.png",
+      "/projects/changan-magic-hour/still-10.png",
+      "/projects/changan-magic-hour/still-11.png",
+      "/projects/changan-magic-hour/still-12.png",
+      "/projects/changan-magic-hour/still-13.png",
+      "/projects/changan-magic-hour/still-14.png",
+      "/projects/changan-magic-hour/still-15.png",
+      "/projects/changan-magic-hour/still-16.png",
+      "/projects/changan-magic-hour/still-17.png",
+      "/projects/changan-magic-hour/still-18.png"
     ],
     crew: {
-      director: "Anwar K Al Asmi",
       dop: "Ejaz Mehedi",
-      productionManager: "Ossama Hassan",
-      editor: "Anwar K Al Asmi, Ejaz Mehedi",
-      colorist: "Marcus Friedlander (Sydney)",
-      client: "Al Mouj",
-      productionCompany: "Dusk Films"
+      client: "Changan",
+      productionCompany: "DUSK"
     },
     story: {
-      background: "Launch campaign for Azura Luxury Villas filmed in the coastal Sultanate of Oman.",
-      creativeProcess: "Framed around pristine natural sunlight and architectural ocean views.",
-      challenges: "Balancing high dynamic range exterior desert sunlight with rich interior villa textures.",
-      productionStory: "Produced in collaboration with international fashion stylists and Sydney color house."
+      background: "Commercial for Changan shot at magic hour.",
+      creativeProcess: "Golden-hour automotive cinematography with cinematic lighting.",
+      challenges: "Capturing the fleeting magic-hour window while keeping car and landscape perfectly lit.",
+      productionStory: "Filmed for Changan's latest model launch."
     }
   },
   {
@@ -263,13 +411,13 @@ export const projectsData = [
     year: "2024",
     client: "Al Mouj / Dusk Films",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/golf-links/still-01.webp",
+    thumbnail: "/projects/golf-links/still-01.png",
     hoverStills: [
-      "/projects/golf-links/still-01.webp",
-      "/projects/golf-links/still-02.webp",
-      "/projects/golf-links/still-03.webp"
+      "/projects/golf-links/still-01.png",
+      "/projects/golf-links/still-02.png",
+      "/projects/golf-links/still-03.png"
     ],
-    poster: "/projects/golf-links/still-01.webp",
+    poster: "/projects/golf-links/still-01.png",
     videos: [
       {
         id: "main",
@@ -280,22 +428,20 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "/projects/golf-links/still-01.webp",
-      "/projects/golf-links/still-02.webp",
-      "/projects/golf-links/still-03.webp",
-      "/projects/golf-links/still-04.webp",
-      "/projects/golf-links/still-05.webp",
-      "/projects/golf-links/still-06.webp",
-      "/projects/golf-links/still-07.webp",
-      "/projects/golf-links/still-08.webp",
-      "/projects/golf-links/still-09.webp",
-      "/projects/golf-links/still-10.webp",
-      "/projects/golf-links/still-11.webp",
-      "/projects/golf-links/still-12.webp",
-      "/projects/golf-links/still-13.webp",
-      "/projects/golf-links/still-14.webp",
-      "/projects/golf-links/still-15.webp",
-      "/projects/golf-links/still-16.webp"
+      "/projects/golf-links/still-01.png",
+      "/projects/golf-links/still-02.png",
+      "/projects/golf-links/still-03.png",
+      "/projects/golf-links/still-04.png",
+      "/projects/golf-links/still-06.png",
+      "/projects/golf-links/still-07.png",
+      "/projects/golf-links/still-08.png",
+      "/projects/golf-links/still-09.png",
+      "/projects/golf-links/still-10.png",
+      "/projects/golf-links/still-11.png",
+      "/projects/golf-links/still-12.png",
+      "/projects/golf-links/still-13.png",
+      "/projects/golf-links/still-14.png",
+      "/projects/golf-links/still-15.png"
     ],
     crew: {
       director: "Anwar K Al Asmi & Ejaz Mehedi",
@@ -312,6 +458,111 @@ export const projectsData = [
     }
   },
   {
+    id: "maktoob",
+    slug: "maktoob",
+    title: "Rooted - مكتوب",
+    category: "Films",
+    year: "2025",
+    client: "In Festivals Circuit",
+    comingSoon: false,
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "/projects/maktoob/still-01.png",
+    hoverStills: [
+      "/projects/maktoob/still-01.png",
+      "/projects/maktoob/still-02.png",
+      "/projects/maktoob/still-03.png"
+    ],
+    poster: "/projects/maktoob/still-01.png",
+    videos: [],
+    synopsis: "A thirty-year-old son returns to the mountain home he abandoned, where his dying mother’s last wish forces him to face the woman, the land, and the legacy he left behind.",
+    description: "Short drama film produced in Oman. Location: Al Jabal Al Akhdar - Oman. Status: In Festivals Circuit.",
+    screengrabs: [
+      "/projects/maktoob/still-01.png",
+      "/projects/maktoob/still-02.png",
+      "/projects/maktoob/still-03.png",
+      "/projects/maktoob/still-04.png"
+    ],
+    crew: {
+      director: "Sultan Al Qamshoui",
+      writer: "Sultan Al Qamshoui",
+      producer: "Muneer Al Rawahi",
+      dop: "Ejaz Mehedi",
+      artDirector: "Abdulaziz Al Jumail",
+      productionManager: "Salim Al Mahrouqi",
+      editor: "Amjad Al Nabhani",
+      colorist: "Amjad Al Nabhani",
+      sound: "Kumail Al Lawati (Sound Effects)",
+      composer: "Faisal Al Shibli"
+    },
+    story: {
+      background: "Status: In Festivals Circuit — Filmed in Al Jabal Al Akhdar, Sultanate of Oman.",
+      creativeProcess: "A thirty-year-old son returns to the mountain home he abandoned, where his dying mother’s last wish forces him to face the woman, the land, and the legacy he left behind.",
+      challenges: "Capturing mountain landscapes and intimate emotional performance in high-altitude environments.",
+      productionStory: "Filmed in Al Jabal Al Akhdar, Sultanate of Oman."
+    }
+  },
+  {
+    id: "last-night-in-korea",
+    slug: "last-night-in-korea",
+    title: "The Last Night In Korea",
+    category: "Films",
+    year: "2023",
+    client: "CHANEL X BIFF Asian Film Academy 2023 (Busan International Film Festival)",
+    aspectRatio: "2.39:1 Anamorphic",
+    thumbnail: "/projects/last-night-in-korea/still-01.png",
+    hoverStills: [
+      "/projects/last-night-in-korea/still-01.png",
+      "/projects/last-night-in-korea/still-02.png",
+      "/projects/last-night-in-korea/still-03.png"
+    ],
+    poster: "/projects/last-night-in-korea/still-01.png",
+    videos: [
+      {
+        id: "main",
+        labelKey: "mainFilm",
+        title: "The Last Night In Korea",
+        vimeoId: "1220862850",
+        embedUrl: "https://player.vimeo.com/video/1220862850?title=0&byline=0&portrait=0&badge=0&autopause=0"
+      }
+    ],
+    synopsis: "Marat is a Kyrgyz man, who arrives in Korea with his friend Edil to earn money for his family. They enter Korea with Russian passports as tourists. After living in Korea for a year, Marat was surprised by the news that his aging father passed away in Kyrgyzstan. Now he has to face two options whether he will stay in Busan and not visit his father's funeral and become the talk of the people or go back to Kyrgyzstan with a possibility he would get deported or be put in jail.",
+    description: "The Last Night in Korea is a 2023 short drama film produced during the CHANEL X BIFF Asian Film Academy (BAFA) 2023 at the 28th Busan International Film Festival (BIFF). Directed by Mohamad W. Ali, Saman Hosseinpuor, and Khozy Rizal, the film follows an illegal Kyrgyz migrant in Korea who learns of his father's death back home. The film had its world premiere at the 28th Busan International Film Festival.",
+    screengrabs: [
+      "/projects/last-night-in-korea/still-01.png",
+      "/projects/last-night-in-korea/still-02.png",
+      "/projects/last-night-in-korea/still-03.png",
+      "/projects/last-night-in-korea/still-04.png",
+      "/projects/last-night-in-korea/still-05.png",
+      "/projects/last-night-in-korea/still-06.png"
+    ],
+    setStills: [
+      "/projects/last-night-in-korea/set-01.png",
+      "/projects/last-night-in-korea/set-02.png",
+      "/projects/last-night-in-korea/set-03.png",
+      "/projects/last-night-in-korea/set-04.png",
+      "/projects/last-night-in-korea/set-05.png",
+      "/projects/last-night-in-korea/set-06.png",
+      "/projects/last-night-in-korea/set-07.png",
+      "/projects/last-night-in-korea/set-08.png",
+      "/projects/last-night-in-korea/set-09.png"
+    ],
+    crew: {
+      director: "Mohamad W. Ali, Saman Hosseinpuor, Khozy Rizal, Samara Sagynbaeva",
+      writer: "Samara Sagynbaeva",
+      producer: "Aigerim Satybaldy",
+      dop: "Ejaz Mehedi, Becky Baihui Chen, Linh Dan Nguyen Phan, Kongkea Vann",
+      editor: "Harin Paesongthai",
+      productionDesigner: "Zhengrong Ni",
+      sound: "Uttam Neupane (Production Sound Mixer / Re-recording Mixer / Sound Designer), Choi Myunggyu (Boom Operator)"
+    },
+    story: {
+      background: "Produced during CHANEL X BIFF Asian Film Academy (BAFA) 2023 at the 28th Busan International Film Festival (BIFF). World Premiere at Busan International Film Festival.",
+      creativeProcess: "Marat is a Kyrgyz man, who arrives in Korea with his friend Edil to earn money for his family. They enter Korea with Russian passports as tourists.",
+      challenges: "Capturing the emotional dilemma of an illegal migrant facing deportation vs. attending his father's funeral.",
+      productionStory: "Filmed in Busan, South Korea."
+    }
+  },
+  {
     id: "oqgn-unseen",
     slug: "oqgn-unseen",
     title: "OQGN - Unseen",
@@ -319,13 +570,13 @@ export const projectsData = [
     year: "2024",
     client: "OQGN Gas Network / Gravity Productions",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/oqgn-unseen/still-01.webp",
+    thumbnail: "/projects/oqgn-unseen/still-01.png",
     hoverStills: [
-      "/projects/oqgn-unseen/still-01.webp",
-      "/projects/oqgn-unseen/still-02.webp",
-      "/projects/oqgn-unseen/still-03.webp"
+      "/projects/oqgn-unseen/still-01.png",
+      "/projects/oqgn-unseen/still-02.png",
+      "/projects/oqgn-unseen/still-03.png"
     ],
-    poster: "/projects/oqgn-unseen/still-01.webp",
+    poster: "/projects/oqgn-unseen/still-01.png",
     videos: [
       {
         id: "main",
@@ -336,16 +587,19 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "/projects/oqgn-unseen/still-04.webp",
-      "/projects/oqgn-unseen/still-05.webp",
-      "/projects/oqgn-unseen/still-06.webp",
-      "/projects/oqgn-unseen/still-07.webp",
-      "/projects/oqgn-unseen/still-08.webp",
-      "/projects/oqgn-unseen/still-09.webp",
-      "/projects/oqgn-unseen/still-10.webp",
-      "/projects/oqgn-unseen/still-11.webp",
-      "/projects/oqgn-unseen/still-12.webp",
-      "/projects/oqgn-unseen/still-13.webp"
+      "/projects/oqgn-unseen/still-01.png",
+      "/projects/oqgn-unseen/still-02.png",
+      "/projects/oqgn-unseen/still-03.png",
+      "/projects/oqgn-unseen/still-04.png",
+      "/projects/oqgn-unseen/still-05.png",
+      "/projects/oqgn-unseen/still-06.png",
+      "/projects/oqgn-unseen/still-07.png",
+      "/projects/oqgn-unseen/still-08.png",
+      "/projects/oqgn-unseen/still-09.png",
+      "/projects/oqgn-unseen/still-10.png",
+      "/projects/oqgn-unseen/still-11.png",
+      "/projects/oqgn-unseen/still-12.png",
+      "/projects/oqgn-unseen/still-13.png"
     ],
     crew: {
       director: "Anwar K Al Asmi",
@@ -364,57 +618,6 @@ export const projectsData = [
     }
   },
   {
-    id: "yiti-dynamic-harmony",
-    slug: "yiti-dynamic-harmony",
-    title: "YITI - Dynamic Harmony",
-    category: "Commercial",
-    year: "2022",
-    client: "Diamond Developers x Omran Group",
-    aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/yiti-dynamic-harmony/still-01.webp",
-    hoverStills: [
-      "/projects/yiti-dynamic-harmony/still-01.webp",
-      "/projects/yiti-dynamic-harmony/still-02.webp",
-      "/projects/yiti-dynamic-harmony/still-03.webp"
-    ],
-    poster: "/projects/yiti-dynamic-harmony/still-01.webp",
-    videos: [
-      {
-        id: "main",
-        labelKey: "mainFilm",
-        title: "YITI - Dynamic Harmony (Sustainable City)",
-        vimeoId: "783019291",
-        embedUrl: "https://player.vimeo.com/video/783019291?title=0&byline=0&portrait=0&badge=0&autopause=0"
-      }
-    ],
-    screengrabs: [
-      "/projects/yiti-dynamic-harmony/still-01.webp",
-      "/projects/yiti-dynamic-harmony/still-02.webp",
-      "/projects/yiti-dynamic-harmony/still-03.webp",
-      "/projects/yiti-dynamic-harmony/still-04.webp",
-      "/projects/yiti-dynamic-harmony/still-05.webp",
-      "/projects/yiti-dynamic-harmony/still-06.webp",
-      "/projects/yiti-dynamic-harmony/still-07.webp",
-      "/projects/yiti-dynamic-harmony/still-08.webp",
-      "/projects/yiti-dynamic-harmony/still-09.webp",
-      "/projects/yiti-dynamic-harmony/still-10.webp",
-      "/projects/yiti-dynamic-harmony/still-11.webp",
-      "/projects/yiti-dynamic-harmony/still-12.webp"
-    ],
-    crew: {
-      director: "Anwar Al-Asmi & Ejaz Mehedi",
-      dop: "Ejaz Mehedi",
-      productionCompany: "RealityCG",
-      client: "Diamond Developers x Omran Group"
-    },
-    story: {
-      background: "Launch commercial for Yiti - The Sustainable City 2022.",
-      creativeProcess: "Exploring eco-architecture and natural mountain vistas in Oman.",
-      challenges: "High contrast mountain sunlight.",
-      productionStory: "Filmed in Sultanate of Oman."
-    }
-  },
-  {
     id: "al-mouj-golf-10-years",
     slug: "al-mouj-golf-10-years-of-golf",
     title: "Al-Mouj Golf - 10 Years of Golf",
@@ -422,13 +625,13 @@ export const projectsData = [
     year: "2023",
     client: "Al-Mouj / RealityCG",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/al-mouj-golf-10-years-of-golf/still-01.webp",
+    thumbnail: "/projects/al-mouj-golf-10-years-of-golf/still-01.png",
     hoverStills: [
-      "/projects/al-mouj-golf-10-years-of-golf/still-01.webp",
-      "/projects/al-mouj-golf-10-years-of-golf/still-02.webp",
-      "/projects/al-mouj-golf-10-years-of-golf/still-03.webp"
+      "/projects/al-mouj-golf-10-years-of-golf/still-01.png",
+      "/projects/al-mouj-golf-10-years-of-golf/still-02.png",
+      "/projects/al-mouj-golf-10-years-of-golf/still-03.png"
     ],
-    poster: "/projects/al-mouj-golf-10-years-of-golf/still-01.webp",
+    poster: "/projects/al-mouj-golf-10-years-of-golf/still-01.png",
     videos: [
       {
         id: "main",
@@ -439,14 +642,17 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "/projects/al-mouj-golf-10-years-of-golf/still-04.webp",
-      "/projects/al-mouj-golf-10-years-of-golf/still-05.webp",
-      "/projects/al-mouj-golf-10-years-of-golf/still-06.webp",
-      "/projects/al-mouj-golf-10-years-of-golf/still-07.webp",
-      "/projects/al-mouj-golf-10-years-of-golf/still-08.webp",
-      "/projects/al-mouj-golf-10-years-of-golf/still-09.webp",
-      "/projects/al-mouj-golf-10-years-of-golf/still-10.webp",
-      "/projects/al-mouj-golf-10-years-of-golf/still-11.webp"
+      "/projects/al-mouj-golf-10-years-of-golf/still-01.png",
+      "/projects/al-mouj-golf-10-years-of-golf/still-02.png",
+      "/projects/al-mouj-golf-10-years-of-golf/still-03.png",
+      "/projects/al-mouj-golf-10-years-of-golf/still-04.png",
+      "/projects/al-mouj-golf-10-years-of-golf/still-05.png",
+      "/projects/al-mouj-golf-10-years-of-golf/still-06.png",
+      "/projects/al-mouj-golf-10-years-of-golf/still-07.png",
+      "/projects/al-mouj-golf-10-years-of-golf/still-08.png",
+      "/projects/al-mouj-golf-10-years-of-golf/still-09.png",
+      "/projects/al-mouj-golf-10-years-of-golf/still-10.png",
+      "/projects/al-mouj-golf-10-years-of-golf/still-11.png"
     ],
     crew: {
       director: "Anwar Al-Asmi",
@@ -462,89 +668,54 @@ export const projectsData = [
     }
   },
   {
-    id: "changan-magic-hour",
-    slug: "changan-magic-hour",
-    title: "Changan - Magic Hour",
+    id: "yiti-dynamic-harmony",
+    slug: "yiti-dynamic-harmony",
+    title: "YITI - Dynamic Harmony",
     category: "Commercial",
-    year: "2025",
-    client: "Changan / DUSK",
+    year: "2022",
+    client: "Diamond Developers x Omran Group",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/changan-magic-hour/still-01.webp",
+    thumbnail: "/projects/yiti-dynamic-harmony/still-01.png",
     hoverStills: [
-      "/projects/changan-magic-hour/still-01.webp",
-      "/projects/changan-magic-hour/still-02.webp",
-      "/projects/changan-magic-hour/still-03.webp"
+      "/projects/yiti-dynamic-harmony/still-01.png",
+      "/projects/yiti-dynamic-harmony/still-02.png",
+      "/projects/yiti-dynamic-harmony/still-03.png"
     ],
-    poster: "/projects/changan-magic-hour/still-01.webp",
+    poster: "/projects/yiti-dynamic-harmony/still-01.png",
     videos: [
       {
         id: "main",
         labelKey: "mainFilm",
-        title: "Changan - Magic Hour",
-        vimeoId: "1032612336",
-        embedUrl: "https://player.vimeo.com/video/1032612336?title=0&byline=0&portrait=0&badge=0&autopause=0"
+        title: "YITI - Dynamic Harmony (Sustainable City)",
+        vimeoId: "783019291",
+        embedUrl: "https://player.vimeo.com/video/783019291?title=0&byline=0&portrait=0&badge=0&autopause=0"
       }
     ],
     screengrabs: [
-      "/projects/changan-magic-hour/still-04.webp",
-      "/projects/changan-magic-hour/still-05.webp",
-      "/projects/changan-magic-hour/still-06.webp",
-      "/projects/changan-magic-hour/still-07.webp",
-      "/projects/changan-magic-hour/still-08.webp",
-      "/projects/changan-magic-hour/still-09.webp",
-      "/projects/changan-magic-hour/still-10.webp",
-      "/projects/changan-magic-hour/still-11.webp",
-      "/projects/changan-magic-hour/still-12.webp",
-      "/projects/changan-magic-hour/still-13.webp",
-      "/projects/changan-magic-hour/still-14.webp",
-      "/projects/changan-magic-hour/still-15.webp",
-      "/projects/changan-magic-hour/still-16.webp",
-      "/projects/changan-magic-hour/still-17.webp",
-      "/projects/changan-magic-hour/still-18.webp"
+      "/projects/yiti-dynamic-harmony/still-01.png",
+      "/projects/yiti-dynamic-harmony/still-02.png",
+      "/projects/yiti-dynamic-harmony/still-03.png",
+      "/projects/yiti-dynamic-harmony/still-04.png",
+      "/projects/yiti-dynamic-harmony/still-05.png",
+      "/projects/yiti-dynamic-harmony/still-06.png",
+      "/projects/yiti-dynamic-harmony/still-07.png",
+      "/projects/yiti-dynamic-harmony/still-08.png",
+      "/projects/yiti-dynamic-harmony/still-09.png",
+      "/projects/yiti-dynamic-harmony/still-10.png",
+      "/projects/yiti-dynamic-harmony/still-11.png",
+      "/projects/yiti-dynamic-harmony/still-12.png"
     ],
     crew: {
+      director: "Anwar Al-Asmi & Ejaz Mehedi",
       dop: "Ejaz Mehedi",
-      client: "Changan",
-      productionCompany: "DUSK"
+      productionCompany: "RealityCG",
+      client: "Diamond Developers x Omran Group"
     },
     story: {
-      background: "Commercial for Changan shot at magic hour.",
-      creativeProcess: "Golden-hour automotive cinematography with cinematic lighting.",
-      challenges: "Capturing the fleeting magic-hour window while keeping car and landscape perfectly lit.",
-      productionStory: "Filmed for Changan's latest model launch."
-    }
-  },
-  {
-    id: "mai-natures-new-address",
-    slug: "mai-natures-new-address",
-    title: "MAI - Nature's New Address",
-    category: "Commercial",
-    year: "2026",
-    client: "MAI / DUSK",
-    comingSoon: true,
-    aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/mai-natures-new-address/still-01.webp",
-    hoverStills: [
-      "/projects/mai-natures-new-address/still-01.webp",
-      "/projects/mai-natures-new-address/still-02.webp",
-      "/projects/mai-natures-new-address/still-03.webp"
-    ],
-    poster: "/projects/mai-natures-new-address/still-01.webp",
-    videos: [],
-    screengrabs: [
-      "/projects/mai-natures-new-address/still-02.webp",
-      "/projects/mai-natures-new-address/still-03.webp",
-      "/projects/mai-natures-new-address/still-04.webp"
-    ],
-    crew: {
-      client: "MAI",
-      productionCompany: "DUSK"
-    },
-    story: {
-      background: "Coming soon — MAI - Nature's New Address.",
-      creativeProcess: "Full campaign details will be revealed on release.",
-      challenges: "TBA.",
-      productionStory: "Coming soon."
+      background: "Launch commercial for Yiti - The Sustainable City 2022.",
+      creativeProcess: "Exploring eco-architecture and natural mountain vistas in Oman.",
+      challenges: "High contrast mountain sunlight.",
+      productionStory: "Filmed in Sultanate of Oman."
     }
   },
   {
@@ -555,13 +726,13 @@ export const projectsData = [
     year: "2021",
     client: "Bank Muscat x Royal Oman Police",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/bank-muscat-the-gamer/still-01.webp",
+    thumbnail: "/projects/bank-muscat-the-gamer/still-01.png",
     hoverStills: [
-      "/projects/bank-muscat-the-gamer/still-01.webp",
-      "/projects/bank-muscat-the-gamer/still-02.webp",
-      "/projects/bank-muscat-the-gamer/still-03.webp"
+      "/projects/bank-muscat-the-gamer/still-01.png",
+      "/projects/bank-muscat-the-gamer/still-02.png",
+      "/projects/bank-muscat-the-gamer/still-03.png"
     ],
-    poster: "/projects/bank-muscat-the-gamer/still-01.webp",
+    poster: "/projects/bank-muscat-the-gamer/still-01.png",
     videos: [
       {
         id: "main",
@@ -572,18 +743,18 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "/projects/bank-muscat-the-gamer/still-01.webp",
-      "/projects/bank-muscat-the-gamer/still-02.webp",
-      "/projects/bank-muscat-the-gamer/still-03.webp",
-      "/projects/bank-muscat-the-gamer/still-04.webp",
-      "/projects/bank-muscat-the-gamer/still-05.webp",
-      "/projects/bank-muscat-the-gamer/still-06.webp",
-      "/projects/bank-muscat-the-gamer/still-07.webp",
-      "/projects/bank-muscat-the-gamer/still-08.webp",
-      "/projects/bank-muscat-the-gamer/still-09.webp",
-      "/projects/bank-muscat-the-gamer/still-10.webp",
-      "/projects/bank-muscat-the-gamer/still-11.webp",
-      "/projects/bank-muscat-the-gamer/still-12.webp"
+      "/projects/bank-muscat-the-gamer/still-01.png",
+      "/projects/bank-muscat-the-gamer/still-02.png",
+      "/projects/bank-muscat-the-gamer/still-03.png",
+      "/projects/bank-muscat-the-gamer/still-04.png",
+      "/projects/bank-muscat-the-gamer/still-05.png",
+      "/projects/bank-muscat-the-gamer/still-06.png",
+      "/projects/bank-muscat-the-gamer/still-07.png",
+      "/projects/bank-muscat-the-gamer/still-08.png",
+      "/projects/bank-muscat-the-gamer/still-09.png",
+      "/projects/bank-muscat-the-gamer/still-10.png",
+      "/projects/bank-muscat-the-gamer/still-11.png",
+      "/projects/bank-muscat-the-gamer/still-12.png"
     ],
     crew: {
       director: "Anwar Al-Asmi & Ejaz Mehedi",
@@ -607,13 +778,13 @@ export const projectsData = [
     year: "2022",
     client: "Yamaha Bangladesh / GREY",
     aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/yamaha-speed-girl/still-01.webp",
+    thumbnail: "/projects/yamaha-speed-girl/still-01.png",
     hoverStills: [
-      "/projects/yamaha-speed-girl/still-01.webp",
-      "/projects/yamaha-speed-girl/still-02.webp",
-      "/projects/yamaha-speed-girl/still-03.webp"
+      "/projects/yamaha-speed-girl/still-01.png",
+      "/projects/yamaha-speed-girl/still-02.png",
+      "/projects/yamaha-speed-girl/still-03.png"
     ],
-    poster: "/projects/yamaha-speed-girl/still-01.webp",
+    poster: "/projects/yamaha-speed-girl/still-01.png",
     videos: [
       {
         id: "main",
@@ -624,18 +795,18 @@ export const projectsData = [
       }
     ],
     screengrabs: [
-      "/projects/yamaha-speed-girl/still-01.webp",
-      "/projects/yamaha-speed-girl/still-02.webp",
-      "/projects/yamaha-speed-girl/still-03.webp",
-      "/projects/yamaha-speed-girl/still-04.webp",
-      "/projects/yamaha-speed-girl/still-05.webp",
-      "/projects/yamaha-speed-girl/still-06.webp",
-      "/projects/yamaha-speed-girl/still-07.webp",
-      "/projects/yamaha-speed-girl/still-08.webp",
-      "/projects/yamaha-speed-girl/still-09.webp",
-      "/projects/yamaha-speed-girl/still-10.webp",
-      "/projects/yamaha-speed-girl/still-11.webp",
-      "/projects/yamaha-speed-girl/still-12.webp"
+      "/projects/yamaha-speed-girl/still-01.png",
+      "/projects/yamaha-speed-girl/still-02.png",
+      "/projects/yamaha-speed-girl/still-03.png",
+      "/projects/yamaha-speed-girl/still-04.png",
+      "/projects/yamaha-speed-girl/still-05.png",
+      "/projects/yamaha-speed-girl/still-06.png",
+      "/projects/yamaha-speed-girl/still-07.png",
+      "/projects/yamaha-speed-girl/still-08.png",
+      "/projects/yamaha-speed-girl/still-09.png",
+      "/projects/yamaha-speed-girl/still-10.png",
+      "/projects/yamaha-speed-girl/still-11.png",
+      "/projects/yamaha-speed-girl/still-12.png"
     ],
     crew: {
       director: "Reehan Rahman",
@@ -736,50 +907,6 @@ export const projectsData = [
       creativeProcess: "Directed and shot by Ejaz Mehedi.",
       challenges: "Street-level guerrilla filming across urban Dhaka wall art locations.",
       productionStory: "Associate production by IMVISIBLE and Filmy Features."
-    }
-  },
-  {
-    id: "maktoob",
-    slug: "maktoob",
-    title: "Maktoob",
-    category: "Films",
-    year: "2025",
-    client: "Coming Soon",
-    comingSoon: true,
-    aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/moshari/still-01.webp",
-    hoverStills: ["/projects/moshari/still-01.webp"],
-    poster: "/projects/moshari/still-01.webp",
-    videos: [],
-    screengrabs: [],
-    crew: { dop: "Ejaz Mehedi" },
-    story: {
-      background: "Coming soon — Maktoob.",
-      creativeProcess: "Full details will be revealed on release.",
-      challenges: "TBA.",
-      productionStory: "Coming soon."
-    }
-  },
-  {
-    id: "last-night-in-korea",
-    slug: "last-night-in-korea",
-    title: "Last Night In Korea",
-    category: "Films",
-    year: "2025",
-    client: "Coming Soon",
-    comingSoon: true,
-    aspectRatio: "2.39:1 Anamorphic",
-    thumbnail: "/projects/moshari/still-01.webp",
-    hoverStills: ["/projects/moshari/still-01.webp"],
-    poster: "/projects/moshari/still-01.webp",
-    videos: [],
-    screengrabs: [],
-    crew: { dop: "Ejaz Mehedi" },
-    story: {
-      background: "Coming soon — Last Night In Korea.",
-      creativeProcess: "Full details will be revealed on release.",
-      challenges: "TBA.",
-      productionStory: "Coming soon."
     }
   }
 ];

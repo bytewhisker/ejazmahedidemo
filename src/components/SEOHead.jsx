@@ -10,7 +10,7 @@ const BASE_URL = "https://www.ejazmehedi.com";
  */
 export function SEOHead({ activeTab, selectedProject, activeFilter }) {
   useEffect(() => {
-    let title = "Ejaz Mehedi | Director of Photography & Cinematographer | MOSHARI, HULU";
+    let title = "Ejaz Mehedi - Cinematographer & Director";
     let description = "Official portfolio of Ejaz Mehedi, internationally acclaimed Bangladeshi cinematographer & DOP. Cinematographer of multi-Oscar®-qualifying short film MOSHARI (Exec Produced by Jordan Peele & Riz Ahmed), HULU's Foreigners Only (20th Digital Studio), A Thing About Kashem, and global commercial campaigns.";
     let ogImage = "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop";
     let canonicalUrl = `${BASE_URL}/`;

@@ -56,7 +56,13 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
   ];
 
   const mobileOverlayItems = [
-    { label: 'information', onClick: () => handleNavClick('about', 'all'), isActive: activeTab === 'about' },
+    {
+      enText: 'information',
+      bnText: 'তথ্য',
+      arText: 'معلومات',
+      onClick: () => handleNavClick('about', 'all'),
+      isActive: activeTab === 'about'
+    },
   ];
 
   const overlayVariants = {
@@ -79,7 +85,7 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
     <>
       {/* ROOT STICKY CONTAINER — DIRECT CHILD OF MAIN PAGE WRAPPER */}
       <header className={`sticky top-0 z-50 w-full px-4 sm:px-8 md:px-12 transition-all duration-300 select-none transform-gpu ${
-        scrolled ? 'pt-3 md:pt-4 pb-4 md:pb-6' : 'pt-2 pb-2 md:pb-3'
+        scrolled ? 'pt-3 md:pt-4 pb-4 md:pb-6' : 'pt-4 md:pt-6 pb-2 md:pb-3'
       } ${
         isLime
           ? 'bg-[var(--about-bg)] text-[var(--about-ink)]'
@@ -89,15 +95,15 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
 
           {/* HERO TITLE BANNER — Smoothly collapses to 0 height so nav links glide to top-0 */}
           <div className={`w-full overflow-hidden transition-all duration-300 ease-in-out transform-gpu ${
-            scrolled ? 'max-h-0 opacity-0 py-0 mb-0' : 'max-h-40 opacity-100 pt-2 pb-1 mb-1'
+            scrolled ? 'max-h-0 opacity-0 py-0 mb-0' : 'max-h-[30rem] opacity-100 pt-2 md:pt-3 pb-2 mb-1'
           }`}>
-            <div className="w-full flex items-center justify-between md:justify-center relative pr-16 md:pr-0">
+            <div className="w-full flex items-center justify-between md:justify-start relative pr-16 md:pr-0">
               <SmoothHeaderName
                 isLime={isLime}
                 onClick={() => handleNavClick('reel', 'all')}
               />
 
-              {/* MOBILE CONTROLS — theme toggle + "menu" text */}
+              {/* MOBILE CONTROLS — theme toggle + "MENU" text */}
               <div className="md:hidden flex items-center gap-3 absolute right-0 top-1/2 -translate-y-1/2">
                 <button
                   onClick={toggleTheme}
@@ -109,12 +115,12 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
 
                 <button
                   onClick={() => setIsMobileMenuOpen(true)}
-                  className={`font-haas italic font-bold text-[1.1rem] leading-none transition-opacity ${
+                  className={`font-haas font-bold text-[10px] sm:text-xs tracking-[0.18em] uppercase transition-opacity ${
                     isLime ? 'text-[var(--about-ink)] hover:opacity-70' : 'text-ink hover:opacity-70'
                   }`}
                   aria-label="Open menu"
                 >
-                  menu
+                  MENU
                 </button>
               </div>
             </div>
@@ -234,7 +240,7 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
-                className="font-haas font-black text-black text-[clamp(2.4rem,10.5vw,5rem)] uppercase leading-none tracking-tight cursor-pointer"
+                className="font-mega font-extrabold text-black text-[clamp(2.5rem,10vw,5rem)] uppercase leading-none tracking-[0.08em] cursor-pointer"
                 onClick={() => { setIsMobileMenuOpen(false); handleNavClick('projects', 'all'); }}
               >
                 EJAZ MEHEDI
@@ -256,22 +262,24 @@ export const Navbar = ({ activeTab, setActiveTab, activeFilter, setActiveFilter 
               variants={listVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-col items-end justify-center gap-6 flex-1 pr-2"
+              className="flex flex-col items-end justify-start pt-36 sm:pt-44 gap-6 flex-1 pr-2"
             >
               {mobileOverlayItems.map((item) => (
-                <div key={item.label} className="overflow-hidden pb-2">
-                  <motion.button
-                    variants={itemVariants}
-                    onClick={item.onClick}
-                    className={`font-haas font-bold text-right leading-[1.15] block transition-opacity ${
-                      item.isActive
-                        ? 'text-black opacity-100 underline underline-offset-[10px] decoration-[3px]'
-                        : 'text-black opacity-90 hover:opacity-100'
-                    }`}
-                    style={{ fontSize: 'clamp(1.7rem, 7.5vw, 3rem)' }}
-                  >
-                    {item.label}
-                  </motion.button>
+                <div key={item.enText} className="overflow-hidden pb-1">
+                  <motion.div variants={itemVariants}>
+                    <GlitchNavItem
+                      enText={item.enText}
+                      bnText={item.bnText}
+                      arText={item.arText}
+                      onClick={item.onClick}
+                      isActive={item.isActive}
+                      className={`font-sans font-normal text-right block text-[clamp(1.8rem,7.5vw,3rem)] leading-[1.15] transition-opacity ${
+                        item.isActive
+                          ? 'text-black opacity-100 underline underline-offset-[10px] decoration-[2px]'
+                          : 'text-black opacity-90 hover:opacity-100'
+                      }`}
+                    />
+                  </motion.div>
                 </div>
               ))}
             </motion.nav>

@@ -48,17 +48,52 @@ img {
 }
 
 @font-face {
-  font-family: 'Neue Montreal';
-  src: url('/fonts/NeueMontreal-Black.woff2') format('woff2');
+  font-family: 'Impact Custom';
+  src: url('/fonts/Impact.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mango Grotesque';
+  src: url('/fonts/MangoGrotesque-Medium.woff2') format('woff2'),
+       url('/fonts/MangoGrotesque-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mango Grotesque';
+  src: url('/fonts/MangoGrotesque-Bold.woff2') format('woff2'),
+       url('/fonts/MangoGrotesque-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mango Grotesque';
+  src: url('/fonts/MangoGrotesque-ExtraBold.woff2') format('woff2'),
+       url('/fonts/MangoGrotesque-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mango Grotesque Black';
+  src: url('/fonts/MangoGrotesque-Black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
 @theme inline {
-  --font-oswald: "Oswald", sans-serif;
-  --font-girott: "Oswald", sans-serif;
-  --font-mega: "Oswald", sans-serif;
+  --font-oswald: "Mango Grotesque", "Impact Custom", sans-serif;
+  --font-girott: "Mango Grotesque", "Impact Custom", sans-serif;
+  --font-mega: "Mango Grotesque", "Impact Custom", sans-serif;
   --font-focal: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-haas: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -128,11 +163,45 @@ img {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Hide default browser cursor on desktop pointer devices */
+  /* Hide default browser cursor on desktop pointer devices (except in admin mode) */
   @media (hover: hover) and (pointer: fine) {
-    *, body, button, a, input, select, textarea, [role="button"], .cursor-pointer {
-      cursor: none !important;
+    body:not(.admin-mode) *, body:not(.admin-mode) button, body:not(.admin-mode) a {
+      cursor: none;
     }
+  }
+
+  /* Restore default browser cursor in admin mode */
+  body.admin-mode,
+  body.admin-mode *,
+  .admin-root,
+  .admin-root *,
+  [data-admin],
+  [data-admin] * {
+    cursor: auto !important;
+  }
+  .admin-root button,
+  .admin-root a,
+  .admin-root .cursor-pointer,
+  [data-admin] button,
+  [data-admin] a,
+  [data-admin] .cursor-pointer {
+    cursor: pointer !important;
+  }
+  .admin-root input,
+  .admin-root textarea,
+  .admin-root select,
+  [data-admin] input,
+  [data-admin] textarea,
+  [data-admin] select {
+    cursor: text !important;
+  }
+  .admin-root .cursor-grab,
+  [data-admin] .cursor-grab {
+    cursor: grab !important;
+  }
+  .admin-root .cursor-grabbing,
+  [data-admin] .cursor-grabbing {
+    cursor: grabbing !important;
   }
 
   /* Single Minimalist Sans-Serif System — Inter */

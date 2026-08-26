@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useCMS } from '../context/CMSContext';
 import { awardsData, pressData, clientsData } from '../data/projectsData';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ejazPortrait from '../assets/ejaz-portrait.webp';
+import ejazPortrait from '../assets/ejaz-portrait.png';
 import omanMap from '../assets/oman-outline.png';
 import bangladeshMap from '../assets/bangladesh-outline.png';
-import bangladeshView from '../assets/bangladesh-view.webp';
-import omanView from '../assets/oman-view.webp';
 
 const PERSONAL_EMAIL = 'contact@ejazmehedi.com';
 const INSTAGRAM_URL = 'https://instagram.com/ejazmehedi';
@@ -14,37 +13,50 @@ const INSTAGRAM_URL = 'https://instagram.com/ejazmehedi';
 const keywordImages = {
   oman: omanMap,
   bangladesh: bangladeshMap,
-  southasia: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Map_of_South_Asia.png/960px-Map_of_South_Asia.png"
 };
 
 // Real photos shown in the portrait frame on hover
 const portraitHoverPhotos = {
-  oman: [omanView],
-  bangladesh: [bangladeshView],
+  bangladesh: [
+    '/bio/bangladesh/1.jpg',
+    '/bio/bangladesh/2.jpg',
+    '/bio/bangladesh/3.jpg',
+    '/bio/bangladesh/4.jpg',
+    '/bio/bangladesh/5.jpg'
+  ],
+  oman: [
+    '/bio/oman/1.png',
+    '/bio/oman/2.jpg',
+    '/bio/oman/3.jpg'
+  ],
+  robreiner: ['/bio/rob-reiner.jpg'],
+  standbyme: ['/bio/stand-by-me.png'],
+  morshedulislam: ['/bio/morshedul-islam.jpg'],
+  dipunumbertwo: ['/bio/dipu-number-two.png']
 };
 
 const bioTextData = {
   en: {
-    p1: "Ejaz Mehedi is a Bangladeshi cinematographer and filmmaker whose visual perspective has been shaped by both an intimacy with home and long periods spent away from it. He grew up in Dhaka, where some of his earliest memories of cinema came through films such as Rob Reiner's Stand By Me and Morshedul Islam's Dipu Number Two. Different in language and geography but similar in their emotional attention to landscapes, friendship, memory, growing up and trauma, both films stayed with him long before he understood filmmaking as a profession.",
-    p2: "His formative years later took him from Dhaka to Nottingham in the United Kingdom and Cyberjaya in Malaysia, followed by years of living and working across different countries. Distance gradually changed the way he looked at Bangladesh. Returning home after long stretches abroad gave him the perspective of both an insider and an outsider: deeply familiar with the rhythms and contradictions of South Asian life, yet able to observe them with a certain separation. That duality has become central to his work, combining culturally specific stories with a broader international visual language.",
-    p3: "His work has since screened at more than 55 film festivals across 15 countries and received 19 awards. He photographed Nuhash Humayun's MOSHARI, executive produced by Jordan Peele's Monkeypaw Productions and Riz Ahmed's Left Handed Films. The film became the first Bangladeshi short to qualify for the Academy Awards and received major recognition at SXSW, the Melbourne International Film Festival and Fantasia. He also served as Director of Photography on FOREIGNERS ONLY, produced for 20th Digital Studio and released on Hulu, as well as A Thing About Kashem and the feature film Moving Bangladesh.",
-    p4: "Alongside film, Ejaz has directed and photographed commercial and branded work for clients including BBC StoryWorks, The Economist, Vodafone, Yamaha, Uber, UNICEF and organisations across the Gulf. He is currently based between Muscat, Dhaka and, more recently, New York City. In Oman, he also runs DUSK, a hybrid creative agency and production company producing premium brand films, commercials and branded content for clients across Oman and the wider region."
+    p1: "Ejaz Mehedi is a Bangladeshi cinematographer and filmmaker whose visual perspective has been shaped by both an intimacy with home and long periods spent away from it.",
+    p2: "He grew up in Dhaka, Bangladesh where some of his earliest memories of cinema came through films such as Rob Reiner’s Stand By Me and Morshedul Islam’s Dipu Number Two. Different in language and geography but similar in their emotional attention to landscapes, friendship, memory, growing up and trauma, both films stayed with him long before he understood filmmaking as a profession.",
+    p3: "His formative years later took him from Dhaka to Nottingham in the United Kingdom and Cyberjaya in Malaysia, followed by years of living and working across different countries. Distance gradually changed the way he looked at Bangladesh. Returning home after long stretches abroad gave him the perspective of both an insider and an outsider: deeply familiar with the rhythms and contradictions of South Asian life, yet able to observe them with a certain separation. That duality has become central to his work, combining culturally specific stories with a broader international visual language.",
+    p4: "His work has since screened at more than 55 film festivals across 15 countries and received 19 awards. He photographed Nuhash Humayun’s MOSHARI, executive produced by Jordan Peele’s Monkeypaw Productions and Riz Ahmed’s Left Handed Films. The film became the first Bangladeshi short to qualify for the Academy Awards and received major recognition at SXSW, the Melbourne International Film Festival and Fantasia. He also served as Director of Photography on FOREIGNERS ONLY, produced for 20th Digital Studio and released on Hulu, as well as A Thing About Kashem and the feature film Moving Bangladesh.",
+    p5: "He is currently based between Muscat, Dhaka and, more recently, New York City.",
+    p6: "In Oman, besides working as a freelance cinematographer and director he also runs DUSK, a hybrid creative agency and production company producing premium brand films, commercials and branded content for clients across Oman and the wider region."
   },
   bn: {
-    p1: "এজাজ মেহেদী একজন বাংলাদেশি চিত্রগ্রাহক (Cinematographer) ও চলচ্চিত্র নির্মাতা, যার ভিজ্যুয়াল দৃষ্টিভঙ্গি গড়ে উঠেছে নিজের দেশকে খুব কাছ থেকে দেখা এবং দীর্ঘ সময় দেশ থেকে দূরে থাকার অভিজ্ঞতার মধ্য দিয়ে। তিনি ঢাকায় বেড়ে উঠেছেন। চলচ্চিত্রের প্রতি তাঁর আগ্রহের শুরু হয়েছিল শৈশবে, যখন তিনি রব রাইনারের Stand By Me এবং মোরশেদুল ইসলামের দীপু নাম্বার টু দেখেন। ভাষা ও ভৌগোলিক প্রেক্ষাপট ভিন্ন হলেও বন্ধুত্ব, স্মৃতি, বেড়ে ওঠা, ট্রমা এবং পরিবেশকে ঘিরে মানবিক গল্প বলার ক্ষেত্রে দুটি চলচ্চিত্রের মধ্যে যে আবেগময় সাদৃশ্য ছিল, তা তাঁকে গভীরভাবে প্রভাবিত করে। অনেক আগে থেকেই এই চলচ্চিত্রগুলো তাঁর মনে স্থায়ী ছাপ ফেলে, যখন তিনি এখনও চলচ্চিত্র নির্মাণকে পেশা হিসেবে ভাবেননি।",
-    p2: "পরবর্তীতে তাঁর শিক্ষাজীবন ও কর্মজীবন তাঁকে ঢাকা থেকে যুক্তরাজ্যের নটিংহ্যাম এবং মালয়েশিয়ার সাইবারজায়ায় নিয়ে যায়। এরপর তিনি বিভিন্ন দেশে বসবাস ও কাজ করেন। দীর্ঘ সময় বিদেশে থাকার ফলে বাংলাদেশের প্রতি তাঁর দৃষ্টিভঙ্গি বদলে যায়। দীর্ঘ বিরতির পর দেশে ফিরে আসা তাঁকে একই সঙ্গে একজন অন্তর্দৃষ্টিসম্পন্ন স্থানীয় এবং একজন পর্যবেক্ষণশীল বহিরাগত হিসেবে দেখার সুযোগ দেয়। দক্ষিণ এশিয়ার জীবনযাত্রার ছন্দ, বৈপরীত্য ও সাংস্কৃতিক বাস্তবতার সঙ্গে গভীর পরিচিতি থাকার পাশাপাশি তিনি সেগুলোকে একটি নিরপেক্ষ দূরত্ব থেকেও পর্যবেক্ষণ করতে সক্ষম হন। এই দ্বৈত অভিজ্ঞতাই তাঁর কাজের অন্যতম বৈশিষ্ট্য, যেখানে স্থানীয় সাংস্কৃতিক গল্প আন্তর্জাতিক ভিজ্যুয়াল ভাষার সঙ্গে মিশে যায়।",
-    p3: "এ পর্যন্ত তাঁর কাজ ১৫টি দেশের ৫৫টিরও বেশি চলচ্চিত্র উৎসবে প্রদর্শিত হয়েছে এবং ১৯টি পুরস্কার অর্জন করেছে। তিনি নুহাশ হুমায়ূনের MOSHARI চলচ্চিত্রের চিত্রগ্রাহক ছিলেন, যা জর্ডান পিলের Monkeypaw Productions এবং রিজ আহমেদের Left Handed Films–এর নির্বাহী প্রযোজনায় নির্মিত হয়। চলচ্চিত্রটি একাডেমি অ্যাওয়ার্ডসের জন্য যোগ্যতা অর্জনকারী প্রথম বাংলাদেশি স্বল্পদৈর্ঘ্য চলচ্চিত্র হিসেবে ইতিহাস সৃষ্টি করে এবং SXSW, Melbourne International Film Festival ও Fantasia–তে উল্লেখযোগ্য স্বীকৃতি লাভ করে।",
-    p4: "এজাজ FOREIGNERS ONLY চলচ্চিত্রের পরিচালক অব ফটোগ্রাফি (Director of Photography) হিসেবেও কাজ করেছেন, যা 20th Digital Studio-এর জন্য নির্মিত এবং Hulu-তে মুক্তি পেয়েছে। এছাড়া তিনি A Thing About Kashem এবং পূর্ণদৈর্ঘ্য চলচ্চিত্র Moving Bangladesh–এর চিত্রগ্রাহক ছিলেন।",
-    p5: "চলচ্চিত্রের পাশাপাশি তিনি BBC StoryWorks, The Economist, Vodafone, Yamaha, Uber, UNICEF এবং উপসাগরীয় অঞ্চলের বিভিন্ন প্রতিষ্ঠানের জন্য বাণিজ্যিক ও ব্র্যান্ডেড কনটেন্ট পরিচালনা ও চিত্রগ্রহণ করেছেন।",
-    p6: "বর্তমানে তিনি ওমানের মাস্কাট, বাংলাদেশের ঢাকা এবং সাম্প্রতিক সময়ে নিউ ইয়র্ক সিটির মধ্যে সময় ভাগ করে কাজ করছেন। ওমানে তিনি DUSK নামের একটি হাইব্রিড ক্রিয়েটিভ এজেন্সি ও প্রোডাকশন কোম্পানি পরিচালনা করেন, যা ওমান এবং বৃহত্তর অঞ্চলের বিভিন্ন ক্লায়েন্টের জন্য প্রিমিয়াম ব্র্যান্ড ফিল্ম, বিজ্ঞাপনচিত্র এবং ব্র্যান্ডেড কনটেন্ট নির্মাণ করে।"
+    p1: "এজাজ মেহেদী একজন বাংলাদেশি চিত্রগ্রাহক (Cinematographer) ও চলচ্চিত্র নির্মাতা, যার ভিজ্যুয়াল দৃষ্টিভঙ্গি গড়ে উঠেছে নিজের দেশকে খুব কাছ থেকে দেখা এবং দীর্ঘ সময় দেশ থেকে দূরে থাকার অভিজ্ঞতার মধ্য দিয়ে।",
+    p2: "তিনি ঢাকায় বেড়ে উঠেছেন, যেখানে তাঁর শৈশবের চলচ্চিত্রের স্মৃতি ছিল রব রাইনারের Stand By Me এবং মোরশেদুল ইসলামের দীপু নাম্বার টু চলচ্চিত্রের মাধ্যমে। ভাষা ও ভৌগোলিক প্রেক্ষাপট ভিন্ন হলেও বন্ধুত্ব, স্মৃতি, বেড়ে ওঠা এবং পরিবেশের প্রতি আবেগময় দৃষ্টির দিক থেকে দুটি কাজই তাঁকে গভীরভাবে প্রভাবিত করে।",
+    p3: "পরবর্তীতে তাঁর শিক্ষাজীবন ও কর্মজীবন তাঁকে ঢাকা থেকে যুক্তরাজ্য এবং মালয়েশিয়া হয়ে বিশ্বের বিভিন্ন দেশে নিয়ে যায়। দেশ থেকে দূরে থাকার ফলে বাংলাদেশের প্রতি তাঁর দৃষ্টিভঙ্গিতে একটি দ্বৈত দৃষ্টিভঙ্গি তৈরি হয়—একজন স্থানীয় এবং একজন পর্যবেক্ষণশীল বহিরাগত হিসেবে।",
+    p4: "এ পর্যন্ত তাঁর কাজ ১৫টি দেশের ৫৫টিরও বেশি চলচ্চিত্র উৎসবে প্রদর্শিত হয়েছে এবং ১৯টি পুরস্কার অর্জন করেছে। তিনি নুহাশ হুমায়ূনের MOSHARI এবং 20th Digital Studio এর FOREIGNERS ONLY, পাশাপাশি A Thing About Kashem এবং Moving Bangladesh চলচ্চিত্র সমূহের চিত্রগ্রাহক ছিলেন।",
+    p5: "বর্তমানে তিনি মাস্কাট, ঢাকা এবং নিউ ইয়র্ক সিটির মধ্যে কাজ করছেন।",
+    p6: "ওমানে তিনি DUSK নামের একটি হাইব্রিড ক্রিয়েটিভ এজেন্সি ও প্রোডাকশন কোম্পানি পরিচালনা করেন।"
   },
   ar: {
-    p1: "إيجاز مهدي هو مدير تصوير سينمائي وصانع أفلام بنغلاديشي، تشكّلت رؤيته البصرية من خلال ارتباطه العميق بوطنه ومن خلال فترات طويلة قضاها بعيداً عنه. نشأ في مدينة دكا، حيث بدأت علاقته المبكرة بالسينما من خلال أفلام مثل Stand By Me للمخرج روب راينر وDipu Number Two للمخرج مرشد الإسلام. وعلى الرغم من اختلافهما في اللغة والجغرافيا، فقد اشتركا في اهتمامهما بالمشاعر الإنسانية والمناظر الطبيعية والصداقة والذاكرة وتجارب النضج والصدمات النفسية، وهي عناصر تركت أثراً عميقاً في نفسه قبل أن يدرك أن صناعة الأفلام يمكن أن تكون مهنةً له.",
-    p2: "لاحقاً انتقل من دكا إلى نوتنغهام في المملكة المتحدة ثم إلى سايبَر جايا في ماليزيا خلال سنواته التكوينية، قبل أن يعيش ويعمل في عدة دول أخرى. ومع مرور الوقت، غيّر البعد الجغرافي طريقته في النظر إلى بنغلاديش. فقد منحته العودة إلى الوطن بعد فترات طويلة من الغياب منظوراً يجمع بين الداخل والخارج؛ فهو على دراية عميقة بإيقاع الحياة في جنوب آسيا وتناقضاتها، وفي الوقت نفسه قادر على تأملها من مسافة نقدية وموضوعية. وقد أصبحت هذه الازدواجية عنصراً محورياً في أعماله، حيث يمزج بين القصص ذات الخصوصية الثقافية المحلية ولغة بصرية ذات طابع عالمي.",
-    p3: "عُرضت أعماله في أكثر من 55 مهرجاناً سينمائياً في 15 دولة، وحصدت 19 جائزة. وكان مدير التصوير لفيلم MOSHARI للمخرج نوحاش همايون، والذي تولت إنتاجه التنفيذي شركتا Monkeypaw Productions التابعة لجوردان بيل وLeft Handed Films التابعة لريز أحمد. وقد أصبح الفيلم أول فيلم قصير من بنغلاديش يتأهل لجوائز الأوسكار، كما نال إشادة واسعة في مهرجانات SXSW وMelbourne International Film Festival وFantasia.",
-    p4: "كما شغل منصب مدير التصوير (Director of Photography) لفيلم FOREIGNERS ONLY، الذي أُنتج لصالح 20th Digital Studio وعُرض على منصة Hulu، بالإضافة إلى فيلم A Thing About Kashem والفيلم الروائي الطويل Moving Bangladesh.",
-    p5: "وبالتوازي مع عمله السينمائي، أخرج وصوّر أعمالاً تجارية ومحتوىً بصرياً للعلامات التجارية لصالح جهات عالمية مثل BBC StoryWorks وThe Economist وVodafone وYamaha وUber وUNICEF، إضافةً إلى عدد من المؤسسات في منطقة الخليج.",
-    p6: "يقيم إيجاز مهدي حالياً بين مسقط ودكا، ومؤخراً مدينة نيويورك. كما يدير في سلطنة عُمان شركة DUSK، وهي وكالة إبداعية وشركة إنتاج هجينة متخصصة في إنتاج الأفلام التجارية الراقية والإعلانات والمحتوى المرتبط بالعلامات التجارية لعملاء في عُمان والمنطقة على نطاق أوسع."
+    p1: "إيجاز مهدي هو مدير تصوير سينمائي وصانع أفلام بنغلاديشي، تشكّلت رؤيته البصرية من خلال ارتباطه العميق بوطنه ومن خلال فترات طويلة قضاها بعيداً عنه.",
+    p2: "نشأ في مدينة دكا في بنغلاديش، حيث بدأت علاقته المبكرة بالسينما من خلال أفلام مثل Stand By Me للمخرج روب راينر وDipu Number Two للمخرج مرشد الإسلام.",
+    p3: "عُرضت أعماله في أكثر من 55 مهرجاناً سينمائياً في 15 دولة، وحصدت 19 جائزة. وكان مدير التصوير لفيلم MOSHARI وفيلم FOREIGNERS ONLY لشركة 20th Digital Studio وخول منصة Hulu، فضلاً عن فيلم A Thing About Kashem والفيلم الروائي Moving Bangladesh.",
+    p4: "يقيم إيجاز مهدي حالياً بين مسقط ودكا ومدينة نيويورك. كما يدير في سلطنة عُمان شركة DUSK لتصوير وتصميم المحتوى البصري والإعلانات."
   }
 };
 
@@ -57,8 +69,10 @@ const paragraphVariant = {
   }
 };
 
-export const AboutPage = ({ cmsInfo, cmsClients }) => {
+export const AboutPage = ({ cmsInfo, cmsClients, isEditMode }) => {
+  const { aboutData, updateAbout } = useCMS();
   const [hoveredKeyword, setHoveredKeyword] = useState(null);
+  const [slideIndex, setSlideIndex] = useState(0);
   const [awardFilter, setAwardFilter] = useState('all');
 
   const personalEmail = cmsInfo?.personalEmail || PERSONAL_EMAIL;
@@ -67,73 +81,114 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
 
   const [bioLang, setBioLang] = useState('en');
 
-  const currentBio = bioLang === 'en' && cmsInfo?.bioEn
-    ? { ...bioTextData.en, ...cmsInfo.bioEn }
-    : bioTextData[bioLang];
+  // Photo Slideshow Loop timer when hovering over Bangladesh or Oman
+  useEffect(() => {
+    setSlideIndex(0);
+    if (!hoveredKeyword || !portraitHoverPhotos[hoveredKeyword] || portraitHoverPhotos[hoveredKeyword].length <= 1) {
+      return;
+    }
+    const interval = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % portraitHoverPhotos[hoveredKeyword].length);
+    }, 2400);
+    return () => clearInterval(interval);
+  }, [hoveredKeyword]);
 
-  const interactiveKeywords = {
-    en: [
-      { key: 'oman', match: 'Oman' },
-      { key: 'bangladesh', match: 'Bangladesh' }
-    ],
-    bn: [
-      { key: 'oman', match: 'ওমান' },
-      { key: 'bangladesh', match: 'বাংলাদেশ' }
-    ],
-    ar: [
-      { key: 'oman', match: 'عُمان' },
-      { key: 'bangladesh', match: 'بنغلاديش' }
-    ]
-  };
+  const currentBio = bioTextData[bioLang];
+
+  const interactiveConfigs = [
+    {
+      key: 'standbyme',
+      matches: ['Stand By Me', 'Stand By ME'],
+      customClass: 'font-bold italic border-b border-dashed border-ink/40 hover:border-ink'
+    },
+    {
+      key: 'dipunumbertwo',
+      matches: ['Dipu Number Two', 'Dipu Number two', 'দীপু নাম্বার টু'],
+      customClass: 'font-bold italic border-b border-dashed border-ink/40 hover:border-ink'
+    },
+    {
+      key: 'robreiner',
+      matches: ["Rob Reiner's", "Rob Reiner’s", "Rob Reiner", "রব রাইনারের", "روب راينر"],
+      customClass: 'font-semibold border-b border-dashed border-ink/40 hover:border-ink'
+    },
+    {
+      key: 'morshedulislam',
+      matches: ["Morshedul Islam's", "Morshedul Islam’s", "Morshedul Islam", "মোরশেদুল ইসলামের", "مرشد الإسلام"],
+      customClass: 'font-semibold border-b border-dashed border-ink/40 hover:border-ink'
+    },
+    {
+      key: 'bangladesh',
+      matches: ['Dhaka, Bangladesh', 'Dhaka,Bangladesh', 'Bangladesh', 'বাংলাদেশ', 'بنغلاديش'],
+      isMap: true,
+      mapImg: bangladeshMap,
+      customClass: 'font-medium'
+    },
+    {
+      key: 'oman',
+      matches: ['Muscat, Oman', 'Muscat,Oman', 'Oman', 'ওমান', 'عُمان'],
+      isMap: true,
+      mapImg: omanMap,
+      customClass: 'font-medium'
+    }
+  ];
 
   const renderInteractiveText = (text) => {
     if (!text) return null;
-    const keywords = interactiveKeywords[bioLang] || interactiveKeywords.en;
     let parts = [text];
 
-    keywords.forEach((kw) => {
-      const nextParts = [];
-      parts.forEach((part) => {
-        if (typeof part === 'string') {
-          const lower = part.toLowerCase();
-          const kwLower = kw.match.toLowerCase();
-          let idx = lower.indexOf(kwLower);
-          let cursor = 0;
-          let count = 0;
-          while (idx !== -1) {
-            // Extend the chip to the end of the inflected word so suffixes
-            // (e.g. "Bangladeshi", "বাংলাদেশি", "বাংলাদেশের") stay inside it
-            let end = idx + kwLower.length;
-            while (end < part.length && /[\p{L}\p{M}]/u.test(part[end])) end++;
-            nextParts.push(part.slice(cursor, idx));
-            nextParts.push(
-              <span
-                key={`${kw.key}-${count++}`}
-                onMouseEnter={() => setHoveredKeyword(kw.key)}
-                onMouseLeave={() => setHoveredKeyword(null)}
-                onTouchStart={() => setHoveredKeyword(kw.key)}
-                onTouchEnd={() => setHoveredKeyword(null)}
-                className="cursor-pointer hover:opacity-70 transition-opacity inline-flex items-center gap-0.5 align-baseline font-medium"
-                title={kw.key === 'oman' ? 'Oman' : kw.key === 'bangladesh' ? 'Bangladesh' : 'South Asia'}
-              >
-                {part.slice(idx, end)}
-                <img
-                  src={keywordImages[kw.key]}
-                  alt=""
-                  className="inline-block h-6 md:h-7 w-auto opacity-90 pointer-events-none -mb-0.5"
-                  draggable={false}
-                />
-              </span>
-            );
-            cursor = end;
-            idx = lower.indexOf(kwLower, cursor);
+    interactiveConfigs.forEach((cfg) => {
+      cfg.matches.forEach((matchStr) => {
+        const nextParts = [];
+        parts.forEach((part) => {
+          if (typeof part === 'string') {
+            const lower = part.toLowerCase();
+            const matchLower = matchStr.toLowerCase();
+            let idx = lower.indexOf(matchLower);
+            let cursor = 0;
+            let count = 0;
+            while (idx !== -1) {
+              const end = idx + matchLower.length;
+              const charAfter = lower[end];
+              const charBefore = idx > 0 ? lower[idx - 1] : '';
+
+              // Avoid matching part of longer words (e.g. "Bangladeshi" when searching for "Bangladesh")
+              if ((charAfter && /[a-z]/i.test(charAfter)) || (charBefore && /[a-z]/i.test(charBefore))) {
+                idx = lower.indexOf(matchLower, end);
+                continue;
+              }
+
+              nextParts.push(part.slice(cursor, idx));
+              const currentMatchText = part.slice(idx, end);
+              nextParts.push(
+                <span
+                  key={`${cfg.key}-${count++}-${idx}`}
+                  onMouseEnter={() => setHoveredKeyword(cfg.key)}
+                  onMouseLeave={() => setHoveredKeyword(null)}
+                  onTouchStart={() => setHoveredKeyword(cfg.key)}
+                  onTouchEnd={() => setHoveredKeyword(null)}
+                  className={`cursor-pointer hover:opacity-70 transition-opacity inline-flex items-center gap-0.5 align-baseline ${cfg.customClass}`}
+                >
+                  {currentMatchText}
+                  {cfg.isMap && (
+                    <img
+                      src={cfg.mapImg}
+                      alt=""
+                      className="inline-block h-5 sm:h-6 w-auto opacity-90 pointer-events-none -mb-0.5 ml-0.5"
+                      draggable={false}
+                    />
+                  )}
+                </span>
+              );
+              cursor = end;
+              idx = lower.indexOf(matchLower, cursor);
+            }
+            nextParts.push(part.slice(cursor));
+          } else {
+            nextParts.push(part);
           }
-          nextParts.push(part.slice(cursor));
-        } else {
-          nextParts.push(part);
-        }
+        });
+        parts = nextParts;
       });
-      parts = nextParts;
     });
 
     return parts;
@@ -144,6 +199,9 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
     if (awardFilter === 'foreigners') return item.film === 'FOREIGNERS ONLY';
     return true;
   });
+
+  const activeHoverImages = hoveredKeyword && portraitHoverPhotos[hoveredKeyword] ? portraitHoverPhotos[hoveredKeyword] : null;
+  const currentHoverPhoto = activeHoverImages ? activeHoverImages[slideIndex % activeHoverImages.length] : null;
 
   return (
     <motion.div
@@ -161,35 +219,21 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
         <div className="lg:col-span-5 flex flex-col">
           <div className="w-full flex-1 min-h-[480px] lg:min-h-0 overflow-hidden bg-[var(--about-ink-10)] border border-[var(--about-border)] relative group shadow-xl">
             <AnimatePresence mode="wait">
-              {hoveredKeyword && portraitHoverPhotos[hoveredKeyword] ? (
+              {currentHoverPhoto ? (
                 <motion.div
-                  key={hoveredKeyword}
+                  key={`${hoveredKeyword}-${currentHoverPhoto}`}
                   initial={{ opacity: 0, scale: 1.02 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.02 }}
-                  transition={{ duration: 0.32, ease: [0.25, 1, 0.5, 1] }}
+                  transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
                   className="absolute inset-0"
                 >
-                  {portraitHoverPhotos[hoveredKeyword].length === 1 ? (
-                    <img
-                      src={portraitHoverPhotos[hoveredKeyword][0]}
-                      alt={hoveredKeyword}
-                      draggable={false}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full grid grid-rows-2 gap-1 p-1 bg-[var(--about-ink-5)]">
-                      {portraitHoverPhotos[hoveredKeyword].slice(0, 2).map((src, i) => (
-                        <img
-                          key={i}
-                          src={src}
-                          alt={`${hoveredKeyword} ${i + 1}`}
-                          draggable={false}
-                          className="w-full h-full object-cover"
-                        />
-                      ))}
-                    </div>
-                  )}
+                  <img
+                    src={currentHoverPhoto}
+                    alt={hoveredKeyword}
+                    draggable={false}
+                    className="w-full h-full object-cover"
+                  />
                 </motion.div>
               ) : (
                 <motion.img
@@ -247,7 +291,7 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
             </div>
           </div>
 
-          {/* Biography Text Paragraphs */}
+          {/* Biography Text Paragraphs — Directly Editable on Original Text */}
           <AnimatePresence mode="wait">
             <motion.div
               key={bioLang}
@@ -260,8 +304,32 @@ export const AboutPage = ({ cmsInfo, cmsClients }) => {
               }`}
             >
               {Object.keys(currentBio).map((key) => (
-                <motion.p key={key} variants={paragraphVariant}>
-                  {renderInteractiveText(currentBio[key])}
+                <motion.p
+                  key={key}
+                  variants={paragraphVariant}
+                  contentEditable={isEditMode}
+                  suppressContentEditableWarning={true}
+                  onBlur={(e) => {
+                    if (!isEditMode) return;
+                    const newText = e.target.innerText;
+                    const updatedLangBio = {
+                      ...(aboutData?.bio?.[bioLang] || currentBio),
+                      [key]: newText
+                    };
+                    updateAbout({
+                      bio: {
+                        ...(aboutData?.bio || bioTextData),
+                        [bioLang]: updatedLangBio
+                      }
+                    });
+                  }}
+                  className={`${
+                    isEditMode
+                      ? 'outline-dashed outline-1 outline-accent/60 hover:outline-accent bg-accent/5 p-2 rounded cursor-text transition-all'
+                      : ''
+                  }`}
+                >
+                  {isEditMode ? currentBio[key] : renderInteractiveText(currentBio[key])}
                 </motion.p>
               ))}
             </motion.div>
