@@ -89,7 +89,7 @@ export const AboutPage = ({ cmsInfo, cmsClients, isEditMode }) => {
     }
     const interval = setInterval(() => {
       setSlideIndex((prev) => (prev + 1) % portraitHoverPhotos[hoveredKeyword].length);
-    }, 2400);
+    }, 3800);
     return () => clearInterval(interval);
   }, [hoveredKeyword]);
 
@@ -225,7 +225,7 @@ export const AboutPage = ({ cmsInfo, cmsClients, isEditMode }) => {
                   initial={{ opacity: 0, scale: 1.02 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.02 }}
-                  transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                  transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
                   className="absolute inset-0"
                 >
                   <img
