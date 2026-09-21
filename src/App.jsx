@@ -10,7 +10,7 @@ import { Navbar } from './components/Navbar';
 import { ProjectCard } from './components/ProjectCard';
 import { ProjectListView } from './components/ProjectListView';
 import { ProjectDetailPage } from './components/ProjectDetailPage';
-import { StillsGallery } from './components/StillsGallery';
+import { StillsPage } from './components/StillsPage';
 import { AboutPage } from './components/AboutPage';
 import { JournalPage } from './components/JournalPage';
 import { ReelPage } from './components/ReelPage';
@@ -21,15 +21,18 @@ import { AnimatePresence, motion, Reorder } from 'framer-motion';
 import { Grid, List, X, Plus, Save } from 'lucide-react';
 
 function MainContent() {
-  const { projects: cmsProjects, isAdminLoggedIn, reorderProjects, updateProject, addProject, showSaveToast } = useCMS();
+  const { projects: cmsProjects, isAdminLoggedIn, reorderProjects, updateProject, addProject, showSaveToast, isPreviewMode, publishLive } = useCMS();
   const [isLoadingScreen, setIsLoadingScreen] = useState(true);
   const [isVideoLoading, setIsVideoLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('reel'); // 'reel', 'projects', 'stills', 'about', 'journal', 'admin'
+  const [activeTab, setActiveTab] = useState('projects'); // 'reel', 'projects', 'stills', 'about', 'journal', 'admin'
   const [activeFilter, setActiveFilter] = useState('all'); // 'all', 'films', 'commercial'
   const [viewMode, setViewMode] = useState('grid'); // 'grid', 'list'
   const [selectedProject, setSelectedProject] = useState(null);
   const [isAdminRoute, setIsAdminRoute] = useState(false);
   const [isEditMode, setIsEditMode] = useState(true);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  const [showDashboardModal, setShowDashboardModal] = useState(false);
 
   // Edit Project & Add Project Modals
   const [editingProject, setEditingProject] = useState(null);
@@ -42,11 +45,21 @@ function MainContent() {
   const HIDDEN_PROJECT_SLUGS = ['indalo-hobeki', 'attic-echoes-in-your-attic'];
   const projects = cmsProjects.filter((p) => !HIDDEN_PROJECT_SLUGS.includes(p.slug));
 
-  const filteredProjects = projects.filter((project) => {
+  let filteredProjects = projects.filter((project) => {
     if (activeFilter === 'films') return project.category === 'Films';
     if (activeFilter === 'commercial') return project.category === 'Commercial';
     return true;
   });
+
+  if (activeFilter === 'films') {
+    filteredProjects = [...filteredProjects].sort((a, b) => {
+      const aIsMoving = a.id === 'moving-bangladesh' || a.slug === 'moving-bangladesh';
+      const bIsMoving = b.id === 'moving-bangladesh' || b.slug === 'moving-bangladesh';
+      if (aIsMoving) return -1;
+      if (bIsMoving) return 1;
+      return 0;
+    });
+  }
 
   // URL sync: apply the current pathname to app state (deep links, back/forward)
   const applyPathToState = () => {
@@ -56,6 +69,12 @@ function MainContent() {
       return;
     }
     setIsAdminRoute(false);
+
+    if (path.startsWith('/stills')) {
+      setSelectedProject(null);
+      setActiveTab('stills');
+      return;
+    }
 
     const projectMatch = path.match(/^\/projects\/([\w-]+)\/?$/);
     if (projectMatch) {
@@ -73,7 +92,7 @@ function MainContent() {
     else if (path.startsWith('/reel')) setActiveTab('reel');
     else if (path.startsWith('/overview')) setActiveTab('projects');
     else if (path.startsWith('/projects')) setActiveTab('projects');
-    else setActiveTab('reel');
+    else setActiveTab('projects');
   };
 
   useEffect(() => {
@@ -85,6 +104,17 @@ function MainContent() {
   // If on /admin route and NOT logged in: render Admin Auth
   if (isAdminRoute && !isAdminLoggedIn) {
     return <AdminAuth />;
+  }
+
+  // Standalone Individual Stills Page: No title header, no footer
+  if (activeTab === 'stills') {
+    return (
+      <>
+        <SEOHead activeTab="stills" />
+        <CustomCursor />
+        <StillsPage />
+      </>
+    );
   }
 
   const handleSelectProject = (project) => {
@@ -119,16 +149,61 @@ function MainContent() {
       activeTab === 'about' && !selectedProject
         ? 'about-inverted bg-[var(--about-bg)] text-[var(--about-ink)] selection:bg-[var(--about-ink)] selection:text-[var(--about-bg)]'
         : 'bg-canvas text-ink selection:bg-ink selection:text-canvas'
-    } ${isAdminLoggedIn ? 'pt-16' : ''}`}>
+    } ${isAdminLoggedIn && !isSidebarCollapsed ? 'lg:pl-72' : ''} ${isPreviewMode ? 'pt-12' : ''}`}>
+
+      {/* Draft Preview Banner */}
+      {isPreviewMode && (
+        <div className="fixed top-0 inset-x-0 z-[100005] bg-amber-500 text-black px-4 py-2.5 text-xs font-mono-custom font-bold uppercase tracking-wider flex items-center justify-between shadow-2xl">
+          <div className="flex items-center gap-2">
+            <div className="w-2.5 h-2.5 rounded-full bg-black animate-pulse" />
+            <span>DRAFT PREVIEW MODE (UNPUBLISHED CHANGES) — Seeing how site looks before publishing</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={async () => {
+                await publishLive();
+                alert('Published Live Successfully!');
+                window.location.href = '/';
+              }}
+              className="px-3 py-1 bg-black text-amber-400 hover:bg-black/90 rounded font-bold uppercase cursor-pointer shadow-md"
+            >
+              Publish Live Now
+            </button>
+            <button
+              onClick={() => {
+                window.location.href = '/';
+              }}
+              className="px-3 py-1 bg-black/20 hover:bg-black/40 text-black rounded cursor-pointer"
+            >
+              Exit Preview
+            </button>
+          </div>
+        </div>
+      )}
       
       {/* On-Page Live Webflow Admin Floating Bar */}
-      {isAdminLoggedIn && (
+      {isAdminLoggedIn && !isPreviewMode && (
         <AdminFloatingBar
           isEditMode={isEditMode}
           setIsEditMode={setIsEditMode}
           onOpenAddProject={() => setIsAddingNew(true)}
+          onOpenDashboard={() => setShowDashboardModal(true)}
+          isSidebarCollapsed={isSidebarCollapsed}
+          setIsSidebarCollapsed={setIsSidebarCollapsed}
         />
       )}
+
+      {/* Full-Screen SaaS CMS Dashboard Modal */}
+      <AnimatePresence>
+        {showDashboardModal && (
+          <div className="fixed inset-0 z-[100000] bg-black overflow-y-auto">
+            <AdminPanel
+              onClose={() => setShowDashboardModal(false)}
+              onPreviewLive={() => setShowDashboardModal(false)}
+            />
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* Dynamic SEO Head Manager */}
       <SEOHead activeTab={activeTab} selectedProject={selectedProject} activeFilter={activeFilter} />
@@ -180,21 +255,23 @@ function MainContent() {
               setActiveTab(tab);
               if (tab === 'about') window.history.pushState(null, '', '/about');
               else if (tab === 'journal') window.history.pushState(null, '', '/journal');
-              else if (tab === 'reel') window.history.pushState(null, '', '/');
-              else window.history.pushState(null, '', '/overview');
+              else if (tab === 'reel') window.history.pushState(null, '', '/reel');
+              else if (tab === 'stills') window.history.pushState(null, '', '/stills');
+              else window.history.pushState(null, '', '/');
             }}
             activeFilter={activeFilter}
             setActiveFilter={setActiveFilter}
           />
 
           {/* Main Content Area */}
-          <main className="flex-1 w-full mx-auto px-4 sm:px-8 md:px-12 py-4 md:py-6 select-none">
+          <main className="flex-1 w-full px-4 sm:px-8 md:px-12 py-4 md:py-6 select-none">
             <AnimatePresence mode="wait">
               {selectedProject ? (
                 <ProjectDetailPage
                   key={viewKey}
                   project={selectedProject}
                   allProjects={projects}
+                  activeFilter={activeFilter}
                   onBack={handleBackToGallery}
                   onSelectProject={handleSelectProject}
                   isEditMode={isAdminLoggedIn && isEditMode}
@@ -313,7 +390,12 @@ function MainContent() {
             </AnimatePresence>
           </main>
 
-          <Footer isLime={activeTab === 'about' && !selectedProject} showMegaName={activeTab === 'about' && !selectedProject} />
+          <Footer
+            isLime={activeTab === 'about' && !selectedProject}
+            showMegaName={activeTab === 'about' && !selectedProject}
+            isEditMode={isAdminLoggedIn && isEditMode}
+            isReel={activeTab === 'reel' && !selectedProject}
+          />
         </motion.div>
       )}
 
@@ -407,11 +489,160 @@ function MainContent() {
                 <div className="space-y-1">
                   <label className="block text-[10px] tracking-widest text-muted uppercase">Synopsis / Description</label>
                   <textarea
-                    rows={4}
+                    rows={3}
                     value={editingProject.synopsis || editingProject.description || ''}
                     onChange={(e) => setEditingProject({ ...editingProject, synopsis: e.target.value, description: e.target.value })}
                     className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded"
                   />
+                </div>
+
+                {/* CREW & CREDITS INFORMATION */}
+                <div className="border-t border-line pt-4 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-xs font-bold text-accent uppercase tracking-wider">
+                      Cast & Crew / Credits Details
+                    </h4>
+                    <span className="text-[10px] text-muted font-normal">(Use Enter for newlines)</span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="space-y-1">
+                      <label className="block text-[10px] tracking-widest text-muted uppercase">Directed By</label>
+                      <textarea
+                        rows={2}
+                        value={editingProject.crew?.director || ''}
+                        onChange={(e) => setEditingProject({
+                          ...editingProject,
+                          crew: { ...(editingProject.crew || {}), director: e.target.value }
+                        })}
+                        className="w-full px-3 py-1.5 bg-canvas border border-line text-ink rounded font-mono-custom text-xs"
+                        placeholder="Director Name(s)"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-[10px] tracking-widest text-muted uppercase">Director of Photography (DOP)</label>
+                      <input
+                        type="text"
+                        value={editingProject.crew?.dop || ''}
+                        onChange={(e) => setEditingProject({
+                          ...editingProject,
+                          crew: { ...(editingProject.crew || {}), dop: e.target.value }
+                        })}
+                        className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded font-mono-custom text-xs"
+                        placeholder="Ejaz Mehedi"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-[10px] tracking-widest text-muted uppercase">Producer(s)</label>
+                      <textarea
+                        rows={2}
+                        value={editingProject.crew?.producer || ''}
+                        onChange={(e) => setEditingProject({
+                          ...editingProject,
+                          crew: { ...(editingProject.crew || {}), producer: e.target.value }
+                        })}
+                        className="w-full px-3 py-1.5 bg-canvas border border-line text-ink rounded font-mono-custom text-xs"
+                        placeholder="Producer Name(s)"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-[10px] tracking-widest text-muted uppercase">Executive Producer(s)</label>
+                      <textarea
+                        rows={2}
+                        value={editingProject.crew?.executiveProducer || ''}
+                        onChange={(e) => setEditingProject({
+                          ...editingProject,
+                          crew: { ...(editingProject.crew || {}), executiveProducer: e.target.value }
+                        })}
+                        className="w-full px-3 py-1.5 bg-canvas border border-line text-ink rounded font-mono-custom text-xs"
+                        placeholder="Executive Producer Name(s)"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-[10px] tracking-widest text-muted uppercase">Written By / Screenplay</label>
+                      <textarea
+                        rows={2}
+                        value={editingProject.crew?.writer || editingProject.crew?.writtenBy || ''}
+                        onChange={(e) => setEditingProject({
+                          ...editingProject,
+                          crew: { ...(editingProject.crew || {}), writer: e.target.value, writtenBy: e.target.value }
+                        })}
+                        className="w-full px-3 py-1.5 bg-canvas border border-line text-ink rounded font-mono-custom text-xs"
+                        placeholder="Writer Name(s)"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-[10px] tracking-widest text-muted uppercase">Starring / Cast</label>
+                      <textarea
+                        rows={2}
+                        value={editingProject.crew?.starring || ''}
+                        onChange={(e) => setEditingProject({
+                          ...editingProject,
+                          crew: { ...(editingProject.crew || {}), starring: e.target.value }
+                        })}
+                        className="w-full px-3 py-1.5 bg-canvas border border-line text-ink rounded font-mono-custom text-xs"
+                        placeholder="Cast Name(s)"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-[10px] tracking-widest text-muted uppercase">Production Company / Studio</label>
+                      <input
+                        type="text"
+                        value={editingProject.crew?.productionCompany || ''}
+                        onChange={(e) => setEditingProject({
+                          ...editingProject,
+                          crew: { ...(editingProject.crew || {}), productionCompany: e.target.value }
+                        })}
+                        className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded font-mono-custom text-xs"
+                        placeholder="Production House"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-[10px] tracking-widest text-muted uppercase">Colorist</label>
+                      <input
+                        type="text"
+                        value={editingProject.crew?.colorist || ''}
+                        onChange={(e) => setEditingProject({
+                          ...editingProject,
+                          crew: { ...(editingProject.crew || {}), colorist: e.target.value }
+                        })}
+                        className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded font-mono-custom text-xs"
+                        placeholder="Colorist Name"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-[10px] tracking-widest text-muted uppercase">Aspect Ratio</label>
+                      <input
+                        type="text"
+                        value={editingProject.aspectRatio || ''}
+                        onChange={(e) => setEditingProject({ ...editingProject, aspectRatio: e.target.value })}
+                        className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded font-mono-custom text-xs"
+                        placeholder="e.g. 2.39:1 Anamorphic"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-[10px] tracking-widest text-muted uppercase">Music / Score</label>
+                      <input
+                        type="text"
+                        value={editingProject.crew?.music || ''}
+                        onChange={(e) => setEditingProject({
+                          ...editingProject,
+                          crew: { ...(editingProject.crew || {}), music: e.target.value }
+                        })}
+                        className="w-full px-3 py-2 bg-canvas border border-line text-ink rounded font-mono-custom text-xs"
+                        placeholder="Composer / Music Name"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
 

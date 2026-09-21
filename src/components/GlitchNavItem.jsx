@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
 const GLITCH_CHARS = "!@#$%^&*()_+-=[]{}|;:,.<>?/XØÆµ§0123456789";
 
@@ -17,11 +18,13 @@ export const GlitchNavItem = ({
   arText,
   onClick,
   isActive,
+  isLime = false,
   className = ""
 }) => {
   const [displayText, setDisplayText] = useState(enText);
   const [isGlitching, setIsGlitching] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [hoverId, setHoverId] = useState(0);
 
   const glitchIntervalRef = useRef(null);
   const phaseTimeoutRef = useRef(null);
@@ -85,28 +88,36 @@ export const GlitchNavItem = ({
     }, 28);
   };
 
-  // One language cycle per hover: EN -> BN -> wait -> AR -> wait -> back to EN.
-  // The cycle always ends back on English, it never re-triggers itself.
   const runLanguageCycle = () => {
+    if (!hoveredRef.current || !bnText) return;
     triggerGlitch(bnText, () => {
+      if (!hoveredRef.current || !arText) return;
       phaseTimeoutRef.current = setTimeout(() => {
+        if (!hoveredRef.current) return;
         triggerGlitch(arText, () => {
+          if (!hoveredRef.current) return;
           phaseTimeoutRef.current = setTimeout(() => {
-            triggerGlitch(enText);
-          }, 2500);
+            if (hoveredRef.current) triggerGlitch(enText);
+          }, 1500);
         });
-      }, 2500);
+      }, 1500);
     });
   };
 
   const handleMouseEnter = () => {
-    if (hoveredRef.current) return;
+    stopAllTimers();
     hoveredRef.current = true;
     setIsHovered(true);
-    // Stay on English for 800ms before starting the cycle
-    startDelayRef.current = setTimeout(() => {
-      if (hoveredRef.current) runLanguageCycle();
-    }, 800);
+    setHoverId((prev) => prev + 1);
+    runLanguageCycle();
+  };
+
+  const handleTouchStart = () => {
+    stopAllTimers();
+    hoveredRef.current = true;
+    setIsHovered(true);
+    setHoverId((prev) => prev + 1);
+    runLanguageCycle();
   };
 
   const handleMouseLeave = () => {
@@ -129,17 +140,39 @@ export const GlitchNavItem = ({
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onTouchStart={handleTouchStart}
       data-cursor="hover"
-      className={`inline-block w-fit self-start text-left transition-colors py-0.5 select-none ${
+      className={`group relative inline-block w-fit self-start text-left transition-colors py-0.5 select-none ${
         className ? className : (isActive ? 'text-ink font-bold tracking-[0.22em]' : isHovered ? 'text-ink' : 'text-muted hover:text-ink')
       }`}
     >
       <span className={`relative inline-block transition-opacity duration-150 ${isGlitching ? 'opacity-90 font-mono text-accent' : ''}`}>
         <span aria-hidden="true" className="invisible whitespace-nowrap">{enText}</span>
-        <span aria-hidden="true" className="invisible absolute inset-0 flex items-center justify-center whitespace-nowrap">{bnText}</span>
-        <span aria-hidden="true" className="invisible absolute inset-0 flex items-center justify-center whitespace-nowrap">{arText}</span>
-        <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap">{displayText}</span>
+        <span aria-hidden="true" className="invisible absolute inset-0 flex items-center justify-start whitespace-nowrap">{bnText}</span>
+        <span aria-hidden="true" className="invisible absolute inset-0 flex items-center justify-start whitespace-nowrap">{arText}</span>
+        <span className="absolute inset-0 flex items-center justify-start whitespace-nowrap">{displayText}</span>
       </span>
+
+      {/* Trim Path Underline — Wipes right to exit, draws from left to enter */}
+      {isActive && (
+        <motion.span
+          key={hoverId}
+          initial={hoverId > 0 ? { scaleX: 1, originX: 1 } : { scaleX: 1, originX: 0 }}
+          animate={
+            hoverId > 0
+              ? { scaleX: [1, 0, 0, 1], originX: [1, 1, 0, 0] }
+              : { scaleX: 1, originX: 0 }
+          }
+          transition={
+            hoverId > 0
+              ? { duration: 0.42, times: [0, 0.45, 0.5, 1], ease: [0.4, 0, 0.2, 1] }
+              : { duration: 0.2 }
+          }
+          className={`absolute left-0 -bottom-0.5 h-[2px] w-full pointer-events-none ${
+            isLime ? 'bg-[var(--about-ink)]' : 'bg-current'
+          }`}
+        />
+      )}
     </button>
   );
 };

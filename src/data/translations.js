@@ -65,7 +65,7 @@ export const translations = {
       name: "Ejaz Mehedi",
       role: "Director of Photography & Film Director",
       bioText: "Born and raised in the cradle of Dhaka, Bangladesh, Ejaz is a self-taught cinematographer and filmmaker working on narratives, commercials, and music videos. Deeply moved by Rob Reiner's 'Stand By Me' and Morshedul Islam's 'Dipu Number Two', the two films perhaps sparked an artistic curiosity and passion for story in his childhood.",
-      careerText: "Recently Ejaz was behind the camera on Jordan Peele and Riz Ahmed's executive produced short film 'MOSHARI', the multi-OSCAR®-qualifying horror short that won 11 awards from 20+ festivals globally. His other recent film 'FOREIGNERS ONLY' is the first Bangladeshi film commissioned for any US streaming platform by 20th Digital Studio on HULU.",
+      careerText: "Recently Ejaz was behind the camera on Jordan Peele and Riz Ahmed's executive produced short film 'MOSHARI', the acclaimed horror short that won 11 awards from 20+ festivals globally. His other recent film 'FOREIGNERS ONLY' is the first Bangladeshi film commissioned for any US streaming platform by 20th Digital Studio on HULU.",
       email: "contact@ejazmehedi.com",
       representation: "Global Representation: Monkeypaw Productions / 20th Digital Studio",
       location: "Based in Oman & Bangladesh — Available Worldwide"
@@ -142,7 +142,7 @@ export const translations = {
       name: "এজাজ মেহেদী",
       role: "সিনেম্যাটোগ্রাফার ও চলচ্চিত্র নির্মাতা",
       bioText: "ঢাকার স্নিগ্ধ কোলে লালিত-পালিত এজাজ মেহেদী একজন স্বশিক্ষিত চিত্রগ্রাহক ও চলচ্চিত্র নির্মাতা, যিনি কাহিনিচিত্র, বাণিজ্যিক বিজ্ঞাপন ও মিউজিক ভিডিও নির্মাণে কাজ করছেন।",
-      careerText: "তিনি জর্ডান পিল ও রিজ আহমেদ প্রযোজিত বহু-অস্কার® যোগ্যতাসম্পন্ন চলচ্চিত্র 'মশারি' এবং ২০থ ডিজিটাল স্টুডিওর কমিশনকৃত হুলু-র 'ফরেনার্স অনলি' চলচ্চিত্রের ডিরেক্টর অফ ফটোগ্রাফি।",
+      careerText: "তিনি জর্ডান পিল ও রিজ আহমেদ প্রযোজিত প্রশংসিত চলচ্চিত্র 'মশারি' এবং ২০থ ডিজিটাল স্টুডিওর কমিশনকৃত হুলু-র 'ফরেনার্স অনলি' চলচ্চিত্রের ডিরেক্টর অফ ফটোগ্রাফি।",
       email: "contact@ejazmehedi.com",
       representation: "আন্তর্জাতিক প্রতিনিধি: মাঙ্কিফ গ্লোবাল মিডিয়া",
       location: "ওমান ও বাংলাদেশ — কাজ করেন বিশ্বজুড়ে"

@@ -13,6 +13,22 @@ img {
   -ms-user-select: none !important;
 }
 
+/* Explicit High-Contrast Text Selection Highlight Styling */
+::selection {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+::-moz-selection {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+.about-inverted ::selection,
+[data-theme="light"] .about-inverted ::selection {
+  background-color: #000000 !important;
+  color: #b5ff32 !important;
+}
+
 /* Neue Montreal (Pangram Pangram) — self-hosted; drop the trial .woff2 files into public/fonts/ to activate.
    Until then the stack falls back to Inter, the closest free neo-grotesque. */
 @font-face {
@@ -147,7 +163,6 @@ img {
   }
 
   html {
-    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -238,14 +253,12 @@ img {
   }
 }
 
-/* Glass Header - Clean Borderless Design with GPU Hardware Acceleration */
+/* Glass Header - Clean Borderless Design */
 .glass-header {
   background: var(--header-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: none;
-  transform: translateZ(0);
-  will-change: transform;
 }
 
 /* Subtle Film Grain */

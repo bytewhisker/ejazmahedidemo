@@ -51,7 +51,7 @@ function safeCopy(src, dest) {
     if (fs.existsSync(dest)) {
       const sStat = fs.statSync(src);
       const dStat = fs.statSync(dest);
-      if (sStat.size === dStat.size) return;
+      if (sStat.size === dStat.size || (dStat.size > 0 && dStat.size < 2000000)) return;
     }
     fs.copyFileSync(src, dest);
   } catch (err) {
@@ -63,29 +63,43 @@ for (const [folder, slug] of projects) {
   const srcDir = path.join(projectAssetsDir, folder);
   if (!fs.existsSync(srcDir)) continue;
 
-  const files = fs
-    .readdirSync(srcDir)
-    .filter((f) => /\.png$/i.test(f))
+  const allFiles = fs.readdirSync(srcDir);
+  const posterFile = allFiles.find((f) => /^poster\.(png|jpg|jpeg)$/i.test(f));
+  const moshariWebFile = allFiles.find((f) => /^moshari-web\.png$/i.test(f));
+  const stillFiles = allFiles
+    .filter((f) => /\.png$/i.test(f) && !/^(poster|moshari-web)\.(png|jpg|jpeg)$/i.test(f))
     .sort(numericCompare);
 
   const destDir = path.join(projectsPublicDir, slug);
   fs.mkdirSync(destDir, { recursive: true });
 
-  for (let i = 0; i < files.length; i++) {
-    const srcFile = path.join(srcDir, files[i]);
+  if (posterFile) {
+    const ext = path.extname(posterFile).toLowerCase();
+    safeCopy(path.join(srcDir, posterFile), path.join(destDir, `poster${ext}`));
+  }
+  if (moshariWebFile) {
+    safeCopy(path.join(srcDir, moshariWebFile), path.join(destDir, 'moshari-web.png'));
+  }
+
+  for (let i = 0; i < stillFiles.length; i++) {
+    const srcFile = path.join(srcDir, stillFiles[i]);
     const out = path.join(destDir, `still-${String(i + 1).padStart(2, '0')}.png`);
     safeCopy(srcFile, out);
   }
 
-  const setPhotosDir = path.join(srcDir, 'Set Photos');
-  if (fs.existsSync(setPhotosDir)) {
+  const setPhotosDir = fs.existsSync(path.join(srcDir, 'Set Stills'))
+    ? path.join(srcDir, 'Set Stills')
+    : (fs.existsSync(path.join(srcDir, 'Set Photos')) ? path.join(srcDir, 'Set Photos') : null);
+
+  if (setPhotosDir && fs.existsSync(setPhotosDir)) {
     const setFiles = fs
       .readdirSync(setPhotosDir)
-      .filter((f) => /\.png$/i.test(f))
+      .filter((f) => /\.(png|jpg|jpeg)$/i.test(f))
       .sort(numericCompare);
     for (let i = 0; i < setFiles.length; i++) {
       const srcFile = path.join(setPhotosDir, setFiles[i]);
-      const out = path.join(destDir, `set-${String(i + 1).padStart(2, '0')}.png`);
+      const ext = path.extname(setFiles[i]).toLowerCase();
+      const out = path.join(destDir, `set-${String(i + 1).padStart(2, '0')}${ext}`);
       safeCopy(srcFile, out);
     }
   }

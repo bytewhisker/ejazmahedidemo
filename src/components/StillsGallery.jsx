@@ -203,17 +203,17 @@ export const StillsGallery = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.45, delay: idx * 0.05 }}
                   onClick={() => setLightboxIndex(idx)}
-                  className="shrink-0 snap-start group relative flex flex-col space-y-3 w-[78vw] sm:w-[50vw] md:w-auto"
+                  className="shrink-0 snap-start group relative flex flex-col space-y-3 w-[85vw] sm:w-[50vw] md:w-auto"
                 >
-                {/* MEDIUM SIZE — restored proportions, dvh for no mobile shake */}
+                {/* MEDIUM SIZE — non-cropped mobile aspect fit */}
                 <div
-                  className={`relative h-[40dvh] sm:h-[48dvh] md:h-[54dvh] max-h-[640px] min-h-[240px] ${item.aspect} bg-surface overflow-hidden border border-line/40 transition-colors group-hover:border-ink-soft`}
+                  className={`relative h-[45dvh] sm:h-[48dvh] md:h-[54dvh] max-h-[640px] min-h-[240px] ${item.aspect} bg-black/40 overflow-hidden border border-line/40 transition-colors group-hover:border-ink-soft flex items-center justify-center`}
                 >
                     <img
                       src={item.url}
                       alt={item.title}
                       loading="lazy"
-                      className="w-full h-full object-cover filter brightness-95 group-hover:brightness-105 group-hover:scale-[1.02] transition-all duration-700 pointer-events-none"
+                      className="w-full h-full object-contain sm:object-cover filter brightness-95 group-hover:brightness-105 group-hover:scale-[1.02] transition-all duration-700 pointer-events-none"
                     />
                     <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <div className="p-3 bg-black/80 backdrop-blur-md text-white border border-white/20 rounded-full">

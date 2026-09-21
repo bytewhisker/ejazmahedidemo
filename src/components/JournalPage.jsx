@@ -30,7 +30,7 @@ export const JournalPage = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
-      className="min-h-screen pt-2 pb-24 px-4 sm:px-6 lg:px-8 font-sans select-none max-w-[1700px] mx-auto"
+      className="min-h-screen pt-2 pb-24 px-4 sm:px-8 md:px-12 font-sans select-none w-full"
     >
       <div className="flex flex-col items-start justify-center min-h-[60vh] space-y-6">
         <span className="text-[10px] font-mono-custom tracking-[0.25em] uppercase text-muted font-bold">

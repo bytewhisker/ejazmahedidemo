@@ -27,3 +27,4 @@ cursor demo
 *.njsproj
 *.sln
 *.sw?
+*.tmp

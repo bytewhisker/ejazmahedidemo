@@ -20,10 +20,10 @@ export const MegaName = ({
     const wrap = wrapRef.current;
     if (!stage || !wrap) return;
 
-    const spans = Array.from(wrap.querySelectorAll('[data-letter]'));
-
     const measure = () => {
       const stageBox = stage.getBoundingClientRect();
+      if (stageBox.width === 0) return;
+      const spans = Array.from(wrap.querySelectorAll('[data-letter]'));
       lettersRef.current = spans.map((el) => {
         const box = el.getBoundingClientRect();
         const prev = lettersRef.current.find((l) => l.el === el);
@@ -31,7 +31,6 @@ export const MegaName = ({
           el,
           x: box.left - stageBox.left + box.width / 2,
           dip: prev?.dip ?? 0,
-          vel: prev?.vel ?? 0,
           target: 0,
         };
       });
@@ -40,6 +39,14 @@ export const MegaName = ({
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(stage);
+    ro.observe(wrap);
+
+    // Re-measure when web fonts finish loading
+    if (document.fonts) {
+      document.fonts.ready.then(measure);
+    }
+
+    window.addEventListener('resize', measure, { passive: true });
 
     let raf = 0;
     let pointerX = null;
@@ -52,14 +59,28 @@ export const MegaName = ({
       }
     };
 
+    let needsMeasure = true;
+
     const onMove = (e) => {
       const box = stage.getBoundingClientRect();
-      const withinBand = e.clientY > box.top - 350 && e.clientY < box.bottom + 350;
-      pointerX = withinBand ? e.clientX - box.left : null;
-      if (pointerX !== null) startTick();
+      const withinBand = e.clientY > box.top - 500 && e.clientY < box.bottom + 500;
+      
+      if (withinBand) {
+        if (needsMeasure) {
+          measure();
+          needsMeasure = false;
+        }
+        pointerX = e.clientX - box.left;
+        startTick();
+      } else {
+        pointerX = null;
+        needsMeasure = true;
+      }
     };
+
     const onLeave = () => {
       pointerX = null;
+      needsMeasure = true;
     };
 
     window.addEventListener('pointermove', onMove, { passive: true });
@@ -67,7 +88,9 @@ export const MegaName = ({
 
     const tick = () => {
       let active = false;
-      const radius = Math.max(160, stage.offsetWidth * 0.14);
+      const stageWidth = stage.offsetWidth || window.innerWidth;
+      const radius = Math.max(200, stageWidth * 0.16);
+      
       for (const l of lettersRef.current) {
         if (pointerX === null) {
           l.target = 0;
@@ -76,15 +99,16 @@ export const MegaName = ({
           const f = Math.max(0, 1 - d / radius);
           l.target = f * f * (3 - 2 * f);
         }
-        // smooth critically-damped ease
-        l.dip += (l.target - l.dip) * (l.target > l.dip ? 0.18 : 0.08);
+        
+        // smooth ease for responsive dipping
+        l.dip += (l.target - l.dip) * (l.target > l.dip ? 0.22 : 0.1);
 
         if (Math.abs(l.dip) > 0.0005 || l.target > 0) {
           active = true;
         }
 
-        const y = l.dip * 48;
-        const scale = 1 - l.dip * 0.16;
+        const y = l.dip * 52;
+        const scale = 1 - l.dip * 0.15;
         l.el.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0) scale(${scale.toFixed(3)})`;
       }
 
@@ -98,6 +122,7 @@ export const MegaName = ({
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
+      window.removeEventListener('resize', measure);
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerleave', onLeave);
     };

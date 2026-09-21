@@ -53,8 +53,8 @@ export const ProjectCard = ({ project, indexNumber, onClick, isEditMode, onEditP
       )}
 
       {/* MINIMALIST EDITORIAL PROJECT TITLE */}
-      <div className="flex items-center justify-between text-[11px] sm:text-xs md:text-sm font-mono-custom tracking-[0.16em] sm:tracking-[0.2em] uppercase font-normal text-ink gap-2">
-        <div className="flex items-center gap-2 min-w-0">
+      <div className="flex flex-wrap sm:flex-nowrap items-baseline justify-between gap-x-2 gap-y-1 text-[10.5px] xs:text-[11px] sm:text-xs md:text-sm font-mono-custom tracking-[0.08em] sm:tracking-[0.18em] uppercase font-normal text-ink">
+        <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5 min-w-0">
           <span
             contentEditable={isEditMode}
             suppressContentEditableWarning={true}
@@ -67,7 +67,7 @@ export const ProjectCard = ({ project, indexNumber, onClick, isEditMode, onEditP
                 onEditProject({ ...project, title: e.target.innerText });
               }
             }}
-            className={`truncate transition-colors ${
+            className={`break-words transition-colors ${
               isEditMode
                 ? 'outline-dashed outline-1 outline-accent/60 hover:outline-accent bg-accent/10 px-1 rounded cursor-text'
                 : 'group-hover:text-ink-soft'
@@ -75,11 +75,13 @@ export const ProjectCard = ({ project, indexNumber, onClick, isEditMode, onEditP
           >
             {project.title}
           </span>
-          <span className="text-ink-soft font-mono-custom font-light tracking-widest shrink-0 normal-case">/ {project.category === 'Commercial' ? 'commercial' : 'film'}</span>
+          <span className="text-ink-soft font-mono-custom font-light tracking-normal sm:tracking-widest shrink-0 normal-case text-[10px] sm:text-xs">
+            / {project.category?.toLowerCase().includes('commercial') ? 'commercial' : 'film'}
+          </span>
         </div>
         {project.comingSoon && (
-          <span className="shrink-0 text-[10px] sm:text-[11px] font-mono-custom tracking-[0.2em] text-accent border border-accent/50 px-2 py-0.5">
-            COMING SOON
+          <span className="shrink-0 text-[10px] sm:text-[11px] font-mono-custom tracking-[0.1em] sm:tracking-[0.2em] text-accent normal-case ml-auto sm:ml-0">
+            Coming Soon
           </span>
         )}
       </div>
@@ -88,7 +90,7 @@ export const ProjectCard = ({ project, indexNumber, onClick, isEditMode, onEditP
       <div className="relative bg-canvas py-1 transition-colors">
         {project.fullWidthCardStill ? (
           <div
-            className={`relative overflow-hidden bg-surface transition-all duration-300 border border-line/40 ${
+            className={`relative w-full overflow-hidden bg-surface transition-all duration-300 border border-line/40 ${
               isCardHovered
                 ? 'brightness-110 contrast-105 border-ink-soft'
                 : 'brightness-90 opacity-95'
@@ -97,8 +99,10 @@ export const ProjectCard = ({ project, indexNumber, onClick, isEditMode, onEditP
             <img
               src={project.fullWidthCardStill}
               alt={project.title}
-              loading="lazy"
-              className={`w-full h-auto object-cover transition-transform duration-500 ${
+              loading={indexNumber <= 2 ? "eager" : "lazy"}
+              fetchPriority={indexNumber <= 2 ? "high" : "auto"}
+              decoding="async"
+              className={`w-full h-auto block object-cover transition-transform duration-500 ${
                 isCardHovered ? 'scale-[1.02]' : 'scale-100'
               }`}
             />
@@ -128,7 +132,9 @@ export const ProjectCard = ({ project, indexNumber, onClick, isEditMode, onEditP
                 <img
                   src={stillUrl}
                   alt={`${project.title} still ${idx + 1}`}
-                  loading="lazy"
+                  loading={indexNumber <= 2 ? "eager" : "lazy"}
+                  fetchPriority={indexNumber <= 2 && idx === 0 ? "high" : "auto"}
+                  decoding="async"
                   onError={(e) => {
                     e.currentTarget.src = project.thumbnail || "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000&auto=format&fit=crop";
                   }}
